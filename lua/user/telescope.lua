@@ -4,12 +4,13 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+local icons = require("user.icons")
 
 telescope.setup {
   defaults = {
 
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = icons.ui.Telescope .. " ",
+    -- selection_caret = " ",
     path_display = { "smart" },
 
     mappings = {
@@ -26,7 +27,7 @@ telescope.setup {
         ["<Up>"] = actions.move_selection_previous,
 
         ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
+        ["<C-s>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
 
