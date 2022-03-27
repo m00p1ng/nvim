@@ -63,6 +63,7 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim"
   use "folke/todo-comments.nvim"
   use "Mephistophiles/surround.nvim"
+  use "sindrets/diffview.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -96,6 +97,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "windwp/nvim-ts-autotag"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

@@ -85,8 +85,6 @@ local mappings = {
     "Buffers",
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -97,6 +95,20 @@ local mappings = {
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["gy"] = "Link",
+
+  w = {
+    ["1"] = { "<cmd>BufferLineGoToBuffer 1<cr>", "Go to buffer 1"},
+    ["2"] = { "<cmd>BufferLineGoToBuffer 2<cr>", "Go to buffer 2"},
+    ["3"] = { "<cmd>BufferLineGoToBuffer 3<cr>", "Go to buffer 3"},
+    ["4"] = { "<cmd>BufferLineGoToBuffer 4<cr>", "Go to buffer 4"},
+    ["5"] = { "<cmd>BufferLineGoToBuffer 5<cr>", "Go to buffer 5"},
+    ["6"] = { "<cmd>BufferLineGoToBuffer 6<cr>", "Go to buffer 6"},
+    ["7"] = { "<cmd>BufferLineGoToBuffer 7<cr>", "Go to buffer 7"},
+    ["8"] = { "<cmd>BufferLineGoToBuffer 8<cr>", "Go to buffer 8"},
+    ["9"] = { "<cmd>BufferLineGoToBuffer 9<cr>", "Go to buffer 9"},
+    b = { "<cmd>BufferLineCyclePrev<cr>", "Go to prev buffer"},
+    n = { "<cmd>BufferLineCycleNext<cr>", "Go to next buffer"}
+  },
 
   p = {
     name = "Packer",
@@ -147,11 +159,22 @@ local mappings = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
     },
+    vo = {
+      "<cmd>DiffviewOpen<cr>",
+      "Diff view open",
+    },
+    vc = {
+      "<cmd>DiffviewClose<cr>",
+      "Diff view close",
+    }
   },
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    a = {
+      "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "Code Action",
+    },
     d = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",

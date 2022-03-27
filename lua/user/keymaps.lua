@@ -70,3 +70,5 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Other --
 keymap("v",  "ç", '"+y', opts)
 keymap("n", "<CR>", ":noh<CR>", opts)
+keymap("n", "[b", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "]b", ":BufferLineCycleNext<CR>", opts)
