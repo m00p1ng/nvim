@@ -180,6 +180,7 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -224,6 +225,7 @@ local vopts = {
 }
 local vmappings = {
   ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
+  c = { '"+y', "Copy" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
 }
 

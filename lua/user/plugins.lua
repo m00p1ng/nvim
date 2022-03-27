@@ -62,6 +62,7 @@ return packer.startup(function(use)
   use "SmiteshP/nvim-gps"
   use "karb94/neoscroll.nvim"
   use "folke/todo-comments.nvim"
+  use "Mephistophiles/surround.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
