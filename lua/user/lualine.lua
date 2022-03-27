@@ -19,7 +19,7 @@ local diagnostics = {
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
 	symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
-	colored = false,
+	colored = true,
 	update_in_insert = false,
 	always_visible = true,
 }
@@ -42,6 +42,12 @@ local filetype = {
 	"filetype",
 	icons_enabled = false,
 	icon = nil,
+}
+
+local filename = {
+	"filename",
+	file_status = true,
+	path = 1
 }
 
 local branch = {
@@ -72,7 +78,7 @@ end
 local nvim_gps = function()
 	local gps_location = gps.get_location()
 	if gps_location == "error" then
-		return "----->"
+		return ""
 	else
 		return gps.get_location()
 	end
@@ -89,7 +95,7 @@ lualine.setup {
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
+		lualine_b = { mode, filename },
 		lualine_c = {
 			{ nvim_gps, cond = hide_in_width },
 		},

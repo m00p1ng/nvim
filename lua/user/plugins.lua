@@ -60,6 +60,8 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "SmiteshP/nvim-gps"
+  use "karb94/neoscroll.nvim"
+  use "folke/todo-comments.nvim"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
