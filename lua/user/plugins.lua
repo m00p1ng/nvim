@@ -64,6 +64,7 @@ return packer.startup(function(use)
   use "folke/todo-comments.nvim"
   use "Mephistophiles/surround.nvim"
   use "sindrets/diffview.nvim"
+  use "ntpeters/vim-better-whitespace"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -89,7 +90,7 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use "nvim-treesitter/playground"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
   use {
@@ -97,6 +98,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
 
   -- Git
