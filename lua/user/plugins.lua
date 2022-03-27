@@ -98,6 +98,8 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use "ruifm/gitlinker.nvim"
+  use "f-person/git-blame.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
