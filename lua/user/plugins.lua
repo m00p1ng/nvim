@@ -65,6 +65,7 @@ return packer.startup(function(use)
   use "Mephistophiles/surround.nvim"
   use "sindrets/diffview.nvim"
   use "ntpeters/vim-better-whitespace"
+  use "tamago324/lir.nvim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
@@ -108,6 +109,7 @@ return packer.startup(function(use)
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "filipdutescu/renamer.nvim"
+  use "ray-x/lsp_signature.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
