@@ -84,6 +84,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+  ["Q"] = { "<cmd>qall!<CR>", "Quit" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },

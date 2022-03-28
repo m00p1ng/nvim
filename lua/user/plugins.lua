@@ -76,6 +76,27 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-emoji"
+  use {
+    "tzachar/cmp-tabnine",
+    config = function()
+      local tabnine = require "cmp_tabnine.config"
+      tabnine:setup {
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+        run_on_every_keystroke = true,
+        snippet_placeholder = "..",
+        ignored_file_types = { -- default is not to ignore
+          -- uncomment to ignore in lua:
+          -- lua = true
+        },
+      }
+    end,
+
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+  }
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -86,6 +107,7 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "filipdutescu/renamer.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -99,6 +121,7 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
+  use "romgrk/nvim-treesitter-context"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
