@@ -11,7 +11,7 @@ telescope.setup {
 
     prompt_prefix = icons.ui.Telescope .. " ",
     -- selection_caret = " ",
-    path_display = { "absolute" },
+    path_display = { "smart" },
 
     mappings = {
       i = {

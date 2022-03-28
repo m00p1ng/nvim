@@ -67,8 +67,7 @@ return packer.startup(function(use)
   use "ntpeters/vim-better-whitespace"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
+  use "m00p1ng/darkplus.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
