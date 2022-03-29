@@ -22,6 +22,7 @@ vim.g.nvim_tree_icons = {
 }
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_indent_markers = 1
+vim.g.nvim_tree_root_folder_modifier = ":t"
 vim.g.nvim_tree_show_icons = {
   git = 1,
   folders = 1,
@@ -42,8 +43,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
-  auto_reload_on_write = true,
-  disable_netrw = true,
+  -- disable_netrw = true,
   hide_root_folder = false,
   hijack_netrw = true,
   open_on_setup = false,
@@ -55,10 +55,6 @@ nvim_tree.setup {
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
-  update_to_buf_dir = {
-    enable = true,
-    auto_open = true,
-  },
   diagnostics = {
     enable = true,
     show_on_dirs = false,
@@ -74,14 +70,14 @@ nvim_tree.setup {
     update_cwd = true,
     ignore_list = {},
   },
-  system_open = {
-    cmd = nil,
-    args = {},
-  },
-  filters = {
-    dotfiles = false,
-    custom = {},
-  },
+  -- system_open = {
+  --   cmd = nil,
+  --   args = {},
+  -- },
+  -- filters = {
+  --   dotfiles = false,
+  --   custom = {},
+  -- },
   git = {
     enable = true,
     ignore = true,
@@ -103,11 +99,5 @@ nvim_tree.setup {
     number = false,
     relativenumber = false,
   },
-  trash = {
-    cmd = "trash",
-    require_confirm = true,
-  },
   quit_on_open = 0,
-  disable_window_picker = 0,
-  root_folder_modifier = ":t",
 }
