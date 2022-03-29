@@ -9,7 +9,7 @@ if not status_gps_ok then
 end
 
 local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
+	return vim.fn.winwidth(0) > 120
 end
 
 local icons = require "user.icons"
@@ -19,7 +19,7 @@ local diagnostics = {
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
 	symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
-	colored = true,
+	colored = false,
 	update_in_insert = false,
 	always_visible = true,
 }
@@ -34,7 +34,7 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+		return str:sub(1,1)
 	end,
 }
 
@@ -47,7 +47,8 @@ local filetype = {
 local filename = {
 	"filename",
 	file_status = true,
-	path = 1
+	path = 1,
+	shorting_target = 40,
 }
 
 local branch = {
@@ -107,7 +108,7 @@ lualine.setup {
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_c = { filename },
 		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},
