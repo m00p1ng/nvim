@@ -97,20 +97,6 @@ local mappings = {
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["gy"] = "Link",
 
-  w = {
-    ["1"] = { "<cmd>BufferLineGoToBuffer 1<cr>", "Go to buffer 1"},
-    ["2"] = { "<cmd>BufferLineGoToBuffer 2<cr>", "Go to buffer 2"},
-    ["3"] = { "<cmd>BufferLineGoToBuffer 3<cr>", "Go to buffer 3"},
-    ["4"] = { "<cmd>BufferLineGoToBuffer 4<cr>", "Go to buffer 4"},
-    ["5"] = { "<cmd>BufferLineGoToBuffer 5<cr>", "Go to buffer 5"},
-    ["6"] = { "<cmd>BufferLineGoToBuffer 6<cr>", "Go to buffer 6"},
-    ["7"] = { "<cmd>BufferLineGoToBuffer 7<cr>", "Go to buffer 7"},
-    ["8"] = { "<cmd>BufferLineGoToBuffer 8<cr>", "Go to buffer 8"},
-    ["9"] = { "<cmd>BufferLineGoToBuffer 9<cr>", "Go to buffer 9"},
-    b = { "<cmd>BufferLineCyclePrev<cr>", "Go to prev buffer"},
-    n = { "<cmd>BufferLineCycleNext<cr>", "Go to next buffer"}
-  },
-
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
