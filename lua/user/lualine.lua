@@ -22,6 +22,7 @@ local diagnostics = {
 	colored = false,
 	update_in_insert = false,
 	always_visible = true,
+	cond = hide_in_width,
 }
 
 local diff = {
@@ -36,12 +37,14 @@ local mode = {
 	fmt = function(str)
 		return str:sub(1,1)
 	end,
+	cond = hide_in_width,
 }
 
 local filetype = {
 	"filetype",
 	icons_enabled = false,
 	icon = nil,
+	cond = hide_in_width,
 }
 
 local filename = {
@@ -54,36 +57,46 @@ local filename = {
 local branch = {
 	"branch",
 	icons_enabled = true,
-	icon = "",
+	icon = "",
+	cond = hide_in_width,
 }
 
-local location = {
-	"location",
-	padding = 0,
+local encoding = {
+	"encoding",
+	cond = hide_in_width,
 }
 
 -- cool function for progress
-local progress = function()
-	local current_line = vim.fn.line(".")
-	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-	local line_ratio = current_line / total_lines
-	local index = math.ceil(line_ratio * #chars)
-	return chars[index]
-end
+local progress = {
+	function()
+		local current_line = vim.fn.line(".")
+		local total_lines = vim.fn.line("$")
+		local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+		local line_ratio = current_line / total_lines
+		local index = math.ceil(line_ratio * #chars)
+		return chars[index]
+	end,
+	cond = hide_in_width,
+}
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+local spaces = {
+	function()
+		return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+	end,
+	cond = hide_in_width,
+}
 
-local nvim_gps = function()
-	local gps_location = gps.get_location()
-	if gps_location == "error" then
-		return ""
-	else
-		return gps.get_location()
-	end
-end
+local nvim_gps = {
+	function()
+		local gps_location = gps.get_location()
+		if gps_location == "error" then
+			return ""
+		else
+			return gps.get_location()
+		end
+	end,
+	cond = hide_in_width
+}
 
 lualine.setup {
 	options = {
@@ -97,12 +110,9 @@ lualine.setup {
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode, filename },
-		lualine_c = {
-			{ nvim_gps, cond = hide_in_width },
-		},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_y = { location },
+		lualine_c = { nvim_gps },
+		lualine_x = { diff, spaces, encoding, filetype },
+		lualine_y = { "location" },
 		lualine_z = { progress },
 	},
 	inactive_sections = {
