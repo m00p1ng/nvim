@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 local icons = require("user.icons")
 local trouble = require("trouble.providers.telescope")
 
@@ -105,3 +105,10 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
+
+M.project_files = function(opts)
+  local ok = pcall(require"telescope.builtin".git_files, opts)
+  if not ok then require"telescope.builtin".find_files(opts) end
+end
+
+return M

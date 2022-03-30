@@ -56,6 +56,13 @@ local filename = {
 
 local branch = {
 	"branch",
+	fmt = function(str)
+		if str:len() > 15 then
+			return str:sub(1, 15) .. "..."
+		else
+			return str
+		end
+	end,
 	icons_enabled = true,
 	icon = "",
 	cond = hide_in_width,
@@ -76,7 +83,6 @@ local progress = {
 		local index = math.ceil(line_ratio * #chars)
 		return chars[index]
 	end,
-	cond = hide_in_width,
 }
 
 local spaces = {
@@ -95,7 +101,9 @@ local nvim_gps = {
 			return gps.get_location()
 		end
 	end,
-	cond = hide_in_width
+	cond = function()
+		return vim.fn.winwidth(0) > 150
+	end,
 }
 
 lualine.setup {

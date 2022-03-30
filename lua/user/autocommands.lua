@@ -35,16 +35,8 @@ vim.cmd [[
     autocmd VimEnter * hi link illuminatedWord LspReferenceText
   augroup END
 
- " let ftToEnable = ['java']
- augroup codelens
-   autocmd!
-   autocmd BufWritePost *.java lua vim.lsp.codelens.refresh()
- augroup END
-
- autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+ " autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
--- autocmd BufLeave * if (!exists('b:caret')) | let b:caret = winsaveview() | endif
--- autocmd BufEnter * if (exists('b:caret')) | call winrestview(b:caret) | endif
 
 -- Autoformat
 -- augroup _lsp
