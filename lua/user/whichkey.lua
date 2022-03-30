@@ -160,7 +160,7 @@ local mappings = {
   l = {
     name = "LSP",
     a = {
-      "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor{previewer = false})<cr>",
+      "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor{previewer=false,layout_config={height=14}})<cr>",
       "Code Action",
     },
     d = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnostics" },
