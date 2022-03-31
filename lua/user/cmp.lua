@@ -92,8 +92,8 @@ cmp.setup {
         nvim_lua = "[Nvim]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
+        cmp_tabnine = "[T9]",
         path = "[Path]",
-        -- emoji = "[Emoji]",
         emoji = "",
       })[entry.source.name]
       return vim_item
