@@ -105,6 +105,9 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
+telescope.load_extension("notify")
+
+local M = {}
 
 M.project_files = function(opts)
   local ok = pcall(require"telescope.builtin".git_files, opts)
