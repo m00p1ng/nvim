@@ -65,6 +65,8 @@ return packer.startup(function(use)
   use "Mephistophiles/surround.nvim"
   use "sindrets/diffview.nvim"
   use "ntpeters/vim-better-whitespace"
+  use "rcarriga/nvim-notify"
+  use "antonk52/bad-practices.nvim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
