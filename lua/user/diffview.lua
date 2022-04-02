@@ -5,6 +5,8 @@ end
 
 local cb = configs.diffview_callback
 
+vim.g.__diffview_opened = 0
+
 configs.setup {
   diff_binaries = false,    -- Show diffs for binaries
   enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
@@ -44,7 +46,14 @@ configs.setup {
     DiffviewOpen = {},
     DiffviewFileHistory = {},
   },
-  hooks = {},         -- See ':h diffview-config-hooks'
+  hooks = {           -- See ':h diffview-config-hooks'
+    view_opened = function()
+      vim.g.__diffview_opened = 1
+    end,
+    view_closed = function()
+      vim.g.__diffview_opened = 0
+    end
+  },
   key_bindings = {
     disable_defaults = false,                   -- Disable the default key bindings
     -- The `view` bindings are active in the diff buffers, only when the current
