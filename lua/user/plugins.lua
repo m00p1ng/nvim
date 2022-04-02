@@ -69,6 +69,7 @@ return packer.startup(function(use)
   use "antonk52/bad-practices.nvim"
   use "andymass/vim-matchup"
   use "windwp/nvim-spectre"
+  use "kamykn/spelunker.vim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
