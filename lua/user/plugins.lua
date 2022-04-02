@@ -67,6 +67,8 @@ return packer.startup(function(use)
   use "ntpeters/vim-better-whitespace"
   use "rcarriga/nvim-notify"
   use "antonk52/bad-practices.nvim"
+  use "andymass/vim-matchup"
+  use "windwp/nvim-spectre"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
@@ -119,8 +121,9 @@ return packer.startup(function(use)
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/playground"
+  use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
   use "windwp/nvim-ts-autotag"
   use "romgrk/nvim-treesitter-context"
 
