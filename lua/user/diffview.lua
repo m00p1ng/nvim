@@ -46,14 +46,7 @@ configs.setup {
     DiffviewOpen = {},
     DiffviewFileHistory = {},
   },
-  hooks = {           -- See ':h diffview-config-hooks'
-    view_opened = function()
-      vim.g.__diffview_opened = 1
-    end,
-    view_closed = function()
-      vim.g.__diffview_opened = 0
-    end
-  },
+  hooks = {},         -- See ':h diffview-config-hooks'
   key_bindings = {
     disable_defaults = false,                   -- Disable the default key bindings
     -- The `view` bindings are active in the diff buffers, only when the current
