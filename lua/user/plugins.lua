@@ -132,6 +132,12 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"
 
+  -- DAP
+  use "mfussenegger/nvim-dap"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "rcarriga/nvim-dap-ui"
+  use "Pocco81/DAPInstall.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

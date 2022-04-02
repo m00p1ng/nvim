@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 bad_practices.setup({
-  most_splits = 3,
-  most_tabs = 3,
+  most_splits = 0,
+  most_tabs = 0,
   max_hjkl = 10,
 })
