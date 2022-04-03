@@ -128,7 +128,7 @@ local mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = {
-      "<cmd>lua require('user.telescope').project_files(require('telescope.themes').get_dropdown{previewer=false,hidden=true})<cr>",
+      "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false,hidden=true})<cr>",
       "Find files",
     },
     t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
@@ -199,6 +199,10 @@ local mappings = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    v = {
+      "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>",
+      "Toggle virtual text"
+    }
   },
 
   s = {

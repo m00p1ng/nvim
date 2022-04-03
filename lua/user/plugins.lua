@@ -115,6 +115,7 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
   use "folke/trouble.nvim"
+  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

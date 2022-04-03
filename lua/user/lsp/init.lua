@@ -5,4 +5,5 @@ end
 
 require "user.lsp.lsp-signature"
 require "user.lsp.lsp-installer"
-require("user.lsp.handlers").setup()
+require "user.lsp.toggle-lsp-diagnostics"
+require "user.lsp.handlers".setup()
