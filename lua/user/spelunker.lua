@@ -10,6 +10,7 @@ vim.g.spelunker_ignored_filetypes = {
   "Trouble",
   "spectre_panel",
   "packer",
+  "lsp-installer",
 }
 
 vim.cmd [[

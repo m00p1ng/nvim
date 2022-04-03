@@ -1,6 +1,6 @@
 local status_ok, configs = pcall(require, "diffview.config")
 if not status_ok then
-	return
+  return
 end
 
 local cb = configs.diffview_callback
