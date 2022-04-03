@@ -5,11 +5,9 @@ end
 
 local cb = configs.diffview_callback
 
-vim.g.__diffview_opened = 0
-
 configs.setup {
   diff_binaries = false,    -- Show diffs for binaries
-  enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
+  enhanced_diff_hl = true,  -- See ':h diffview-config-enhanced_diff_hl'
   use_icons = true,         -- Requires nvim-web-devicons
   icons = {                 -- Only applies when use_icons is true.
     folder_closed = "",
@@ -21,7 +19,7 @@ configs.setup {
   },
   file_panel = {
     position = "left",                  -- One of 'left', 'right', 'top', 'bottom'
-    width = 35,                         -- Only applies when position is 'left' or 'right'
+    width = 30,                         -- Only applies when position is 'left' or 'right'
     height = 10,                        -- Only applies when position is 'top' or 'bottom'
     listing_style = "list",             -- One of 'list' or 'tree'
     tree_options = {                    -- Only applies when listing_style is 'tree'
