@@ -30,11 +30,17 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-  augroup illuminate_augroup
+  augroup _illuminate_augroup
     autocmd!
     autocmd VimEnter * hi link illuminatedWord LspReferenceText
   augroup END
 
+  augroup _spelunker
+    autocmd!
+    autocmd CursorHold * lua require('user.function').init_spelunker()
+  augroup END
+
+  command! BufOnly execute '%bdelete|edit #|normal `"'
  " autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
 

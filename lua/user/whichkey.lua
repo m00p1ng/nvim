@@ -236,6 +236,29 @@ local mappings = {
     h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   },
+
+  z = {
+    name = "Spelunker",
+    c = { ":call spelunker#correct()<cr>", "Correct current word" },
+    C = { ":call spelunker#correct_all()<cr>", "Correct all words" },
+    f = { ":call spelunker#correct_feeling_lucky()<cr>", "Correct current word" },
+    F = { ":call spelunker#correct_all_feeling_lucky()<cr>", "Correct all words" },
+    g = { ":call spelunker#execute_with_target_word('spellgood')<cr> :call spelunker#check()<cr>", "Spell good" },
+    G = { ":call spelunker#execute_with_target_word('spellgood!')<cr> :call spelunker#check()<cr>", "Temp spell good" },
+    w = { ":call spelunker#execute_with_target_word('spellwrong')<cr> :call spelunker#check()<cr>", "Spell bad" },
+    W = { ":call spelunker#execute_with_target_word('spellwrong!')<cr> :call spelunker#check()<cr>", "Temp spell bad" },
+    N = { ":call spelunker#jump_next()<cr>", "Next spell" },
+    P = { ":call spelunker#jump_prev()<cr>", "Prev spell" },
+    T = { ":call spelunker#toggle()<cr>", "Toggle spell check" },
+    t = { ":call spelunker#toggle_buffer()<cr>", "Toggle current spell check" },
+    u = {
+      name = "Undo",
+      g = { ":call spelunker#execute_with_target_word('spellundo')<cr> :call spelunker#check()<cr>", "Spell good" },
+      G = { ":call spelunker#execute_with_target_word('spellundo!')<cr> :call spelunker#check()<cr>", "Temp Spell good" },
+      w = { ":call spelunker#execute_with_target_word('spellundo')<CR> :call spelunker#check()<cr>", "Spell wrong" },
+      W = { ":call spelunker#execute_with_target_word('spellundo!')<CR> :call spelunker#check()<cr>", "Temp Spell wrong" },
+    }
+  }
 }
 
 local vopts = {
