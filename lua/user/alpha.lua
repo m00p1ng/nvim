@@ -13,11 +13,17 @@ dashboard.section.header.val = {
   [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 dashboard.section.buttons.val = {
-  dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+  dashboard.button("f", "  Find file",
+    "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false})<cr>"
+  ),
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
-  dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-  dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("p", "  Find project",
+    "<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown{previewer=false})<cr>"
+  ),
+  dashboard.button("r", "  Recently used files",
+    "<cmd>lua require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown{previewer=false})<cr>"
+  ),
+  dashboard.button("t", "  Find text", ":Telescope live_grep theme=ivy<CR>"),
   dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }

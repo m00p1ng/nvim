@@ -135,7 +135,10 @@ local mappings = {
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     l = { "<cmd>Telescope resume<cr>", "Last Search" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+    r = {
+      "<cmd>lua require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown{previewer=false})<cr>",
+      "Recent File",
+    },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
