@@ -68,7 +68,7 @@ return packer.startup(function(use)
   use "rcarriga/nvim-notify"
   use "antonk52/bad-practices.nvim"
   use "andymass/vim-matchup"
-  use "windwp/nvim-spectre"
+  -- use "windwp/nvim-spectre"
   use "kamykn/spelunker.vim"
 
   -- Colorschemes
@@ -120,7 +120,6 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use {"nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  use {"nvim-telescope/telescope-frecency.nvim", requires = {"tami5/sqlite.lua"}}
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
