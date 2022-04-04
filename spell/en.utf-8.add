@@ -1,1 +1,8 @@
+eslint
+graphql
 keymap
+lodash
+nestjs
+ormconfig
+supertest
+typeorm
