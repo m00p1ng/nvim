@@ -46,33 +46,35 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
-  use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "SmiteshP/nvim-gps"
-  use "karb94/neoscroll.nvim"
   use "folke/todo-comments.nvim"
   use "Mephistophiles/surround.nvim"
-  use "sindrets/diffview.nvim"
-  use "ntpeters/vim-better-whitespace"
-  use "rcarriga/nvim-notify"
-  use "antonk52/bad-practices.nvim"
   use "andymass/vim-matchup"
   -- use "windwp/nvim-spectre"
   use "kamykn/spelunker.vim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
+
+  -- UI
+  use "akinsho/bufferline.nvim"
+  use "folke/which-key.nvim"
+  use "goolord/alpha-nvim"
+  use "karb94/neoscroll.nvim"
+  use "kyazdani42/nvim-tree.lua"
+  use "kyazdani42/nvim-web-devicons"
+  use "lukas-reineke/indent-blankline.nvim"
+  use "nvim-lualine/lualine.nvim"
+  use "rcarriga/nvim-notify"
+  use "ntpeters/vim-better-whitespace"
+  use "sindrets/diffview.nvim"
+  use "antonk52/bad-practices.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -82,26 +84,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
-  use {
-    "tzachar/cmp-tabnine",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-        ignored_file_types = { -- default is not to ignore
-          -- uncomment to ignore in lua:
-          -- lua = true
-        },
-      }
-    end,
-
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  }
+  use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -119,10 +102,10 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
   -- Treesitter
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
   use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "JoosepAlviste/nvim-ts-context-commentstring"
