@@ -160,7 +160,7 @@ local mappings = {
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
@@ -169,6 +169,14 @@ local mappings = {
       "<cmd>lua require('user.function').toggle_diffview()<cr>",
       "Toggle diff view",
     },
+    c = {
+      "<cmd>lua require('neogit').open({ 'commit' })<cr>",
+      "Commit"
+    },
+    n = {
+      "<cmd>lua require('neogit').open()<cr>",
+      "Commit"
+    }
   },
 
   l = {

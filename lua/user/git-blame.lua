@@ -11,4 +11,6 @@ vim.g.gitblame_ignored_filetypes = {
   "Trouble",
   "spectre_panel",
   "packer",
+  "NeogitCommitPopup",
+  "NeogitStatus",
 }

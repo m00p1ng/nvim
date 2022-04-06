@@ -12,6 +12,8 @@ vim.g.spelunker_ignored_filetypes = {
   "packer",
   "lsp-installer",
   "toggleterm",
+  "NeogitCommitPopup",
+  "NeogitStatus",
 }
 
 vim.cmd [[
