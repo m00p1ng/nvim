@@ -85,3 +85,4 @@ keymap("n", "\\e", ":lua require('Comment.api').toggle_current_linewise()<CR>", 
 keymap("v", "\\e", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 keymap("n", "[h", ":lua require 'gitsigns'.next_hunk()<cr>", opts)
 keymap("n", "]h", ":lua require 'gitsigns'.prev_hunk()<cr>", opts)
+keymap("n", "\\r", ":lua require 'rest-nvim'.run()<cr>", opts)

@@ -7,7 +7,7 @@ surround.setup {
   context_offset = 100,
   load_autogroups = false,
   mappings_style = "surround",
-  map_insert_mode = true,
+  map_insert_mode = false,
   quotes = {"'", '"'},
   brackets = {"(", '{', '['},
   pairs = {

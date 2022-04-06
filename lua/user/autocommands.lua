@@ -35,6 +35,12 @@ vim.cmd [[
     autocmd VimEnter * hi link illuminatedWord LspReferenceText
   augroup END
 
+  augroup _go
+    autocmd!
+    autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+    autocmd FileType go setl tabstop=4 shiftwidth=4 noexpandtab softtabstop=4
+  augroup END
+
   augroup _spelunker
     autocmd!
     autocmd CursorHold * lua require('user.function').init_spelunker()

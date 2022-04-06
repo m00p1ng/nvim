@@ -92,7 +92,6 @@ local mappings = {
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  ["gy"] = "Link",
 
   p = {
     name = "Packer",
@@ -103,12 +102,12 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
-  r = {
-    name = "Replace",
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-  },
+  -- r = {
+  --   name = "Replace",
+  --   r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  --   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  --   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+  -- },
 
   d = {
     name = "Debug",
