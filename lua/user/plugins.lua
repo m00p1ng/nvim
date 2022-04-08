@@ -52,7 +52,7 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "norcalli/nvim-colorizer.lua"
-  use "SmiteshP/nvim-gps"
+  -- use "SmiteshP/nvim-gps"
   use "folke/todo-comments.nvim"
   use "Mephistophiles/surround.nvim"
   use "andymass/vim-matchup"
@@ -112,12 +112,12 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "windwp/nvim-ts-autotag"
   use "romgrk/nvim-treesitter-context"
-  use "TimUntersberger/neogit"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"
+  use "TimUntersberger/neogit"
 
   -- DAP
   use "mfussenegger/nvim-dap"

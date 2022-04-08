@@ -11,6 +11,15 @@ function M.toggle_diffview()
   is_opened = not is_opened
 end
 
+function M.toggle_diffview_file_history()
+  if is_opened == false then
+    vim.cmd [[ DiffviewFileHistory ]]
+  else
+    vim.cmd [[ DiffviewClose ]]
+  end
+  is_opened = not is_opened
+end
+
 function M.project_files(opts)
   local ok = pcall(require"telescope.builtin".git_files, opts)
   if not ok then require"telescope.builtin".find_files(opts) end

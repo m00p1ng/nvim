@@ -90,7 +90,6 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   p = {
@@ -124,8 +123,7 @@ local mappings = {
 
   f = {
     name = "Find",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = {
       "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false,hidden=true})<cr>",
       "Find files",
@@ -140,14 +138,11 @@ local mappings = {
     },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
   g = {
     name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     l = { "<cmd>GitBlameToggle<cr>", "Blame" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
@@ -168,13 +163,17 @@ local mappings = {
       "<cmd>lua require('user.function').toggle_diffview()<cr>",
       "Toggle diff view",
     },
+    h = {
+      "<cmd>lua require('user.function').toggle_diffview_file_history()<cr>",
+      "Toggle File History",
+    },
     c = {
       "<cmd>lua require('neogit').open({ 'commit' })<cr>",
       "Commit"
     },
-    n = {
+    g = {
       "<cmd>lua require('neogit').open()<cr>",
-      "Commit"
+      "Neogit"
     }
   },
 
@@ -218,13 +217,14 @@ local mappings = {
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+    H = { "<cmd>Telescope highlights<cr>", "Highlight" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
   t = {
@@ -267,6 +267,10 @@ local mappings = {
       G = { ":call spelunker#execute_with_target_word('spellundo!')<cr> :call spelunker#check()<cr>", "Temp Spell good" },
       w = { ":call spelunker#execute_with_target_word('spellundo')<CR> :call spelunker#check()<cr>", "Spell wrong" },
       W = { ":call spelunker#execute_with_target_word('spellundo!')<CR> :call spelunker#check()<cr>", "Temp Spell wrong" },
+    },
+    ["="] = {
+      "<cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor{previewer=false,layout_config={height=14}})<cr>",
+      "Spell suggestions",
     }
   }
 }

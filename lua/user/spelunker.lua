@@ -7,6 +7,7 @@ vim.g.spelunker_ignored_filetypes = {
   "NvimTree",
   "Outline",
   "DiffviewFiles",
+  "DiffviewFileHistory",
   "Trouble",
   "spectre_panel",
   "packer",

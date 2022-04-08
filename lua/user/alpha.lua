@@ -28,6 +28,13 @@ dashboard.section.buttons.val = {
   dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 
+local function footer()
+  local plugins = #vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)
+  local v = vim.version()
+  return string.format(" %d   v%d.%d.%d", plugins, v.major, v.minor, v.patch)
+end
+dashboard.section.footer.val = footer()
+
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
