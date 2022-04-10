@@ -21,13 +21,12 @@ vim.g.nvim_tree_icons = {
   },
 }
 vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_root_folder_modifier = ":t"
 vim.g.nvim_tree_show_icons = {
   git = 1,
   folders = 1,
   files = 1,
-  folder_arrows = 1,
+  folder_arrows = 0,
 }
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
@@ -81,5 +80,10 @@ nvim_tree.setup {
     auto_resize = true,
     number = false,
     relativenumber = false,
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
   },
 }
