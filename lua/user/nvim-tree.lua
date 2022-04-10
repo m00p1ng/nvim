@@ -66,6 +66,7 @@ nvim_tree.setup {
     dotfiles = false,
     custom = {
       '.git',
+      '.DS_Store',
     },
   },
   git = {
