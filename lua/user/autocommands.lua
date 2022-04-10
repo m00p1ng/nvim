@@ -7,51 +7,56 @@ vim.cmd [[
     autocmd FileType qf set nobuflisted
     autocmd CmdWinEnter * quit
   augroup end
+]]
 
+vim.cmd [[
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
     autocmd FileType gitcommit setlocal spell
   augroup end
+]]
 
+vim.cmd [[
   augroup _markdown
     autocmd!
     autocmd FileType markdown setlocal wrap
     autocmd FileType markdown setlocal spell
   augroup end
+]]
 
+vim.cmd [[
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd =
   augroup end
+]]
 
+vim.cmd [[
   augroup _alpha
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+]]
 
+vim.cmd [[
   augroup _illuminate_augroup
     autocmd!
     autocmd VimEnter * hi link illuminatedWord LspReferenceText
   augroup END
+]]
 
+vim.cmd [[
   augroup _go
     autocmd!
     autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
     autocmd FileType go setl tabstop=4 shiftwidth=4 noexpandtab softtabstop=4
   augroup END
+]]
 
+vim.cmd [[
   augroup _spelunker
     autocmd!
     autocmd CursorHold * lua require('user.function').init_spelunker()
   augroup END
-
-  command! BufOnly execute '%bdelete|edit #|normal `"'
- " autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
-
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
