@@ -64,8 +64,8 @@ nvim_tree.setup {
   filters = {
     dotfiles = false,
     custom = {
-      '.git',
-      '.DS_Store',
+      '\\.git',
+      '\\.DS_Store',
     },
   },
   git = {

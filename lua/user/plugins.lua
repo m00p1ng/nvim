@@ -114,6 +114,7 @@ return packer.startup(function(use)
   use "romgrk/nvim-treesitter-context"
 
   -- Git
+  -- use { "lewis6991/gitsigns.nvim", commit = "83ab3ca26ff5038f823060dfddda7a053e579b67", lock = true }
   use "lewis6991/gitsigns.nvim"
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"
