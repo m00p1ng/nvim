@@ -75,7 +75,6 @@ return packer.startup(function(use)
   use "rcarriga/nvim-notify"
   use "ntpeters/vim-better-whitespace"
   use "sindrets/diffview.nvim"
-  use "antonk52/bad-practices.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -111,7 +110,6 @@ return packer.startup(function(use)
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "windwp/nvim-ts-autotag"
-  use "romgrk/nvim-treesitter-context"
 
   -- Git
   -- use { "lewis6991/gitsigns.nvim", commit = "83ab3ca26ff5038f823060dfddda7a053e579b67", lock = true }
