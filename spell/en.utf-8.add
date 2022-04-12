@@ -1,9 +1,13 @@
+blockchain
 eslint
 graphql
 keymap
 lodash
+microservice
 nestjs
 ormconfig
+prisma
 supertest
+timestamptz
 typeorm
-blockchain
+uuid
