@@ -52,11 +52,9 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "norcalli/nvim-colorizer.lua"
-  -- use "SmiteshP/nvim-gps"
   use "folke/todo-comments.nvim"
   use "Mephistophiles/surround.nvim"
   use "andymass/vim-matchup"
-  -- use "windwp/nvim-spectre"
   use "kamykn/spelunker.vim"
   use "NTBBloodbath/rest.nvim"
 
@@ -74,7 +72,6 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use "rcarriga/nvim-notify"
   use "ntpeters/vim-better-whitespace"
-  use "sindrets/diffview.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -117,6 +114,7 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"
   use "TimUntersberger/neogit"
+  use "sindrets/diffview.nvim"
 
   -- DAP
   use "mfussenegger/nvim-dap"
