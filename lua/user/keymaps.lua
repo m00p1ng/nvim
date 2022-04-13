@@ -34,18 +34,19 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
-
--- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
-keymap("v", "p", '"_dP', opts)
+keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
+keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
+keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
+keymap("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
+keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
+keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
+keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
+keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
+keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- Visual Block --
--- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+-- Better pasted
+keymap("v", "p", '"_dP', opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -57,15 +58,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Other --
 keymap("v",  "ç", '"+y', opts)
 keymap("n", "<CR>", ":noh<CR>", opts)
-keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
-keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
-keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
-keymap("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
-keymap("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
-keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
-keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
-keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
-keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 keymap("n", "\\e", ":lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("v", "\\e", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 keymap("n", "]h", ":lua require 'gitsigns'.next_hunk()<cr>", opts)
@@ -73,3 +65,9 @@ keymap("n", "[h", ":lua require 'gitsigns'.prev_hunk()<cr>", opts)
 keymap("n", "\\r", ":lua require 'rest-nvim'.run()<cr>", opts)
 keymap("n", "]t", ":tabnext<cr>", opts)
 keymap("n", "[t", ":tabprev<cr>", opts)
+keymap(
+  "n",
+  "z=",
+  "<cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor{previewer=false,layout_config={height=14}})<cr>",
+  opts
+)
