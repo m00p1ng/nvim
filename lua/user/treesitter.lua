@@ -4,7 +4,8 @@ if not status_ok then
 end
 
 configs.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
+  ignore_install = { "phpdoc", "swift" },
   sync_install = false,
   highlight = {
     enable = true,

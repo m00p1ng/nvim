@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "andymass/vim-matchup"
   use "kamykn/spelunker.vim"
   use "NTBBloodbath/rest.nvim"
+  use "numToStr/Navigator.nvim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
