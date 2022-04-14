@@ -3,13 +3,11 @@ vim.g.spelunker_check_type = 2
 vim.g.spelunker_disable_auto_group = 1
 vim.g.spelunker_ignored_filetypes = {
   "alpha",
-  "dashboard",
   "NvimTree",
   "Outline",
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Trouble",
-  "spectre_panel",
   "packer",
   "lsp-installer",
   "toggleterm",
