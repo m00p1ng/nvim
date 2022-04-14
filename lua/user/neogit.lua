@@ -47,4 +47,10 @@ neogit.setup {
       folded = true
     },
   },
+  mappings = {
+    status = {
+      ["<enter>"] = "Toggle",
+      ["<tab>"] = "GoToFile",
+    },
+  },
 }
