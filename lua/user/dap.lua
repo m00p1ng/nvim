@@ -28,8 +28,8 @@ dapui.setup {
         size = 0.25, -- Can be float or integer > 1
       },
       { id = "breakpoints", size = 0.25 },
-      -- { id = "stacks", size = 0.25 },
-      -- { id = "watches", size = 00.25 },
+      { id = "stacks", size = 0.25 },
+      { id = "watches", size = 0.25 },
     },
     size = 40,
     position = "left", -- Can be "left", "right", "top", "bottom"
@@ -53,17 +53,13 @@ dapui.setup {
 
 local icons = require "user.icons"
 
-vim.fn.sign_define('DapBreakpoint', {text=icons.ui.Bug, texthl='DiagnosticSignError', linehl='', numhl=''})
+vim.cmd [[
+  highlight DapStopped guibg=#4B4B18
+]]
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
+vim.fn.sign_define('DapBreakpoint', {text=icons.ui.BigCircle, texthl='DiagnosticSignError', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text=icons.ui.BigCircle, texthl='DiagnosticSignWarning', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⮀', texthl='', linehl='DapStopped', numhl=''})
 
 -- Setup
 

@@ -92,27 +92,13 @@ local spaces = {
   cond = hide_in_width,
 }
 
-local nvim_gps = {
-  function()
-    local gps_location = gps.get_location()
-    if gps_location == "error" then
-      return ""
-    else
-      return gps.get_location()
-    end
-  end,
-  cond = function()
-    return vim.fn.winwidth(0) > 150
-  end,
-}
-
 lualine.setup {
   options = {
     icons_enabled = true,
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "DiffviewFiles" },
+    disabled_filetypes = { "alpha", "NvimTree", "DiffviewFiles" },
     always_divide_middle = true,
   },
   sections = {

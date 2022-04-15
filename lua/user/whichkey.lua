@@ -14,7 +14,7 @@ local setup = {
     presets = {
       operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
-      text_objects = true, -- help for text objects triggered after entering an operator
+      text_objects = false, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
@@ -87,6 +87,7 @@ local mappings = {
   d = {
     name = "Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+    B = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Conditional breakpoint" },
     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
@@ -106,6 +107,7 @@ local mappings = {
     },
     t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
+    H = { "<cmd>Telescope highlights<cr>", "Highlight" },
     l = { "<cmd>Telescope resume<cr>", "Last Search" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = {
@@ -185,19 +187,6 @@ local mappings = {
       "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>",
       "Toggle virtual text"
     }
-  },
-
-  s = {
-    name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    H = { "<cmd>Telescope highlights<cr>", "Highlight" },
-    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    c = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
   t = {

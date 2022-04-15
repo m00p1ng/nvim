@@ -4,7 +4,6 @@ vim.g.spelunker_disable_auto_group = 1
 vim.g.spelunker_ignored_filetypes = {
   "alpha",
   "NvimTree",
-  "Outline",
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Trouble",

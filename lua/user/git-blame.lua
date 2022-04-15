@@ -5,7 +5,6 @@ vim.g.gitblame_highlight_group = "GitBlame"
 vim.g.gitblame_ignored_filetypes = {
   "alpha",
   "NvimTree",
-  "Outline",
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Trouble",
