@@ -57,7 +57,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Other --
-keymap("v",  "<leader>c", '"+y', opts)
+keymap("v", "<leader>c", '"+y', opts)
 keymap("n", "<cr>", ":noh<cr>", opts)
 keymap("n", "\\e", ":lua require('Comment.api').toggle_current_linewise()<cr>", opts)
 keymap("v", "\\e", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
@@ -72,3 +72,4 @@ keymap(
   "<cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor{previewer=false,layout_config={height=14}})<cr>",
   opts
 )
+keymap("n", "*", "*N", opts)

@@ -55,11 +55,12 @@ local icons = require "user.icons"
 
 vim.cmd [[
   highlight DapStopped guibg=#4B4B18
+  highlight DapStoppedText guifg=yellow
 ]]
 
-vim.fn.sign_define('DapBreakpoint', {text=icons.ui.BigCircle, texthl='DiagnosticSignError', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text=icons.ui.BigCircle, texthl='DiagnosticSignWarning', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='', texthl='DiagnosticSignError', linehl='DapStopped', numhl=''})
+vim.fn.sign_define('DapBreakpoint', {text='●', texthl='DiagnosticSignError', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='●', texthl='DiagnosticSignWarning', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='', texthl='DapStoppedText', linehl='DapStopped', numhl=''})
 
 -- Setup
 
