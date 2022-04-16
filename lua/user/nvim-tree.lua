@@ -62,13 +62,13 @@ nvim_tree.setup {
   filters = {
     dotfiles = false,
     custom = {
-      '\\.git',
+      '\\.git$',
       '\\.DS_Store',
     },
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 400,
   },
   view = {
