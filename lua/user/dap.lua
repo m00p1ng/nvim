@@ -59,7 +59,7 @@ vim.cmd [[
 
 vim.fn.sign_define('DapBreakpoint', {text=icons.ui.BigCircle, texthl='DiagnosticSignError', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointCondition', {text=icons.ui.BigCircle, texthl='DiagnosticSignWarning', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='⮀', texthl='', linehl='DapStopped', numhl=''})
+vim.fn.sign_define('DapStopped', {text='', texthl='DiagnosticSignError', linehl='DapStopped', numhl=''})
 
 -- Setup
 
