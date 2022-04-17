@@ -7,6 +7,7 @@ function M.toggle_diffview()
     vim.cmd [[ DiffviewOpen ]]
   else
     vim.cmd [[ DiffviewClose ]]
+    vim.cmd [[ NvimTreeRefresh ]]
   end
   is_opened = not is_opened
 end

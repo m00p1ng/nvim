@@ -44,8 +44,8 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
+  use "windwp/nvim-autopairs"
+  use { "numToStr/Comment.nvim", tag = "v0.6" }
   use "moll/vim-bbye"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
@@ -58,6 +58,7 @@ return packer.startup(function(use)
   use "kamykn/spelunker.vim"
   use "NTBBloodbath/rest.nvim"
   use "numToStr/Navigator.nvim"
+  use "anuvyklack/pretty-fold.nvim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
