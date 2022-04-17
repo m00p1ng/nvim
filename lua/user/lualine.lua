@@ -25,13 +25,6 @@ local diagnostics = {
   cond = hide_in_width,
 }
 
-local diff = {
-  "diff",
-  colored = false,
-  symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
-  cond = hide_in_width
-}
-
 local mode = {
   "mode",
   fmt = function(str)
@@ -68,11 +61,6 @@ local branch = {
   cond = hide_in_width,
 }
 
-local encoding = {
-  "encoding",
-  cond = hide_in_width,
-}
-
 -- cool function for progress
 local progress = {
   function()
@@ -85,9 +73,20 @@ local progress = {
   end,
 }
 
-local spaces = {
-  function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+local filesize = {
+  function ()
+    local size = vim.fn.wordcount().bytes
+
+    local suffixes = { 'B', 'KB', 'MB', 'GB' }
+
+    local i = 1
+    while size > 1024 and i < #suffixes do
+      size = size / 1024
+      i = i + 1
+    end
+
+    local format = i == 1 and 'size: %d%s' or 'size: %.2f%s'
+    return string.format(format, size, suffixes[i])
   end,
   cond = hide_in_width,
 }
@@ -105,7 +104,7 @@ lualine.setup {
     lualine_a = { branch, diagnostics },
     lualine_b = { mode, filename },
     lualine_c = { },
-    lualine_x = { spaces, encoding, filetype },
+    lualine_x = { filesize, filetype },
     lualine_y = { "location" },
     lualine_z = { progress },
   },
@@ -113,7 +112,7 @@ lualine.setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { filename },
-    lualine_x = { "location" },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },

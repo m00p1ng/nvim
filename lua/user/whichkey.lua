@@ -64,16 +64,13 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Buffers",
-  },
+  ["b"] = { "<cmd>Telescope buffer theme=dropdown previewer=false", "Buffers" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["Q"] = { "<cmd>qall!<CR>", "Quit All" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["P"] = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
 
   p = {
     name = "Packer",
@@ -100,42 +97,36 @@ local mappings = {
 
   f = {
     name = "Find",
-    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    C = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "Colorscheme" },
     f = {
       "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false,hidden=true})<cr>",
       "Find files",
     },
     t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    h = { "<cmd>Telescope help_tags<cr>", "Help" },
-    H = { "<cmd>Telescope highlights<cr>", "Highlight" },
+    h = { "<cmd>Telescope help_tags theme=dropdown<cr>", "Help" },
+    H = { "<cmd>Telescope highlights theme=dropdown<cr>", "Highlight" },
     l = { "<cmd>Telescope resume<cr>", "Last Search" },
-    m = { "<cmd>Telescope marks<cr>", "Marks"},
+    m = { "<cmd>Telescope marks theme=dropdown<cr>", "Marks"},
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = {
-      "<cmd>lua require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown{previewer=false})<cr>",
-      "Recent File",
-    },
+    r = { "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>", "Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     c = { "<cmd>Telescope commands<cr>", "Commands" },
-    N = { "<cmd>Telescope notify<cr>", "Notify" },
-    V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
+    N = { "<cmd>Telescope notify theme=dropdown previewer=false<cr>", "Notify" },
+    V = { "<cmd>Telescope vim_options theme=dropdown<cr>", "Vim Options" },
   },
 
   g = {
     name = "Git",
     l = { "<cmd>GitBlameToggle<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-      "Undo Stage Hunk",
-    },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
+    r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
+    R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
+    s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+    u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
+    o = { "<cmd>Telescope git_status theme=dropdown<cr>", "Open changed file" },
+    b = { "<cmd>Telescope git_branches theme=dropdown previewer=false<cr>", "Checkout branch" },
+    C = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
     t = {
       "<cmd>lua require('user.function').toggle_diffview()<cr>",
@@ -162,34 +153,19 @@ local mappings = {
       "Code Action",
     },
     d = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnostics" },
-    w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-      "Workspace Diagnostics",
-    },
+    w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-      "Next Diagnostic",
-    },
-    k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-      "Prev Diagnostic",
-    },
+    j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+    k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     R = { "<cmd>Trouble lsp_references<cr>", "References" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = {
-      "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-      "Workspace Symbols",
-    },
-    v = {
-      "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>",
-      "Toggle virtual text"
-    }
+    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+    v = { "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>", "Toggle virtual text" }
   },
 
   t = {
@@ -211,29 +187,6 @@ local mappings = {
     h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   },
-
-  z = {
-    name = "Spelunker",
-    c = { ":call spelunker#correct()<cr>", "Correct current word" },
-    C = { ":call spelunker#correct_all()<cr>", "Correct all words" },
-    f = { ":call spelunker#correct_feeling_lucky()<cr>", "Correct current word" },
-    F = { ":call spelunker#correct_all_feeling_lucky()<cr>", "Correct all words" },
-    g = { ":call spelunker#execute_with_target_word('spellgood')<cr> :call spelunker#check()<cr>", "Spell good" },
-    G = { ":call spelunker#execute_with_target_word('spellgood!')<cr> :call spelunker#check()<cr>", "Temp spell good" },
-    w = { ":call spelunker#execute_with_target_word('spellwrong')<cr> :call spelunker#check()<cr>", "Spell bad" },
-    W = { ":call spelunker#execute_with_target_word('spellwrong!')<cr> :call spelunker#check()<cr>", "Temp spell bad" },
-    N = { ":call spelunker#jump_next()<cr>", "Next spell" },
-    P = { ":call spelunker#jump_prev()<cr>", "Prev spell" },
-    T = { ":call spelunker#toggle()<cr>", "Toggle spell check" },
-    t = { ":call spelunker#toggle_buffer()<cr>", "Toggle current spell check" },
-    u = {
-      name = "Undo",
-      g = { ":call spelunker#execute_with_target_word('spellundo')<cr> :call spelunker#check()<cr>", "Spell good" },
-      G = { ":call spelunker#execute_with_target_word('spellundo!')<cr> :call spelunker#check()<cr>", "Temp Spell good" },
-      w = { ":call spelunker#execute_with_target_word('spellundo')<CR> :call spelunker#check()<cr>", "Spell wrong" },
-      W = { ":call spelunker#execute_with_target_word('spellundo!')<CR> :call spelunker#check()<cr>", "Temp Spell wrong" },
-    },
-  }
 }
 
 which_key.setup(setup)
