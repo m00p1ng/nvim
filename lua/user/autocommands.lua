@@ -60,3 +60,7 @@ vim.cmd [[
     autocmd CursorHold * lua require('user.function').init_spelunker()
   augroup END
 ]]
+
+vim.cmd [[
+  hi VertSplit guibg=#252525 guifg=#252525 gui=NONE
+]]
