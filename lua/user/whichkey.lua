@@ -64,7 +64,7 @@ local opts = {
 
 local mappings = {
   -- ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = { "<cmd>Telescope buffer theme=dropdown previewer=false<cr>", "Buffers" },
+  ["b"] = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", "Buffers" },
   ["w"] = { "<cmd>w!<cr>", "Save" },
   ["q"] = { "<cmd>q!<cr>", "Quit" },
   ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
@@ -136,14 +136,8 @@ local mappings = {
       "<cmd>lua require('user.function').toggle_diffview_file_history()<cr>",
       "Toggle File History",
     },
-    c = {
-      "<cmd>lua require('neogit').open({ 'commit' })<cr>",
-      "Commit"
-    },
-    g = {
-      "<cmd>lua require('neogit').open()<cr>",
-      "Neogit"
-    }
+    c = { "<cmd>Neogit commit<cr>", "Commit" },
+    g = { "<cmd>Neogit<cr>", "Neogit" },
   },
 
   l = {

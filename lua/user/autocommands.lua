@@ -7,6 +7,11 @@ autocmd("FileType", {
   command = "nnoremap <silent> <buffer> q :close<cr>",
   group = general_group
 })
+autocmd("FileType", {
+  pattern = { "DiffviewFiles", "DiffviewFileHistory" },
+  command = "nnoremap <silent> <buffer> q :lua require('user.function').toggle_diffview()<cr>",
+  group = general_group
+})
 autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })

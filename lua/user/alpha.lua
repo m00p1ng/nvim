@@ -18,10 +18,10 @@ dashboard.section.buttons.val = {
   ),
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("p", "  Find project",
-    "<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown{previewer=false})<cr>"
+    "<cmd>Telescope projects theme=dropdown<cr>"
   ),
   dashboard.button("r", "  Recently used files",
-    "<cmd>lua require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown{previewer=false})<cr>"
+    "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>"
   ),
   dashboard.button("t", "  Find text", ":Telescope live_grep theme=ivy<CR>"),
   dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),

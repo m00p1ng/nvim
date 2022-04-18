@@ -1,4 +1,6 @@
 atoi
+augroup
+autocmd
 blockchain
 coinbase
 colorscheme
