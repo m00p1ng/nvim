@@ -9,7 +9,7 @@ end
 -- end
 --
 local hide_in_width = function()
-  return vim.fn.winwidth(0) > 120
+  return vim.fn.winwidth(0) > 0
 end
 
 local icons = require "user.icons"
@@ -50,11 +50,12 @@ local filename = {
 local branch = {
   "branch",
   fmt = function(str)
-    if str:len() > 15 then
-      return str:sub(1, 15) .. "..."
-    else
-      return str
+    local max_length = 30
+    if str:len() > max_length then
+      return str:sub(1, max_length) .. "..."
     end
+
+    return str
   end,
   icons_enabled = true,
   icon = "",
@@ -91,13 +92,15 @@ local filesize = {
   cond = hide_in_width,
 }
 
+vim.opt.laststatus = 3
+
 lualine.setup {
   options = {
     icons_enabled = true,
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "alpha", "NvimTree", "DiffviewFiles" },
+    -- disabled_filetypes = { "alpha", "NvimTree", "DiffviewFiles" },
     always_divide_middle = true,
   },
   sections = {
@@ -119,3 +122,5 @@ lualine.setup {
   tabline = {},
   extensions = {},
 }
+
+vim.opt.laststatus = 3

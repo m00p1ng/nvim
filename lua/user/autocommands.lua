@@ -1,66 +1,54 @@
-vim.cmd [[
-  augroup _general_settings
-    autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
-    autocmd BufWinEnter * :set formatoptions-=cro
-    autocmd FileType qf set nobuflisted
-    autocmd CmdWinEnter * quit
-  augroup end
-]]
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
-vim.cmd [[
-  augroup _git
-    autocmd!
-    autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
-  augroup end
-]]
+local general_group = augroup("_general_settings", { clear = true })
+autocmd("FileType", {
+  pattern = { "qf", "help", "man", "lspinfo" },
+  command = "nnoremap <silent> <buffer> q :close<cr>",
+  group = general_group
+})
+autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })
+  end,
+  group = general_group
+})
 
-vim.cmd [[
-  augroup _markdown
-    autocmd!
-    autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
-  augroup end
-]]
+local auto_resize_group = augroup("_auto_resize", { clear = true })
+autocmd("VimResized", {
+  command = "tabdo wincmd =",
+  group = auto_resize_group,
+})
 
-vim.cmd [[
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd =
-  augroup end
-]]
+local illuminate_group = augroup("_illuminate", { clear = true })
+autocmd("VimEnter", {
+  command = "hi link illuminatedWord LspReferenceText",
+  group = illuminate_group,
+})
 
-vim.cmd [[
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
-]]
+local go_group = augroup("_go", { clear = true })
+autocmd("BufWritePre", {
+  pattern = { "*.go" },
+  callback = function()
+    vim.lsp.buf.formatting()
+  end,
+  group = go_group,
+})
+autocmd("FileType", {
+  pattern = { "go" },
+  callback = function()
+    vim.api.nvim_buf_set_option(0, "tabstop", 4)
+    vim.api.nvim_buf_set_option(0, "shiftwidth", 4)
+    vim.api.nvim_buf_set_option(0, "softtabstop", 4)
+    vim.api.nvim_buf_set_option(0, "expandtab", false)
+  end,
+  group = go_group,
+})
 
-vim.cmd [[
-  augroup _illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi link illuminatedWord LspReferenceText
-  augroup END
-]]
-
-vim.cmd [[
-  augroup _go
-    autocmd!
-    autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
-    autocmd FileType go setl tabstop=4 shiftwidth=4 noexpandtab softtabstop=4
-  augroup END
-]]
-
-vim.cmd [[
-  augroup _spelunker
-    autocmd!
-    autocmd CursorHold * lua require('user.function').init_spelunker()
-  augroup END
-]]
-
-vim.cmd [[
-  hi VertSplit guibg=#252525 guifg=#252525 gui=NONE
-]]
+local spelunker_group = augroup("_spelunker", { clear = true })
+autocmd("CursorHold", {
+  callback = function()
+    require('user.function').init_spelunker()
+  end,
+  group = spelunker_group,
+})

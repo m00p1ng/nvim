@@ -92,7 +92,8 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "filipdutescu/renamer.nvim"
+  -- use "filipdutescu/renamer.nvim"
+  use "abzcoding/renamer.nvim"
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
   use "folke/trouble.nvim"
@@ -110,7 +111,6 @@ return packer.startup(function(use)
   use "windwp/nvim-ts-autotag"
 
   -- Git
-  -- use { "lewis6991/gitsigns.nvim", commit = "83ab3ca26ff5038f823060dfddda7a053e579b67", lock = true }
   use "lewis6991/gitsigns.nvim"
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"

@@ -63,7 +63,7 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+  -- ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = { "<cmd>Telescope buffer theme=dropdown previewer=false<cr>", "Buffers" },
   ["w"] = { "<cmd>w!<cr>", "Save" },
   ["q"] = { "<cmd>q!<cr>", "Quit" },

@@ -36,6 +36,7 @@ local options = {
   autoindent = true,
   softtabstop = 2,
   backspace = { 2 },
+  laststatus = 3,
 }
 
 vim.opt.shortmess:append "c"
