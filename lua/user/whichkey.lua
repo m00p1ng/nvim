@@ -64,12 +64,12 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = { "<cmd>Telescope buffer theme=dropdown previewer=false", "Buffers" },
-  ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["Q"] = { "<cmd>qall!<CR>", "Quit All" },
+  ["b"] = { "<cmd>Telescope buffer theme=dropdown previewer=false<cr>", "Buffers" },
+  ["w"] = { "<cmd>w!<cr>", "Save" },
+  ["q"] = { "<cmd>q!<cr>", "Quit" },
+  ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["c"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
   ["P"] = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
 
   p = {
