@@ -31,25 +31,6 @@ autocmd("VimEnter", {
   group = illuminate_group,
 })
 
-local go_group = augroup("_go", { clear = true })
-autocmd("BufWritePre", {
-  pattern = { "*.go" },
-  callback = function()
-    vim.lsp.buf.formatting()
-  end,
-  group = go_group,
-})
-autocmd("FileType", {
-  pattern = { "go" },
-  callback = function()
-    vim.api.nvim_buf_set_option(0, "tabstop", 4)
-    vim.api.nvim_buf_set_option(0, "shiftwidth", 4)
-    vim.api.nvim_buf_set_option(0, "softtabstop", 4)
-    vim.api.nvim_buf_set_option(0, "expandtab", false)
-  end,
-  group = go_group,
-})
-
 local spelunker_group = augroup("_spelunker", { clear = true })
 autocmd("CursorHold", {
   callback = function()
