@@ -10,7 +10,7 @@ vim.g.gitblame_ignored_filetypes = {
   "Trouble",
   "packer",
   "NeogitPopup",
-  "NeogitCommitPopup",
   "NeogitStatus",
+  "NeogitCommitPopup",
   "NeogitCommitMessage",
 }

@@ -51,8 +51,6 @@ dapui.setup {
   windows = { indent = 1 },
 }
 
-local icons = require "user.icons"
-
 vim.cmd [[
   highlight DapStopped guibg=#4B4B18
   highlight DapStoppedText guifg=yellow
