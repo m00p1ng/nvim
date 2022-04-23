@@ -7,6 +7,7 @@ colorscheme
 dropdown
 ecdsa
 eslint
+filetype
 graphql
 keymap
 keymaps
