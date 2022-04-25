@@ -17,7 +17,7 @@ dashboard.section.buttons.val = {
     "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false})<cr>"
   ),
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("p", "  Find project",
+  dashboard.button("p", "  Find project",
     "<cmd>Telescope projects theme=dropdown<cr>"
   ),
   dashboard.button("r", "  Recently used files",

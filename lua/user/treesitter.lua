@@ -12,7 +12,7 @@ configs.setup {
   },
   indent = {
     enable = true, -- not stable yet
-    disable = { "yaml", "go" },
+    disable = { "yaml" },
   },
   context_commentstring = {
     enable = true,
