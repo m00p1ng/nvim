@@ -35,7 +35,6 @@ if not status_ok then
 end
 
 nvim_tree.setup {
-  hide_root_folder = false,
   hijack_netrw = true,
   open_on_setup = false,
   ignore_ft_on_setup = {
@@ -74,8 +73,8 @@ nvim_tree.setup {
   view = {
     width = 30,
     height = 30,
+    hide_root_folder = false,
     side = "left",
-    auto_resize = true,
     number = false,
     relativenumber = false,
   },
