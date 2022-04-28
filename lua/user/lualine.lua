@@ -3,11 +3,6 @@ if not status_ok then
   return
 end
 
--- local status_gps_ok, gps = pcall(require, "nvim-gps")
--- if not status_gps_ok then
---   return
--- end
---
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 0
 end
@@ -44,7 +39,7 @@ local filename = {
   "filename",
   file_status = true,
   path = 1,
-  shorting_target = 40,
+  shorting_target = 50,
 }
 
 local branch = {
@@ -92,8 +87,6 @@ local filesize = {
   cond = hide_in_width,
 }
 
-vim.opt.laststatus = 3
-
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -122,5 +115,3 @@ lualine.setup {
   tabline = {},
   extensions = {},
 }
-
-vim.opt.laststatus = 3

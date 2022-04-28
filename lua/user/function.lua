@@ -2,23 +2,36 @@ local M = {}
 
 local is_opened = false
 
+function M.open_diffview()
+  vim.cmd [[ DiffviewOpen ]]
+  is_opened = true
+end
+
+function M.open_diffview_file_history()
+  vim.cmd [[ DiffviewFileHistory ]]
+  is_opened = true
+end
+
+function M.close_diffview()
+  vim.cmd [[ DiffviewClose ]]
+  vim.cmd [[ NvimTreeRefresh ]]
+  is_opened = false
+end
+
 function M.toggle_diffview()
   if is_opened == false then
-    vim.cmd [[ DiffviewOpen ]]
+    M.open_diffview()
   else
-    vim.cmd [[ DiffviewClose ]]
-    vim.cmd [[ NvimTreeRefresh ]]
+    M.close_diffview()
   end
-  is_opened = not is_opened
 end
 
 function M.toggle_diffview_file_history()
   if is_opened == false then
-    vim.cmd [[ DiffviewFileHistory ]]
+    M.open_diffview_file_history()
   else
-    vim.cmd [[ DiffviewClose ]]
+    M.close_diffview()
   end
-  is_opened = not is_opened
 end
 
 function M.project_files(opts)
