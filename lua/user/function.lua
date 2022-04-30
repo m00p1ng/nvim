@@ -39,15 +39,4 @@ function M.project_files(opts)
   if not ok then require"telescope.builtin".find_files(opts) end
 end
 
-function M.init_spelunker()
-  local filetype = vim.api.nvim_buf_get_option(0, 'ft')
-  if vim.tbl_contains(vim.g.spelunker_ignored_filetypes, filetype) then
-      return
-  end
-
-  vim.cmd [[
-    call spelunker#check_displayed_words()
-  ]]
-end
-
 return M

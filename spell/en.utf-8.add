@@ -4,6 +4,7 @@ autocmd
 blockchain
 coinbase
 colorscheme
+diffview
 dropdown
 ecdsa
 eslint
@@ -11,6 +12,7 @@ filetype
 graphql
 keymap
 keymaps
+kubernetes
 lodash
 mempool
 microservice

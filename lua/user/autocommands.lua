@@ -9,7 +9,7 @@ autocmd("FileType", {
 })
 autocmd("FileType", {
   pattern = { "DiffviewFiles", "DiffviewFileHistory" },
-  command = "nnoremap <silent> <buffer> q :lua require('user.function').toggle_diffview()<cr>",
+  command = "nnoremap <silent> <buffer> q :lua require('user.function').close_diffview()<cr>",
   group = general_group
 })
 autocmd("TextYankPost", {
@@ -34,7 +34,14 @@ autocmd("VimEnter", {
 local spelunker_group = augroup("_spelunker", { clear = true })
 autocmd("CursorHold", {
   callback = function()
-    require('user.function').init_spelunker()
+    local filetype = vim.api.nvim_buf_get_option(0, 'ft')
+    if vim.tbl_contains(vim.g.spelunker_ignored_filetypes, filetype) then
+      return
+    end
+
+    vim.cmd [[
+      call spelunker#check_displayed_words()
+    ]]
   end,
   group = spelunker_group,
 })
