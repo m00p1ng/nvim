@@ -9,4 +9,3 @@ if not status_preview_ok then
 end
 
 pretty_fold.setup()
-pretty_fold_preview.setup()
