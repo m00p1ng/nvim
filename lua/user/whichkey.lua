@@ -124,7 +124,7 @@ local mappings = {
     R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
     s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
     u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
-    o = { "<cmd>Telescope git_status theme=dropdown<cr>", "Open changed file" },
+    o = { "<cmd>Telescope git_status theme=dropdown previewer=false<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches theme=dropdown previewer=false<cr>", "Checkout branch" },
     C = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },

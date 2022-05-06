@@ -24,6 +24,7 @@ ormconfig
 prisma
 rxjs
 strconv
+stringify
 supertest
 tabnine
 timestamp
