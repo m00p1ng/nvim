@@ -18,6 +18,10 @@ autocmd("TextYankPost", {
   end,
   group = general_group
 })
+autocmd("VimEnter", {
+  command = "ab Dopen DiffviewOpen",
+  group = general_group
+})
 
 local auto_resize_group = augroup("_auto_resize", { clear = true })
 autocmd("VimResized", {
@@ -39,9 +43,7 @@ autocmd("CursorHold", {
       return
     end
 
-    vim.cmd [[
-      call spelunker#check_displayed_words()
-    ]]
+    vim.cmd [[ call spelunker#check_displayed_words() ]]
   end,
   group = spelunker_group,
 })
