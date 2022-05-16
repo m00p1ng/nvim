@@ -83,5 +83,9 @@ nvim_tree.setup {
     indent_markers = {
       enable = true,
     },
+    icons = {
+      webdev_colors = true,
+      git_placement = "after",
+    }
   },
 }

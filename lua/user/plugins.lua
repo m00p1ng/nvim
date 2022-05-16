@@ -53,7 +53,7 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "norcalli/nvim-colorizer.lua"
   use "folke/todo-comments.nvim"
-  use "Mephistophiles/surround.nvim"
+  use "ur4ltz/surround.nvim"
   use "andymass/vim-matchup"
   use "kamykn/spelunker.vim"
   use "NTBBloodbath/rest.nvim"
@@ -82,6 +82,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
+  use "rcarriga/cmp-dap"
   use { "tzachar/cmp-tabnine", run = "./install.sh" }
 
   -- snippets
@@ -98,6 +99,7 @@ return packer.startup(function(use)
   use "RRethy/vim-illuminate"
   use "folke/trouble.nvim"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "b0o/SchemaStore.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

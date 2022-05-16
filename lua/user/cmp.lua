@@ -3,6 +3,11 @@ if not cmp_status_ok then
   return
 end
 
+local cmp_dap_status_ok, cmp_dap = pcall(require, "cmp_dap")
+if not cmp_dap_status_ok then
+  return
+end
+
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
   return
@@ -37,6 +42,9 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or cmp_dap.is_dap_buffer()
+  end,
   window = {
     -- completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -94,6 +102,7 @@ cmp.setup {
         cmp_tabnine = "[T9]",
         path = "[Path]",
         emoji = "",
+        dap = "",
       })[entry.source.name]
       return vim_item
     end,
@@ -105,6 +114,7 @@ cmp.setup {
     { name = "cmp_tabnine" },
     { name = "path" },
     { name = "emoji" },
+    { name = "dap" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
