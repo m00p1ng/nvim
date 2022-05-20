@@ -127,3 +127,16 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  },
+  experimental = {
+    ghost_text = {
+      hl_group = 'CmpGhostText'
+    },
+    native_menu = false,
+  },
+})
