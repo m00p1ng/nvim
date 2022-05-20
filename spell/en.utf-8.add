@@ -27,6 +27,9 @@ strconv
 stringify
 supertest
 tabnine
+tbody
+tfoot
+thead
 timestamp
 timestamptz
 typeorm
