@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+local packer_user_group = vim.api.nvim_create_augroup("_packer_user_group", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "plugins.lua",
+  command = "source <afile> | PackerSync",
+  group = packer_user_group
+})
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -93,8 +93,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  -- use "filipdutescu/renamer.nvim"
-  use "abzcoding/renamer.nvim"
+  use "filipdutescu/renamer.nvim"
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
   use "folke/trouble.nvim"
