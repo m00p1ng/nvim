@@ -70,7 +70,6 @@ local mappings = {
   ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["c"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
-  ["P"] = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
 
   p = {
     name = "Packer",
@@ -114,6 +113,7 @@ local mappings = {
     c = { "<cmd>Telescope commands<cr>", "Commands" },
     N = { "<cmd>Telescope notify theme=dropdown previewer=false<cr>", "Notify" },
     V = { "<cmd>Telescope vim_options theme=dropdown<cr>", "Vim Options" },
+    p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
   },
 
   g = {
@@ -123,19 +123,14 @@ local mappings = {
     r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
     R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
     s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+    S = { "<cmd>Gitsigns stage_buffer<cr>", "Stage Buffer" },
     u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
     o = { "<cmd>Telescope git_status theme=dropdown previewer=false<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches theme=dropdown previewer=false<cr>", "Checkout branch" },
     C = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
-    t = {
-      "<cmd>lua require('user.function').toggle_diffview()<cr>",
-      "Toggle diff view",
-    },
-    h = {
-      "<cmd>lua require('user.function').toggle_diffview_file_history()<cr>",
-      "Toggle File History",
-    },
+    t = { "<cmd>DiffviewOpen<cr>", "Diff view" },
+    h = { "<cmd>DiffviewFileHistory<cr>", "File History" },
     c = { "<cmd>Neogit commit<cr>", "Commit" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
   },

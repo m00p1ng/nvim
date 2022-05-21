@@ -35,6 +35,8 @@ if not status_ok then
   return
 end
 
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
 nvim_tree.setup {
   hijack_netrw = true,
   open_on_setup = false,
@@ -78,6 +80,13 @@ nvim_tree.setup {
     side = "left",
     number = false,
     relativenumber = false,
+    mappings = {
+      custom_only = false,
+      list = {
+        { key = "1", cb = tree_cb "next_git_item" },
+        { key = "2", cb = tree_cb "prev_git_item" },
+      },
+    },
   },
   renderer = {
     indent_markers = {

@@ -21,7 +21,6 @@ configs.setup {
     win_config = {
       position = "left",                  -- One of 'left', 'right', 'top', 'bottom'
       width = 30,                         -- Only applies when position is 'left' or 'right'
-      height = 10,                        -- Only applies when position is 'top' or 'bottom'
     },
     listing_style = "list",             -- One of 'list' or 'tree'
     tree_options = {                    -- Only applies when listing_style is 'tree'
@@ -32,7 +31,6 @@ configs.setup {
   file_history_panel = {
     win_config = {
       position = "bottom",
-      width = 35,
       height = 16,
     },
     log_options = {
@@ -61,6 +59,8 @@ configs.setup {
       ["<C-w>gf"]    = cb("goto_file_tab"),      -- Open the file in a new tabpage
       ["<leader>e"]  = cb("focus_files"),        -- Bring focus to the files panel
       ["<leader>b"]  = cb("toggle_files"),       -- Toggle the files panel.
+      ["q"]          = cb("close"),
+      ["c"]          = "<cmd>Neogit<cr>",
     },
     file_panel = {
       ["j"]             = cb("next_entry"),           -- Bring the cursor to the next file entry
@@ -75,6 +75,7 @@ configs.setup {
       ["U"]             = cb("unstage_all"),          -- Unstage all entries.
       ["X"]             = cb("restore_entry"),        -- Restore entry to the state on the left side.
       ["R"]             = cb("refresh_files"),        -- Update stats and entries in the file list.
+      ["L"]             = cb("open_commit_log"),      -- Open the commit log panel.
       ["<tab>"]         = cb("select_next_entry"),
       ["<s-tab>"]       = cb("select_prev_entry"),
       ["gf"]            = cb("goto_file"),
@@ -84,6 +85,8 @@ configs.setup {
       ["f"]             = cb("toggle_flatten_dirs"),  -- Flatten empty subdirectories in tree listing style.
       ["<leader>e"]     = cb("focus_files"),
       ["<leader>b"]     = cb("toggle_files"),
+      ["q"]             = "<cmd>DiffviewClose<cr>",
+      ["c"]             = "<cmd>Neogit<cr>",
     },
     file_history_panel = {
       ["g!"]            = cb("options"),            -- Open the option panel
@@ -105,10 +108,13 @@ configs.setup {
       ["<C-w>gf"]       = cb("goto_file_tab"),
       ["<leader>e"]     = cb("focus_files"),
       ["<leader>b"]     = cb("toggle_files"),
+      ["q"]             = "<cmd>DiffviewClose<cr>",
+      ["c"]             = "<cmd>Neogit<cr>",
     },
     option_panel = {
       ["<tab>"] = cb("select"),
       ["q"]     = cb("close"),
+      ["c"]     = "<cmd>Neogit<cr>",
     },
   },
 }

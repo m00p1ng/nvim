@@ -23,7 +23,7 @@ local diagnostics = {
 local mode = {
   "mode",
   fmt = function(str)
-    return str:sub(1,1)
+    return str:sub(1, 1)
   end,
   cond = hide_in_width,
 }
@@ -70,7 +70,7 @@ local progress = {
 }
 
 local filesize = {
-  function ()
+  function()
     local size = vim.fn.wordcount().bytes
 
     local suffixes = { 'B', 'KB', 'MB', 'GB' }
@@ -100,7 +100,7 @@ lualine.setup {
   sections = {
     lualine_a = { branch, diagnostics },
     lualine_b = { mode, filename },
-    lualine_c = { },
+    lualine_c = {},
     lualine_x = { filesize, filetype },
     lualine_y = { "location" },
     lualine_z = { progress },
