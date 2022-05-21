@@ -37,6 +37,7 @@ local options = {
   softtabstop = 2,
   backspace = { 2 },
   laststatus = 3,
+  wildmode = "longest:full,full",
 }
 
 vim.opt.shortmess:append "c"

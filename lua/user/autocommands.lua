@@ -47,3 +47,10 @@ autocmd("CursorHold", {
   end,
   group = spelunker_group,
 })
+
+local js_group = augroup("_js_eslint_fix", { clear = true })
+autocmd("BufWritePre", {
+  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+  command = "EslintFixAll",
+  group = js_group,
+})
