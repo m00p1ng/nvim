@@ -59,6 +59,9 @@ return packer.startup(function(use)
   use "NTBBloodbath/rest.nvim"
   use "numToStr/Navigator.nvim"
   use "anuvyklack/pretty-fold.nvim"
+  use "monaqa/dial.nvim"
+  use "tpope/vim-repeat"
+  use "christianchiarulli/JABS.nvim"
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
