@@ -81,31 +81,61 @@ telescope.setup {
     },
   },
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
+    find_files = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    git_files = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    oldfiles = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    colorscheme = {
+      theme = "dropdown",
+    },
+    live_grep = {
+      theme = "ivy",
+    },
+    help_tags = {
+      theme = "dropdown",
+    },
+    highlights = {
+      theme = "dropdown",
+    },
+    marks = {
+      theme = "dropdown",
+    },
+    vim_options = {
+      theme = "dropdown",
+    },
+    git_status = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    git_branches = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    git_commits = {
+      theme = "dropdown"
+    },
+    buffers = {
+      theme = "dropdown",
+      previewer = false
+    },
   },
   extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "ignore_case",
     },
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {
-        -- even more opts
-      }
+      require("telescope.themes").get_dropdown {}
     },
   },
 }

@@ -63,8 +63,7 @@ local opts = {
 }
 
 local mappings = {
-  -- ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", "Buffers" },
+  ["b"] = { "<cmd>JABSOpen<cr>", "buffer" },
   ["w"] = { "<cmd>w!<cr>", "Save" },
   ["q"] = { "<cmd>q!<cr>", "Quit" },
   ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
@@ -96,24 +95,22 @@ local mappings = {
 
   f = {
     name = "Find",
-    C = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "Colorscheme" },
-    f = {
-      "<cmd>lua require('user.function').project_files(require('telescope.themes').get_dropdown{previewer=false,hidden=true})<cr>",
-      "Find files",
-    },
-    t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    h = { "<cmd>Telescope help_tags theme=dropdown<cr>", "Help" },
-    H = { "<cmd>Telescope highlights theme=dropdown<cr>", "Highlight" },
+    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    f = { "<cmd>lua require('user.function').project_files()<cr>", "Find files" },
+    t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+    h = { "<cmd>Telescope help_tags<cr>", "Help" },
+    H = { "<cmd>Telescope highlights<cr>", "Highlight" },
     l = { "<cmd>Telescope resume<cr>", "Last Search" },
-    m = { "<cmd>Telescope marks theme=dropdown<cr>", "Marks"},
+    m = { "<cmd>Telescope marks<cr>", "Marks" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>", "Recent File" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     c = { "<cmd>Telescope commands<cr>", "Commands" },
-    N = { "<cmd>Telescope notify theme=dropdown previewer=false<cr>", "Notify" },
-    V = { "<cmd>Telescope vim_options theme=dropdown<cr>", "Vim Options" },
+    N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
+    V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
   },
 
   g = {
@@ -125,9 +122,9 @@ local mappings = {
     s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
     S = { "<cmd>Gitsigns stage_buffer<cr>", "Stage Buffer" },
     u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
-    o = { "<cmd>Telescope git_status theme=dropdown previewer=false<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches theme=dropdown previewer=false<cr>", "Checkout branch" },
-    C = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
+    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
     t = { "<cmd>DiffviewOpen<cr>", "Diff view" },
     h = { "<cmd>DiffviewFileHistory<cr>", "File History" },
