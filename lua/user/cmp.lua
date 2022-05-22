@@ -46,7 +46,7 @@ cmp.setup {
     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or cmp_dap.is_dap_buffer()
   end,
   window = {
-    -- completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert {
@@ -63,6 +63,10 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -98,6 +102,7 @@ cmp.setup {
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         nvim_lua = "[Nvim]",
+        luasnip = "[Snippet]",
         buffer = "[Buffer]",
         cmp_tabnine = "[T9]",
         path = "[Path]",
@@ -110,6 +115,7 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "cmp_tabnine" },
     { name = "path" },

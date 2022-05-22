@@ -14,11 +14,11 @@ dashboard.section.header.val = {
 }
 dashboard.section.buttons.val = {
   dashboard.button("f", "  Find file", "<cmd>lua require('user.function').project_files()<cr>"),
-  dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("p", "  Find project", "<cmd>Telescope projects theme=drdropdown<cr>"),
+  dashboard.button("e", "  New file", ":ene <BAR> startinsert<cr>"),
+  dashboard.button("p", "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
   dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
   dashboard.button("t", "  Find text", "<cmd>Telescope live_grep<cr>"),
-  dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <cr>"),
+  dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua<cr>"),
   dashboard.button("q", "  Quit Neovim", "<cmd>qa<CR>"),
 }
 

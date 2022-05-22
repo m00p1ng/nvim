@@ -126,6 +126,12 @@ telescope.setup {
       theme = "dropdown",
       previewer = false
     },
+    spell_suggest = {
+      theme = "cursor" ,
+      layout_config = {
+        height = 14,
+      },
+    },
   },
   extensions = {
     fzf = {

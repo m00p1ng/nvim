@@ -43,7 +43,6 @@ keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<cr>", opts)
 keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<cr>", opts)
 keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<cr>", opts)
 keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<cr>", opts)
-keymap("n", "gb", ":b #<cr>", opts)
 
 -- Visual Block --
 -- Better pasted
@@ -65,10 +64,7 @@ keymap("n", "]g", ":Gitsigns next_hunk<cr>", opts)
 keymap("n", "[g", ":Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]t", ":tabnext<cr>", opts)
 keymap("n", "[t", ":tabprev<cr>", opts)
-keymap(
-  "n",
-  "z=",
-  "<cmd>lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor{previewer=false,layout_config={height=14}})<cr>",
-  opts
-)
+keymap("n", "z=", ":Telescope spell_suggest<cr>", opts)
 keymap("n", "*", "*N", opts)
+keymap("v", "<leader>gs", ":Gitsigns stage_hunk<cr>", opts)
+keymap("v", "<leader>gr", ":Gitsigns reset_hunk<cr>", opts)
