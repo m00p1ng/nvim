@@ -64,10 +64,10 @@ local opts = {
 
 local mappings = {
   ["b"] = { "<cmd>JABSOpen<cr>", "buffer" },
-  ["q"] = { "<cmd>lua require'user.function'.smart_quit()<cr>", "Quit" },
+  ["q"] = { "<cmd>lua require'user.function'.smart_quit(true)<cr>", "Quit" },
   ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["c"] = { "<cmd>Bdelete!<cr>", "Close Buffer" },
+  ["c"] = { "<cmd>lua require'user.function'.smart_quit(false)<cr>", "Close Buffer" },
 
   p = {
     name = "Packer",

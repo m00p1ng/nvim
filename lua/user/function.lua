@@ -12,7 +12,7 @@ function M.get_user_input_char()
   return vim.fn.nr2char(c)
 end
 
-function M.smart_quit()
+function M.smart_quit(quit)
   local bufnr = vim.api.nvim_get_current_buf()
   local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
   if modified then
@@ -20,12 +20,20 @@ function M.smart_quit()
     local input = M.get_user_input_char()
 
     if input == "y" then
-      vim.cmd "q!"
+      if quit == true then
+        vim.cmd "q!"
+      else
+        vim.cmd "Bdelete!"
+      end
     end
 
     M.clear_prompt()
   else
-    vim.cmd "q!"
+    if quit == true then
+      vim.cmd "q!"
+    else
+      vim.cmd "Bdelete!"
+    end
   end
 end
 

@@ -3,13 +3,8 @@ local augroup = vim.api.nvim_create_augroup
 
 local general_group = augroup("_general_settings", { clear = true })
 autocmd("FileType", {
-  pattern = { "qf", "help", "man", "lspinfo" },
+  pattern = { "qf", "help", "man", "lspinfo", "notify" },
   command = "nnoremap <silent> <buffer> q :close<cr>",
-  group = general_group
-})
-autocmd("FileType", {
-  pattern = { "DiffviewFiles", "DiffviewFileHistory" },
-  command = "nnoremap <silent> <buffer> q :lua require('user.function').close_diffview()<cr>",
   group = general_group
 })
 autocmd("TextYankPost", {
