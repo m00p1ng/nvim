@@ -56,9 +56,9 @@ vim.cmd [[
   highlight DapStoppedText guifg=yellow
 ]]
 
-vim.fn.sign_define('DapBreakpoint', {text='●', texthl='DiagnosticSignError', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text='●', texthl='DiagnosticSignWarning', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='', texthl='DapStoppedText', linehl='DapStopped', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
 
 -- Setup
 
@@ -67,7 +67,7 @@ local installation_path = vim.fn.stdpath("data") .. "/dapinstall"
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
-  args = { installation_path .. '/jsnode/vscode-node-debug2/out/src/nodeDebug.js'},
+  args = { installation_path .. '/jsnode/vscode-node-debug2/out/src/nodeDebug.js' },
 }
 
 dap.configurations.javascript = {
@@ -85,6 +85,6 @@ dap.configurations.javascript = {
     name = 'Attach to process',
     type = 'node2',
     request = 'attach',
-    processId = require'dap.utils'.pick_process,
+    processId = require 'dap.utils'.pick_process,
   },
 }

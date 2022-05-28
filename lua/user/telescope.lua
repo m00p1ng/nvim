@@ -127,7 +127,7 @@ telescope.setup {
       previewer = false
     },
     spell_suggest = {
-      theme = "cursor" ,
+      theme = "cursor",
       layout_config = {
         height = 14,
       },

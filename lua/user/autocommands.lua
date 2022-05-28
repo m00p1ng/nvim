@@ -17,6 +17,13 @@ autocmd("VimEnter", {
   command = "ab Dopen DiffviewOpen",
   group = general_group
 })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  callback = function()
+    vim.cmd "set formatoptions-=cro"
+  end,
+  group = general_group
+})
+
 
 local auto_resize_group = augroup("_auto_resize", { clear = true })
 autocmd("VimResized", {

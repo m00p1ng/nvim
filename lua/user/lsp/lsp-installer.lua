@@ -53,7 +53,7 @@ lsp_installer.setup(settings)
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
- return
+  return
 end
 
 local opts = {}

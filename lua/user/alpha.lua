@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require "user.icons"
+
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
   [[                               __]],
@@ -13,13 +15,13 @@ dashboard.section.header.val = {
   [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 dashboard.section.buttons.val = {
-  dashboard.button("f", "  Find file", "<cmd>lua require('user.function').project_files()<cr>"),
-  dashboard.button("e", "  New file", ":ene <BAR> startinsert<cr>"),
-  dashboard.button("p", "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
-  dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
-  dashboard.button("t", "  Find text", "<cmd>Telescope live_grep<cr>"),
-  dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua<cr>"),
-  dashboard.button("q", "  Quit Neovim", "<cmd>qa<CR>"),
+  dashboard.button("f", icons.documents.Files .. "  Find file", "<cmd>lua require('user.function').project_files()<cr>"),
+  dashboard.button("e", icons.ui.NewFile .. "  New file", ":ene <BAR> startinsert<cr>"),
+  dashboard.button("p", icons.git.Repo .. "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
+  dashboard.button("r", icons.ui.History .. "  Recent files", "<cmd>Telescope oldfiles<cr>"),
+  dashboard.button("t", icons.ui.List .. "  Find text", "<cmd>Telescope live_grep<cr>"),
+  dashboard.button("c", icons.ui.Gear .. "  Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
+  dashboard.button("q", icons.diagnostics.Error .. "  Quit", "<cmd>qa<cr>"),
 }
 
 local function footer()
@@ -27,6 +29,7 @@ local function footer()
   local v = vim.version()
   return string.format(" %d   v%d.%d.%d", plugins, v.major, v.minor, v.patch)
 end
+
 dashboard.section.footer.val = footer()
 
 dashboard.section.footer.opts.hl = "Type"

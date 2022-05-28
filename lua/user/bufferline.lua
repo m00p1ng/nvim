@@ -117,13 +117,13 @@ bufferline.setup {
       guibg = { attribute = "bg", highlight = "Normal" },
     },
 
-     numbers = {
-       guifg = { attribute = "fg", highlight = "TabLine" },
-       guibg = { attribute = "bg", highlight = "TabLine" },
-     },
-     numbers_visible = {
-       guifg = { attribute = "fg", highlight = "TabLine" },
-       guibg = { attribute = "bg", highlight = "TabLine" },
-     },
+    numbers = {
+      guifg = { attribute = "fg", highlight = "TabLine" },
+      guibg = { attribute = "bg", highlight = "TabLine" },
+    },
+    numbers_visible = {
+      guifg = { attribute = "fg", highlight = "TabLine" },
+      guibg = { attribute = "bg", highlight = "TabLine" },
+    },
   },
 }
