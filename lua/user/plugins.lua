@@ -63,6 +63,7 @@ return packer.startup(function(use)
   use "tpope/vim-repeat"
   use "christianchiarulli/JABS.nvim"
   use "ThePrimeagen/refactoring.nvim"
+  use 'akinsho/flutter-tools.nvim'
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
