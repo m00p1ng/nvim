@@ -63,7 +63,6 @@ return packer.startup(function(use)
   use "tpope/vim-repeat"
   use "christianchiarulli/JABS.nvim"
   use "ThePrimeagen/refactoring.nvim"
-  use 'akinsho/flutter-tools.nvim'
 
   -- Colorschemes
   use "m00p1ng/darkplus.nvim"
@@ -104,6 +103,7 @@ return packer.startup(function(use)
   use "folke/trouble.nvim"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
   use "b0o/SchemaStore.nvim"
+  use 'akinsho/flutter-tools.nvim'
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
