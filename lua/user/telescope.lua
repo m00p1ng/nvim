@@ -118,6 +118,11 @@ telescope.setup {
     git_branches = {
       theme = "dropdown",
       previewer = false,
+      mappings = {
+        i = {
+          ["<cr>"] = actions.git_switch_branch,
+        }
+      }
     },
     git_commits = {
       theme = "dropdown"
@@ -152,3 +157,4 @@ telescope.load_extension("projects")
 telescope.load_extension("ui-select")
 telescope.load_extension("refactoring")
 telescope.load_extension("flutter")
+telescope.load_extension("diffview")
