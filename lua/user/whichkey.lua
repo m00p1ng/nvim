@@ -110,6 +110,7 @@ local mappings = {
     V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    j = { "<cmd>Telescope jumplist<cr>", "Jump list" },
   },
 
   g = {

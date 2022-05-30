@@ -137,6 +137,9 @@ telescope.setup {
         height = 14,
       },
     },
+    jumplist = {
+      theme = "dropdown",
+    }
   },
   extensions = {
     fzf = {
