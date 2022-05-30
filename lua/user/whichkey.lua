@@ -130,6 +130,7 @@ local mappings = {
     h = { "<cmd>DiffviewFileHistory<cr>", "File History" },
     c = { "<cmd>Neogit commit<cr>", "Commit" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
+    D = { "<cmd>Telescope diffview<cr>", "Compare diff" },
   },
 
   l = {
@@ -146,7 +147,7 @@ local mappings = {
     R = { "<cmd>LspRestart<cr>", "Restart" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-    v = { "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>", "Toggle virtual text" }
+    v = { "<cmd>lua require'toggle_lsp_diagnostics'.toggle_virtual_text()<cr>", "Toggle virtual text" },
   },
 
   t = {
