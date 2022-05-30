@@ -21,13 +21,14 @@ dashboard.section.buttons.val = {
   dashboard.button("r", icons.ui.History .. "  Recent files", "<cmd>Telescope oldfiles<cr>"),
   dashboard.button("t", icons.ui.List .. "  Find text", "<cmd>Telescope live_grep<cr>"),
   dashboard.button("c", icons.ui.Gear .. "  Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
+  dashboard.button("u", icons.ui.CloudDownload .. "  Update", "<cmd>PackerSync<cr>"),
   dashboard.button("q", icons.diagnostics.Error .. "  Quit", "<cmd>qa<cr>"),
 }
 
 local function footer()
   local plugins = #vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)
   local v = vim.version()
-  return string.format(" %d   v%d.%d.%d", plugins, v.major, v.minor, v.patch)
+  return string.format(icons.ui.Package .. " %d  " .. icons.diagnostics.Information .. " v%d.%d.%d", plugins, v.major, v.minor, v.patch)
 end
 
 dashboard.section.footer.val = footer()
