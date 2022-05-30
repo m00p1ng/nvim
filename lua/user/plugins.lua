@@ -86,6 +86,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
+  use "hrsh7th/cmp-cmdline"
   use "rcarriga/cmp-dap"
   use { "tzachar/cmp-tabnine", run = "./install.sh" }
 

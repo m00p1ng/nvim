@@ -134,9 +134,49 @@ cmp.setup {
   },
 }
 
+local cmd_mapping = {
+  ['<C-k>'] = {
+    c = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+  },
+  ['<C-j>'] = {
+    c = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+  },
+  ['<C-n>'] = {
+    c = function(fallback)
+      fallback()
+    end
+  },
+  ['<C-p>'] = {
+    c = function(fallback)
+      fallback()
+    end
+  },
+}
+
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline(cmd_mapping),
   sources = {
     { name = 'buffer' }
   },
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(cmd_mapping),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
 })
