@@ -123,7 +123,7 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "f-person/git-blame.nvim"
   use "TimUntersberger/neogit"
-  use { "sindrets/diffview.nvim", commit = "08e4340f690d0b611a393eafb633b2fb62f78601" }
+  use "sindrets/diffview.nvim"
 
   -- DAP
   use "mfussenegger/nvim-dap"
