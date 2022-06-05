@@ -14,3 +14,6 @@ vim.g.gitblame_ignored_filetypes = {
   "NeogitCommitPopup",
   "NeogitCommitMessage",
 }
+vim.g.gitblame_set_extmark_options = {
+  ['priority'] = 10000,
+}

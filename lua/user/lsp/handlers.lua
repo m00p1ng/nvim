@@ -80,12 +80,14 @@ end
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 function M.enable_format_on_save()
-  vim.cmd [[
-    augroup format_on_save
-      autocmd!
-      autocmd BufWritePre * lua vim.lsp.buf.formatting()
-    augroup end
-  ]]
+  local format_on_save_group = vim.api.nvim_create_augroup("format_on_save", { clear = true })
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    command = function()
+      vim.lsp.buf.formatting()
+    end,
+    group = format_on_save_group,
+  })
   vim.notify "Enabled format on save"
 end
 
