@@ -24,7 +24,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   group = general_group
 })
 
-
 local auto_resize_group = augroup("_auto_resize", { clear = true })
 autocmd("VimResized", {
   command = "tabdo wincmd =",

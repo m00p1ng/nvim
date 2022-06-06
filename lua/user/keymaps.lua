@@ -45,8 +45,14 @@ keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<cr>", opts)
 keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<cr>", opts)
 
 -- Visual Block --
--- Better pasted
 keymap("v", "p", '"_dP', opts)
+keymap("v", "<leader>c", '"+y', opts)
+keymap("v", "<leader>gs", ":Gitsigns stage_hunk<cr>", opts)
+keymap("v", "<leader>gr", ":Gitsigns reset_hunk<cr>", opts)
+keymap("v", "\\r", ":lua require('telescope').extensions.refactoring.refactors()<cr>", opts)
+keymap("v", "\\e", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
+keymap("v", "<C-a>", require("dial.map").inc_normal "mygroup", opts)
+keymap("v", "<C-x>", require("dial.map").dec_normal "mygroup", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -56,16 +62,13 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Other --
-keymap("v", "<leader>c", '"+y', opts)
 keymap("n", "<cr>", ":noh<cr>", opts)
-keymap("n", "\\e", ":lua require('Comment.api').toggle_current_linewise()<cr>", opts)
-keymap("v", "\\e", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
+keymap("n", "\\e", ":lua require('Comment.api').toggle_current_linewise()", opts)
+keymap("n", "<C-a>", require("dial.map").inc_normal "mygroup", opts)
+keymap("n", "<C-x>", require("dial.map").dec_normal "mygroup", opts)
 keymap("n", "]g", ":Gitsigns next_hunk<cr>", opts)
 keymap("n", "[g", ":Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]t", ":tabnext<cr>", opts)
 keymap("n", "[t", ":tabprev<cr>", opts)
 keymap("n", "z=", ":Telescope spell_suggest<cr>", opts)
 keymap("n", "*", "*N", opts)
-keymap("v", "<leader>gs", ":Gitsigns stage_hunk<cr>", opts)
-keymap("v", "<leader>gr", ":Gitsigns reset_hunk<cr>", opts)
-keymap("v", "\\r", ":lua require('telescope').extensions.refactoring.refactors()<cr>", opts)
