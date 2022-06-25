@@ -55,3 +55,14 @@ autocmd("BufWritePre", {
   command = "EslintFixAll",
   group = js_group,
 })
+
+local fix_luasnip_group = augroup("_fix_luasnaip", { clear = true })
+autocmd({ "InsertLeave" }, {
+  callback = function()
+    local luasnip = require "luasnip"
+    if luasnip.expand_or_jumpable() then
+      luasnip.unlink_current()
+    end
+  end,
+  group = fix_luasnip_group,
+})

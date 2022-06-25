@@ -36,6 +36,9 @@ local icons = require "user.icons"
 
 local kind_icons = icons.kind
 
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -96,6 +99,12 @@ cmp.setup {
         -- menu = entry.completion_item.data.detail .. " " .. menu
         -- end
         vim_item.kind = icons.misc.Robot
+        vim_item.kind_hl_group = "CmpItemKindTabnine"
+      end
+
+      if entry.source.name == "emoji" then
+        vim_item.kind = icons.misc.Smiley
+        vim_item.kind_hl_group = "CmpItemKindEmoji"
       end
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       -- NOTE: order matters

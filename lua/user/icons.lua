@@ -60,8 +60,11 @@ if vim.fn.has "mac" == 1 then
       Rename = "",
       Diff = "",
       Repo = "",
+      Octoface = "",
     },
     ui = {
+      ArrowClosed = "",
+      ArrowOpen = "",
       Lock = "",
       Circle = "",
       BigCircle = "",
@@ -81,6 +84,7 @@ if vim.fn.has "mac" == 1 then
       Package = "",
       List = "",
       SignIn = "",
+      SignOut = "",
       Check = "",
       Fire = "",
       Note = "",
@@ -104,6 +108,7 @@ if vim.fn.has "mac" == 1 then
       Squirrel = "",
       Tag = "",
       Watch = "",
+      Smiley = "ﲃ"
     },
   }
 else
@@ -158,8 +163,11 @@ else
       Rename = " ",
       Diff = " ",
       Repo = " ",
+      Octoface = " "
     },
     ui = {
+      ArrowClosed = "",
+      ArrowOpen = "",
       Lock = " ",
       Circle = " ",
       BigCircle = " ",
@@ -179,6 +187,8 @@ else
       Package = " ",
       List = " ",
       SignIn = " ",
+      SignOut = " ",
+      NoteBook = " ",
       Check = " ",
       Fire = " ",
       Note = " ",
@@ -201,6 +211,7 @@ else
       Squirrel = " ",
       Tag = " ",
       Watch = " ",
+      Smiley = " "
     },
   }
 end
