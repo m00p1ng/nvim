@@ -63,7 +63,7 @@ local opts = {
 }
 
 local mappings = {
-  ["b"] = { "<cmd>JABSOpen<cr>", "buffer" },
+  ["b"] = { "<cmd>lua require'user.bfs'.open()<cr>", "Buffer" },
   ["q"] = { "<cmd>lua require'user.function'.smart_quit(true)<cr>", "Quit" },
   ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
