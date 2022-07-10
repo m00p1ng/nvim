@@ -104,7 +104,8 @@ return packer.startup(function(use)
   use "folke/trouble.nvim"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
   use "b0o/SchemaStore.nvim"
-  use 'akinsho/flutter-tools.nvim'
+  use "akinsho/flutter-tools.nvim"
+  use "j-hui/fidget.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

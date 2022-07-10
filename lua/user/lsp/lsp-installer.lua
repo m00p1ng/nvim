@@ -25,14 +25,7 @@ local settings = {
   ensure_installed = servers,
   -- automatic_installation = false,
   ui = {
-    icons = {
-      -- server_installed = "◍",
-      -- server_pending = "◍",
-      -- server_uninstalled = "◍",
-      -- server_installed = "✓",
-      -- server_pending = "➜",
-      -- server_uninstalled = "✗",
-    },
+    icons = {},
     keymaps = {
       toggle_server_expand = "<CR>",
       install_server = "i",

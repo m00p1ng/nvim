@@ -108,7 +108,8 @@ if vim.fn.has "mac" == 1 then
       Squirrel = "",
       Tag = "",
       Watch = "",
-      Smiley = "ﲃ"
+      Smiley = "ﲃ",
+      Package = "",
     },
   }
 else
@@ -163,7 +164,7 @@ else
       Rename = " ",
       Diff = " ",
       Repo = " ",
-      Octoface = " "
+      Octoface = " ",
     },
     ui = {
       ArrowClosed = "",
@@ -211,7 +212,9 @@ else
       Squirrel = " ",
       Tag = " ",
       Watch = " ",
-      Smiley = " "
+      Smiley = " ",
+      Package = " "
     },
   }
 end
+
