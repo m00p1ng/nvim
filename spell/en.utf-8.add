@@ -5,8 +5,10 @@ blockchain
 coinbase
 colorscheme
 diffview
+dockerfile
 dropdown
 ecdsa
+entrypoint
 eslint
 filetype
 frontend
@@ -23,6 +25,7 @@ modules
 nestjs
 omitempty
 ormconfig
+postgres
 prisma
 rxjs
 strconv
