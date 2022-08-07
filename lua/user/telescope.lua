@@ -99,6 +99,9 @@ telescope.setup {
     live_grep = {
       theme = "ivy",
     },
+    grep_string = {
+      theme = "ivy",
+    },
     help_tags = {
       theme = "dropdown",
     },

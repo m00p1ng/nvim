@@ -97,6 +97,7 @@ local mappings = {
     C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = { "<cmd>lua require('user.function').project_files()<cr>", "Find files" },
     t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+    s = { "<cmd>Telescope grep_string<cr>", "Find String" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     H = { "<cmd>Telescope highlights<cr>", "Highlight" },
     l = { "<cmd>Telescope resume<cr>", "Last Search" },
