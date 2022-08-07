@@ -66,3 +66,28 @@ autocmd({ "InsertLeave" }, {
   end,
   group = fix_luasnip_group,
 })
+
+local changed_title = augroup("_changed_title", { clear = true })
+autocmd({ "BufEnter" }, {
+  pattern = { "" },
+  callback = function()
+    local get_project_dir = function()
+      local cwd = vim.fn.getcwd()
+      local project_dir = vim.split(cwd, "/")
+      local project_name = project_dir[#project_dir]
+      return project_name
+    end
+
+    vim.opt.titlestring = get_project_dir() .. " - nvim"
+  end,
+  group = changed_title
+})
+
+local auto_check_file_changed = augroup("_auto_check_file_changed", { clear = true })
+autocmd({ "BufWinEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.cmd "checktime"
+  end,
+  group = auto_check_file_changed
+})
