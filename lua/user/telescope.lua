@@ -132,7 +132,12 @@ telescope.setup {
     },
     buffers = {
       theme = "dropdown",
-      previewer = false
+      previewer = false,
+      mappings = {
+        i = {
+          ["<C-m>"] = actions.delete_buffer,
+        }
+      }
     },
     spell_suggest = {
       theme = "cursor",
