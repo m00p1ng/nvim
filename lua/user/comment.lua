@@ -14,6 +14,7 @@ comment.setup {
     local U = require('Comment.utils')
 
     local type = ctx.ctype == U.ctype.linewise and '__default' or '__multiline'
+    require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 
     local location = nil
     if ctx.ctype == U.ctype.blockwise then

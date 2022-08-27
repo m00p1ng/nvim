@@ -18,6 +18,8 @@ if not tabnine_status_ok then
   return
 end
 
+local compare = require "cmp.config.compare"
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local icons = require "user.icons"
@@ -118,6 +120,25 @@ cmp.setup {
     { name = "path" },
     { name = "emoji" },
     { name = "dap" },
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      -- require("copilot_cmp.comparators").prioritize,
+      -- require("copilot_cmp.comparators").score,
+      compare.offset,
+      compare.exact,
+      -- compare.scopes,
+      compare.score,
+      compare.recently_used,
+      compare.locality,
+      -- compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+      -- require("copilot_cmp.comparators").prioritize,
+      -- require("copilot_cmp.comparators").score,
+    },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
