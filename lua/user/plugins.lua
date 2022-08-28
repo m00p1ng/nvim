@@ -139,6 +139,7 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "TimUntersberger/neogit"
   use "sindrets/diffview.nvim"
+  use "akinsho/git-conflict.nvim"
 
   -- Editing Support
   use "windwp/nvim-autopairs"
