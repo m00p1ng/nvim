@@ -51,10 +51,6 @@ keymap("v", "<leader>gs", ":Gitsigns stage_hunk<cr>", opts)
 keymap("v", "<leader>gr", ":Gitsigns reset_hunk<cr>", opts)
 keymap("v", "\\r", ":lua require('telescope').extensions.refactoring.refactors()<cr>", opts)
 keymap("v", "\\e", ":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
-keymap("v", "<C-a>", ":lua require('dial.map').inc_visual('visual')<cr>", opts)
-keymap("v", "<C-x>", ":lua require('dial.map').dec_visual('visual')<cr>", opts)
-keymap("v", "g<C-a>", ":lua require('dial.map').inc_gvisual('visual')<cr>", opts)
-keymap("v", "g<C-x>", ":lua require('dial.map').dec_gvisual('visual')<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -66,8 +62,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Other --
 keymap("n", "<cr>", ":noh<cr>", opts)
 keymap("n", "\\e", ":lua require('Comment.api').toggle.linewise.current()<cr>", opts)
-keymap("n", "<C-a>", ":lua require('dial.map').inc_normal('mygroup')<cr>", opts)
-keymap("n", "<C-x>", ":lua require('dial.map').dec_normal('mygroup')<cr>", opts)
 keymap("n", "]g", ":Gitsigns next_hunk<cr>", opts)
 keymap("n", "[g", ":Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]t", ":tabnext<cr>", opts)
