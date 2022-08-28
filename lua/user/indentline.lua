@@ -8,7 +8,6 @@ vim.g.indent_blankline_filetype_exclude = {
   "help",
   "alpha",
   "packer",
-  "neogitstatus",
   "NvimTree",
   "Trouble",
   "NeogitCommitPopup",

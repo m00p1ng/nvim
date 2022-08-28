@@ -23,7 +23,6 @@ end
 
 local gray = "#32363e"
 local dark_gray = "#282C34"
-local dark_gray = "#282C34"
 local red = "#D16969"
 local blue = "#569CD6"
 local green = "#6A9955"
@@ -35,7 +34,6 @@ local yellow_orange = "#D7BA7D"
 local purple = "#C586C0"
 
 if lualine_scheme == "darkplus_dark" then
-  -- gray = "#3e3e3e"
   gray = "#303030"
   dark_gray = "#303030"
   red = "#bf616a"
@@ -179,7 +177,7 @@ local filetype = {
     local ui_filetypes = {
       "help",
       "packer",
-      "neogitstatus",
+      "NeogitStatus",
       "NvimTree",
       "Trouble",
       "toggleterm",
@@ -225,7 +223,7 @@ local filename = {
     local ui_filetypes = {
       "help",
       "packer",
-      "neogitstatus",
+      "NeogitStatus",
       "NvimTree",
       "Trouble",
       "toggleterm",
@@ -307,9 +305,10 @@ local spaces = {
     local ui_filetypes = {
       "help",
       "packer",
-      "neogitstatus",
+      "NeogitStatus",
       "NvimTree",
       "Trouble",
+      "DiffviewFiles",
       "",
     }
     local space = ""
@@ -336,7 +335,7 @@ local language_server = {
     local ui_filetypes = {
       "help",
       "packer",
-      "neogitstatus",
+      "NeogitStatus",
       "NvimTree",
       "Trouble",
       "toggleterm",
@@ -426,10 +425,12 @@ local filesize = {
     local ui_filetypes = {
       "help",
       "packer",
-      "neogitstatus",
+      "NeogitStatus",
       "NvimTree",
       "Trouble",
       "toggleterm",
+      "DiffviewFiles",
+      "TelescopePrompt",
       "",
       "nil",
     }
@@ -448,7 +449,7 @@ local filesize = {
       i = i + 1
     end
 
-    local format = i == 1 and '%d%s' or '%.2f%s'
+    local format = i == 1 and '%d%s' or '%.1f%s'
     return hl_str("", "SLSep") .. hl_str(string.format(format, size, suffixes[i]), "SLSize") .. hl_str("", "SLSep")
   end,
 }

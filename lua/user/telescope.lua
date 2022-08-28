@@ -135,7 +135,7 @@ telescope.setup {
       previewer = false,
       mappings = {
         i = {
-          ["<C-m>"] = actions.delete_buffer,
+          ["<C-d>"] = actions.delete_buffer,
         }
       }
     },

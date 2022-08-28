@@ -14,7 +14,7 @@ illuminate.configure {
     "alpha",
     "NvimTree",
     "packer",
-    "neogitstatus",
+    "NeogitStatus",
     "Trouble",
     "toggleterm",
     "TelescopePrompt",
