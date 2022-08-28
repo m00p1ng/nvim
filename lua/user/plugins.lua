@@ -51,8 +51,8 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use "ray-x/lsp_signature.nvim"
   use "RRethy/vim-illuminate"
   use "b0o/SchemaStore.nvim"

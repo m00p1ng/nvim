@@ -12,6 +12,7 @@ vim.g.spelunker_ignored_filetypes = {
   "toggleterm",
   "NeogitCommitPopup",
   "NeogitStatus",
+  "mason",
 }
 
 vim.cmd [[
