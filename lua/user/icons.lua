@@ -110,6 +110,7 @@ if vim.fn.has "mac" == 1 then
       Watch = "",
       Smiley = "ﲃ",
       Package = "",
+      CircuitBoard = "",
     },
   }
 else
@@ -213,7 +214,8 @@ else
       Tag = " ",
       Watch = " ",
       Smiley = " ",
-      Package = " "
+      Package = " ",
+      CircuitBoard = " ",
     },
   }
 end
