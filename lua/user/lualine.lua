@@ -288,9 +288,7 @@ local current_signature = {
     local sig = require("lsp_signature").status_line(30)
     local hint = sig.hint
 
-    if not require("user.functions").isempty(hint) then
-      -- return "%#SLSeparator#│ : " .. hint .. "%*"
-      -- return "%#SLSeparator#│ " .. hint .. "%*"
+    if hint ~= nil and hint ~= "" then
       return "%#SLSeparator# " .. hint .. "%*"
     end
 
@@ -314,10 +312,9 @@ local spaces = {
       "DiffviewFiles",
       "",
     }
-    local space = ""
 
     if contains(ui_filetypes, buf_ft) then
-      space = " "
+      return ""
     end
 
     local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
@@ -327,7 +324,7 @@ local spaces = {
     end
 
     -- TODO: update codicons and use their indent
-    return hl_str("", "SLSep") .. hl_str(" " .. shiftwidth .. space, "SLIndent") .. hl_str("", "SLSep")
+    return hl_str("", "SLSep") .. hl_str(" " .. shiftwidth, "SLIndent") .. hl_str("", "SLSep")
   end,
   padding = 0,
 }
@@ -359,36 +356,12 @@ local language_server = {
 
     local clients = vim.lsp.buf_get_clients()
     local client_names = {}
-    local copilot_active = false
 
     -- add client
     for _, client in pairs(clients) do
-      if client.name ~= "copilot" and client.name ~= "null-ls" then
+      if client.name ~= "null-ls" then
         table.insert(client_names, client.name)
       end
-      if client.name == "copilot" then
-        copilot_active = true
-      end
-    end
-
-    -- add formatter
-    local s = require "null-ls.sources"
-    local available_sources = s.get_available(buf_ft)
-    local registered = {}
-    for _, source in ipairs(available_sources) do
-      for method in pairs(source.methods) do
-        registered[method] = registered[method] or {}
-        table.insert(registered[method], source.name)
-      end
-    end
-
-    local formatter = registered["NULL_LS_FORMATTING"]
-    local linter = registered["NULL_LS_DIAGNOSTICS"]
-    if formatter ~= nil then
-      vim.list_extend(client_names, formatter)
-    end
-    if linter ~= nil then
-      vim.list_extend(client_names, linter)
     end
 
     -- join client names with commas
@@ -400,11 +373,8 @@ local language_server = {
     if client_names_str_len ~= 0 then
       language_servers = hl_str("", "SLSep") .. hl_str(client_names_str, "SLSeparator") .. hl_str("", "SLSep")
     end
-    if copilot_active then
-      language_servers = language_servers .. "%#SLCopilot#" .. " " .. icons.git.Octoface .. "%*"
-    end
 
-    if client_names_str_len == 0 and not copilot_active then
+    if client_names_str_len == 0 then
       return ""
     else
       M.language_servers = language_servers
@@ -472,7 +442,7 @@ lualine.setup {
   sections = {
     lualine_a = { left_pad, mode, branch, right_pad },
     lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
-    lualine_c = { current_signature, filename },
+    lualine_c = { filename, current_signature },
     lualine_x = { language_server, filesize, spaces, filetype },
     lualine_y = {},
     lualine_z = { location, progress },
