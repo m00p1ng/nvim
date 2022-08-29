@@ -62,6 +62,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Other --
 keymap("n", "<cr>", ":noh<cr>", opts)
 keymap("n", "\\e", ":lua require('Comment.api').toggle.linewise.current()<cr>", opts)
+keymap("n", "\\j", ":lua require('trevj').format_at_cursor()<cr>", opts)
 keymap("n", "]g", ":Gitsigns next_hunk<cr>", opts)
 keymap("n", "[g", ":Gitsigns prev_hunk<cr>", opts)
 keymap("n", "]t", ":tabnext<cr>", opts)

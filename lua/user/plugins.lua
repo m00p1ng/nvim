@@ -151,6 +151,8 @@ return packer.startup(function(use)
   use "anuvyklack/pretty-fold.nvim"
   use "ur4ltz/surround.nvim"
   use "NTBBloodbath/rest.nvim"
+  use "AckslD/nvim-trevJ.lua"
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Motion
   use "phaazon/hop.nvim"
