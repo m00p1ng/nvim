@@ -179,6 +179,7 @@ local filetype = {
       "packer",
       "NeogitStatus",
       "NeogitPopup",
+      "DiffviewFiles",
       "NvimTree",
       "Trouble",
       "toggleterm",

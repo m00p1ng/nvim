@@ -18,6 +18,7 @@ illuminate.configure {
     "Trouble",
     "toggleterm",
     "TelescopePrompt",
+    "DiffviewFiles",
   },
   filetypes_allowlist = {},
   modes_denylist = {},
