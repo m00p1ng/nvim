@@ -443,7 +443,7 @@ lualine.setup {
   sections = {
     lualine_a = { left_pad, mode, branch, right_pad },
     lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
-    lualine_c = { filename, current_signature },
+    lualine_c = { filename },
     lualine_x = { language_server, filesize, spaces, filetype },
     lualine_y = {},
     lualine_z = { location, progress },
