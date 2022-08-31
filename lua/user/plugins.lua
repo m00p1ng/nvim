@@ -148,7 +148,6 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim"
   use "ntpeters/vim-better-whitespace"
   use "ThePrimeagen/refactoring.nvim"
-  use "anuvyklack/pretty-fold.nvim"
   use "ur4ltz/surround.nvim"
   use "NTBBloodbath/rest.nvim"
   use "AckslD/nvim-trevJ.lua"
