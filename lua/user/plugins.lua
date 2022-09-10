@@ -150,7 +150,7 @@ return packer.startup(function(use)
   use "ThePrimeagen/refactoring.nvim"
   use "ur4ltz/surround.nvim"
   use "NTBBloodbath/rest.nvim"
-  use "AckslD/nvim-trevJ.lua"
+  use { "aarondiel/spread.nvim", 	after = "nvim-treesitter" }
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Motion
