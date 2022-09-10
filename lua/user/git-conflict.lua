@@ -3,4 +3,6 @@ if not status_ok then
   return
 end
 
-git_conflict.setup()
+git_conflict.setup({
+  disable_diagnostics = true,
+})
