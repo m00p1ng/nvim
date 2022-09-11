@@ -1,6 +1,6 @@
 local status_ok, illuminate = pcall(require, "illuminate")
 if not status_ok then
-	return
+  return
 end
 
 illuminate.configure {
@@ -16,6 +16,7 @@ illuminate.configure {
     "packer",
     "NeogitStatus",
     "Trouble",
+    "Outline",
     "toggleterm",
     "TelescopePrompt",
     "DiffviewFiles",
@@ -27,4 +28,3 @@ illuminate.configure {
   providers_regex_syntax_allowlist = {},
   under_cursor = true,
 }
-

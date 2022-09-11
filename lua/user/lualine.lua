@@ -181,6 +181,7 @@ local filetype = {
       "NeogitPopup",
       "NeogitCommitMessage",
       "DiffviewFiles",
+      "Outline",
       "NvimTree",
       "Trouble",
       "toggleterm",
@@ -231,6 +232,7 @@ local filename = {
       "NvimTree",
       "Trouble",
       "toggleterm",
+      "Outline",
       "",
       "nil",
     }
@@ -312,6 +314,7 @@ local spaces = {
       "NeogitCommitMessage",
       "NvimTree",
       "Trouble",
+      "Outline",
       "DiffviewFiles",
       "",
     }
@@ -410,6 +413,7 @@ local filesize = {
       "toggleterm",
       "DiffviewFiles",
       "TelescopePrompt",
+      "Outline",
       "",
       "nil",
     }
@@ -447,9 +451,9 @@ lualine.setup {
     lualine_a = { left_pad, mode, branch, right_pad },
     lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
     lualine_c = { filename },
-    lualine_x = { language_server, filesize, spaces, filetype },
-    lualine_y = {},
-    lualine_z = { location, progress },
+    lualine_x = { language_server, filesize },
+    lualine_y = { spaces, filetype },
+    lualine_z = { location },
   },
   inactive_sections = {
     lualine_a = {},

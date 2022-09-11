@@ -9,6 +9,7 @@ vim.g.gitblame_ignored_filetypes = {
   "DiffviewFileHistory",
   "Trouble",
   "packer",
+  "Outline",
   "NeogitPopup",
   "NeogitStatus",
   "NeogitCommitPopup",

@@ -12,6 +12,7 @@ vim.g.indent_blankline_filetype_exclude = {
   "Trouble",
   "NeogitCommitPopup",
   "NeogitStatus",
+  "Outline",
 }
 vim.g.indentLine_enabled = 1
 -- vim.g.indent_blankline_char = "│"
