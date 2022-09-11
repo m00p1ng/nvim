@@ -6,6 +6,7 @@ end
 local actions = require("telescope.actions")
 local icons = require("user.icons")
 local trouble = require("trouble.providers.telescope")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup {
   defaults = {
@@ -159,6 +160,15 @@ telescope.setup {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {}
     },
+    live_grep_args = {
+      mappings = {
+        i = {
+          ["<C-h>"] = lga_actions.quote_prompt(),
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+        }
+      }
+    },
   },
 }
 
@@ -169,3 +179,4 @@ telescope.load_extension("ui-select")
 telescope.load_extension("refactoring")
 telescope.load_extension("flutter")
 telescope.load_extension("diffview")
+telescope.load_extension("live_grep_args")

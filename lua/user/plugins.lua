@@ -81,9 +81,14 @@ return packer.startup(function(use)
   use "windwp/nvim-ts-autotag"
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+  }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  use 'nvim-telescope/telescope-ui-select.nvim'
+  use "nvim-telescope/telescope-ui-select.nvim"
 
   -- Color
   use "NvChad/nvim-colorizer.lua"
@@ -151,7 +156,7 @@ return packer.startup(function(use)
   use "ur4ltz/surround.nvim"
   use "NTBBloodbath/rest.nvim"
   use { "aarondiel/spread.nvim", 	after = "nvim-treesitter" }
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 
   -- Motion
   use "phaazon/hop.nvim"

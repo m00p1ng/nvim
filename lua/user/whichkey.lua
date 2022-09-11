@@ -97,6 +97,7 @@ local mappings = {
     C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = { "<cmd>lua require('user.function').project_files()<cr>", "Find files" },
     t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+    T = { "<cmd>Telescope live_grep_args theme=ivy<cr>", "Find Text (Args)" },
     s = { "<cmd>Telescope grep_string<cr>", "Find String" },
     h = { "<cmd>Telescope help_tags<cr>", "Help" },
     H = { "<cmd>Telescope highlights<cr>", "Highlight" },
@@ -131,7 +132,7 @@ local mappings = {
     h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
     c = { "<cmd>Neogit commit<cr>", "Commit" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
-    D = { "<cmd>Telescope diffview<cr>", "Compare diff" },
+    D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
   },
 
   l = {

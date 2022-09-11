@@ -95,7 +95,7 @@ local diffview = function(opts)
   })
 
   pickers.new(picker_opts, {
-    prompt_title = "Diffview Compare Branch",
+    prompt_title = "Compare HEAD - Diffview",
     finder = finders.new_table {
       results = results,
       entry_maker = function(entry)
@@ -110,10 +110,8 @@ local diffview = function(opts)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
-        -- print(vim.inspect(selection.value))
-        -- vim.api.nvim_put({ selection[1] }, "", false, true)
-        vim.api.nvim_command(':DiffviewOpen '..selection.value)
-        vim.notify('Diff with ' .. selection.value, vim.log.levels.INFO)
+        vim.api.nvim_command(':DiffviewOpen '.. selection.value)
+        vim.notify('Diff `' .. selection.value .. '` with HEAD', vim.log.levels.INFO)
       end)
       return true
     end,
