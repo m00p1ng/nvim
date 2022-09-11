@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "RRethy/vim-illuminate"
   use "b0o/SchemaStore.nvim"
   use "j-hui/fidget.nvim"
+  use "simrat39/symbols-outline.nvim"
 
   -- Completion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -155,7 +156,7 @@ return packer.startup(function(use)
   use "ThePrimeagen/refactoring.nvim"
   use "ur4ltz/surround.nvim"
   use "NTBBloodbath/rest.nvim"
-  use { "aarondiel/spread.nvim", 	after = "nvim-treesitter" }
+  use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
   use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 
   -- Motion
