@@ -63,11 +63,12 @@ local opts = {
 }
 
 local mappings = {
-  ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-  ["q"] = { "<cmd>lua require'user.function'.smart_quit(true)<cr>", "Quit" },
-  ["Q"] = { "<cmd>qall!<cr>", "Quit All" },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["c"] = { "<cmd>lua require'user.function'.smart_quit(false)<cr>", "Close Buffer" },
+  a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+  b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  q = { "<cmd>lua require('user.function').smart_quit(true)<cr>", "Quit" },
+  Q = { "<cmd>qall!<cr>", "Quit All" },
+  e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  c = { "<cmd>lua require('user.function').smart_quit(false)<cr>", "Close Buffer" },
 
   p = {
     name = "Packer",
@@ -80,16 +81,16 @@ local mappings = {
 
   d = {
     name = "Debug",
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-    B = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Conditional breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-    O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-    l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-    u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-    x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+    b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Breakpoint" },
+    B = { "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Conditional breakpoint" },
+    c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
+    i = { "<cmd>lua require('dap').step_into()<cr>", "Into" },
+    o = { "<cmd>lua require('dap').step_over()<cr>", "Over" },
+    O = { "<cmd>lua require('dap').step_out()<cr>", "Out" },
+    r = { "<cmd>lua require('dap').repl.toggle()<cr>", "Repl" },
+    l = { "<cmd>lua require('dap').run_last()<cr>", "Last" },
+    u = { "<cmd>lua require('dapui').toggle()<cr>", "UI" },
+    x = { "<cmd>lua require('dap').terminate()<cr>", "Exit" },
   },
 
   f = {
@@ -111,13 +112,13 @@ local mappings = {
     N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
     V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
-    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    -- b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     j = { "<cmd>Telescope jumplist<cr>", "Jump list" },
   },
 
   g = {
     name = "Git",
-    l = { "<cmd>GitBlameToggle<cr>", "Blame" },
+    l = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
     p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
     r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
     R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
@@ -130,7 +131,7 @@ local mappings = {
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
     t = { "<cmd>DiffviewOpen<cr>", "Diff view" },
     h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
-    c = { "<cmd>Neogit commit<cr>", "Commit" },
+    -- c = { "<cmd>Neogit commit<cr>", "Commit" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
     D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
   },

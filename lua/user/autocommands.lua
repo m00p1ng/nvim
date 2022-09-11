@@ -3,8 +3,20 @@ local augroup = vim.api.nvim_create_augroup
 
 local general_group = augroup("_general_settings", { clear = true })
 autocmd("FileType", {
-  pattern = { "qf", "help", "man", "lspinfo", "notify" },
-  command = "nnoremap <silent> <buffer> q :close<cr>",
+  pattern = {
+    "qf",
+    "help",
+    "man",
+    "lspinfo",
+    "notify"
+  },
+  callback = function()
+    vim.cmd [[
+      nnoremap <silent> <buffer> q :close<CR>
+      nnoremap <silent> <buffer> <esc> :close<CR>
+      set nobuflisted
+    ]]
+  end,
   group = general_group
 })
 autocmd("TextYankPost", {
