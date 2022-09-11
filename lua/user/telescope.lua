@@ -148,6 +148,27 @@ telescope.setup {
     },
     jumplist = {
       theme = "dropdown",
+    },
+    lsp_definitions = {
+      theme = "ivy",
+    },
+    lsp_declarations = {
+      theme = "ivy",
+    },
+    lsp_implementations = {
+      theme = "ivy",
+    },
+    lsp_references = {
+      theme = "ivy",
+    },
+    lsp_document_symbols = {
+      theme = "ivy",
+    },
+    lsp_dynamic_workspace_symbols = {
+      theme = "ivy",
+    },
+    diagnostics = {
+      theme = "ivy",
     }
   },
   extensions = {
