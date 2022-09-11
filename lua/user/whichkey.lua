@@ -69,6 +69,7 @@ local mappings = {
   Q = { "<cmd>qall!<cr>", "Quit All" },
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   c = { "<cmd>lua require('user.function').smart_quit(false)<cr>", "Close Buffer" },
+  O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
 
   p = {
     name = "Packer",
@@ -139,7 +140,7 @@ local mappings = {
   l = {
     name = "LSP",
     -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnostics" },
+    d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Diagnostics" },
     w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },

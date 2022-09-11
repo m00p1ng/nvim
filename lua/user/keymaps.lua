@@ -70,3 +70,15 @@ keymap("n", "]t", ":tabnext<cr>", opts)
 keymap("n", "[t", ":tabprev<cr>", opts)
 keymap("n", "z=", ":Telescope spell_suggest<cr>", opts)
 keymap("n", "*", "*N", opts)
+
+vim.cmd [[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+  endfunction
+]]
+
+keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)

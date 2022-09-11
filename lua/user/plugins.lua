@@ -137,7 +137,7 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim"
 
   -- Quickfix
-  use "folke/trouble.nvim"
+  use "kevinhwang91/nvim-bqf"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

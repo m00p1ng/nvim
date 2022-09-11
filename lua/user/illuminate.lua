@@ -15,7 +15,7 @@ illuminate.configure {
     "NvimTree",
     "packer",
     "NeogitStatus",
-    "Trouble",
+    "qf",
     "Outline",
     "toggleterm",
     "TelescopePrompt",
