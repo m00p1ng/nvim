@@ -42,4 +42,43 @@ function M.project_files(opts)
   if not ok then require "telescope.builtin".find_files(opts) end
 end
 
+function M.git_previous_change()
+  require "gitblame".copy_sha_to_clipboard()
+  local sha = vim.fn.getreg('+')
+  vim.api.nvim_command(':DiffviewOpen ' .. sha .. '^!')
+end
+
+function M.git_open_web()
+  require "gitblame".copy_sha_to_clipboard()
+  local sha = vim.fn.getreg('+')
+
+  local parse_git_url = function (remote_url)
+    local commit_path = '/commit/' .. sha
+
+    local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
+    if domain and path then return 'https://' .. domain .. '/' .. path .. commit_path end
+
+    local url = string.match(remote_url, ".*git%@(.*)%.git")
+    if url then return 'https://' .. url .. commit_path end
+
+    local https_url = string.match(remote_url, "(https%:%/%/.*)%.git")
+    if https_url then return https_url .. commit_path end
+
+    -- Don't have .git extension
+    domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)")
+    if domain and path then return 'https://' .. domain .. '/' .. path .. commit_path end
+
+    url = string.match(remote_url, ".*git%@(.*)")
+    if url then return 'https://' .. url .. commit_path end
+
+    https_url = string.match(remote_url, "(https%:%/%/.*)")
+    if https_url then return https_url .. commit_path end
+  end
+
+  require "gitblame.git".get_remote_url(function (remote_url)
+    local url = parse_git_url(remote_url)
+    require "gitblame.utils".launch_url(url)
+  end)
+end
+
 return M
