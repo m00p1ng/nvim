@@ -120,7 +120,7 @@ local mappings = {
   g = {
     name = "Git",
     l = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
-    p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
+    P = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
     r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
     R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
     s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
@@ -132,9 +132,10 @@ local mappings = {
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
     t = { "<cmd>DiffviewOpen<cr>", "Diff view" },
     h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
-    -- c = { "<cmd>Neogit commit<cr>", "Commit" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
     D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
+    w = { "<cmd>lua require('user.function').git_open_web()<cr>", "Open Commit on Web" },
+    p = { "<cmd>lua require('user.function').git_previous_change()<cr>", "Diff Previous" },
   },
 
   l = {
