@@ -37,6 +37,7 @@ tfoot
 thead
 timestamp
 timestamptz
+tmux
 typeorm
 unmarshal
 upgrader
