@@ -110,7 +110,6 @@ return packer.startup(function(use)
   use "mfussenegger/nvim-dap"
   use "theHamsta/nvim-dap-virtual-text"
   use "rcarriga/nvim-dap-ui"
-  use "Pocco81/DAPInstall.nvim"
   use "mxsdev/nvim-dap-vscode-js"
   use {
     "microsoft/vscode-js-debug",
