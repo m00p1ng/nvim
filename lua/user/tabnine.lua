@@ -10,7 +10,7 @@ tabnine:setup {
   run_on_every_keystroke = true,
   snippet_placeholder = "..",
   ignored_file_types = { -- default is not to ignore
-    -- uncomment to ignore in lua:
-    -- lua = true
+    ["dap-repl"] = true,
+    dapui_watches = true,
   },
 }

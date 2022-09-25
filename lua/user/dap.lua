@@ -54,30 +54,49 @@ vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'Diagnosti
 vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
 
 -- Setup
+require("dap-vscode-js").setup({
+  adapters = { 'pwa-node' },
+})
 
-local installation_path = vim.fn.stdpath("data") .. "/dapinstall"
+local installation_path = vim.fn.stdpath("data") .. "/mason"
 
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
-  args = { installation_path .. '/jsnode/vscode-node-debug2/out/src/nodeDebug.js' },
+  args = { installation_path .. '/packages/node-debug2-adapter/out/src/nodeDebug.js' },
 }
 
-dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require 'dap.utils'.pick_process,
-  },
-}
+for _, language in ipairs({ "typescript", "javascript" }) do
+  dap.configurations[language] = {
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      cwd = "${workspaceFolder}",
+    },
+    {
+      type = "pwa-node",
+      request = "attach",
+      name = "Attach",
+      processId = require'dap.utils'.pick_process,
+      cwd = "${workspaceFolder}",
+    },
+    {
+      name = 'Launch (node2)',
+      type = 'node2',
+      request = 'launch',
+      program = '${file}',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = 'inspector',
+      console = 'integratedTerminal',
+    },
+    {
+      name = 'Attach (node2)',
+      type = 'node2',
+      request = 'attach',
+      processId = require 'dap.utils'.pick_process,
+    },
+  }
+end

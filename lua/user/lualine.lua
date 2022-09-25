@@ -348,7 +348,6 @@ local language_server = {
       "toggleterm",
       "TelescopePrompt",
       "lspinfo",
-      "lsp-installer",
       "",
     }
 
