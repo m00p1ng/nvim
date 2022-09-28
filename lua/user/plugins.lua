@@ -114,6 +114,7 @@ return packer.startup(function(use)
   use {
     "microsoft/vscode-js-debug",
     opt = true,
+    tag = "v1.72.0",
     run = "npm install --legacy-peer-deps && npm run compile"
   }
 
