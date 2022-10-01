@@ -113,7 +113,6 @@ local mappings = {
     N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
     V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
-    -- b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     j = { "<cmd>Telescope jumplist<cr>", "Jump list" },
   },
 
@@ -176,5 +175,90 @@ local mappings = {
   },
 }
 
+-- Visual Options
+local v_opts = {
+  mode = "v",
+  prefix = "<leader>",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local v_mappings = {
+  c = { '"+y', "Copy" },
+  g = {
+    name = "Git",
+    r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
+    s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+  }
+}
+
+-- Backslash Options
+local backslash_opts = {
+  mode = "n",
+  prefix = "\\",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local backslash_mappings = {
+  e = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
+  j = { "<cmd>lua require('spread').out()<cr>", "Break Line" },
+  J = { "<cmd>lua require('spread').combine()<cr>", "Join Line" },
+}
+
+-- Visual Backslash Options
+local v_backslash_opts = {
+  mode = "v",
+  prefix = "\\",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local v_backslash_mappings = {
+  e = { "<cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", "Comment" },
+  j = { "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
+}
+
+-- Prev Bracket
+local prev_bracket_opts = {
+  mode = "n",
+  prefix = "[",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local prev_bracket_mappings = {
+  g = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
+  t = { "<cmd>tabprev<cr>", "Previous Tab" },
+}
+
+-- Next Bracket
+local next_bracket_opts = {
+  mode = "n",
+  prefix = "]",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local next_bracket_mappings = {
+  g = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
+  t = { "<cmd>tabnext<cr>", "Next Tab" },
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(backslash_mappings, backslash_opts)
+which_key.register(v_mappings, v_opts)
+which_key.register(v_backslash_mappings, v_backslash_opts)
+which_key.register(prev_bracket_mappings, prev_bracket_opts)
+which_key.register(next_bracket_mappings, next_bracket_opts)

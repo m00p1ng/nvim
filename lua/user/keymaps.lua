@@ -19,12 +19,6 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
--- Better window navigation
-keymap("n", "<C-h>", ":lua require('Navigator').left()<cr>", opts)
-keymap("n", "<C-j>", ":lua require('Navigator').down()<cr>", opts)
-keymap("n", "<C-k>", ":lua require('Navigator').up()<cr>", opts)
-keymap("n", "<C-l>", ":lua require('Navigator').right()<cr>", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<cr>", opts)
 keymap("n", "<C-Down>", ":resize +2<cr>", opts)
@@ -46,11 +40,6 @@ keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<cr>", opts)
 
 -- Visual Block --
 keymap("v", "p", '"_dP', opts)
-keymap("v", "<leader>c", '"+y', opts)
-keymap("v", "<leader>gs", ":Gitsigns stage_hunk<cr>", opts)
-keymap("v", "<leader>gr", ":Gitsigns reset_hunk<cr>", opts)
-keymap("v", "\\r", ":lua require('telescope').extensions.refactoring.refactors()<cr>", opts)
-keymap("v", "\\e", ":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -61,13 +50,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Other --
 keymap("n", "<cr>", ":noh<cr>", opts)
-keymap("n", "\\e", ":lua require('Comment.api').toggle.linewise.current()<cr>", opts)
-keymap("n", "\\j", ":lua require('spread').out()<cr>", opts)
-keymap("n", "\\J", ":lua require('spread').combine()<cr>", opts)
-keymap("n", "]g", ":Gitsigns next_hunk<cr>", opts)
-keymap("n", "[g", ":Gitsigns prev_hunk<cr>", opts)
-keymap("n", "]t", ":tabnext<cr>", opts)
-keymap("n", "[t", ":tabprev<cr>", opts)
 keymap("n", "z=", ":Telescope spell_suggest<cr>", opts)
 keymap("n", "*", "*N", opts)
 
