@@ -112,12 +112,6 @@ return packer.startup(function(use)
   use "theHamsta/nvim-dap-virtual-text"
   use "rcarriga/nvim-dap-ui"
   use "mxsdev/nvim-dap-vscode-js"
-  use {
-    "microsoft/vscode-js-debug",
-    opt = true,
-    tag = "v1.72.0",
-    run = "npm install --legacy-peer-deps && npm run compile"
-  }
 
   -- StatusLine
   use "akinsho/bufferline.nvim"

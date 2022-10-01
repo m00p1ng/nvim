@@ -18,6 +18,7 @@ vim.g.spelunker_ignored_filetypes = {
   "dapui_stacks",
   "dapui_breakpoints",
   "dapui_scopes",
+  "dapui_hover",
   "dap-repl",
 }
 
