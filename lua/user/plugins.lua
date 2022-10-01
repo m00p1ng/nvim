@@ -99,6 +99,7 @@ return packer.startup(function(use)
 
   -- Utility
   use "rcarriga/nvim-notify"
+  use "ghillb/cybu.nvim"
   use "moll/vim-bbye"
   use "lewis6991/impatient.nvim"
   use "tpope/vim-repeat"

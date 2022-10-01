@@ -189,8 +189,8 @@ local v_mappings = {
   c = { '"+y', "Copy" },
   g = {
     name = "Git",
-    r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
-    s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+    r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
+    s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
   }
 }
 

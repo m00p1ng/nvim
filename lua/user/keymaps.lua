@@ -26,8 +26,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
 
 -- Navigate buffers
-keymap("n", "L", ":BufferLineCycleNext<cr>", opts)
-keymap("n", "H", ":BufferLineCyclePrev<cr>", opts)
 keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<cr>", opts)
 keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<cr>", opts)
 keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<cr>", opts)
