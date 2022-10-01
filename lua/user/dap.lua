@@ -8,6 +8,8 @@ if not dap_ui_status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 dapui.setup {
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
@@ -49,9 +51,9 @@ vim.cmd [[
   highlight DapStoppedText guifg=yellow
 ]]
 
-vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
+vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Circle, texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = icons.ui.Circle, texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = icons.ui.ChevronRight, texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
 
 -- Setup
 require("dap-vscode-js").setup({
