@@ -29,6 +29,14 @@ local ftMap = {
   qf = '',
   toggleterm = '',
   TelescopePrompt = '',
+  lspinfo = '',
+  mason = '',
+  dapui_watches = '',
+  dapui_stacks = '',
+  dapui_breakpoints = '',
+  dapui_scopes = '',
+  dapui_hover = '',
+  ['dap-repl'] = '',
 }
 
 local function customizeSelector(bufnr)

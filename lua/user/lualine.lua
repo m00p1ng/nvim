@@ -224,18 +224,7 @@ local filename = {
   "filename",
   fmt = function(str)
     local buf_ft = vim.bo.filetype
-    local ui_filetypes = {
-      "help",
-      "packer",
-      "NeogitStatus",
-      "NeogitPopup",
-      "NvimTree",
-      "qf",
-      "toggleterm",
-      "Outline",
-      "",
-      "nil",
-    }
+    local ui_filetypes = require('user.function').ui_filetypes
 
     if contains(ui_filetypes, buf_ft) then
       return ""
@@ -306,18 +295,7 @@ local spaces = {
   function()
     local buf_ft = vim.bo.filetype
 
-    local ui_filetypes = {
-      "help",
-      "packer",
-      "NeogitStatus",
-      "NeogitPopup",
-      "NeogitCommitMessage",
-      "NvimTree",
-      "qf",
-      "Outline",
-      "DiffviewFiles",
-      "",
-    }
+    local ui_filetypes = require('user.function').ui_filetypes
 
     if contains(ui_filetypes, buf_ft) then
       return ""
@@ -338,18 +316,7 @@ local spaces = {
 local language_server = {
   function()
     local buf_ft = vim.bo.filetype
-    local ui_filetypes = {
-      "help",
-      "packer",
-      "NeogitStatus",
-      "NeogitPopup",
-      "NvimTree",
-      "qf",
-      "toggleterm",
-      "TelescopePrompt",
-      "lspinfo",
-      "",
-    }
+    local ui_filetypes = require('user.function').ui_filetypes
 
     if contains(ui_filetypes, buf_ft) then
       if M.language_servers == nil then
@@ -401,21 +368,7 @@ local location = {
 local filesize = {
   function()
     local buf_ft = vim.bo.filetype
-    local ui_filetypes = {
-      "help",
-      "packer",
-      "NeogitStatus",
-      "NeogitPopup",
-      "NeogitCommitMessage",
-      "NvimTree",
-      "qf",
-      "toggleterm",
-      "DiffviewFiles",
-      "TelescopePrompt",
-      "Outline",
-      "",
-      "nil",
-    }
+    local ui_filetypes = require('user.function').ui_filetypes
 
     if contains(ui_filetypes, buf_ft) then
       return ""

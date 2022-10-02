@@ -1,5 +1,30 @@
 local M = {}
 
+M.ui_filetypes = {
+  "alpha",
+  "NvimTree",
+  "help",
+  "packer",
+  "NeogitStatus",
+  "NeogitPopup",
+  "NeogitCommitPopup",
+  "NeogitCommitMessage",
+  "DiffviewFiles",
+  "DiffviewFileHistory",
+  "Outline",
+  "qf",
+  "toggleterm",
+  "TelescopePrompt",
+  "lspinfo",
+  "mason",
+  "dapui_watches",
+  "dapui_stacks",
+  "dapui_breakpoints",
+  "dapui_scopes",
+  "dapui_hover",
+  "dap-repl",
+}
+
 function M.clear_prompt()
   vim.api.nvim_command "normal! :<cr>"
 end
@@ -52,7 +77,7 @@ function M.git_open_web()
   require "gitblame".copy_sha_to_clipboard()
   local sha = vim.fn.getreg('+')
 
-  local parse_git_url = function (remote_url)
+  local parse_git_url = function(remote_url)
     local commit_path = '/commit/' .. sha
 
     local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
@@ -75,7 +100,7 @@ function M.git_open_web()
     if https_url then return https_url .. commit_path end
   end
 
-  require "gitblame.git".get_remote_url(function (remote_url)
+  require "gitblame.git".get_remote_url(function(remote_url)
     local url = parse_git_url(remote_url)
     require "gitblame.utils".launch_url(url)
   end)
