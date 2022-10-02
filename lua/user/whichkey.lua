@@ -97,7 +97,7 @@ local mappings = {
 
   f = {
     name = "Find",
-    C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    S = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = { "<cmd>lua require('user.function').project_files()<cr>", "Find files" },
     t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
     T = { "<cmd>Telescope live_grep_args theme=ivy<cr>", "Find Text (Args)" },
@@ -110,7 +110,8 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    c = { "<cmd>Telescope commands<cr>", "Commands" },
+    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    c = { "<cmd>Telescope command_history<cr>", "Command History" },
     N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
     V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
     p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },

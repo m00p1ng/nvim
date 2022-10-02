@@ -146,6 +146,9 @@ telescope.setup {
     jumplist = {
       theme = "dropdown",
     },
+    command_history = {
+      theme = "dropdown",
+    },
     lsp_definitions = {
       theme = "ivy",
     },
