@@ -62,6 +62,19 @@ function M.smart_quit(quit)
   end
 end
 
+function M.is_empty(s)
+  return s == nil or s == ""
+end
+
+function M.get_buf_option(opt)
+  local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
+  if not status_ok then
+    return nil
+  else
+    return buf_option
+  end
+end
+
 function M.project_files(opts)
   local ok = pcall(require "telescope.builtin".git_files, opts)
   if not ok then require "telescope.builtin".find_files(opts) end

@@ -58,6 +58,7 @@ return packer.startup(function(use)
   use "b0o/SchemaStore.nvim"
   use "j-hui/fidget.nvim"
   use "simrat39/symbols-outline.nvim"
+  use "SmiteshP/nvim-navic"
 
   -- Completion
   use "hrsh7th/nvim-cmp" -- The completion plugin

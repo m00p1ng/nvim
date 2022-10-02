@@ -402,7 +402,7 @@ lualine.setup {
   sections = {
     lualine_a = { left_pad, mode, branch, right_pad },
     lualine_b = { left_pad_alt, diagnostics, right_pad_alt },
-    lualine_c = { filename },
+    lualine_c = {},
     lualine_x = { language_server, filesize },
     lualine_y = { spaces, filetype },
     lualine_z = { location },
