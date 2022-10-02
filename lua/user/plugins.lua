@@ -160,9 +160,6 @@ return packer.startup(function(use)
   use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
   use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 
-  -- Motion
-  use "phaazon/hop.nvim"
-
   -- Keybinding
   use "folke/which-key.nvim"
 
