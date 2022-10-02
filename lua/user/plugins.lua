@@ -114,7 +114,6 @@ return packer.startup(function(use)
   use "mxsdev/nvim-dap-vscode-js"
 
   -- StatusLine
-  use "akinsho/bufferline.nvim"
   use "nvim-lualine/lualine.nvim"
 
   -- StartUp
