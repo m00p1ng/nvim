@@ -207,7 +207,7 @@ local backslash_opts = {
 }
 
 local backslash_mappings = {
-  e = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
+  e = { "<cmd>lua require('Comment.api').locked('toggle.linewise.current')()<cr>", "Comment" },
   j = { "<cmd>lua require('spread').out()<cr>", "Break Line" },
   J = { "<cmd>lua require('spread').combine()<cr>", "Join Line" },
 }
@@ -223,8 +223,8 @@ local v_backslash_opts = {
 }
 
 local v_backslash_mappings = {
-  e = { "<cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", "Comment" },
-  j = { "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
+  e = { ":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<cr>", "Comment" },
+  r = { ":lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
 }
 
 -- Prev Bracket
