@@ -56,8 +56,14 @@ local get_gps = function()
 end
 
 local excludes = function()
+  local filetype = vim.bo.filetype
   local winbar_filetype_exclude = require('user.function').ui_filetypes
-  if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
+
+  if filetype:find("^dap") ~= nil then
+    return false
+  end
+
+  if vim.tbl_contains(winbar_filetype_exclude, filetype) then
     vim.opt_local.winbar = nil
     return true
   end
