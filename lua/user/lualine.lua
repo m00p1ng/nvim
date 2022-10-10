@@ -98,7 +98,7 @@ local mode_color = {
 
 local left_pad = {
   function()
-    return " "
+    return ""
   end,
   padding = 0,
   color = function()
