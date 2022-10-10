@@ -124,7 +124,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
 
   -- File Explorer
-  use "kyazdani42/nvim-tree.lua"
+  use "nvim-tree/nvim-tree.lua"
 
   -- Comment
   use "numToStr/Comment.nvim"
