@@ -176,6 +176,19 @@ local mappings = {
     h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
   },
+
+  j = {
+    name = "Test",
+    O = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Open Summary" },
+    o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Show Output" },
+    r = { "<cmd>lua require('neotest').run.run()<cr>", "Run" },
+    R = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' }))<cr>", "Run (DAP)" },
+    l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
+    L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Run Last (DAP)" },
+    f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "Run File" },
+    F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "Run File (DAP)" },
+    s = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+  }
 }
 
 -- Visual Options
@@ -241,6 +254,7 @@ local prev_bracket_opts = {
 local prev_bracket_mappings = {
   g = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
   t = { "<cmd>tabprev<cr>", "Previous Tab" },
+  n = { "<cmd>lua require('neotest').jump.prev({ status = 'failed' })", "Previous Failed" },
 }
 
 -- Next Bracket
@@ -256,6 +270,7 @@ local next_bracket_opts = {
 local next_bracket_mappings = {
   g = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
   t = { "<cmd>tabnext<cr>", "Next Tab" },
+  n = { "<cmd>lua require('neotest').jump.next({ status = 'failed' })", "Next Failed" },
 }
 
 which_key.setup(setup)

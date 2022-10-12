@@ -157,6 +157,14 @@ return packer.startup(function(use)
   use "ur4ltz/surround.nvim"
   use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
 
+  -- Test
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      'haydenmeade/neotest-jest',
+    }
+  }
+
   -- Web development
   use "NTBBloodbath/rest.nvim"
 
