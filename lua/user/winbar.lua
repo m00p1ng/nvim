@@ -59,6 +59,10 @@ local excludes = function()
   local filetype = vim.bo.filetype
   local winbar_filetype_exclude = require('user.function').ui_filetypes
 
+  if filetype == "dapui_hover" then
+    return true
+  end
+
   if filetype:find("^dap") ~= nil then
     return false
   end

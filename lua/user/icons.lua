@@ -43,7 +43,7 @@ if vim.fn.has "mac" == 1 then
       Array = "",
       Number = "",
       String = "",
-      Boolean = "蘒",
+      Boolean = "",
       Object = "",
     },
     documents = {
