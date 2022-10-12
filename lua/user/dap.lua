@@ -56,11 +56,12 @@ vim.fn.sign_define('DapBreakpointCondition', { text = icons.ui.Circle, texthl = 
 vim.fn.sign_define('DapStopped', { text = icons.ui.ChevronRight, texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
 
 -- Setup
-local installation_path = vim.fn.stdpath("data") .. "/mason"
+local installation_path = vim.fn.stdpath("data") .. "/mason/packages"
 
+-- Javascript / Typescript
 require("dap-vscode-js").setup({
   adapters = { 'pwa-node' },
-  debugger_path = installation_path .. '/packages/js-debug-adapter'
+  debugger_path = installation_path .. '/js-debug-adapter'
 })
 
 for _, language in ipairs({ "typescript", "javascript" }) do
@@ -81,3 +82,29 @@ for _, language in ipairs({ "typescript", "javascript" }) do
     },
   }
 end
+
+-- Python
+dap.adapters.python = {
+  type = 'executable',
+  command = installation_path .. '/debugpy/venv/bin/python3',
+  args = { '-m', 'debugpy.adapter' },
+}
+
+dap.configurations.python = {
+  {
+    type = 'python',
+    request = 'launch',
+    name = "Launch file",
+    program = "${file}",
+    pythonPath = function()
+      local cwd = vim.fn.getcwd()
+      if vim.fn.executable(cwd .. '/venv/bin/python3') == 1 then
+        return cwd .. '/venv/bin/python3'
+      elseif vim.fn.executable(cwd .. '/.venv/bin/pytho3') == 1 then
+        return cwd .. '/.venv/bin/python3'
+      else
+        return '/usr/bin/python3'
+      end
+    end;
+  },
+}
