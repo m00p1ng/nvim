@@ -198,7 +198,7 @@ local filetype = {
       return return_val(term)
     end
 
-    if contains(ui_filetypes, str) then
+    if contains(ui_filetypes, str) or str == "" then
       return ""
     else
       return return_val(str)
