@@ -3,7 +3,7 @@ local M = {}
 M.ui_filetypes = {
   "alpha",
   "NvimTree",
-  "help",
+  -- "help",
   "packer",
   "NeogitStatus",
   "NeogitPopup",
@@ -23,6 +23,7 @@ M.ui_filetypes = {
   "dapui_scopes",
   "dapui_hover",
   "dap-repl",
+  "neotest-summary",
 }
 
 function M.clear_prompt()

@@ -174,20 +174,7 @@ local mode = {
 local filetype = {
   "filetype",
   fmt = function(str)
-    local ui_filetypes = {
-      "help",
-      "packer",
-      "NeogitStatus",
-      "NeogitPopup",
-      "NeogitCommitMessage",
-      "DiffviewFiles",
-      "Outline",
-      "NvimTree",
-      "qf",
-      "toggleterm",
-      "",
-      "nil",
-    }
+    local ui_filetypes = require('user.function').ui_filetypes
 
     local return_val = function(str)
       return hl_str(" ", "SLSep") .. hl_str(str, "SLFT") .. hl_str("", "SLSep")
