@@ -91,6 +91,7 @@ return packer.startup(function(use)
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "nvim-telescope/telescope-ui-select.nvim"
+  use "ThePrimeagen/refactoring.nvim"
 
   -- Color
   use "NvChad/nvim-colorizer.lua"
@@ -104,9 +105,7 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "lewis6991/impatient.nvim"
   use "tpope/vim-repeat"
-
-  -- Icon
-  use "kyazdani42/nvim-web-devicons"
+  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 
   -- Debugging
   use "mfussenegger/nvim-dap"
@@ -124,6 +123,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
 
   -- File Explorer
+  use "nvim-tree/nvim-web-devicons"
   use "nvim-tree/nvim-tree.lua"
 
   -- Comment
@@ -154,11 +154,11 @@ return packer.startup(function(use)
   use "andymass/vim-matchup"
   use "karb94/neoscroll.nvim"
   use "ntpeters/vim-better-whitespace"
-  use "ThePrimeagen/refactoring.nvim"
   use "ur4ltz/surround.nvim"
-  use "NTBBloodbath/rest.nvim"
   use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
-  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
+
+  -- Web development
+  use "NTBBloodbath/rest.nvim"
 
   -- Keybinding
   use "folke/which-key.nvim"
@@ -166,7 +166,7 @@ return packer.startup(function(use)
   -- Spell checker
   use "kamykn/spelunker.vim"
 
-  -- Flutter
+  -- Programming languages support
   use "akinsho/flutter-tools.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
