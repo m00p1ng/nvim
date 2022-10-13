@@ -158,26 +158,6 @@ local mappings = {
   },
 
   t = {
-    name = "Terminal",
-    ["1"] = { ":1ToggleTerm<cr>", "1" },
-    ["2"] = { ":2ToggleTerm<cr>", "2" },
-    ["3"] = { ":3ToggleTerm<cr>", "3" },
-    ["4"] = { ":4ToggleTerm<cr>", "4" },
-    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-  },
-
-  T = {
-    name = "Treesitter",
-    h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-  },
-
-  j = {
     name = "Test",
     O = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Open Summary" },
     o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Show Output" },
@@ -188,7 +168,15 @@ local mappings = {
     f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "Run File" },
     F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "Run File (DAP)" },
     s = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-  }
+  },
+
+  T = {
+    name = "Treesitter",
+    H = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
 }
 
 -- Visual Options
