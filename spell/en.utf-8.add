@@ -22,12 +22,14 @@ microservice
 microservices
 mixin
 modules
+mongo
 nestjs
 omitempty
 ormconfig
 postgres
 prisma
 rxjs
+startswith
 strconv
 stringify
 supertest
@@ -43,4 +45,3 @@ unmarshal
 upgrader
 uuid
 websocket
-mongo
