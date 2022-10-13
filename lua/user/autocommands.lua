@@ -8,7 +8,8 @@ autocmd("FileType", {
     "help",
     "man",
     "lspinfo",
-    "notify"
+    "notify",
+    "dap-repl",
   },
   callback = function()
     vim.cmd [[

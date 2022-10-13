@@ -18,15 +18,26 @@ M.get_filename = function()
     if f.is_empty(file_icon) then
       file_icon = ""
       file_icon_color = ""
-    end
-    vim.api.nvim_set_hl(0, "Winbar", { fg = "#6b737f" })
 
+    end
+
+    if filename:match("^DAP") then
+      file_icon = ""
+      file_icon_color = ""
+    end
 
     local hl_filename
     if f.get_buf_option "mod" then
       hl_filename = "%#NvimTreeFileDirty#"
     else
-      hl_filename = "%#Winbar#"
+      hl_filename = "%#NavicText#"
+    end
+
+    if filename == '[dap-repl]' then
+      file_icon = ""
+      file_icon_color = ""
+      filename = 'DAP REPL'
+      return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. filename .. "%*"
     end
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand('%:~:.') .. "%*"
@@ -49,7 +60,7 @@ local get_gps = function()
   end
 
   if not require("user.function").is_empty(gps_location) then
-    return require("user.icons").ui.ChevronRight .. " " .. gps_location
+    return "%#NavicSeparator#" .. require("user.icons").ui.ChevronRight .. "%*" .. " " .. gps_location
   else
     return ""
   end
@@ -95,7 +106,7 @@ M.get_winbar = function()
 
   if num_tabs > 1 and not f.is_empty(value) then
     local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
-    value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
+    value = value .. "%=" .. "%#Normal#" .. tabpage_number .. "/" .. tostring(num_tabs)
   end
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
@@ -106,20 +117,18 @@ end
 
 M.create_winbar = function()
   vim.api.nvim_create_augroup("_winbar", {})
-  if vim.fn.has "nvim-0.8" == 1 then
-    vim.api.nvim_create_autocmd(
-      { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
-      {
-        group = "_winbar",
-        callback = function()
-          local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
-          if not status_ok then
-            require("user.winbar").get_winbar()
-          end
-        end,
-      }
-    )
-  end
+  vim.api.nvim_create_autocmd(
+    { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
+    {
+      group = "_winbar",
+      callback = function()
+        local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
+        if not status_ok then
+          require("user.winbar").get_winbar()
+        end
+      end,
+    }
+  )
 end
 
 M.create_winbar()
