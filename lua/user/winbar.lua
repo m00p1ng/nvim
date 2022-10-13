@@ -1,9 +1,11 @@
+local f = require "user.function"
+local icons = require "user.icons"
+
 local M = {}
 
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local extension = vim.fn.expand "%:e"
-  local f = require "user.function"
 
   if not f.is_empty(filename) then
     local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
@@ -20,7 +22,7 @@ M.get_filename = function()
       file_icon_color = ""
     end
 
-    if filename:match("^DAP") then
+    if vim.startswith(filename, "DAP") then
       file_icon = ""
       file_icon_color = ""
     end
@@ -28,6 +30,7 @@ M.get_filename = function()
     local hl_filename
     if f.get_buf_option "mod" then
       hl_filename = "%#NvimTreeFileDirty#"
+      file_icon =  "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
     else
       hl_filename = "%#NavicText#"
     end
@@ -51,8 +54,8 @@ local get_gps = function()
     return ""
   end
 
-  if not require("user.function").is_empty(gps_location) then
-    return "%#NavicSeparator#" .. require("user.icons").ui.ChevronRight .. "%*" .. " " .. gps_location
+  if not f.is_empty(gps_location) then
+    return "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. gps_location
   else
     return ""
   end
@@ -60,13 +63,18 @@ end
 
 local excludes = function()
   local filetype = vim.bo.filetype
-  local winbar_filetype_exclude = require('user.function').ui_filetypes
+  local winbar_filetype_exclude = f.ui_filetypes
 
-  if filetype == "dapui_hover" or filetype == "dap-repl" then
+  local extra_includes = {
+    "dapui_hover",
+    "dap-repl",
+  }
+
+  if vim.tbl_contains(extra_includes, filetype) then
     return true
   end
 
-  if filetype:find("^dap") ~= nil then
+  if vim.startswith(filetype, "dap") then
     return false
   end
 
@@ -81,17 +89,11 @@ M.get_winbar = function()
   if excludes() then
     return
   end
-  local f = require "user.function"
   local value = M.get_filename()
-
-  if not f.is_empty(value) and f.get_buf_option "mod" then
-    local mod = "%#NvimTreeFileDirty#" .. require("user.icons").ui.Circle .. "%*"
-    value = value .. " " .. mod
-  end
 
   if not f.is_empty(value) then
     local gps_value = get_gps()
-    value = value .. " " .. gps_value
+    value = value .. " " .. gps_value .. "%<"
   end
 
   local num_tabs = #vim.api.nvim_list_tabpages()
@@ -116,7 +118,7 @@ M.create_winbar = function()
       callback = function()
         local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
         if not status_ok then
-          require("user.winbar").get_winbar()
+          M.get_winbar()
         end
       end,
     }
