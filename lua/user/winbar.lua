@@ -18,7 +18,6 @@ M.get_filename = function()
     if f.is_empty(file_icon) then
       file_icon = ""
       file_icon_color = ""
-
     end
 
     if filename:match("^DAP") then
@@ -31,13 +30,6 @@ M.get_filename = function()
       hl_filename = "%#NvimTreeFileDirty#"
     else
       hl_filename = "%#NavicText#"
-    end
-
-    if filename == '[dap-repl]' then
-      file_icon = ""
-      file_icon_color = ""
-      filename = 'DAP REPL'
-      return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. filename .. "%*"
     end
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand('%:~:.') .. "%*"
@@ -70,7 +62,7 @@ local excludes = function()
   local filetype = vim.bo.filetype
   local winbar_filetype_exclude = require('user.function').ui_filetypes
 
-  if filetype == "dapui_hover" then
+  if filetype == "dapui_hover" or filetype == "dap-repl" then
     return true
   end
 
