@@ -171,7 +171,7 @@ local current_signature = {
     local hint = sig.hint
 
     if hint ~= nil and hint ~= "" then
-      return "%#SLSeparator# " .. hint
+      return "%#SLSeparator#" .. hint
     end
 
     return ""
