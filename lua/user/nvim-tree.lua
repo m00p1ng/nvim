@@ -43,6 +43,23 @@ nvim_tree.setup {
     ignore = true,
     timeout = 400,
   },
+  actions = {
+    open_file = {
+      window_picker = {
+        exclude = {
+          filetype = {
+            "notify",
+            "packer",
+            "qf",
+            "diff",
+            "fugitive",
+            "fugitiveblame",
+            "dap-repl",
+          },
+        },
+      },
+    },
+  },
   view = {
     width = 30,
     hide_root_folder = false,
