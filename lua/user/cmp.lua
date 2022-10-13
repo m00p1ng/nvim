@@ -201,8 +201,8 @@ cmp.setup.cmdline(':', {
 
 cmp.setup.filetype('dap-repl', {
   sources = cmp.config.sources({
-  --   { name = 'dap' },
-  -- }, {
-  --   { name = 'nvim_lsp' },
+    { name = 'dap' },
+  }, {
+    { name = 'nvim_lsp' },
   })
 })
