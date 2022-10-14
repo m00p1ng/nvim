@@ -37,7 +37,6 @@ M.get_filename = function()
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand('%:~:.') .. "%*"
   end
-  return " " .. "%#NavicText#" .. "[No Name]"
 end
 
 local get_gps = function()
