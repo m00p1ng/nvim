@@ -23,7 +23,7 @@ navic.setup {
     Constant = icons.kind.Constant .. ' ',
     String = icons.type.String .. ' ',
     Number = icons.type.Number .. ' ',
-    Boolean = icons.type.Boolean .. '  ',
+    Boolean = icons.type.Boolean .. ' ',
     Array = icons.type.Array .. ' ',
     Object = icons.type.Object .. ' ',
     -- Key = ' ',

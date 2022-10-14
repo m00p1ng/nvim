@@ -40,6 +40,7 @@ vim.api.nvim_set_hl(0, "SLIndent", { fg = indent, bg = dark })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = dark, italic = true })
 vim.api.nvim_set_hl(0, "SLError", { fg = red, bg = dark })
 vim.api.nvim_set_hl(0, "SLWarning", { fg = yellow_orange, bg = dark })
+vim.api.nvim_set_hl(0, "SLFilesize", { fg = "#abb2bf", bg = dark })
 
 local hl_str = function(str, hl)
   return "%#" .. hl .. "#" .. str
@@ -91,10 +92,10 @@ local diagnostics = {
 
 local mode = {
   function(str)
-    return " "
+    return "▌"
   end,
   color = function()
-    return { bg = mode_color[vim.fn.mode()], fg = 'NONE' }
+    return { fg = mode_color[vim.fn.mode()], bg = 'NONE' }
   end,
   padding = 0,
 }
@@ -227,7 +228,7 @@ local filesize = {
     end
 
     local format = i == 1 and '%d%s' or '%.1f%s'
-    return string.format(format, size, suffixes[i])
+    return hl_str(string.format(format, size, suffixes[i]), "SLFilesize")
   end,
 }
 

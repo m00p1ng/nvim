@@ -36,32 +36,67 @@ nvim_web_devicons.set_icon {
   },
   ["spec.ts"] = {
     icon = "",
-    color = "#FFCC66",
-    name = "TSSPec",
+    color = "#0277bd",
+    name = "TSTest",
   },
   ["test.ts"] = {
     icon = "",
-    color = "#FFCC66",
+    color = "#0277bd",
     name = "TSTest",
   },
   ["spec.js"] = {
     icon = "",
-    color = "#FFCC66",
-    name = "JSSpec",
+    color = "#0277bd",
+    name = "JSTest",
   },
   ["test.js"] = {
     icon = "",
-    color = "#FFCC66",
+    color = "#0277bd",
     name = "JSTest",
   },
-  ["dockerignore"] = {
-    icon = "",
-    color = "#384d54",
-    name = "DockerIgnore",
+  [".dockerignore"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["dockerfile"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["Dockerfile"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
   },
   ["docker-compose.yml"] = {
-    icon = "",
-    color = "#384d54",
-    name = "DockerCompoose",
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["docker-compose.yaml"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["json"] = {
+    icon = "",
+    color = "#fbc234",
+    name = "JSON",
+  },
+  ["yaml"] = {
+    icon = "",
+    color = "#f44336",
+    name = "YAML",
+  },
+  ["yml"] = {
+    icon = "",
+    color = "#f44336",
+    name = "YAML",
+  },
+  ["md"] = {
+    icon = "",
+    color = "#42a5f5",
+    name = "Markdown",
   },
 }
