@@ -81,10 +81,10 @@ diffview.setup {
       ["g<C-x>"]     = actions.cycle_layout,              -- Cycle through available layouts.
       ["[x"]         = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
       ["]x"]         = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
-      ["<leader>co"] = actions.conflict_choose("ours"),   -- Choose the OURS version of a conflict
-      ["<leader>ct"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
-      ["<leader>cb"] = actions.conflict_choose("base"),   -- Choose the BASE version of a conflict
-      ["<leader>ca"] = actions.conflict_choose("all"),    -- Choose all the versions of a conflict
+      ["co"]         = actions.conflict_choose("ours"),   -- Choose the OURS version of a conflict
+      ["ct"]         = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
+      ["cb"]         = actions.conflict_choose("base"),   -- Choose the BASE version of a conflict
+      ["ca"]         = actions.conflict_choose("all"),    -- Choose all the versions of a conflict
       ["dx"]         = actions.conflict_choose("none"),   -- Delete the conflict region
       ["q"]          = actions.close,
       ["N"]          = "<cmd>Neogit<cr>",
