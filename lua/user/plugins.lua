@@ -155,6 +155,7 @@ return packer.startup(function(use)
   use "ntpeters/vim-better-whitespace"
   use "ur4ltz/surround.nvim"
   use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
+  use "folke/zen-mode.nvim"
 
   -- Test
   use {

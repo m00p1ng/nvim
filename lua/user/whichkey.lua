@@ -70,6 +70,7 @@ local mappings = {
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   c = { "<cmd>lua require('user.function').smart_quit(false)<cr>", "Close Buffer" },
   O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
+  z = { "<cmd>ZenMode<cr>", "Zen" },
 
   p = {
     name = "Packer",

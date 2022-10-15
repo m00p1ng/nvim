@@ -25,14 +25,14 @@ dashboard.section.header.val = {
   [[████████████████████████████████████████████████████████████████████]],
 }
 dashboard.section.buttons.val = {
-  button("f", icons.documents.Files .. "  Find file", "<cmd>lua require('user.function').project_files()<cr>"),
-  button("e", icons.documents.NewFile .. "  New file", ":ene <BAR> startinsert<cr>"),
-  button("p", icons.git.Repo .. "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
-  button("r", icons.ui.History .. "  Recent files", "<cmd>Telescope oldfiles<cr>"),
-  button("t", icons.ui.List .. "  Find text", "<cmd>Telescope live_grep<cr>"),
-  button("c", icons.ui.Gear .. "  Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
-  button("u", icons.ui.CloudDownload .. "  Update", "<cmd>PackerSync<cr>"),
-  button("q", icons.diagnostics.ErrorOutline .. "  Quit", "<cmd>qa<cr>"),
+  button("f", icons.documents.Files ..          "  Find file",    "<cmd>lua require('user.function').project_files()<cr>"),
+  button("e", icons.documents.NewFile ..        "  New file",     ":ene <BAR> startinsert<cr>"),
+  button("p", icons.git.Repo ..                 "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
+  button("r", icons.ui.History ..               "  Recent files", "<cmd>Telescope oldfiles<cr>"),
+  button("t", icons.ui.List ..                  "  Find text",    "<cmd>Telescope live_grep<cr>"),
+  button("c", icons.ui.Gear ..                  "  Config",       "<cmd>e ~/.config/nvim/init.lua<cr>"),
+  button("u", icons.ui.CloudDownload ..         "  Update",       "<cmd>PackerSync<cr>"),
+  button("q", icons.diagnostics.ErrorOutline .. "  Quit",         "<cmd>qa<cr>"),
 }
 
 local function footer()
