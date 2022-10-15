@@ -41,14 +41,14 @@ dapui.setup {
     -- Display controls in this element
     element = "repl",
     icons = {
-      pause = "",
-      play = "",
-      step_into = "",
-      step_over = "",
-      step_out = "",
-      step_back = "",
-      run_last = "",
-      terminate = "",
+      pause = icons.debug.Pause,
+      play = icons.debug.Start,
+      step_into = icons.debug.StepInto,
+      step_over = icons.debug.StepOver,
+      step_out = icons.debug.StepOut,
+      step_back = icons.debug.StepBack,
+      run_last = icons.debug.Restart,
+      terminate = icons.debug.Stop,
     },
   },
   floating = {

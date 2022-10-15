@@ -4,18 +4,19 @@ if not status_ok then
 end
 
 local actions = require("diffview.actions")
+local icons = require("user.icons")
 
 diffview.setup {
   diff_binaries = false,    -- Show diffs for binaries
   enhanced_diff_hl = true,  -- See ':h diffview-config-enhanced_diff_hl'
   use_icons = true,         -- Requires nvim-web-devicons
   icons = {                 -- Only applies when use_icons is true.
-    folder_closed = "",
-    folder_open = "",
+    folder_closed = icons.documents.Folder,
+    folder_open = icons.documents.OpenFolder,
   },
   signs = {
-    fold_closed = "",
-    fold_open = "",
+    fold_closed = icons.ui.ArrowClosed,
+    fold_open = icons.ui.ArrowOpen,
   },
   view = {
     -- Configure the layout and behavior of different types of views.

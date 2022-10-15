@@ -114,7 +114,7 @@ local filetype = {
     end
 
     if str == "toggleterm" then
-      local term = "%#SLTermIcon#" .. " " .. "%#SLFiletype#" .. get_term_num()
+      local term = "%#SLTermIcon#" .. icons.ui.Terminal .. " " .. "%#SLFiletype#" .. get_term_num()
 
       return return_val(term)
     end
@@ -131,7 +131,7 @@ local filetype = {
 local branch = {
   "branch",
   icons_enabled = true,
-  icon = "%#SLGitIcon#" .. "" .. "%*" .. "%#SLBranchName#",
+  icon = "%#SLGitIcon#" .. icons.git.Branch .. "%*" .. "%#SLBranchName#",
   colored = false,
   fmt = function(str)
     if str == "" or str == nil then
@@ -189,7 +189,7 @@ local spaces = {
     end
 
     -- TODO: update codicons and use their indent
-    return hl_str(" " .. shiftwidth, "SLIndent")
+    return hl_str(icons.ui.ShiftWidth .. " " .. shiftwidth, "SLIndent")
   end,
 }
 
