@@ -14,28 +14,31 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.header.val = {
-  [[                               __]],
-  [[  ___     ___    ___   __  __ /\_\    ___ ___]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+  [[░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]],
+  [[░░    ░░░░░   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]],
+  [[▒▒  ▒   ▒▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒]],
+  [[▒▒   ▒   ▒▒   ▒▒▒▒   ▒▒▒▒▒▒▒▒   ▒▒▒▒▒   ▒▒▒▒▒   ▒▒▒▒▒            ▒▒▒]],
+  [[▓▓   ▓▓   ▓   ▓▓  ▓▓▓   ▓▓▓   ▓▓   ▓▓▓   ▓▓▓   ▓▓   ▓▓   ▓▓  ▓▓   ▓▓]],
+  [[▓▓   ▓▓▓  ▓   ▓         ▓▓   ▓▓▓▓   ▓▓▓   ▓   ▓▓▓   ▓▓   ▓▓  ▓▓   ▓▓]],
+  [[▓▓   ▓▓▓▓  ▓  ▓  ▓▓▓▓▓▓▓▓▓▓   ▓▓   ▓▓▓▓▓     ▓▓▓▓   ▓▓   ▓▓  ▓▓   ▓▓]],
+  [[██   ██████   ███     ███████   █████████   █████   █    ██  ██   ██]],
+  [[████████████████████████████████████████████████████████████████████]],
 }
 dashboard.section.buttons.val = {
   button("f", icons.documents.Files .. "  Find file", "<cmd>lua require('user.function').project_files()<cr>"),
-  button("e", icons.ui.NewFile .. "  New file", ":ene <BAR> startinsert<cr>"),
+  button("e", icons.documents.NewFile .. "  New file", ":ene <BAR> startinsert<cr>"),
   button("p", icons.git.Repo .. "  Find project", "<cmd>Telescope projects theme=dropdown<cr>"),
   button("r", icons.ui.History .. "  Recent files", "<cmd>Telescope oldfiles<cr>"),
   button("t", icons.ui.List .. "  Find text", "<cmd>Telescope live_grep<cr>"),
   button("c", icons.ui.Gear .. "  Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
   button("u", icons.ui.CloudDownload .. "  Update", "<cmd>PackerSync<cr>"),
-  button("q", icons.diagnostics.Error .. "  Quit", "<cmd>qa<cr>"),
+  button("q", icons.diagnostics.ErrorOutline .. "  Quit", "<cmd>qa<cr>"),
 }
 
 local function footer()
   local plugins = #vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)
   local v = vim.version()
-  return string.format(icons.ui.Package .. " %d  " .. icons.diagnostics.Information .. " v%d.%d.%d", plugins, v.major, v.minor, v.patch)
+  return string.format(icons.documents.Archive .. " %d  " .. icons.ui.Version .. " v%d.%d.%d", plugins, v.major, v.minor, v.patch)
 end
 
 dashboard.section.footer.val = footer()
