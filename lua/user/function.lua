@@ -3,7 +3,7 @@ local M = {}
 M.ui_filetypes = {
   "alpha",
   "NvimTree",
-  -- "help",
+  "help",
   "packer",
   "NeogitStatus",
   "NeogitPopup",

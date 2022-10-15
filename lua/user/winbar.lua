@@ -18,12 +18,12 @@ M.get_filename = function()
 
     vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     if f.is_empty(file_icon) then
-      file_icon = ""
+      file_icon = icons.kind.File
       file_icon_color = ""
     end
 
     if vim.startswith(filename, "DAP") then
-      file_icon = ""
+      file_icon = icons.ui.Bug
       file_icon_color = ""
     end
 
@@ -36,6 +36,11 @@ M.get_filename = function()
     end
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand('%:~:.') .. "%*"
+  end
+
+  local buf_number = vim.api.nvim_buf_get_number(0)
+  if 1 == vim.fn.buflisted(buf_number) then
+    return '%#NavicText#' .. ' ' .. icons.kind.File .. ' ' .. '[No Name]'
   end
 end
 
