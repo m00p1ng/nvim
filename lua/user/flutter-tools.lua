@@ -3,6 +3,11 @@ if not status_ok then
   return
 end
 
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
 flutter_tools.setup {
   lsp = {
     on_attach = require("user.lsp.handlers").on_attach,
@@ -15,3 +20,5 @@ flutter_tools.setup {
     open_cmd = "e"
   }
 }
+
+telescope.load_extension("flutter")

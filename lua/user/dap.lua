@@ -11,7 +11,10 @@ end
 local icons = require("user.icons")
 
 dapui.setup {
-  icons = { expanded = "▾", collapsed = "▸" },
+  icons = {
+    expanded = icons.ui.ArrowOpen,
+    collapsed = icons.ui.ArrowClosed,
+  },
   mappings = {
     -- Use a table to apply multiple mappings
     expand = { "<CR>", "<2-LeftMouse>" },

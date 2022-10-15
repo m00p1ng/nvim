@@ -174,7 +174,7 @@ return packer.startup(function(use)
   use "kamykn/spelunker.vim"
 
   -- Programming languages support
-  use "akinsho/flutter-tools.nvim"
+  use { "akinsho/flutter-tools.nvim", ft = "dart" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
