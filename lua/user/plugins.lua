@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use "theHamsta/nvim-dap-virtual-text"
   use "rcarriga/nvim-dap-ui"
   use "mxsdev/nvim-dap-vscode-js"
+  use 'mfussenegger/nvim-dap-python'
 
   -- StatusLine
   use "nvim-lualine/lualine.nvim"

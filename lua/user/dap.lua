@@ -101,27 +101,4 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 end
 
 -- Python
-dap.adapters.python = {
-  type = 'executable',
-  command = installation_path .. '/debugpy/venv/bin/python3',
-  args = { '-m', 'debugpy.adapter' },
-}
-
-dap.configurations.python = {
-  {
-    type = 'python',
-    request = 'launch',
-    name = "Launch file",
-    program = "${file}",
-    pythonPath = function()
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python3') == 1 then
-        return cwd .. '/venv/bin/python3'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/pytho3') == 1 then
-        return cwd .. '/.venv/bin/python3'
-      else
-        return '/usr/bin/python3'
-      end
-    end;
-  },
-}
+require('dap-python').setup()
