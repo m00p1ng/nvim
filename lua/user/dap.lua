@@ -38,7 +38,7 @@ dapui.setup {
       position = "left", -- Can be "left", "right", "top", "bottom"
     },
   },
-    controls = {
+  controls = {
     -- Requires Neovim nightly (or 0.8 when released)
     enabled = true,
     -- Display controls in this element
@@ -71,34 +71,3 @@ vim.api.nvim_set_hl(0, "DapStoppedText", { fg = 'yellow' })
 vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Circle, texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointCondition', { text = icons.ui.Circle, texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = icons.ui.ChevronRight, texthl = 'DapStoppedText', linehl = 'DapStopped', numhl = '' })
-
--- Setup
-local installation_path = vim.fn.stdpath("data") .. "/mason/packages"
-
--- Javascript / Typescript
-require("dap-vscode-js").setup({
-  adapters = { 'pwa-node' },
-  debugger_path = installation_path .. '/js-debug-adapter'
-})
-
-for _, language in ipairs({ "typescript", "javascript" }) do
-  dap.configurations[language] = {
-    {
-      name = 'Attach',
-      type = 'pwa-node',
-      request = 'attach',
-      port = 9229,
-      cwd = '${workspaceFolder}',
-    },
-    {
-      name = 'Launch',
-      type = 'pwa-node',
-      request = 'launch',
-      program = '${file}',
-      cwd = '${workspaceFolder}',
-    },
-  }
-end
-
--- Python
-require('dap-python').setup()

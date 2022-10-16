@@ -111,8 +111,8 @@ return packer.startup(function(use)
   use "mfussenegger/nvim-dap"
   use "theHamsta/nvim-dap-virtual-text"
   use "rcarriga/nvim-dap-ui"
-  use "mxsdev/nvim-dap-vscode-js"
-  use 'mfussenegger/nvim-dap-python'
+  use { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } }
+  use { 'mfussenegger/nvim-dap-python', ft = "python" }
 
   -- StatusLine
   use "nvim-lualine/lualine.nvim"
