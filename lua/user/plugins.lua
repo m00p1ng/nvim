@@ -135,9 +135,6 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
   use "numToStr/Navigator.nvim"
 
-  -- Project
-  use "ahmedkhalf/project.nvim"
-
   -- Quickfix
   use "kevinhwang91/nvim-bqf"
 

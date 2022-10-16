@@ -116,7 +116,6 @@ local mappings = {
     c = { "<cmd>Telescope command_history<cr>", "Command History" },
     N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
     V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
-    p = { "<cmd>Telescope projects theme=dropdown<cr>", "Projects" },
     j = { "<cmd>Telescope jumplist<cr>", "Jump list" },
   },
 
