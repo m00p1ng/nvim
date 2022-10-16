@@ -167,7 +167,7 @@ return packer.startup(function(use)
   }
 
   -- Web development
-  use "NTBBloodbath/rest.nvim"
+  use { "NTBBloodbath/rest.nvim", ft = "http" }
 
   -- Keybinding
   use "folke/which-key.nvim"
