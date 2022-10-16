@@ -13,8 +13,8 @@ nvim_tree.setup {
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
-  hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup = false,
+  hijack_unnamed_buffer_when_opening = true,
+  ignore_buffer_on_setup = true,
   open_on_setup = false,
   open_on_setup_file = false,
   open_on_tab = false,
@@ -92,7 +92,7 @@ nvim_tree.setup {
       glyphs = {
         default = "",
         symlink = icons.documents.Symlink,
-        bookmark = icons.ui.BookMark,
+        bookmark = icons.ui.Fire,
         folder = {
           arrow_closed = icons.ui.ArrowClosed,
           arrow_open = icons.ui.ArrowOpen,
@@ -130,8 +130,8 @@ nvim_tree.setup {
     "alpha",
   },
   system_open = {
-    cmd = "",
-    args = {},
+    cmd = "code",
+    args = { ".", vim.fn.expand("%") },
   },
   diagnostics = {
     enable = true,
@@ -158,7 +158,7 @@ nvim_tree.setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     show_on_dirs = true,
     timeout = 400,
   },

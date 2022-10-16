@@ -99,4 +99,10 @@ nvim_web_devicons.set_icon {
     color = "#42a5f5",
     name = "Markdown",
   },
+  ["LICENSE"] = {
+    icon = "",
+    color = "#d0bf41",
+    cterm_color = "179",
+    name = "License",
+  },
 }
