@@ -24,6 +24,7 @@ M.ui_filetypes = {
   "dapui_hover",
   "dap-repl",
   "neotest-summary",
+  "CompetiTest",
 }
 
 function M.clear_prompt()
