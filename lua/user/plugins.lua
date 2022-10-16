@@ -77,7 +77,7 @@ return packer.startup({ function(use)
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0" }
   use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "JoosepAlviste/nvim-ts-context-commentstring"

@@ -13,7 +13,7 @@ nvim_tree.setup {
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
-  hijack_unnamed_buffer_when_opening = true,
+  hijack_unnamed_buffer_when_opening = false,
   ignore_buffer_on_setup = true,
   open_on_setup = false,
   open_on_setup_file = false,
@@ -118,8 +118,8 @@ nvim_tree.setup {
     symlink_destination = true,
   },
   hijack_directories = {
-    enable = true,
-    auto_open = true,
+    enable = false,
+    auto_open = false,
   },
   update_focused_file = {
     enable = true,
