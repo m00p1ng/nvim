@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require('user.icons')
+
 neogit.setup {
   disable_signs = false,
   disable_hint = false,
@@ -17,8 +19,8 @@ neogit.setup {
   kind = "tab",
   signs = {
     -- { CLOSED, OPENED }
-    section = { ">", "v" },
-    item = { ">", "v" },
+    section = { icons.ui.ArrowClosed, icons.ui.ArrowOpen },
+    item = { icons.ui.ArrowClosed, icons.ui.ArrowOpen },
     hunk = { "", "" },
   },
   integrations = {
