@@ -40,7 +40,10 @@ local default_header = {
 local function gen_footer()
   local plugins = #vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)
   local v = vim.version()
-  return string.format(icons.documents.Archive .. " %d  " .. icons.ui.Version .. " v%d.%d.%d", plugins, v.major, v.minor, v.patch)
+  local version = string.format(icons.ui.Version .. " v%d.%d.%d", v.major, v.minor, v.patch)
+  local plugin = icons.documents.Archive .. " " .. plugins
+
+  return version .. "   " .. plugin
 end
 
 local footer = {

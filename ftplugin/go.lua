@@ -22,7 +22,7 @@ local go_group = vim.api.nvim_create_augroup("_go", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
-    vim.lsp.buf.formatting()
+    vim.lsp.buf.format({ async = true })
     org_imports(3000)
   end,
   group = go_group,
