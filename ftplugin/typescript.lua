@@ -1,3 +1,10 @@
+local js_group = vim.api.nvim_create_augroup("_js_eslint_fix", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.ts" },
+  command = "silent! EslintFixAll",
+  group = js_group,
+})
+
 local dap_status_ok, dap = pcall(require, "dap")
 if not dap_status_ok then
   return

@@ -62,13 +62,6 @@ autocmd("CursorHold", {
   group = spelunker_group,
 })
 
-local js_group = augroup("_js_eslint_fix", { clear = true })
-autocmd("BufWritePre", {
-  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-  command = "EslintFixAll",
-  group = js_group,
-})
-
 local fix_luasnip_group = augroup("_fix_luasnaip", { clear = true })
 autocmd({ "InsertLeave" }, {
   callback = function()
