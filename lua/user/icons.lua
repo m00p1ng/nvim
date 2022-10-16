@@ -102,6 +102,7 @@ return {
     Terminal = "",
     ShiftWidth = "",
     Version = "",
+    Trash = "",
   },
   debug = {
     Start = "",

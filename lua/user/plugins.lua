@@ -41,7 +41,7 @@ packer.init {
 }
 
 -- Install your plugins here
-return packer.startup(function(use)
+return packer.startup({ function(use)
   -- Plugin Manager
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
@@ -177,11 +177,19 @@ return packer.startup(function(use)
   use { "akinsho/flutter-tools.nvim", ft = "dart" }
 
   -- CP
-  use { "xeluxee/competitest.nvim", ft = { "cpp", "python" }}
+  use { "xeluxee/competitest.nvim", ft = { "cpp", "python" } }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
-end)
+end,
+  config = {
+    display = {
+      working_sym = require('user.icons').debug.Restart,
+      done_sym = require('user.icons').ui.Check,
+      removed_sym = require('user.icons').ui.Trash,
+    },
+  },
+})
