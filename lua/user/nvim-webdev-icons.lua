@@ -69,6 +69,26 @@ nvim_web_devicons.set_icon {
     color = "#43a5f5",
     name = "Docker",
   },
+  ["Dockerfile.dev"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["Dockerfile.develop"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["Dockerfile.prod"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
+  ["Dockerfile.production"] = {
+    icon = "",
+    color = "#43a5f5",
+    name = "Docker",
+  },
   ["docker-compose.yml"] = {
     icon = "",
     color = "#43a5f5",
@@ -102,7 +122,16 @@ nvim_web_devicons.set_icon {
   ["LICENSE"] = {
     icon = "",
     color = "#d0bf41",
-    cterm_color = "179",
     name = "License",
+  },
+  ["secrets"] = {
+    icon = "ﳳ",
+    color = "#d0bf41",
+    name = "Secret",
+  },
+  [".nvmrc"] = {
+    icon = "",
+    color = "#8bc34a",
+    name = "NodeJS",
   },
 }
