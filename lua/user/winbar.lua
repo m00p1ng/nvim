@@ -121,7 +121,7 @@ M.create_winbar = function()
       "CursorMoved",
       "CursorMovedI",
       "CursorHold",
-      -- "BufWinEnter",
+      "BufWinEnter",
       -- "BufFilePost",
       -- "InsertEnter",
       -- "BufWritePost",

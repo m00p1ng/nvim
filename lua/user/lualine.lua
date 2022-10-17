@@ -126,6 +126,9 @@ local filetype = {
     end
   end,
   icons_enabled = false,
+  on_click = function ()
+    vim.cmd ":Telescope filetypes"
+  end,
 }
 
 local branch = {

@@ -169,7 +169,10 @@ telescope.setup {
     },
     diagnostics = {
       theme = "ivy",
-    }
+    },
+    filetypes = {
+      theme = "dropdown",
+    },
   },
   extensions = {
     fzf = {
