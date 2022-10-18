@@ -134,7 +134,7 @@ nvim_tree.setup {
   },
   system_open = {
     cmd = "code",
-    args = { ".", vim.fn.expand("%") },
+    args = { "." },
   },
   diagnostics = {
     enable = true,

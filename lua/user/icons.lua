@@ -19,7 +19,6 @@ return {
     Unit = "",
     Value = "",
     Enum = "",
-    -- Keyword = "",
     Keyword = "",
     Snippet = "",
     Color = "",
@@ -37,7 +36,7 @@ return {
   type = {
     Array = "",
     Number = "",
-    String = "",
+    String = "",
     Boolean = "",
     Object = "",
   },
