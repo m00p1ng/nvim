@@ -11,6 +11,7 @@ ecdsa
 entrypoint
 eslint
 filetype
+filetypes
 frontend
 graphql
 keymap
@@ -40,8 +41,11 @@ thead
 timestamp
 timestamptz
 tmux
+treesitter
 typeorm
 unmarshal
 upgrader
 uuid
 websocket
+whitespace
+winbar
