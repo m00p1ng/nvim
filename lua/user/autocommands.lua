@@ -30,10 +30,8 @@ autocmd("VimEnter", {
   command = "ab Dopen DiffviewOpen",
   group = general_group
 })
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    vim.cmd "set formatoptions-=cro"
-  end,
+autocmd({ "BufWinEnter" }, {
+  command = "set formatoptions-=cro",
   group = general_group
 })
 
