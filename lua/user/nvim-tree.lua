@@ -124,7 +124,10 @@ nvim_tree.setup {
   update_focused_file = {
     enable = true,
     update_root = true,
-    ignore_list = {},
+    ignore_list = {
+      '/nix/store',
+      '~/.config',
+    },
   },
   ignore_ft_on_setup = {
     "alpha",
@@ -207,8 +210,8 @@ nvim_tree.setup {
     },
   },
   trash = {
-    cmd = "gio trash",
-    require_confirm = true,
+    -- cmd = "gio trash",
+    -- require_confirm = true,
   },
   live_filter = {
     prefix = "[FILTER]: ",
