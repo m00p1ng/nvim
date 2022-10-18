@@ -9,6 +9,7 @@ if not status_ok_1 then
 end
 
 local servers = {
+  "bashls",
   "cssls",
   "cssmodules_ls",
   "dockerls",

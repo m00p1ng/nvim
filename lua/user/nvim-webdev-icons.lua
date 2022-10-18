@@ -24,6 +24,11 @@ nvim_web_devicons.set_icon {
     color = "#e24329",
     name = "GitIgnore",
   },
+  [".gitkeep"] = {
+    icon = "",
+    color = "#e24329",
+    name = "GitKeep",
+  },
   [".gitlab-ci.yml"] = {
     icon = "",
     color = "#e24329",
