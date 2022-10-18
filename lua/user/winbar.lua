@@ -30,7 +30,7 @@ M.get_filename = function()
     local hl_filename
     if f.get_buf_option "mod" then
       hl_filename = "%#NvimTreeFileDirty#"
-      file_icon =  "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
+      file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
     else
       hl_filename = "%#NavicText#"
     end
@@ -101,11 +101,16 @@ M.get_winbar = function()
     value = value .. " " .. gps_value .. "%<"
   end
 
-  local num_tabs = #vim.api.nvim_list_tabpages()
+  local bufnrs = f.get_buf_list()
+  local cur_buf = vim.api.nvim_get_current_buf()
+  local num_bufs = #bufnrs
 
-  if num_tabs > 1 and not f.is_empty(value) then
-    local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
-    value = value .. "%=" .. "%#Normal#" .. tabpage_number .. "/" .. tostring(num_tabs)
+  if num_bufs > 1 and 1 == vim.fn.buflisted(cur_buf) and not f.is_empty(value) then
+    local buf_idx = f.find_index(bufnrs, cur_buf)
+
+    if buf_idx ~= nil then
+      value = value .. "%=" .. "%#Normal#" .. tostring(buf_idx) .. "/" .. tostring(num_bufs)
+    end
   end
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })

@@ -33,6 +33,7 @@ vim.api.nvim_set_hl(0, "SLSeparator",  { fg = "#6b727f", bg = dark, italic = tru
 vim.api.nvim_set_hl(0, "SLError",      { fg = "#bf616a", bg = dark })
 vim.api.nvim_set_hl(0, "SLWarning",    { fg = "#d7ba7d", bg = dark })
 vim.api.nvim_set_hl(0, "SLFileSize",   { fg = "#abb2bf", bg = dark })
+vim.api.nvim_set_hl(0, "SLTabs",       { fg = "#6CC644", bg = dark })
 
 local hl_str = function(str, hl)
   return "%#" .. hl .. "#" .. str
@@ -126,7 +127,7 @@ local filetype = {
     end
   end,
   icons_enabled = false,
-  on_click = function ()
+  on_click = function()
     vim.cmd ":Telescope filetypes"
   end,
 }
@@ -148,7 +149,7 @@ local branch = {
 
     return str
   end,
-  on_click = function ()
+  on_click = function()
     vim.cmd ":Telescope git_branches"
   end,
 }
@@ -203,7 +204,7 @@ local location = {
   end,
 }
 
-local fileSize = {
+local filesize = {
   function()
     local buf_ft = vim.bo.filetype
     local ui_filetypes = require('user.function').ui_filetypes
@@ -223,8 +224,21 @@ local fileSize = {
     end
 
     local format = i == 1 and '%d%s' or '%.1f%s'
-    return hl_str(string.format(format, size, suffixes[i]), "SLFileSize")
+    return hl_str(string.format(format, size, suffixes[i]), "SLFilesize")
   end,
+}
+
+local tabs = {
+  function()
+    local num_tabs = #vim.api.nvim_list_tabpages()
+
+    if num_tabs > 1 then
+      local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
+      return hl_str(" " .. tabpage_number .. "/" .. tostring(num_tabs), "SLTabs")
+    end
+
+    return ""
+  end
 }
 
 lualine.setup {
@@ -239,9 +253,9 @@ lualine.setup {
   },
   sections = {
     lualine_a = { mode, branch },
-    lualine_b = { diagnostics },
+    lualine_b = { diagnostics, tabs },
     lualine_c = { current_signature },
-    lualine_x = { fileSize },
+    lualine_x = { filesize },
     lualine_y = { spaces, filetype },
     lualine_z = { location },
   },

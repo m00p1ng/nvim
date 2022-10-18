@@ -68,6 +68,24 @@ function M.is_empty(s)
   return s == nil or s == ""
 end
 
+function M.find_index(source, value)
+  for k, v in pairs(source) do
+    if v == value then
+      return k
+    end
+  end
+end
+
+function M.get_buf_list()
+  return vim.tbl_filter(function(b)
+    if 1 ~= vim.fn.buflisted(b) then
+      return false
+    end
+
+    return true
+  end, vim.api.nvim_list_bufs())
+end
+
 function M.get_buf_option(opt)
   local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
   if not status_ok then

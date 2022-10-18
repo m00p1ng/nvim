@@ -139,9 +139,15 @@ nvim_web_devicons.set_icon {
     color = "#8bc34a",
     name = "NodeJS",
   },
-    ["js"] = {
+  ["js"] = {
     icon = "",
     color = "#f1df5a",
     name = "Js",
+  },
+  ["csv"] = {
+    icon = "",
+    color = "#89e051",
+    cterm_color = "113",
+    name = "Csv",
   },
 }
