@@ -5,20 +5,7 @@ end
 
 local icons = require "user.icons"
 
-local if_nil = vim.F.if_nil
-
-local default_terminal = {
-  type = "terminal",
-  command = nil,
-  width = 69,
-  height = 8,
-  opts = {
-    redraw = true,
-    window_config = {},
-  },
-}
-
-local default_header = {
+local header = {
   type = "text",
   val = {
     [[░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]],
@@ -55,34 +42,21 @@ local footer = {
   },
 }
 
-local leader = "SPC"
-
-local function button(sc, txt, keybind, keybind_opts)
-  local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
-
-  local opts = {
-    position = "center",
-    shortcut = sc,
-    cursor = 5,
-    width = 50,
-    align_shortcut = "right",
-    hl_shortcut = "Macro",
-  }
-  if keybind then
-    keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
-    opts.keymap = { "n", sc_, keybind, keybind_opts }
-  end
-
-  local function on_press()
-    local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. "<Ignore>", true, false, true)
-    vim.api.nvim_feedkeys(key, "t", false)
-  end
-
+local function button(sc, txt, keybind)
   return {
     type = "button",
     val = txt,
-    on_press = on_press,
-    opts = opts,
+    opts = {
+      position = "center",
+      shortcut = sc,
+      cursor = 5,
+      width = 50,
+      align_shortcut = "right",
+      hl_shortcut = "Macro",
+      keymap = {
+        "n", sc, keybind, { noremap = true, silent = true, nowait = true }
+      }
+    },
   }
 end
 
@@ -102,22 +76,15 @@ local buttons = {
   },
 }
 
-local section = {
-  terminal = default_terminal,
-  header = default_header,
-  buttons = buttons,
-  footer = footer,
-}
-
 local marginTopPercent = 0.15
-local headerPadding = vim.fn.max({2, vim.fn.floor(vim.fn.winheight(0) * marginTopPercent) })
+local headerPadding = vim.fn.max({ 2, vim.fn.floor(vim.fn.winheight(0) * marginTopPercent) })
 local config = {
   layout = {
     { type = "padding", val = headerPadding },
-    section.header,
+    header,
     { type = "padding", val = 2 },
-    section.buttons,
-    section.footer,
+    buttons,
+    footer,
   },
   opts = {
     margin = 5,
