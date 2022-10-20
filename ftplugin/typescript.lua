@@ -10,8 +10,8 @@ if not dap_status_ok then
   return
 end
 
-local status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
-if not status_ok then
+local dap_vs_status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
+if not dap_vs_status_ok then
   return
 end
 
@@ -38,3 +38,31 @@ dap.configurations.typescript = {
     cwd = '${workspaceFolder}',
   },
 }
+
+local which_key_status_ok, which_key = pcall(require, "which-key")
+if not which_key_status_ok then
+  return
+end
+
+local opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local mappings = {
+  C = {
+    name = "Typescript",
+    i = { "<cmd>TypescriptAddMissingImports<Cr>", "AddMissingImports" },
+    o = { "<cmd>TypescriptOrganizeImports<cr>", "OrganizeImports" },
+    u = { "<cmd>TypescriptRemoveUnused<Cr>", "RemoveUnused" },
+    r = { "<cmd>TypescriptRenameFile<Cr>", "RenameFile" },
+    f = { "<cmd>TypescriptFixAll<Cr>", "FixAll" },
+    g = { "<cmd>TypescriptGoToSourceDefinition<Cr>", "GoToSourceDefinition" },
+  },
+}
+
+which_key.register(mappings, opts)

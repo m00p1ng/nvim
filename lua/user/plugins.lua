@@ -175,6 +175,7 @@ return packer.startup({ function(use)
 
   -- Programming languages support
   use { "akinsho/flutter-tools.nvim", ft = "dart" }
+  use { "jose-elias-alvarez/typescript.nvim" }
 
   -- CP
   use { "xeluxee/competitest.nvim", ft = { "cpp", "python" } }
