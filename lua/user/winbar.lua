@@ -27,10 +27,13 @@ M.get_filename = function()
       file_icon_color = ""
     end
 
-    local hl_filename
-    if f.get_buf_option "mod" then
+    local hl_filename = ""
+    if f.get_buf_option "modified" then
       hl_filename = "%#NvimTreeFileDirty#"
       file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
+    elseif f.get_buf_option "readonly" then
+      hl_filename = "%#LspDiagnosticsSignError#"
+      file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Lock .. "%*"
     else
       hl_filename = "%#NavicText#"
     end
