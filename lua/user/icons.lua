@@ -66,7 +66,7 @@ return {
   ui = {
     ArrowClosed = "",
     ArrowOpen = "",
-    Lock = "",
+    Lock = "",
     SmallCircle = "",
     Circle = "●",
     BigCircle = "",

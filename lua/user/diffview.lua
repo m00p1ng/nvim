@@ -73,7 +73,7 @@ diffview.setup {
     view = {
       ["<tab>"]      = actions.select_next_entry,         -- Open the diff for the next file
       ["<s-tab>"]    = actions.select_prev_entry,         -- Open the diff for the previous file
-      ["gf"]         = actions.goto_file,                 -- Open the file in a new split in the previous tabpage
+      ["gf"]         = actions.goto_file_edit,            -- Open the file in a new split in the previous tabpage
       ["<C-w><C-f>"] = actions.goto_file_split,           -- Open the file in a new split
       ["<C-w>gf"]    = actions.goto_file_tab,             -- Open the file in a new tabpage
       ["<leader>e"]  = actions.focus_files,               -- Bring focus to the file panel

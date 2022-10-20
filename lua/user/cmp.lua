@@ -112,6 +112,7 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = 'lab.quick_data', keyword_length = 4 },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
