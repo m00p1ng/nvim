@@ -98,7 +98,7 @@ return packer.startup({ function(use)
   use "NvChad/nvim-colorizer.lua"
 
   -- Colorschemes
-  use "m00p1ng/darkplus.nvim"
+  use { "m00p1ng/darkplus.nvim", branch = "tree-sitter" }
 
   -- Utility
   use "rcarriga/nvim-notify"
