@@ -4,6 +4,7 @@ M.ui_filetypes = {
   "alpha",
   "NvimTree",
   "help",
+  "",
   "packer",
   "NeogitStatus",
   "NeogitPopup",

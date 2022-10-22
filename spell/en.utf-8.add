@@ -26,6 +26,7 @@ mixin
 modules
 mongo
 nestjs
+nums
 omitempty
 ormconfig
 postgres
@@ -37,6 +38,7 @@ stringify
 supertest
 tabnine
 tbody
+testcases
 tfoot
 thead
 timestamp
