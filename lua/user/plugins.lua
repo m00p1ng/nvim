@@ -48,7 +48,6 @@ return packer.startup({ function(use)
   -- Lua Development
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "MunifTanjim/nui.nvim"
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
@@ -177,9 +176,6 @@ return packer.startup({ function(use)
   -- Programming languages support
   use { "akinsho/flutter-tools.nvim", ft = "dart" }
   use { "jose-elias-alvarez/typescript.nvim" }
-
-  -- CP
-  use { "xeluxee/competitest.nvim", ft = { "cpp", "python" } }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
