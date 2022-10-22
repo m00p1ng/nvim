@@ -98,7 +98,7 @@ return packer.startup({ function(use)
   use "NvChad/nvim-colorizer.lua"
 
   -- Colorschemes
-  use { "m00p1ng/darkplus.nvim", branch = "tree-sitter" }
+  use { "m00p1ng/darkplus.nvim", branch = "treesitter" }
 
   -- Utility
   use "rcarriga/nvim-notify"
@@ -112,7 +112,7 @@ return packer.startup({ function(use)
   use "theHamsta/nvim-dap-virtual-text"
   use "rcarriga/nvim-dap-ui"
   use { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } }
-  use { 'mfussenegger/nvim-dap-python', ft = "python" }
+  use { "mfussenegger/nvim-dap-python", ft = "python" }
 
   -- StatusLine
   use "nvim-lualine/lualine.nvim"
@@ -161,7 +161,7 @@ return packer.startup({ function(use)
   use {
     "nvim-neotest/neotest",
     requires = {
-      'haydenmeade/neotest-jest',
+      "haydenmeade/neotest-jest",
     }
   }
 
@@ -189,9 +189,9 @@ return packer.startup({ function(use)
 end,
   config = {
     display = {
-      working_sym = require('user.icons').debug.Restart,
-      done_sym = require('user.icons').ui.Check,
-      removed_sym = require('user.icons').ui.Trash,
+      working_sym = require("user.icons").debug.Restart,
+      done_sym = require("user.icons").ui.Check,
+      removed_sym = require("user.icons").ui.Trash,
     },
   },
 })

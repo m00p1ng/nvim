@@ -9,6 +9,7 @@ local options = {
   hlsearch = true,                         -- highlight all matches on previous search pattern
   ignorecase = true,                       -- ignore case in search patterns
   mouse = "a",                             -- allow the mouse to be used in neovim
+  mousemodel = "extend",
   pumheight = 10,                          -- pop up menu height
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 0,                         -- always show tabs
@@ -39,14 +40,13 @@ local options = {
   softtabstop = 2,
   backspace = { 2 },
   laststatus = 3,
-  wildmode = "longest:full,full",
 }
 
 vim.opt.shortmess:append "c"
+vim.opt.iskeyword:append "-"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
