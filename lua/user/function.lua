@@ -100,15 +100,18 @@ function M.project_files(opts)
   if not ok then require "telescope.builtin".find_files(opts) end
 end
 
-function M.git_previous_change()
+function M.get_git_commit_sha()
   require "gitblame".copy_sha_to_clipboard()
-  local sha = vim.fn.getreg('+')
+  return vim.fn.getreg('+')
+end
+
+function M.git_previous_change()
+  local sha = M.get_git_commit_sha()
   vim.api.nvim_command(':DiffviewOpen ' .. sha .. '^!')
 end
 
 function M.git_open_web()
-  require "gitblame".copy_sha_to_clipboard()
-  local sha = vim.fn.getreg('+')
+  local sha = M.get_git_commit_sha()
 
   local parse_git_url = function(remote_url)
     local commit_path = '/commit/' .. sha
