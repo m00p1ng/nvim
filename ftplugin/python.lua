@@ -20,9 +20,9 @@ local opts = {
 }
 
 local mappings = {
-  C = {
+  m = {
     name = "Python",
-    r = { "<cmd>lua require('user.tmux').run_command(\"python3 '\" .. vim.fn.expand('%') .. \"'\")<cr>", "Run Tmux" },
+    r = { "<cmd>lua require('user.tmux').run_command(\"python3 '\" .. vim.fn.expand('%:~:.') .. \"'\")<cr>", "Run Tmux" },
   },
 }
 
