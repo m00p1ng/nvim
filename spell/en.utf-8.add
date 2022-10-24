@@ -25,6 +25,7 @@ microservices
 mixin
 modules
 mongo
+mooping
 nestjs
 nums
 omitempty
