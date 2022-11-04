@@ -42,7 +42,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Other --
 keymap("n", "<cr>", "<cmd>noh<cr>", opts)
 keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
-keymap("n", "*", "*N", opts)
+keymap("n", "*", "*``", opts)
 
 vim.cmd [[
   function! QuickFixToggle()
