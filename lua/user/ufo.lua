@@ -13,6 +13,7 @@ local ftMap = {
   sh = { 'treesitter', 'indent' },
   git = { 'treesitter', 'indent' },
   conf = { 'treesitter', 'indent' },
+  yaml = { 'treesitter', 'indent' },
   markdown = '',
 
   alpha = '',

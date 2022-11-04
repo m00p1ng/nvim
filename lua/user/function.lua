@@ -10,6 +10,7 @@ M.ui_filetypes = {
   "NeogitPopup",
   "NeogitCommitPopup",
   "NeogitCommitMessage",
+  "NeogitConsole",
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Outline",
