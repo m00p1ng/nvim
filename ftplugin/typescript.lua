@@ -56,12 +56,7 @@ local opts = {
 local mappings = {
   m = {
     name = "Typescript",
-    i = { "<cmd>TypescriptAddMissingImports<Cr>", "AddMissingImports" },
-    o = { "<cmd>TypescriptOrganizeImports<cr>", "OrganizeImports" },
-    u = { "<cmd>TypescriptRemoveUnused<Cr>", "RemoveUnused" },
-    r = { "<cmd>TypescriptRenameFile<Cr>", "RenameFile" },
-    f = { "<cmd>TypescriptFixAll<Cr>", "FixAll" },
-    g = { "<cmd>TypescriptGoToSourceDefinition<Cr>", "GoToSourceDefinition" },
+    f = { "<cmd>EslintFixAll<Cr>", "FixAll" },
   },
 }
 
