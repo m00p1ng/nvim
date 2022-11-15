@@ -177,6 +177,8 @@ return packer.startup({ function(use)
   use { "akinsho/flutter-tools.nvim", ft = "dart" }
   use { "jose-elias-alvarez/typescript.nvim" }
 
+  use 'wakatime/vim-wakatime'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
