@@ -136,7 +136,8 @@ local mappings = {
     h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
     g = { "<cmd>Neogit<cr>", "Neogit" },
     D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
-    w = { "<cmd>lua require('user.function').git_open_web()<cr>", "Open Commit on Web" },
+    w = { "<cmd>lua require('user.function').open_git_commit_on_web()<cr>", "Open Commit on Web" },
+    O = { "<cmd>lua require('user.function').open_git_project_on_web()<cr>", "Open Project on Web" },
     p = { "<cmd>lua require('user.function').git_previous_change()<cr>", "Diff Previous" },
   },
 

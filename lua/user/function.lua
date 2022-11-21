@@ -111,32 +111,50 @@ function M.git_previous_change()
   vim.api.nvim_command(':DiffviewOpen ' .. sha .. '^!')
 end
 
-function M.git_open_web()
-  local sha = M.get_git_commit_sha()
-
-  local parse_git_url = function(remote_url)
-    local commit_path = '/commit/' .. sha
-
-    local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
-    if domain and path then return 'https://' .. domain .. '/' .. path .. commit_path end
-
-    local url = string.match(remote_url, ".*git%@(.*)%.git")
-    if url then return 'https://' .. url .. commit_path end
-
-    local https_url = string.match(remote_url, "(https%:%/%/.*)%.git")
-    if https_url then return https_url .. commit_path end
-
-    -- Don't have .git extension
-    domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)")
-    if domain and path then return 'https://' .. domain .. '/' .. path .. commit_path end
-
-    url = string.match(remote_url, ".*git%@(.*)")
-    if url then return 'https://' .. url .. commit_path end
-
-    https_url = string.match(remote_url, "(https%:%/%/.*)")
-    if https_url then return https_url .. commit_path end
+local function parse_git_url(remote_url)
+  local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
+  if domain and path then
+    return 'https://' .. domain .. '/' .. path
   end
 
+  local url = string.match(remote_url, ".*git%@(.*)%.git")
+  if url then
+    return 'https://' .. url
+  end
+
+  local https_url = string.match(remote_url, "(https%:%/%/.*)%.git")
+  if https_url then
+    return https_url
+  end
+
+  -- Don't have .git extension
+  domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)")
+  if domain and path then
+    return 'https://' .. domain .. '/' .. path
+  end
+
+  url = string.match(remote_url, ".*git%@(.*)")
+  if url then
+    return 'https://' .. url
+  end
+
+  https_url = string.match(remote_url, "(https%:%/%/.*)")
+  if https_url then
+    return https_url
+  end
+end
+
+function M.open_git_commit_on_web()
+  local sha = M.get_git_commit_sha()
+  local commit_path = '/commit/' .. sha
+
+  require "gitblame.git".get_remote_url(function(remote_url)
+    local url = parse_git_url(remote_url) .. commit_path
+    require "gitblame.utils".launch_url(url)
+  end)
+end
+
+function M.open_git_project_on_web()
   require "gitblame.git".get_remote_url(function(remote_url)
     local url = parse_git_url(remote_url)
     require "gitblame.utils".launch_url(url)
