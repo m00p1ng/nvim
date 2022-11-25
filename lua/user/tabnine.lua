@@ -13,4 +13,5 @@ tabnine:setup {
     ["dap-repl"] = true,
     dapui_watches = true,
   },
+  show_prediction_strength = true,
 }

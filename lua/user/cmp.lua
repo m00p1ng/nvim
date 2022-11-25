@@ -85,10 +85,16 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 
       if entry.source.name == "cmp_tabnine" then
-        -- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-        -- menu = entry.completion_item.data.detail .. " " .. menu
-        -- end
-        vim_item.kind = icons.misc.Robot
+        vim_item.kind = icons.misc.Lightning
+        local detail = (entry.completion_item.data or {}).detail
+	 			if detail and detail:find('.*%%.*') then
+	 				vim_item.kind = vim_item.kind .. ' ' .. detail
+	 			end
+
+	 			if (entry.completion_item.data or {}).multiline then
+	 				vim_item.kind = vim_item.kind .. ' ' .. '[ML]'
+	 			end
+
         vim_item.kind_hl_group = "CmpItemKindTabnine"
       end
 
@@ -125,20 +131,15 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- require("copilot_cmp.comparators").prioritize,
-      -- require("copilot_cmp.comparators").score,
+      require('cmp_tabnine.compare'),
       compare.offset,
       compare.exact,
-      -- compare.scopes,
       compare.score,
       compare.recently_used,
       compare.locality,
-      -- compare.kind,
       compare.sort_text,
       compare.length,
       compare.order,
-      -- require("copilot_cmp.comparators").prioritize,
-      -- require("copilot_cmp.comparators").score,
     },
   },
   confirm_opts = {
