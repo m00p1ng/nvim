@@ -211,8 +211,8 @@ local backslash_opts = {
 
 local backslash_mappings = {
   e = { "<cmd>lua require('Comment.api').locked('toggle.linewise.current')()<cr>", "Comment" },
-  j = { "<cmd>lua require('spread').out()<cr>", "Break Line" },
-  J = { "<cmd>lua require('spread').combine()<cr>", "Join Line" },
+  j = { "<cmd>lua require('treesj').split()<cr>", "Break Line" },
+  J = { "<cmd>lua require('treesj').join()<cr>", "Join Line" },
 }
 
 -- Visual Backslash Options

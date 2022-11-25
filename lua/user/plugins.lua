@@ -152,7 +152,7 @@ return packer.startup({ function(use)
   use "karb94/neoscroll.nvim"
   use "ntpeters/vim-better-whitespace"
   use "ur4ltz/surround.nvim"
-  use { "aarondiel/spread.nvim", after = "nvim-treesitter" }
+  use { "Wansmer/treesj", after = "nvim-treesitter" }
   use "folke/zen-mode.nvim"
   -- use { "0x100101/lab.nvim", run = 'cd js && npm ci' }
 
