@@ -17,9 +17,6 @@ nvim_tree.setup {
   ignore_buffer_on_setup = true,
   open_on_setup = false,
   open_on_setup_file = false,
-  open_on_tab = false,
-  focus_empty_on_setup = false,
-  ignore_buf_on_tab_change = {},
   sort_by = "name",
   root_dirs = {},
   prefer_startup_root = false,
@@ -65,7 +62,7 @@ nvim_tree.setup {
     highlight_git = true,
     full_name = false,
     highlight_opened_files = "none",
-    root_folder_modifier = ":t",
+    root_folder_label = ":t",
     indent_width = 2,
     indent_markers = {
       enable = true,
@@ -139,7 +136,12 @@ nvim_tree.setup {
   diagnostics = {
     enable = true,
     show_on_dirs = false,
+    show_on_open_dirs = true,
     debounce_delay = 50,
+    severity = {
+      min = vim.diagnostic.severity.HINT,
+      max = vim.diagnostic.severity.ERROR,
+    },
     icons = {
       hint = icons.diagnostics.Hint,
       info = icons.diagnostics.Information,
@@ -158,11 +160,13 @@ nvim_tree.setup {
   filesystem_watchers = {
     enable = true,
     debounce_delay = 50,
+    ignore_dirs = {},
   },
   git = {
     enable = true,
     ignore = false,
     show_on_dirs = true,
+    show_on_open_dirs = true,
     timeout = 400,
   },
   actions = {
@@ -216,6 +220,16 @@ nvim_tree.setup {
   live_filter = {
     prefix = "[FILTER]: ",
     always_show_folders = true,
+  },
+  tab = {
+    sync = {
+      open = false,
+      close = false,
+      ignore = {},
+    },
+  },
+  notify = {
+    threshold = vim.log.levels.INFO,
   },
   log = {
     enable = false,
