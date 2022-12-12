@@ -9,7 +9,6 @@ local tree_cb = require 'nvim-tree.config'.nvim_tree_callback
 
 nvim_tree.setup {
   auto_reload_on_write = true,
-  create_in_closed_folder = true,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
@@ -151,6 +150,8 @@ nvim_tree.setup {
   },
   filters = {
     dotfiles = false,
+    git_clean = false,
+    no_buffer = false,
     custom = {
       '\\.git$',
       '\\.DS_Store',
