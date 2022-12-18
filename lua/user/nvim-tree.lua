@@ -129,7 +129,7 @@ nvim_tree.setup {
     "alpha",
   },
   system_open = {
-    cmd = "code",
+    cmd = "codium",
     args = { "." },
   },
   diagnostics = {
