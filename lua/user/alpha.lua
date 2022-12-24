@@ -25,7 +25,7 @@ local header = {
 }
 
 local function gen_footer()
-  local plugins = #vim.fn.globpath(vim.fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1)
+  local plugins = require("lazy").stats().count
   local v = vim.version()
   local version = string.format(icons.ui.Version .. " v%d.%d.%d", v.major, v.minor, v.patch)
   local plugin = icons.documents.Archive .. " " .. plugins
@@ -68,7 +68,7 @@ local buttons = {
     button("r", icons.ui.History ..               "  Recent files", "<cmd>Telescope oldfiles<cr>"),
     button("t", icons.ui.List ..                  "  Find text",    "<cmd>Telescope live_grep<cr>"),
     button("c", icons.ui.Gear ..                  "  Config",       "<cmd>e ~/.config/nvim/init.lua<cr>"),
-    button("u", icons.ui.CloudDownload ..         "  Update",       "<cmd>PackerSync<cr>"),
+    button("u", icons.ui.CloudDownload ..         "  Update",       "<cmd>Lazy sync<cr>"),
     button("q", icons.diagnostics.ErrorOutline .. "  Quit",         "<cmd>qa<cr>"),
   },
   opts = {

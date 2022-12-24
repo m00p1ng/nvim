@@ -5,7 +5,7 @@ M.ui_filetypes = {
   "NvimTree",
   "help",
   "",
-  "packer",
+  "lazy",
   "NeogitStatus",
   "NeogitPopup",
   "NeogitCommitPopup",

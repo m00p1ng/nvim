@@ -199,7 +199,7 @@ nvim_tree.setup {
         exclude = {
           filetype = {
             "notify",
-            "packer",
+            "lazy",
             "qf",
             "diff",
             "fugitive",
