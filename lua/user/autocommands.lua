@@ -47,18 +47,18 @@ autocmd("VimEnter", {
   group = illuminate_group,
 })
 
-local spelunker_group = augroup("_spelunker", { clear = true })
-autocmd("CursorHold", {
-  callback = function()
-    local filetype = vim.api.nvim_buf_get_option(0, 'ft')
-    if vim.tbl_contains(vim.g.spelunker_ignored_filetypes, filetype) then
-      return
-    end
+-- local spelunker_group = augroup("_spelunker", { clear = true })
+-- autocmd("CursorHold", {
+--   callback = function()
+--     local filetype = vim.api.nvim_buf_get_option(0, 'ft')
+--     if vim.tbl_contains(vim.g.spelunker_ignored_filetypes, filetype) then
+--       return
+--     end
 
-    vim.cmd [[ call spelunker#check_displayed_words() ]]
-  end,
-  group = spelunker_group,
-})
+--     vim.cmd [[ call spelunker#check_displayed_words() ]]
+--   end,
+--   group = spelunker_group,
+-- })
 
 local fix_luasnip_group = augroup("_fix_luasnaip", { clear = true })
 autocmd({ "InsertLeave" }, {
