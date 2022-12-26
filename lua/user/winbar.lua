@@ -87,8 +87,14 @@ local excludes = function()
   end
 
   if vim.tbl_contains(winbar_filetype_exclude, filetype) then
-    vim.opt_local.winbar = nil
-    return true
+    local extension = vim.fn.expand "%:e"
+
+    if extension == "" then
+      vim.opt_local.winbar = nil
+      return true
+    else
+      return false
+    end
   end
   return false
 end
