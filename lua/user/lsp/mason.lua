@@ -24,6 +24,8 @@ local servers = {
   "sumneko_lua",
   "tailwindcss",
   "tsserver",
+  "volar",
+  "vuels",
   "yamlls",
 }
 
