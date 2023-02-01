@@ -28,6 +28,8 @@ nvim_tree.setup {
   view = {
     adaptive_size = false,
     centralize_selection = false,
+    cursorline = true,
+    debounce_delay = 15,
     width = 30,
     hide_root_folder = false,
     side = "left",
@@ -61,6 +63,7 @@ nvim_tree.setup {
     highlight_git = true,
     full_name = false,
     highlight_opened_files = "none",
+    highlight_modified = "none",
     root_folder_label = ":t",
     indent_width = 2,
     indent_markers = {
@@ -77,6 +80,7 @@ nvim_tree.setup {
     icons = {
       webdev_colors = true,
       git_placement = "after",
+      modified_placement = "after",
       padding = " ",
       symlink_arrow = " ➛ ",
       show = {
@@ -84,11 +88,13 @@ nvim_tree.setup {
         folder = true,
         folder_arrow = false,
         git = true,
+        modified = false,
       },
       glyphs = {
         default = "",
         symlink = icons.documents.Symlink,
         bookmark = icons.ui.Fire,
+        modified = "●",
         folder = {
           arrow_closed = icons.ui.ArrowClosed,
           arrow_open = icons.ui.ArrowOpen,
@@ -170,6 +176,11 @@ nvim_tree.setup {
     show_on_open_dirs = true,
     timeout = 400,
   },
+  modified = {
+    enable = false,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
+  },
   actions = {
     use_system_clipboard = true,
     change_dir = {
@@ -195,6 +206,7 @@ nvim_tree.setup {
       resize_window = true,
       window_picker = {
         enable = true,
+        picker = "default",
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
           filetype = {
@@ -216,7 +228,6 @@ nvim_tree.setup {
   },
   trash = {
     -- cmd = "gio trash",
-    -- require_confirm = true,
   },
   live_filter = {
     prefix = "[FILTER]: ",
@@ -231,6 +242,12 @@ nvim_tree.setup {
   },
   notify = {
     threshold = vim.log.levels.INFO,
+  },
+  ui = {
+    confirm = {
+      remove = true,
+      trash = true,
+    },
   },
   log = {
     enable = false,
