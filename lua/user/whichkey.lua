@@ -129,7 +129,8 @@ local mappings = {
     S = { "<cmd>Gitsigns stage_buffer<cr>", "Stage Buffer" },
     u = { "<cmd>Gitsigns undo_stage_hunk<cr>", "Undo Stage Hunk" },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    b = { "<cmd>Telescope git_branches show_remote_tracking_branches=false<cr>", "Checkout branch" },
+    B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = { "<cmd>Gitsigns diffthis<cr>", "Diff" },
     t = { "<cmd>DiffviewOpen<cr>", "Diff view" },
@@ -139,6 +140,7 @@ local mappings = {
     w = { "<cmd>lua require('user.function').open_git_commit_on_web()<cr>", "Open Commit on Web" },
     O = { "<cmd>lua require('user.function').open_git_project_on_web()<cr>", "Open Project on Web" },
     p = { "<cmd>lua require('user.function').git_previous_change()<cr>", "Diff Previous" },
+    y = { "<cmd>lua require('gitlinker').get_buf_range_url('n', {action_callback = require('gitlinker.actions').open_in_browser})<cr>", "Open line on Web"}
   },
 
   l = {
@@ -196,6 +198,7 @@ local v_mappings = {
     name = "Git",
     r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
     s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
+    y = { "<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').open_in_browser})<cr>", "Open line on Web"}
   }
 }
 
