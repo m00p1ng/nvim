@@ -3,8 +3,6 @@ vim.api.nvim_buf_set_option(0, "shiftwidth", 4)
 vim.api.nvim_buf_set_option(0, "softtabstop", 4)
 vim.api.nvim_buf_set_option(0, "expandtab", false)
 
-vim.api.nvim_set_hl(0, "@type.definition", { link = 'Type' })
-
 local function org_imports(wait_ms)
   local params = vim.lsp.util.make_range_params()
   params.context = { only = { "source.organizeImports" } }
