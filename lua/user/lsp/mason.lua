@@ -72,8 +72,8 @@ for _, server in pairs(servers) do
   end
 
   if server == "lua_ls" then
-    local sumneko_opts = require("user.lsp.settings.lua_ls")
-    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    local lua_ls_opts = require("user.lsp.settings.lua_ls")
+    opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
   end
 
   lspconfig[server].setup(opts)
