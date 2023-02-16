@@ -199,7 +199,11 @@ local v_mappings = {
     r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
     s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
     y = { "<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').open_in_browser})<cr>", "Open line on Web"}
-  }
+  },
+  f = {
+    name = "Find",
+    s = { "<cmd>lua require('telescope.builtin').live_grep({ default_text = require('user.function').getVisualSelection() })<cr>", "Find String" },
+  },
 }
 
 -- Backslash Options
