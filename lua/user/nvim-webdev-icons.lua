@@ -151,7 +151,7 @@ nvim_web_devicons.set_icon {
     name = "Csv",
   },
   ["vue"] = {
-    icon = "v",
+    icon = "󰡄",
     color = "#8dc149",
     cterm_color = "107",
     name = "Vue",
