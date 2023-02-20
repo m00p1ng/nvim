@@ -28,7 +28,6 @@ local ftMap = {
   DiffviewFileHistory = '',
   Outline = '',
   qf = '',
-  toggleterm = '',
   TelescopePrompt = '',
   lspinfo = '',
   mason = '',

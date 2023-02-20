@@ -24,7 +24,6 @@ end
 local dark = "#181818"
 
 vim.api.nvim_set_hl(0, "SLGitIcon",    { fg = "#e8ab53", bg = dark })
-vim.api.nvim_set_hl(0, "SLTermIcon",   { fg = "#b48ead", bg = dark })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = dark, bold = false })
 vim.api.nvim_set_hl(0, "SLLocation",   { fg = "#5e81ac", bg = dark })
 vim.api.nvim_set_hl(0, "SLFiletype",   { fg = "#88c0d0", bg = dark })
@@ -106,20 +105,6 @@ local filetype = {
       return return_val(icons.ui.Telescope)
     end
 
-    local function get_term_num()
-      local t_status_ok, toggle_num = pcall(vim.api.nvim_buf_get_var, 0, "toggle_number")
-      if not t_status_ok then
-        return ""
-      end
-      return toggle_num
-    end
-
-    if str == "toggleterm" then
-      local term = "%#SLTermIcon#" .. icons.ui.Terminal .. " " .. "%#SLFiletype#" .. get_term_num()
-
-      return return_val(term)
-    end
-
     if contains(ui_filetypes, str) or str == "" then
       return ""
     else
@@ -158,7 +143,7 @@ local current_signature = {
   function()
     local buf_ft = vim.bo.filetype
 
-    if buf_ft == "toggleterm" or buf_ft == "TelescopePrompt" then
+    if buf_ft == "TelescopePrompt" then
       return ""
     end
     if not pcall(require, "lsp_signature") then

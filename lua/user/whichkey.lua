@@ -177,8 +177,6 @@ local mappings = {
     name = "Treesitter",
     H = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 }
 

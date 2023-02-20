@@ -15,7 +15,6 @@ M.ui_filetypes = {
   "DiffviewFileHistory",
   "Outline",
   "qf",
-  "toggleterm",
   "TelescopePrompt",
   "lspinfo",
   "mason",
