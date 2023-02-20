@@ -117,7 +117,6 @@ lazy.setup({
   "folke/todo-comments.nvim",
 
   -- Terminal
-  "akinsho/toggleterm.nvim",
   "numToStr/Navigator.nvim",
 
   -- Quickfix
