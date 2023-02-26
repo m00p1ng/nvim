@@ -49,6 +49,16 @@ nvim_web_devicons.set_icon {
     color = "#0277bd",
     name = "TSTest",
   },
+  ["spec.tsx"] = {
+    icon = "",
+    color = "#0277bd",
+    name = "TSTest",
+  },
+  ["test.tsx"] = {
+    icon = "",
+    color = "#0277bd",
+    name = "TSTest",
+  },
   ["spec.js"] = {
     icon = "",
     color = "#0277bd",
@@ -156,4 +166,17 @@ nvim_web_devicons.set_icon {
     cterm_color = "107",
     name = "Vue",
   },
+  ["tf"] = {
+    icon = "󱁢",
+    color = "#5F43E9",
+    cterm_color = "57",
+    name = "Terraform",
+  },
+  ["tfvars"] = {
+    icon = "󱁢",
+    color = "#5F43E9",
+    cterm_color = "57",
+    name = "TFVars",
+  },
+
 }
