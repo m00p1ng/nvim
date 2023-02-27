@@ -5,25 +5,25 @@ end
 
 local icons = require "user.icons"
 
-local tree_cb = require 'nvim-tree.config'.nvim_tree_callback
-
 nvim_tree.setup {
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup = false,
+  open_on_setup = false,
+  open_on_setup_file = false,
   sort_by = "name",
   root_dirs = {},
   prefer_startup_root = false,
   sync_root_with_cwd = false,
   reload_on_bufenter = false,
   respect_buf_cwd = false,
-  on_attach = "disable",
+  on_attach = "default",
   remove_keymaps = false,
   select_prompts = false,
   view = {
-    adaptive_size = false,
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
@@ -37,8 +37,6 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = "1", cb = tree_cb "next_git_item" },
-        { key = "2", cb = tree_cb "prev_git_item" },
       },
     },
     float = {
@@ -128,6 +126,7 @@ nvim_tree.setup {
       '~/.config',
     },
   },
+  ignore_ft_on_setup = {},
   system_open = {
     cmd = "codium",
     args = { "." },
