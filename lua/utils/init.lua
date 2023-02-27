@@ -43,7 +43,7 @@ function M.smart_quit(quit)
   local bufnr = vim.api.nvim_get_current_buf()
   local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
   if modified then
-    print("You have unsaved changes. Quit anyway? (y/N) ")
+    print "You have unsaved changes. Quit anyway? (y/N) "
     local input = M.get_user_input_char()
 
     if input == "y" then
@@ -96,29 +96,31 @@ function M.get_buf_option(opt)
 end
 
 function M.project_files(opts)
-  local ok = pcall(require "telescope.builtin".git_files, opts)
-  if not ok then require "telescope.builtin".find_files(opts) end
+  local ok = pcall(require("telescope.builtin").git_files, opts)
+  if not ok then
+    require("telescope.builtin").find_files(opts)
+  end
 end
 
 function M.get_git_commit_sha()
-  require "gitblame".copy_sha_to_clipboard()
-  return vim.fn.getreg('+')
+  require("gitblame").copy_sha_to_clipboard()
+  return vim.fn.getreg "+"
 end
 
 function M.git_previous_change()
   local sha = M.get_git_commit_sha()
-  vim.api.nvim_command(':DiffviewOpen ' .. sha .. '^!')
+  vim.api.nvim_command(":DiffviewOpen " .. sha .. "^!")
 end
 
 local function parse_git_url(remote_url)
   local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
   if domain and path then
-    return 'https://' .. domain .. '/' .. path
+    return "https://" .. domain .. "/" .. path
   end
 
   local url = string.match(remote_url, ".*git%@(.*)%.git")
   if url then
-    return 'https://' .. url
+    return "https://" .. url
   end
 
   local https_url = string.match(remote_url, "(https%:%/%/.*)%.git")
@@ -129,12 +131,12 @@ local function parse_git_url(remote_url)
   -- Don't have .git extension
   domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)")
   if domain and path then
-    return 'https://' .. domain .. '/' .. path
+    return "https://" .. domain .. "/" .. path
   end
 
   url = string.match(remote_url, ".*git%@(.*)")
   if url then
-    return 'https://' .. url
+    return "https://" .. url
   end
 
   https_url = string.match(remote_url, "(https%:%/%/.*)")
@@ -145,32 +147,47 @@ end
 
 function M.open_git_commit_on_web()
   local sha = M.get_git_commit_sha()
-  local commit_path = '/commit/' .. sha
+  local commit_path = "/commit/" .. sha
 
-  require "gitblame.git".get_remote_url(function(remote_url)
+  require("gitblame.git").get_remote_url(function(remote_url)
     local url = parse_git_url(remote_url) .. commit_path
-    require "gitblame.utils".launch_url(url)
+    require("gitblame.utils").launch_url(url)
   end)
 end
 
 function M.open_git_project_on_web()
-  require "gitblame.git".get_remote_url(function(remote_url)
+  require("gitblame.git").get_remote_url(function(remote_url)
     local url = parse_git_url(remote_url)
-    require "gitblame.utils".launch_url(url)
+    require("gitblame.utils").launch_url(url)
   end)
 end
 
 function M.getVisualSelection()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
+  vim.cmd 'noau normal! "vy"'
+  local text = vim.fn.getreg "v"
+  vim.fn.setreg("v", {})
 
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ""
+  end
+end
+
+function M.has(plugin)
+  return require("lazy.core.config").plugins[plugin] ~= nil
+end
+
+---@param on_attach fun(client, buffer)
+function M.on_attach(on_attach)
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buffer = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
+    end,
+  })
 end
 
 return M

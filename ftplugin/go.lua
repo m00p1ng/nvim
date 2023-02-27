@@ -22,7 +22,7 @@ local go_group = vim.api.nvim_create_augroup("_go", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
-    vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format { async = true }
     org_imports(3000)
   end,
   group = go_group,
@@ -33,15 +33,15 @@ if not dap_status_ok then
   return
 end
 
-local installation_path = vim.fn.stdpath("data") .. "/mason/packages"
+local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
 dap.adapters.delve = {
-  type = 'server',
-  port = '${port}',
+  type = "server",
+  port = "${port}",
   executable = {
-    command = installation_path .. '/delve/dlv',
-    args = {'dap', '-l', '127.0.0.1:${port}'},
-  }
+    command = installation_path .. "/delve/dlv",
+    args = { "dap", "-l", "127.0.0.1:${port}" },
+  },
 }
 
 dap.configurations.go = {

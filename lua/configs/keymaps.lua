@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.keymap.set
 
@@ -18,7 +16,17 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Insert --
+-- Add undo break-points
+keymap("i", ",", ",<c-g>u", opts)
+keymap("i", ".", ".<c-g>u", opts)
+keymap("i", ";", ";<c-g>u", opts)
+keymap("i", ":", ":<c-g>u", opts)
+
 -- Normal --
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<cr>", opts)
 keymap("n", "<C-Down>", ":resize +2<cr>", opts)
@@ -31,13 +39,6 @@ keymap("n", "L", "<cmd>bn<cr>", opts)
 
 -- Visual Block --
 keymap("v", "p", '"_dP', opts)
-
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Other --
 keymap("n", "<cr>", "<cmd>noh<cr>", opts)

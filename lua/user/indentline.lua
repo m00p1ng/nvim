@@ -1,17 +1,16 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-  return
-end
-
-indent_blankline.setup {
-  -- char = "│"
-  -- char = "▎"
-  char = "▏",
-  context_char = "▏",
-  show_trailing_blankline_indent = false,
-  show_first_indent_level = true,
-  use_treesitter = true,
-  show_current_context = true,
-  buftype_exclude = { "terminal", "nofile" },
-  filetype_exclude = require('user.function').ui_filetypes,
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    -- char = "│"
+    -- char = "▎"
+    char = "▏",
+    context_char = "▏",
+    show_trailing_blankline_indent = false,
+    show_first_indent_level = true,
+    use_treesitter = true,
+    show_current_context = true,
+    buftype_exclude = { "terminal", "nofile" },
+    filetype_exclude = require("utils").ui_filetypes,
+  },
 }

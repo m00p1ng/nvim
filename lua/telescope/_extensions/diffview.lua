@@ -1,6 +1,6 @@
 local has_telescope, telescope = pcall(require, "telescope")
 if not has_telescope then
-  error("This plugin requires telescope.nvim (https://github.com/nvim-telescope/telescope.nvim)")
+  error "This plugin requires telescope.nvim (https://github.com/nvim-telescope/telescope.nvim)"
 end
 
 local pickers = require "telescope.pickers"
@@ -9,19 +9,14 @@ local conf = require("telescope.config").values
 local utils = require "telescope.utils"
 local strings = require "plenary.strings"
 local entry_display = require "telescope.pickers.entry_display"
-local themes = require("telescope.themes")
+local themes = require "telescope.themes"
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
 local diffview = function(opts)
-  local format = "%(HEAD)"
-      .. "%(refname)"
-      .. "%(authorname)"
-      .. "%(upstream:lstrip=2)"
-  local output = utils.get_os_command_output(
-    { "git", "for-each-ref", "--perl", "--format", format, opts.pattern },
-    opts.cwd
-  )
+  local format = "%(HEAD)" .. "%(refname)" .. "%(authorname)" .. "%(upstream:lstrip=2)"
+  local output =
+    utils.get_os_command_output({ "git", "for-each-ref", "--perl", "--format", format, opts.pattern }, opts.cwd)
 
   local results = {}
   local widths = {
@@ -90,36 +85,38 @@ local diffview = function(opts)
     }
   end
 
-  local picker_opts = themes.get_dropdown({
+  local picker_opts = themes.get_dropdown {
     previewer = false,
-  })
+  }
 
-  pickers.new(picker_opts, {
-    prompt_title = "Compare HEAD - Diffview",
-    finder = finders.new_table {
-      results = results,
-      entry_maker = function(entry)
-        entry.value = entry.name
-        entry.ordinal = entry.name
-        entry.display = make_display
-        return entry
+  pickers
+    .new(picker_opts, {
+      prompt_title = "Compare HEAD - Diffview",
+      finder = finders.new_table {
+        results = results,
+        entry_maker = function(entry)
+          entry.value = entry.name
+          entry.ordinal = entry.name
+          entry.display = make_display
+          return entry
+        end,
+      },
+      sorter = conf.file_sorter(opts),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+          vim.api.nvim_command(":DiffviewOpen " .. selection.value)
+          vim.notify("Diff `" .. selection.value .. "` with HEAD", vim.log.levels.INFO)
+        end)
+        return true
       end,
-    },
-    sorter = conf.file_sorter(opts),
-    attach_mappings = function(prompt_bufnr, map)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        vim.api.nvim_command(':DiffviewOpen '.. selection.value)
-        vim.notify('Diff `' .. selection.value .. '` with HEAD', vim.log.levels.INFO)
-      end)
-      return true
-    end,
-  }):find()
+    })
+    :find()
 end
 
-return telescope.register_extension({
+return telescope.register_extension {
   exports = {
     diffview = diffview,
   },
-})
+}

@@ -1,5 +1,5 @@
-local f = require "user.function"
-local icons = require "user.icons"
+local f = require "utils"
+local icons = require "utils.icons"
 
 local M = {}
 
@@ -8,11 +8,8 @@ M.get_filename = function()
   local extension = vim.fn.expand "%:e"
 
   if not f.is_empty(filename) then
-    local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
-      filename,
-      extension,
-      { default = true }
-    )
+    local file_icon, file_icon_color =
+      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 
     local hl_group = "FileIconColor" .. extension
 
@@ -38,12 +35,12 @@ M.get_filename = function()
       hl_filename = "%#NavicText#"
     end
 
-    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand('%:~:.') .. "%*"
+    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand "%:~:." .. "%*"
   end
 
   local buf_number = vim.api.nvim_buf_get_number(0)
   if 1 == vim.fn.buflisted(buf_number) then
-    return '%#NavicText#' .. ' ' .. icons.kind.File .. ' ' .. '[No Name]'
+    return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
   end
 end
 
@@ -130,27 +127,24 @@ end
 
 M.create_winbar = function()
   vim.api.nvim_create_augroup("_winbar", {})
-  vim.api.nvim_create_autocmd(
-    {
-      "CursorMoved",
-      "CursorMovedI",
-      "CursorHold",
-      "BufWinEnter",
-      -- "BufFilePost",
-      -- "InsertEnter",
-      -- "BufWritePost",
-      -- "TabClosed",
-    },
-    {
-      group = "_winbar",
-      callback = function()
-        local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
-        if not status_ok then
-          M.get_winbar()
-        end
-      end,
-    }
-  )
+  vim.api.nvim_create_autocmd({
+    "CursorMoved",
+    "CursorMovedI",
+    "CursorHold",
+    "BufWinEnter",
+    -- "BufFilePost",
+    -- "InsertEnter",
+    -- "BufWritePost",
+    -- "TabClosed",
+  }, {
+    group = "_winbar",
+    callback = function()
+      local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
+      if not status_ok then
+        M.get_winbar()
+      end
+    end,
+  })
 end
 
 M.create_winbar()

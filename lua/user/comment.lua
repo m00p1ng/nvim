@@ -1,14 +1,16 @@
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-  return
-end
-
-comment.setup {
-  mappings = {
-    basic = false,
-    extra = false,
-    extended = false,
+return {
+  "numToStr/Comment.nvim",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    mappings = {
+      basic = false,
+      extra = false,
+      extended = false,
+    },
+    ignore = "^$",
   },
-  ignore = '^$',
-  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+  config = function(_, opts)
+    opts.pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+    require("Comment").setup(opts)
+  end,
 }

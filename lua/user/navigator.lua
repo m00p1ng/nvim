@@ -1,14 +1,12 @@
-local status_ok, navigator = pcall(require, "Navigator")
-if not status_ok then
-  return
-end
-
-navigator.setup {
-  disable_on_zoom = true,
+return {
+  "numToStr/Navigator.nvim",
+  opts = {
+    disable_on_zoom = true,
+  },
+  keys = {
+    { "<C-h>", ":lua require('Navigator').left()<cr>",  noremap = true, silent = true, desc = "TmuxLeft", },
+    { "<C-j>", ":lua require('Navigator').down()<cr>",  noremap = true, silent = true, desc = "TmuxDown" },
+    { "<C-k>", ":lua require('Navigator').up()<cr>",    noremap = true, silent = true, desc = "TmuxUp" },
+    { "<C-l>", ":lua require('Navigator').right()<cr>", noremap = true, silent = true, desc = "TmuxRight" },
+  },
 }
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<C-h>", ":lua require('Navigator').left()<cr>", opts)
-vim.keymap.set("n", "<C-j>", ":lua require('Navigator').down()<cr>", opts)
-vim.keymap.set("n", "<C-k>", ":lua require('Navigator').up()<cr>", opts)
-vim.keymap.set("n", "<C-l>", ":lua require('Navigator').right()<cr>", opts)

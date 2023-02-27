@@ -1,8 +1,7 @@
-vim.cmd [[
-try
-  colorscheme darkplus
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
-]]
+return {
+  "m00p1ng/darkplus.nvim",
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme "darkplus"
+  end,
+}
