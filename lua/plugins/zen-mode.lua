@@ -36,7 +36,7 @@ return {
     on_close = function()
       vim.g.cmp_active = true
       vim.cmd [[LspStart]]
-      require("user.winbar").create_winbar()
+      require("plugins.winbar").create_winbar()
     end,
   },
 }

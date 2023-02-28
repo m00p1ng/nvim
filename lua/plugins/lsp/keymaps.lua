@@ -5,7 +5,7 @@ M._keys = nil
 
 ---@return (LazyKeys|{has?:string})[]
 function M.get()
-  local format = require("user.lsp.format").format
+  local format = require("plugins.lsp.format").format
   if not M._keys then
   ---@class PluginLspKeys
     -- stylua: ignore

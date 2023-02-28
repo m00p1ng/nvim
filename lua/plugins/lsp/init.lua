@@ -61,11 +61,11 @@ return {
     ---@param opts PluginLspOpts
     config = function(plugin, opts)
       -- setup autoformat
-      require("user.lsp.format").autoformat = opts.autoformat
+      require("plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
       require("utils").on_attach(function(client, buffer)
-        require("user.lsp.format").on_attach(client, buffer)
-        require("user.lsp.keymaps").on_attach(client, buffer)
+        require("plugins.lsp.format").on_attach(client, buffer)
+        require("plugins.lsp.keymaps").on_attach(client, buffer)
       end)
 
       -- diagnostics

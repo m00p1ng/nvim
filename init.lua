@@ -15,7 +15,7 @@ require "configs.keymaps"
 require "configs.options"
 require "configs.autocmds"
 
-require("lazy").setup("user", {
+require("lazy").setup("plugins", {
   root = vim.fn.stdpath "data" .. "/lazy", -- directory where plugins will be installed
   defaults = {
     lazy = false, -- should plugins be lazy-loaded?
