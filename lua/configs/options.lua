@@ -1,61 +1,54 @@
-local options = {
-  autoindent = true,
-  backspace = { 2 },
-  backup = false,                          -- creates a backup file
--- clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
-  colorcolumn = "80,100,120",
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-  conceallevel = 0,                        -- so that `` is visible in markdown files
-  confirm = true,
-  cursorline = true,                       -- highlight the current line
-  expandtab = true,                        -- convert tabs to spaces
-  fileencoding = "utf-8",                  -- the encoding written to a file
-  formatoptions = "jcroqlnt",              -- tcqj
-  grepformat = "%f:%l:%c:%m",
-  grepprg = "rg --vimgrep",
-  guifont = "monospace:h17",               -- the font used in graphical neovim applications
-  hlsearch = true,                         -- highlight all matches on previous search pattern
-  ignorecase = true,                       -- ignore case in search patterns
-  -- iskeyword:append "-"
-  laststatus = 3,
-  mouse = "a",                             -- allow the mouse to be used in neovim
-  mousemodel = "extend",
-  number = true,                           -- set numbered lines
-  numberwidth = 4,                         -- set number column width to 2 {default 4}
-  pumblend = 10,                           -- Popup blend
-  pumheight = 10,                          -- pop up menu height
-  relativenumber = false,                  -- set relative numbered lines
-  scrolloff = 6,                           -- is one of my fav
-  shiftwidth = 2,                          -- the number of spaces inserted for each indentation
-  -- shortmess:append { W = true, I = true, c = true }
-  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 0,                         -- always show tabs
-  sidescrolloff = 8,
-  signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
--- smartcase = true                        -- smart case
-  smartindent = true,                      -- make indenting smarter again
-  softtabstop = 2,
-  splitbelow = true,                       -- force all horizontal splits to go below current window
-  splitright = true,                       -- force all vertical splits to go to the right of current window
-  swapfile = false,                        -- creates a swapfile
-  tabstop = 2,                             -- insert 2 spaces for a tab
-  termguicolors = true,                    -- set term gui colors (most terminals support this)
-  timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)
-  title = true,
-  undofile = true,                         -- enable persistent undo
-  updatetime = 100,                        -- faster completion (4000ms default)
-  wildmode = "longest:full,full",          -- Command-line completion mode
-  wrap = false,                            -- display lines as one long line
-  writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-}
+local opt = vim.opt
 
-vim.opt.shortmess:append "c"
-vim.opt.iskeyword:append "-"
-
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+opt.autoindent = true
+opt.backspace = { 2 }
+opt.backup = false                          -- creates a backup file
+-- opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
+opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
+opt.colorcolumn = "80100120"
+opt.completeopt = { "menuone", "noselect" }  -- mostly just for cmp
+opt.conceallevel = 0                        -- so that `` is visible in markdown files
+opt.confirm = true
+opt.cursorline = true                       -- highlight the current line
+opt.expandtab = true                        -- convert tabs to spaces
+opt.fileencoding = "utf-8"                  -- the encoding written to a file
+opt.formatoptions = "jcroqlnt"              -- tcqj
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+opt.hlsearch = true                         -- highlight all matches on previous search pattern
+opt.ignorecase = true                       -- ignore case in search patterns
+opt.iskeyword:append "-"
+opt.laststatus = 3
+opt.mouse = "a"                             -- allow the mouse to be used in neovim
+opt.mousemodel = "extend"
+opt.number = true                           -- set numbered lines
+opt.numberwidth = 4                         -- set number column width to 2 {default 4}
+opt.pumblend = 10                           -- Popup blend
+opt.pumheight = 10                          -- pop up menu height
+opt.relativenumber = false                  -- set relative numbered lines
+opt.scrolloff = 6                           -- is one of my fav
+opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
+opt.shortmess:append { W = true, I = true, c = true }
+opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
+opt.showtabline = 0                         -- always show tabs
+opt.sidescrolloff = 8
+opt.signcolumn = "yes"                      -- always show the sign column otherwise it would shift the text each time
+-- opt.smartcase = true                        -- smart case
+opt.smartindent = true                      -- make indenting smarter again
+opt.softtabstop = 2
+opt.splitbelow = true                       -- force all horizontal splits to go below current window
+opt.splitright = true                       -- force all vertical splits to go to the right of current window
+opt.swapfile = false                        -- creates a swapfile
+opt.tabstop = 2                             -- insert 2 spaces for a tab
+opt.termguicolors = true                    -- set term gui colors (most terminals support this)
+opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
+opt.title = true
+opt.undofile = true                         -- enable persistent undo
+opt.updatetime = 100                        -- faster completion (4000ms default)
+opt.wildmode = "longest:full,full"           -- Command-line completion mode
+opt.wrap = false                            -- display lines as one long line
+opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set fillchars+=diff:."

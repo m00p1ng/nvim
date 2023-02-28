@@ -5,6 +5,11 @@ return {
   opts = {
     ensure_installed = {
       "bash",
+      "c",
+      "gitattributes",
+      "gitcommit",
+      "gitignore",
+      "go",
       "help",
       "html",
       "javascript",
@@ -18,9 +23,8 @@ return {
       "tsx",
       "typescript",
       "vim",
-      "yaml",
-      "go",
       "vue",
+      "yaml",
     },
     sync_install = false,
     auto_install = true,

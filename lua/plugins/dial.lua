@@ -54,7 +54,7 @@ return {
   end,
   keys = function()
     local f = require "utils."
-    if f.has("dial") == false then
+    if f.has "dial" == false then
       return {}
     end
 
