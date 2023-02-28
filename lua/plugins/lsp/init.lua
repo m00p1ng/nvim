@@ -8,6 +8,7 @@ return {
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "b0o/SchemaStore.nvim",
     },
     ---@class PluginLspOpts
     opts = {
@@ -29,22 +30,7 @@ return {
       },
       -- LSP Server Settings
       ---@type lspconfig.options
-      servers = {
-        jsonls = {},
-        lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-      },
+      servers = {},
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
@@ -76,8 +62,7 @@ return {
       vim.diagnostic.config(opts.diagnostics)
 
       local servers = opts.servers
-      -- local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
@@ -96,18 +81,28 @@ return {
         require("lspconfig")[server].setup(server_opts)
       end
 
-      -- temp fix for lspconfig rename
-      -- https://github.com/neovim/nvim-lspconfig/pull/2439
-      local mappings = require "mason-lspconfig.mappings.server"
-      if not mappings.lspconfig_to_package.lua_ls then
-        mappings.lspconfig_to_package.lua_ls = "lua-language-server"
-        mappings.package_to_lspconfig["lua-language-server"] = "lua_ls"
-      end
-
       local mlsp = require "mason-lspconfig"
       local available = mlsp.get_available_servers()
 
-      local ensure_installed = {} ---@type string[]
+      local ensure_installed = {
+        "bashls",
+        "cssls",
+        "cssmodules_ls",
+        "dockerls",
+        "eslint",
+        "golangci_lint_ls",
+        "gopls",
+        "grammarly",
+        "graphql",
+        "html",
+        "jsonls",
+        "pyright",
+        "lua_ls",
+        "tailwindcss",
+        "tsserver",
+        "volar",
+        "yamlls",
+      } ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then
           server_opts = server_opts == true and {} or server_opts
@@ -120,13 +115,15 @@ return {
         end
       end
 
-      require("mason-lspconfig").setup { ensure_installed = ensure_installed }
+      require("mason-lspconfig").setup {
+        ensure_installed = ensure_installed,
+        automatic_installation = true,
+     }
       require("mason-lspconfig").setup_handlers { setup }
     end,
   },
 
   {
-
     "williamboman/mason.nvim",
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -137,6 +134,16 @@ return {
         "shfmt",
         "flake8",
       },
+      ui = {
+        border = "rounded",
+        icons = {
+          package_installed = "◍",
+          package_pending = "◍",
+          package_uninstalled = "◍",
+        },
+      },
+      log_level = vim.log.levels.INFO,
+      max_concurrent_installers = 4,
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(plugin, opts)
