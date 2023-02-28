@@ -19,8 +19,6 @@ return {
         virtual_text = { spacing = 4, prefix = "●" },
         severity_sort = true,
         float = {
-          focusable = true,
-          style = "minimal",
           border = "rounded",
           wrap_at = 80,
           -- source = "always",
@@ -81,6 +79,14 @@ return {
       --   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       -- end
       vim.diagnostic.config(opts.diagnostics)
+
+      -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      --   border = "rounded",
+      -- })
+
+      -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      --   border = "rounded",
+      -- })
 
       local servers = opts.servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()

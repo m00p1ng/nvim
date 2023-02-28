@@ -130,28 +130,6 @@ return {
       end,
     }
 
-    local current_signature = {
-      function()
-        local buf_ft = vim.bo.filetype
-
-        if buf_ft == "TelescopePrompt" then
-          return ""
-        end
-        if not pcall(require, "lsp_signature") then
-          return ""
-        end
-        local sig = require("lsp_signature").status_line(30)
-        local hint = sig.hint
-
-        if hint ~= nil and hint ~= "" then
-          return "%#SLSeparator#" .. hint
-        end
-
-        return ""
-      end,
-      cond = hide_in_width,
-    }
-
     local spaces = {
       function()
         local buf_ft = vim.bo.filetype
@@ -230,7 +208,7 @@ return {
       sections = {
         lualine_a = { mode, branch },
         lualine_b = { diagnostics, tabs },
-        lualine_c = { current_signature },
+        lualine_c = {},
         lualine_x = { filesize },
         lualine_y = { spaces, filetype },
         lualine_z = { location },
