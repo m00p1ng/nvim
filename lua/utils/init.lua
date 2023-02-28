@@ -25,6 +25,8 @@ M.ui_filetypes = {
   "dapui_hover",
   "dap-repl",
   "neotest-summary",
+  "noice",
+  "startuptime",
 }
 
 function M.clear_prompt()

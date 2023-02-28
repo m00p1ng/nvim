@@ -16,7 +16,7 @@ function M.get()
       { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
       { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       -- { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
-      { "<leader>gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+      { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
       { "[d", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" },
       { "]d", vim.diagnostic.goto_next, desc = "Next Diagnostic" },
       -- { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },

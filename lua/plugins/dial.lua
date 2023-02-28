@@ -4,6 +4,8 @@ return {
   config = function()
     local dial_config = require "dial.config"
     local augend = require "dial.augend"
+    local map = require "dial.map"
+
     dial_config.augends:register_group {
       default = {
         augend.integer.alias.decimal,
@@ -51,22 +53,13 @@ return {
         },
       },
     }
-  end,
-  keys = function()
-    local f = require "utils."
-    if f.has "dial" == false then
-      return {}
-    end
 
-    local map = require "dial.map"
-
-    return {
-      { "<C-a>", map.inc_normal "mygroup", mode = "n", noremap = true },
-      { "<C-x>", map.dec_normal "mygroup", mode = "n", noremap = true },
-      { "<C-a>", map.inc_normal "visual", mode = "v", noremap = true },
-      { "<C-x>", map.dec_normal "visual", mode = "v", noremap = true },
-      { "g<C-a>", map.inc_gvisual "visual", mode = "v", noremap = true },
-      { "g<C-x>", map.dec_gvisual "visual", mode = "v", noremap = true },
-    }
+    -- change augends in VISUAL mode
+    vim.api.nvim_set_keymap("n", "<C-a>", map.inc_normal "mygroup", { noremap = true })
+    vim.api.nvim_set_keymap("n", "<C-x>", map.dec_normal "mygroup", { noremap = true })
+    vim.api.nvim_set_keymap("v", "<C-a>", map.inc_normal "visual", { noremap = true })
+    vim.api.nvim_set_keymap("v", "<C-x>", map.dec_normal "visual", { noremap = true })
+    vim.api.nvim_set_keymap("v", "g<C-a>", map.inc_gvisual "visual", { noremap = true })
+    vim.api.nvim_set_keymap("v", "g<C-x>", map.dec_gvisual "visual", { noremap = true })
   end,
 }
