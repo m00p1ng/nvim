@@ -15,9 +15,18 @@ return {
       -- options for vim.diagnostic.config()
       diagnostics = {
         underline = true,
-        update_in_insert = false,
+        update_in_insert = true,
         virtual_text = { spacing = 4, prefix = "●" },
         severity_sort = true,
+        float = {
+          focusable = true,
+          style = "minimal",
+          border = "rounded",
+          wrap_at = 80,
+          -- source = "always",
+          -- header = "",
+          -- prefix = "",
+        },
       },
       -- Automatically format on save
       autoformat = true,
@@ -46,6 +55,18 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(plugin, opts)
+      local icons = require "utils.icons"
+      local signs = {
+        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+      }
+
+      for _, sign in ipairs(signs) do
+        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+      end
+
       -- setup autoformat
       require("plugins.lsp.format").autoformat = opts.autoformat
       -- setup formatting and keymaps
@@ -66,7 +87,7 @@ return {
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
-        lineFoldingOnly = true
+        lineFoldingOnly = true,
       }
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
@@ -124,7 +145,7 @@ return {
       require("mason-lspconfig").setup {
         ensure_installed = ensure_installed,
         automatic_installation = true,
-     }
+      }
       require("mason-lspconfig").setup_handlers { setup }
     end,
   },

@@ -5,9 +5,9 @@ return {
       yamlls = {
         yaml = {
           schemaStore = {
-            enable = true
-          }
-        }
+            enable = true,
+          },
+        },
       },
     },
   },
