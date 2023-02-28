@@ -32,7 +32,7 @@ return {
         view_error = "notify", -- view for errors
         view_warn = "notify", -- view for warnings
         view_history = "messages", -- view for :messages
-        view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+        view_search = false, -- view for search count messages. Set to `false` to disable
       },
       popupmenu = {
         enabled = true, -- enables the Noice popupmenu UI
@@ -62,7 +62,7 @@ return {
               { error = true },
               { warning = true },
               { event = "msg_show", kind = { "" } },
-              { event = "lsp", kind = "message" },
+              { event = "lsp",      kind = "message" },
             },
           },
         },
@@ -76,7 +76,7 @@ return {
               { error = true },
               { warning = true },
               { event = "msg_show", kind = { "" } },
-              { event = "lsp", kind = "message" },
+              { event = "lsp",      kind = "message" },
             },
           },
           filter_opts = { count = 1 },
@@ -191,7 +191,13 @@ return {
       },
       throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
       ---@type NoiceConfigViews
-      views = {}, ---@see section on views
+      views = {
+        cmdline_popup = {
+          border = {
+            padding = { 0, 1 },
+          },
+        },
+      }, ---@see section on views
       ---@type NoiceRouteConfig[]
       routes = {}, --- @see section on routes
       ---@type table<string, NoiceFilter>
