@@ -195,6 +195,25 @@ return {
       end,
     }
 
+    -- recording @q
+    local status_mode = {
+      require("noice").api.status.mode.get,
+      cond = require("noice").api.status.mode.has,
+      color = { fg = "#ff9e64" },
+    }
+
+    local search_result = {
+      require("noice").api.status.search.get,
+      cond = require("noice").api.status.search.has,
+      color = { fg = "#d7ba7d" },
+    }
+
+    local updated_plugin = {
+      require("lazy.status").updates,
+      cond = require("lazy.status").has_updates,
+      color = { fg = "Special" },
+    }
+
     return {
       options = {
         globalstatus = true,
@@ -208,28 +227,10 @@ return {
       sections = {
         lualine_a = { mode, branch },
         lualine_b = { diagnostics, tabs },
-        lualine_c = {
-          {
-            require("noice").api.status.mode.get,
-            cond = require("noice").api.status.mode.has,
-            color = { fg = "#ff9e64" },
-          },
-        },
-        lualine_x = {
-          {
-            require("noice").api.status.search.get,
-            cond = require("noice").api.status.search.has,
-            color = { fg = "#d7ba7d" },
-          },
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = { fg = "Special" },
-          },
-          filesize,
-        },
+        lualine_c = { status_mode, search_result },
+        lualine_x = { filesize },
         lualine_y = { spaces, filetype },
-        lualine_z = { location },
+        lualine_z = { updated_plugin ,location },
       },
       tabline = {},
       winbar = {},
