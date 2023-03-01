@@ -37,7 +37,9 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        lua_ls = require("plugins.lsp.lang.lua").opts(),
         tailwindcss = require("plugins.lsp.lang.tailwindcss").opts(),
+        yamlls = require('plugins.lsp.lang.yaml').opts(),
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
