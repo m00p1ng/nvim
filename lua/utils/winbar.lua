@@ -45,10 +45,7 @@ M.get_filename = function()
 end
 
 local get_gps = function()
-  local status_gps_ok, gps = pcall(require, "nvim-navic")
-  if not status_gps_ok then
-    return ""
-  end
+  local gps = require "nvim-navic"
 
   local status_ok, gps_location = pcall(gps.get_location, {})
   if not status_ok then

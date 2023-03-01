@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 local dap = require "dap"
-local dap_vscode_js = pcall(require, "dap-vscode-js")
+local dap_vscode_js = require "dap-vscode-js"
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
