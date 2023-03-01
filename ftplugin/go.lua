@@ -28,10 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = go_group,
 })
 
-local dap_status_ok, dap = pcall(require, "dap")
-if not dap_status_ok then
-  return
-end
+local dap = require "dap"
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 

@@ -44,7 +44,7 @@ return {
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs( -1), { "i", "c" }),
+        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
         ["<C-y>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<C-e>"] = cmp.mapping {
@@ -104,15 +104,15 @@ return {
           -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
           -- NOTE: order matters
           vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[Nvim]",
-                luasnip = "[Snippet]",
-                buffer = "[Buffer]",
-                cmp_tabnine = "[T9]",
-                path = "[Path]",
-                emoji = "",
-                dap = "",
-              })[entry.source.name]
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[Nvim]",
+            luasnip = "[Snippet]",
+            buffer = "[Buffer]",
+            cmp_tabnine = "[T9]",
+            path = "[Path]",
+            emoji = "",
+            dap = "",
+          })[entry.source.name]
           return vim_item
         end,
       },
@@ -154,7 +154,7 @@ return {
     }
 
     local cmd_mapping = {
-      ['<C-k>'] = {
+      ["<C-k>"] = {
         c = function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -163,7 +163,7 @@ return {
           end
         end,
       },
-      ['<C-j>'] = {
+      ["<C-j>"] = {
         c = function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -172,32 +172,32 @@ return {
           end
         end,
       },
-      ['<C-n>'] = {
+      ["<C-n>"] = {
         c = function(fallback)
           fallback()
-        end
+        end,
       },
-      ['<C-p>'] = {
+      ["<C-p>"] = {
         c = function(fallback)
           fallback()
-        end
+        end,
       },
     }
 
-    cmp.setup.cmdline('/', {
+    cmp.setup.cmdline("/", {
       mapping = cmp.mapping.preset.cmdline(cmd_mapping),
       sources = {
-        { name = 'buffer' }
+        { name = "buffer" },
       },
     })
 
-    cmp.setup.cmdline(':', {
+    cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(cmd_mapping),
       sources = cmp.config.sources({
-        { name = 'path' }
+        { name = "path" },
       }, {
-        { name = 'cmdline' }
-      })
+        { name = "cmdline" },
+      }),
     })
 
     cmp.setup.filetype("dap-repl", {

@@ -4,15 +4,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "silent! EslintFixAll",
 })
 
-local dap_status_ok, dap = pcall(require, "dap")
-if not dap_status_ok then
-  return
-end
-
-local dap_vs_status_ok, dap_vscode_js = pcall(require, "dap-vscode-js")
-if not dap_vs_status_ok then
-  return
-end
+local dap = require "dap"
+local dap_vscode_js = pcall(require, "dap-vscode-js")
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
@@ -38,10 +31,7 @@ dap.configurations.javascript = {
   },
 }
 
-local which_key_status_ok, which_key = pcall(require, "which-key")
-if not which_key_status_ok then
-  return
-end
+local which_key = require "which-key"
 
 local opts = {
   mode = "n", -- NORMAL mode
