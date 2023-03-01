@@ -8,7 +8,6 @@ return {
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "b0o/SchemaStore.nvim",
     },
     ---@class PluginLspOpts
     opts = {
