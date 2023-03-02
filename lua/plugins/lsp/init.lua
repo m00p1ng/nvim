@@ -6,6 +6,7 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "b0o/SchemaStore.nvim", lazy = true },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
@@ -40,6 +41,7 @@ return {
         lua_ls = require "plugins.lsp.lang.lua_ls",
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
         yamlls = require "plugins.lsp.lang.yamlls",
+        jsonls = require "plugins.lsp.lang.jsonls",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -213,5 +215,5 @@ return {
         },
       }
     end,
-  }
+  },
 }
