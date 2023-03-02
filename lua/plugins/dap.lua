@@ -14,9 +14,24 @@ return {
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
 
-      vim.fn.sign_define("DapBreakpoint", { text = icons.ui.Circle, texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-      vim.fn.sign_define("DapBreakpointCondition", { text = icons.ui.Circle, texthl = "DiagnosticSignWarning", linehl = "", numhl = "" })
-      vim.fn.sign_define("DapStopped", { text = icons.ui.ChevronRight, texthl = "DapStoppedText", linehl = "DapStopped", numhl = "" })
+      vim.fn.sign_define("DapBreakpoint", {
+        text = icons.ui.Circle,
+        texthl = "DiagnosticSignError",
+        linehl = "",
+        numhl = "",
+      })
+      vim.fn.sign_define("DapBreakpointCondition", {
+        text = icons.ui.Circle,
+        texthl = "DiagnosticSignWarning",
+        linehl = "",
+        numhl = "",
+      })
+      vim.fn.sign_define("DapStopped", {
+        text = icons.ui.ChevronRight,
+        texthl = "DapStoppedText",
+        linehl = "DapStopped",
+        numhl = "",
+      })
     end,
   },
 

@@ -230,7 +230,7 @@ return {
         lualine_c = { status_mode, search_result },
         lualine_x = { filesize },
         lualine_y = { spaces, filetype },
-        lualine_z = { updated_plugin ,location },
+        lualine_z = { updated_plugin, location },
       },
       tabline = {},
       winbar = {},

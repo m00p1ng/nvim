@@ -19,13 +19,13 @@ return {
 
     dashboard.section.header.val = vim.split(logo, "\n")
     dashboard.section.buttons.val = {
-      dashboard.button("f", icons.documents.Files ..          "  Find file",    "<cmd>lua require('utils').project_files()<cr>"),
-      dashboard.button("e", icons.documents.NewFile ..        "  New file",     ":ene <BAR> startinsert<cr>"),
-      dashboard.button("r", icons.ui.History ..               "  Recent files", "<cmd>Telescope oldfiles<cr>"),
-      dashboard.button("t", icons.ui.List ..                  "  Find text",    "<cmd>Telescope live_grep<cr>"),
-      dashboard.button("c", icons.ui.Gear ..                  "  Config",       "<cmd>e ~/.config/nvim/init.lua<cr>"),
-      dashboard.button("u", icons.ui.CloudDownload ..         "  Update",       "<cmd>Lazy sync<cr>"),
-      dashboard.button("q", icons.diagnostics.ErrorOutline .. "  Quit",         "<cmd>qa<cr>"),
+      dashboard.button("f", icons.documents.Files .. "  Find file", "<cmd>lua require('utils').project_files()<cr>"),
+      dashboard.button("e", icons.documents.NewFile .. "  New file", ":ene <BAR> startinsert<cr>"),
+      dashboard.button("r", icons.ui.History .. "  Recent files", "<cmd>Telescope oldfiles<cr>"),
+      dashboard.button("t", icons.ui.List .. "  Find text", "<cmd>Telescope live_grep<cr>"),
+      dashboard.button("c", icons.ui.Gear .. "  Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
+      dashboard.button("u", icons.ui.CloudDownload .. "  Update", "<cmd>Lazy sync<cr>"),
+      dashboard.button("q", icons.diagnostics.ErrorOutline .. "  Quit", "<cmd>qa<cr>"),
     }
     for _, button in ipairs(dashboard.section.buttons.val) do
       button.opts.hl_shortcut = "Macro"
