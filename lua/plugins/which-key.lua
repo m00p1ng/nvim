@@ -72,6 +72,7 @@ return {
       O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
       z = { "<cmd>ZenMode<cr>", "Zen" },
       n = { "<cmd>Noice<cr>", "Noice" },
+      N = { "<cmd>NoiceLast<cr>", "Noice" },
 
       p = {
         name = "Lazy",
