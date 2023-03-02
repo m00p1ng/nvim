@@ -64,12 +64,14 @@ return {
     local mappings = {
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-      q = { "<cmd>lua require('utils').smart_quit(true)<cr>", "Quit" },
+      q = { "<cmd>q!<cr>", "Quit" },
       Q = { "<cmd>qall!<cr>", "Quit All" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      c = { "<cmd>bdelete<cr>", "Close Buffer" },
+      E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" },
+      c = { "<cmd>bd<cr>", "Close Buffer" },
       O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
       z = { "<cmd>ZenMode<cr>", "Zen" },
+      n = { "<cmd>Noice<cr>", "Noice" },
 
       p = {
         name = "Lazy",

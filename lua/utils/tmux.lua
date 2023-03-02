@@ -32,6 +32,7 @@ M.run_command = function(cmd)
   end
   clear_screen()
   send_command(cmd)
+  select_pane()
 end
 
 return M
