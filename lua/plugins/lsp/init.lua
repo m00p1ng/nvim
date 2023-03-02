@@ -20,7 +20,7 @@ return {
         float = {
           border = "rounded",
           wrap_at = 80,
-          -- source = "always",
+          source = "always",
           header = "",
           -- prefix = "",
         },
@@ -172,6 +172,7 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "black",
       },
       ui = {
         border = "rounded",
@@ -196,4 +197,21 @@ return {
       end
     end,
   },
+
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim" },
+    opts = function()
+      local nls = require "null-ls"
+      return {
+        sources = {
+          -- nls.builtins.formatting.prettierd,
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.flake8,
+          nls.builtins.formatting.black,
+        },
+      }
+    end,
+  }
 }
