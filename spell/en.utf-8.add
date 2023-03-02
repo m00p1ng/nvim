@@ -48,10 +48,11 @@ timestamptz
 tmux
 treesitter
 typeorm
+unittest
 unmarshal
+unshift
 upgrader
 uuid
 websocket
 whitespace
 winbar
-unshift

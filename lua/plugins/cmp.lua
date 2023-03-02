@@ -205,5 +205,14 @@ return {
         { name = "dap" },
       },
     })
+
+    vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+      group = vim.api.nvim_create_augroup("_fix_luasnaip", { clear = true }),
+      callback = function()
+        if luasnip.expand_or_jumpable() then
+          luasnip.unlink_current()
+        end
+      end,
+    })
   end,
 }

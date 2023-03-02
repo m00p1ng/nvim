@@ -32,23 +32,6 @@ autocmd("VimResized", {
   command = "tabdo wincmd =",
 })
 
--- local illuminate_group = augroup("_illuminate", { clear = true })
--- autocmd("VimEnter", {
---   command = "hi link illuminatedWord LspReferenceText",
---   group = illuminate_group,
--- })
-
--- local fix_luasnip_group = augroup("_fix_luasnaip", { clear = true })
--- autocmd({ "InsertLeave" }, {
---   callback = function()
---     local luasnip = require "luasnip"
---     if luasnip.expand_or_jumpable() then
---       luasnip.unlink_current()
---     end
---   end,
---   group = fix_luasnip_group,
--- })
-
 autocmd("BufEnter", {
   group = augroup("changed_title", { clear = true }),
   callback = function()
