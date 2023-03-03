@@ -1,6 +1,6 @@
 return {
   "ruifm/gitlinker.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  lazy = true,
   opts = function()
     return {
       opts = {
