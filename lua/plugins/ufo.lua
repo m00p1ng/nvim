@@ -26,6 +26,7 @@ local ftMap = {
   dapui_breakpoints = "",
   dapui_scopes = "",
   dapui_hover = "",
+  ["neo-tree"] = "",
   ["dap-repl"] = "",
 }
 

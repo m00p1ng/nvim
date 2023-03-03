@@ -27,6 +27,8 @@ M.ui_filetypes = {
   "neotest-summary",
   "noice",
   "startuptime",
+  "neo-tree",
+  "neo-tree-popup",
 }
 
 function M.clear_prompt()

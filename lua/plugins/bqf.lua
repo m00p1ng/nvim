@@ -1,7 +1,3 @@
-vim.cmd [[
-  hi BqfPreviewBorder guifg=#50a14f
-]]
-
 return {
   "kevinhwang91/nvim-bqf",
   event = "VeryLazy",
