@@ -133,7 +133,6 @@ return {
     local spaces = {
       function()
         local buf_ft = vim.bo.filetype
-
         local ui_filetypes = require("utils").ui_filetypes
 
         if contains(ui_filetypes, buf_ft) then

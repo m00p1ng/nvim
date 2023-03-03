@@ -29,6 +29,7 @@ M.ui_filetypes = {
   "startuptime",
   "neo-tree",
   "neo-tree-popup",
+  "DressingInput",
 }
 
 function M.clear_prompt()
