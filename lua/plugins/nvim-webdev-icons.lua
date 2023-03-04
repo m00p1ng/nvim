@@ -40,12 +40,12 @@ return {
         color = "#e24329",
         name = "GitModules",
       },
-      ["spec.ts"] = {
+      ["spec.js"] = {
         icon = "",
         color = "#0277bd",
-        name = "TSTest",
+        name = "JSTest",
       },
-      ["test.ts"] = {
+      ["spec.ts"] = {
         icon = "",
         color = "#0277bd",
         name = "TSTest",
@@ -55,20 +55,26 @@ return {
         color = "#0277bd",
         name = "TSTest",
       },
+      ["test.js"] = {
+        icon = "",
+        color = "#0277bd",
+        name = "JSTest",
+      },
+      ["test.ts"] = {
+        icon = "",
+        color = "#0277bd",
+        name = "TSTest",
+      },
       ["test.tsx"] = {
         icon = "",
         color = "#0277bd",
         name = "TSTest",
       },
-      ["spec.js"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "JSTest",
-      },
-      ["test.js"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "JSTest",
+      ["tsx"] = {
+        icon = "",
+        color = "#519aba",
+        cterm_color = "74",
+        name = "Tsx",
       },
       [".dockerignore"] = {
         icon = "",

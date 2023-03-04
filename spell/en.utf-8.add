@@ -33,6 +33,7 @@ omitempty
 ormconfig
 postgres
 prisma
+redux
 rxjs
 startswith
 strconv
@@ -41,6 +42,7 @@ supertest
 tabnine
 tbody
 testcases
+textarea
 tfoot
 thead
 timestamp
