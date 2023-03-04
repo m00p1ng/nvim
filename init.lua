@@ -116,7 +116,7 @@ require("lazy").setup("plugins", {
     enabled = true,
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
     notify = false, -- get a notification when new updates are found
-    frequency = 3600, -- check for updates every hour
+    frequency = 86400, -- check for updates every hour
   },
   change_detection = {
     -- automatically check for config file changes and reload the ui
