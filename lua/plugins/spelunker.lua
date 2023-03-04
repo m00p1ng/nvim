@@ -14,7 +14,7 @@ return {
           return
         end
 
-        vim.cmd [[ call spelunker#check_displayed_words() ]]
+        vim.call("spelunker#check_displayed_words")
       end,
       group = vim.api.nvim_create_augroup("_spelunker", { clear = true }),
     })

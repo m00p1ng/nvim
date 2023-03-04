@@ -5,6 +5,7 @@ autocmd
 axios
 bcrypt
 blockchain
+builtins
 coinbase
 colorscheme
 diffview

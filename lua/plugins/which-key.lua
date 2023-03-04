@@ -125,6 +125,7 @@ return {
         N = { "<cmd>Telescope notify theme=dropdown<cr>", "Notify" },
         V = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
         j = { "<cmd>Telescope jumplist<cr>", "Jump list" },
+        o = { "<cmd>Telescope symbols<cr>", "Symbols" },
       },
 
       g = {

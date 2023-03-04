@@ -5,6 +5,7 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
     { "ThePrimeagen/refactoring.nvim", lazy = true },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-symbols.nvim", lazy = true },
   },
   opts = function()
     local icons = require "utils.icons"
@@ -174,6 +175,9 @@ return {
           theme = "ivy",
         },
         filetypes = {
+          theme = "dropdown",
+        },
+        symbols = {
           theme = "dropdown",
         },
       },
