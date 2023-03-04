@@ -58,3 +58,16 @@ autocmd("User", {
     require "utils.winbar"
   end,
 })
+
+-- show cursor line only in active window
+local cursorGrp = augroup("CursorLine", { clear = true })
+autocmd({ "InsertLeave", "WinEnter" }, {
+  pattern = "*",
+  command = "set cursorline",
+  group = cursorGrp,
+})
+autocmd({ "InsertEnter", "WinLeave" }, {
+  pattern = "*",
+  command = "set nocursorline",
+  group = cursorGrp,
+})
