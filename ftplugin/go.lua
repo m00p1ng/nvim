@@ -62,3 +62,27 @@ dap.configurations.go = {
     processId = require("dap.utils").pick_process,
   },
 }
+
+if require("utils").has "gopher.nvim" then
+  local which_key = require "which-key"
+  local opts = {
+    mode = "n", -- NORMAL mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  }
+
+  local mappings = {
+    m = {
+      name = "Golang",
+      t = { "<cmd>GoTagAdd<cr>", "Tag Add" },
+      T = { "<cmd>GoTagRm<cr>", "Tag remove" },
+      m = { "<cmd>GoMod tidy<cr>", "Mod tidy" },
+      c = { "<cmd>GoCmt<cr>", "Comment" },
+    },
+  }
+
+  which_key.register(mappings, opts)
+end
