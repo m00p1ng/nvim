@@ -68,8 +68,6 @@ return {
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
       q = { "<cmd>q!<cr>", "Quit" },
       Q = { "<cmd>qall!<cr>", "Quit All" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" },
       c = { "<cmd>bd<cr>", "Close Buffer" },
       O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
       z = { "<cmd>ZenMode<cr>", "Zen" },
@@ -180,6 +178,14 @@ return {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
       },
     }
+
+    if f.has "nvim-tree.lua" then
+      n_mappings.e = { "<cmd>NvimTreeToggle<cr>", "Explorer" }
+      n_mappings.E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" }
+    elseif f.has "neo-tree.nvim" then
+      n_mappings.e = { "<cmd>Neotree toggle<cr>", "Explorer" }
+      n_mappings.E = { "<cmd>Neotree focus<cr>", "Focus Explorer" }
+    end
 
     if f.has "neotest" then
       n_mappings.t = {

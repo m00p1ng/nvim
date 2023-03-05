@@ -63,7 +63,8 @@ return {
         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
         -- then these will never be used.
         default = "",
-        highlight = "NeoTreeFileIcon",
+        -- highlight = "NeoTreeFileIcon",
+        highlight = "NeoTreeFileName",
       },
       modified = {
         symbol = "",
@@ -107,11 +108,14 @@ return {
         ["<esc>"] = "revert_preview",
         ["P"] = { "toggle_preview", config = { use_float = true } },
         ["l"] = "focus_preview",
-        ["S"] = "open_split",
-        ["s"] = "open_vsplit",
+        ["S"] = "",
+        ["s"] = "",
+        ["<c-x>"] = "open_split",
+        ["<c-v>"] = "open_vsplit",
         -- ["S"] = "split_with_window_picker",
         -- ["s"] = "vsplit_with_window_picker",
-        ["t"] = "open_tabnew",
+        ["t"] = "",
+        ["<c-t>"] = "open_tabnew",
         -- ["<cr>"] = "open_drop",
         -- ["t"] = "open_tab_drop",
         ["w"] = "open_with_window_picker",
@@ -155,7 +159,7 @@ return {
         visible = false, -- when true, they will just be displayed differently than normal items
         hide_dotfiles = false,
         hide_gitignored = false,
-        hide_hidden = false, -- only works on Windows for hidden files/directories
+        hide_hidden = true, -- only works on Windows for hidden files/directories
         hide_by_name = {
           --"node_modules"
           ".git",
@@ -187,8 +191,10 @@ return {
       -- instead of relying on nvim autocmd events.
       window = {
         mappings = {
-          ["<bs>"] = "navigate_up",
-          ["."] = "set_root",
+          ["<bs>"] = "",
+          ["."] = "",
+          ["-"] = "navigate_up",
+          ["<c-]>"] = "set_root",
           ["H"] = "toggle_hidden",
           ["/"] = "fuzzy_finder",
           ["D"] = "fuzzy_finder_directory",
@@ -200,6 +206,27 @@ return {
           ["]g"] = "next_git_modified",
         },
       },
+      components = {
+        name = function(config, node, state)
+          local name = node.name
+         local highlight = config.highlight
+          if node:get_depth() == 1 then
+            local paths = vim.split(node.name, "/", { plain = true })
+            name = paths[#paths]
+          else
+            if config.use_git_status_colors == nil or config.use_git_status_colors then
+              local git_status = state.components.git_status({}, node, state)
+              if git_status and git_status.highlight then
+                highlight = git_status.highlight
+              end
+            end
+          end
+          return {
+            text = name,
+            highlight = highlight,
+          }
+        end,
+      },
     },
     buffers = {
       follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -210,7 +237,7 @@ return {
         mappings = {
           ["bd"] = "buffer_delete",
           ["<bs>"] = "navigate_up",
-          ["."] = "set_root",
+          ["<c-]>"] = "set_root",
         },
       },
     },

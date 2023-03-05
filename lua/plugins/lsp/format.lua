@@ -38,7 +38,7 @@ function M.format()
 end
 
 function M.on_attach(client, buf)
-  -- dont format if client disabled it
+  -- don't format if client disabled it
   if
     client.config
     and client.config.capabilities
@@ -47,17 +47,17 @@ function M.on_attach(client, buf)
     return
   end
 
-  -- if client.supports_method "textDocument/formatting" then
-  --   vim.api.nvim_create_autocmd("BufWritePre", {
-  --     group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),
-  --     buffer = buf,
-  --     callback = function()
-  --       if M.autoformat then
-  --         M.format()
-  --       end
-  --     end,
-  --   })
-  -- end
+  if client.supports_method "textDocument/formatting" then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),
+      buffer = buf,
+      callback = function()
+        if M.autoformat then
+          M.format()
+        end
+      end,
+    })
+  end
 end
 
 return M
