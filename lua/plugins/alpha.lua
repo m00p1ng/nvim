@@ -28,7 +28,7 @@ return {
       dashboard.button("q", icons.diagnostics.ErrorOutline .. "  Quit", "<cmd>qa<cr>"),
     }
     for _, button in ipairs(dashboard.section.buttons.val) do
-      button.opts.hl_shortcut = "Macro"
+      button.opts.hl_shortcut = "Special"
     end
     dashboard.section.footer.opts.hl = "Type"
     dashboard.section.header.opts.hl = "Include"
