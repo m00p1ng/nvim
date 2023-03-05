@@ -2,16 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
-    -- check if value in table
-    local function contains(t, value)
-      for _, v in pairs(t) do
-        if v == value then
-          return true
-        end
-      end
-      return false
-    end
-
+    local f = require "utils"
     local dark = "#181818"
 
     vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#e8ab53", bg = dark })
@@ -54,10 +45,6 @@ return {
       t = "#bf616a",
     }
 
-    local hide_in_width = function()
-      return vim.o.columns > 100
-    end
-
     local icons = require "utils.icons"
 
     local diagnostics = {
@@ -86,8 +73,6 @@ return {
     local filetype = {
       "filetype",
       fmt = function(str)
-        local ui_filetypes = require("utils").ui_filetypes
-
         local return_val = function(str)
           return hl_str(str, "SLFiletype")
         end
@@ -96,7 +81,7 @@ return {
           return return_val(icons.ui.Telescope)
         end
 
-        if contains(ui_filetypes, str) or str == "" then
+        if f.is_ui_filetype(str) or str == "" then
           return ""
         else
           return return_val(str)
@@ -133,9 +118,8 @@ return {
     local spaces = {
       function()
         local buf_ft = vim.bo.filetype
-        local ui_filetypes = require("utils").ui_filetypes
 
-        if contains(ui_filetypes, buf_ft) then
+        if f.is_ui_filetype(buf_ft) then
           return ""
         end
 
@@ -160,9 +144,8 @@ return {
     local filesize = {
       function()
         local buf_ft = vim.bo.filetype
-        local ui_filetypes = require("utils").ui_filetypes
 
-        if contains(ui_filetypes, buf_ft) then
+        if f.is_ui_filetype(buf_ft) then
           return ""
         end
 
@@ -218,7 +201,9 @@ return {
         theme = "darkplus_dark",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        disabled_filetypes = { "alpha", "dashboard" },
+        disabled_filetypes = {
+          statusline = { "alpha", "dashboard" },
+        },
         always_divide_middle = true,
       },
       sections = {

@@ -32,6 +32,10 @@ M.ui_filetypes = {
   "DressingInput",
 }
 
+function M.is_ui_filetype(value)
+  return vim.tbl_contains(M.ui_filetypes, value)
+end
+
 function M.clear_prompt()
   vim.api.nvim_command "normal! :<cr>"
 end

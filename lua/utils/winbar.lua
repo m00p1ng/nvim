@@ -65,7 +65,6 @@ end
 
 local excludes = function()
   local filetype = vim.bo.filetype
-  local winbar_filetype_exclude = f.ui_filetypes
 
   local extra_includes = {
     "dapui_hover",
@@ -80,7 +79,7 @@ local excludes = function()
     return false
   end
 
-  if vim.tbl_contains(winbar_filetype_exclude, filetype) then
+  if f.is_ui_filetype(filetype) then
     local extension = vim.fn.expand "%:e"
 
     if extension == "" then
