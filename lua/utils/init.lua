@@ -31,7 +31,6 @@ M.ui_filetypes = {
   "neo-tree",
   "neo-tree-popup",
   "DressingInput",
-  "gitcommit",
 }
 
 function M.is_ui_filetype(value, opts)

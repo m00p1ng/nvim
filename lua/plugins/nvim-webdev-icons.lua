@@ -1,5 +1,3 @@
-local icons = require "utils.icons"
-
 return {
   "nvim-tree/nvim-web-devicons",
   lazy = true,

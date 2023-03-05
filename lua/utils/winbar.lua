@@ -5,6 +5,8 @@ local M = {}
 
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
+  local full_filename = vim.fn.expand "%"
+  local output_filename = vim.fn.expand "%:~:."
   local extension = vim.fn.expand "%:e"
 
   if f.is_empty(filename) then
@@ -27,6 +29,11 @@ M.get_filename = function()
     file_icon_color = ""
   end
 
+  if vim.startswith(full_filename, "diffview") then
+    filename = vim.split(full_filename, ".git", { plain = true })[2]
+    output_filename = "diffview:" .. filename
+  end
+
   local hl_filename = ""
   if f.get_buf_option "modified" then
     hl_filename = "%#NvimTreeFileDirty#"
@@ -38,7 +45,7 @@ M.get_filename = function()
     hl_filename = "%#NavicText#"
   end
 
-  return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand "%:~:." .. "%*"
+  return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. output_filename .. "%*"
 end
 
 local get_location = function()
