@@ -181,7 +181,7 @@ return {
       },
     }
 
-    if f.has('neotest') then
+    if f.has "neotest" then
       n_mappings.t = {
         name = "Test",
         O = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Open Summary" },

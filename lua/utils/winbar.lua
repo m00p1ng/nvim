@@ -7,87 +7,76 @@ M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local extension = vim.fn.expand "%:e"
 
-  if not f.is_empty(filename) then
-    local file_icon, file_icon_color =
-      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
-
-    local hl_group = "FileIconColor" .. extension
-
-    vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
-    if f.is_empty(file_icon) then
-      file_icon = icons.kind.File
-      file_icon_color = ""
-    end
-
-    if vim.startswith(filename, "DAP") then
-      file_icon = icons.ui.Bug
-      file_icon_color = ""
-    end
-
-    local hl_filename = ""
-    if f.get_buf_option "modified" then
-      hl_filename = "%#NvimTreeFileDirty#"
-      file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
-    elseif f.get_buf_option "readonly" then
-      hl_filename = "%#LspDiagnosticsSignError#"
-      file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Lock .. "%*"
-    else
-      hl_filename = "%#NavicText#"
-    end
-
-    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand "%:~:." .. "%*"
-  end
-
-  local buf_number = vim.api.nvim_buf_get_number(0)
-  if 1 == vim.fn.buflisted(buf_number) then
+  if f.is_empty(filename) then
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
   end
+
+  local file_icon, file_icon_color =
+    require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+
+  local hl_group = "FileIconColor" .. extension
+
+  vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
+  if f.is_empty(file_icon) then
+    file_icon = icons.kind.File
+    file_icon_color = ""
+  end
+
+  if vim.startswith(filename, "DAP") then
+    file_icon = icons.ui.Bug
+    file_icon_color = ""
+  end
+
+  local hl_filename = ""
+  if f.get_buf_option "modified" then
+    hl_filename = "%#NvimTreeFileDirty#"
+    file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Circle .. "%*"
+  elseif f.get_buf_option "readonly" then
+    hl_filename = "%#LspDiagnosticsSignError#"
+    file_icon = "%#NvimTreeFileDirty#" .. icons.ui.Lock .. "%*"
+  else
+    hl_filename = "%#NavicText#"
+  end
+
+  return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. vim.fn.expand "%:~:." .. "%*"
 end
 
-local get_gps = function()
-  local gps = require "nvim-navic"
-
-  if not gps.is_available() then
+local get_location = function()
+  local navic = require "nvim-navic"
+  if not navic.is_available() then
     return ""
   end
 
-  local gps_location = gps.get_location()
-  if gps_location == "error" then
+  local location = navic.get_location()
+  if f.is_empty(location) then
     return ""
   end
 
-  if not f.is_empty(gps_location) then
-    return "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. gps_location
-  else
-    return ""
-  end
+  return "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. location
 end
 
 local excludes = function()
   local filetype = vim.bo.filetype
 
   local extra_includes = {
-    "dapui_hover",
-    "dap-repl",
+    "dapui_watches",
+    "dapui_stacks",
+    "dapui_breakpoints",
+    "dapui_scopes",
   }
 
   if vim.tbl_contains(extra_includes, filetype) then
-    return true
+    return false
   end
 
-  if vim.startswith(filetype, "dap") then
+  local buf_number = vim.api.nvim_get_current_buf()
+  if 1 == vim.fn.buflisted(buf_number) then
     return false
   end
 
   if f.is_ui_filetype(filetype) then
-    local extension = vim.fn.expand "%:e"
-
-    if extension == "" then
-      vim.opt_local.winbar = nil
-      return true
-    else
-      return false
-    end
+    vim.opt_local.winbar = nil
+    return true
   end
   return false
 end
@@ -99,7 +88,7 @@ M.get_winbar = function()
   local value = M.get_filename()
 
   if not f.is_empty(value) then
-    local gps_value = get_gps()
+    local gps_value = get_location()
     value = value .. " " .. gps_value .. "%<"
   end
 
@@ -115,7 +104,7 @@ M.get_winbar = function()
     end
   end
 
-  vim.api.nvim_set_option_value("winbar", value, { scope = "local" })
+  pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
 end
 
 M.create_winbar = function()
@@ -135,7 +124,5 @@ M.create_winbar = function()
     end,
   })
 end
-
-M.create_winbar()
 
 return M

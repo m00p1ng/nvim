@@ -11,6 +11,7 @@ M.ui_filetypes = {
   "NeogitCommitPopup",
   "NeogitCommitMessage",
   "NeogitConsole",
+  "NeogitNotification",
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Outline",
@@ -30,6 +31,7 @@ M.ui_filetypes = {
   "neo-tree",
   "neo-tree-popup",
   "DressingInput",
+  "gitcommit",
 }
 
 function M.is_ui_filetype(value, opts)

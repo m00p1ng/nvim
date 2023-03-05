@@ -55,7 +55,7 @@ autocmd("User", {
   group = augroup("winbar", { clear = true }),
   pattern = "VeryLazy",
   callback = function()
-    require "utils.winbar"
+    require("utils.winbar").create_winbar()
   end,
 })
 
