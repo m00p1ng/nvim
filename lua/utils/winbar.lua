@@ -47,12 +47,12 @@ end
 local get_gps = function()
   local gps = require "nvim-navic"
 
-  local status_ok, gps_location = pcall(gps.get_location, {})
-  if not status_ok then
+  if not gps.is_available() then
     return ""
   end
 
-  if not gps.is_available() or gps_location == "error" then
+  local gps_location = gps.get_location()
+  if gps_location == "error" then
     return ""
   end
 
@@ -115,30 +115,23 @@ M.get_winbar = function()
     end
   end
 
-  local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
-  if not status_ok then
-    return
-  end
+  vim.api.nvim_set_option_value("winbar", value, { scope = "local" })
 end
 
 M.create_winbar = function()
-  vim.api.nvim_create_augroup("_winbar", {})
   vim.api.nvim_create_autocmd({
     "CursorMoved",
     "CursorMovedI",
     "CursorHold",
     "BufWinEnter",
-    -- "BufFilePost",
-    -- "InsertEnter",
-    -- "BufWritePost",
-    -- "TabClosed",
+    "BufFilePost",
+    "InsertEnter",
+    "BufWritePost",
+    "TabClosed",
   }, {
-    group = "_winbar",
+    group = vim.api.nvim_create_augroup("_winbar", {}),
     callback = function()
-      local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
-      if not status_ok then
-        M.get_winbar()
-      end
+      M.get_winbar()
     end,
   })
 end
