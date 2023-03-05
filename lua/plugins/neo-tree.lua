@@ -209,7 +209,7 @@ return {
       components = {
         name = function(config, node, state)
           local name = node.name
-         local highlight = config.highlight
+          local highlight = config.highlight
           if node:get_depth() == 1 then
             local paths = vim.split(node.name, "/", { plain = true })
             name = paths[#paths]
