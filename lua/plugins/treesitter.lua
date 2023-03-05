@@ -1,5 +1,12 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  dependencies = {
+    { "nvim-treesitter/playground" },
+    { "nvim-treesitter/nvim-treesitter-textobjects" },
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    { "windwp/nvim-ts-autotag" },
+    { "Wansmer/treesj" },
+  },
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   keys = {
@@ -10,10 +17,7 @@ return {
     ensure_installed = {
       "bash",
       "c",
-      "gitattributes",
       "gitcommit",
-      "gitignore",
-      "go",
       "help",
       "html",
       "javascript",
@@ -27,7 +31,6 @@ return {
       "tsx",
       "typescript",
       "vim",
-      "vue",
       "yaml",
     },
     sync_install = false,
@@ -132,11 +135,4 @@ return {
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
   end,
-  dependencies = {
-    { "nvim-treesitter/playground" },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
-    { "windwp/nvim-ts-autotag" },
-    { "Wansmer/treesj" },
-  },
 }

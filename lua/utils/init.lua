@@ -32,7 +32,19 @@ M.ui_filetypes = {
   "DressingInput",
 }
 
-function M.is_ui_filetype(value)
+function M.is_ui_filetype(value, opts)
+  opts = opts or {}
+  local include = opts.include
+  local exclude = opts.exclude
+
+  if include ~= nil then
+    return vim.tbl_contains(include, value)
+  end
+
+  if exclude ~= nil then
+    return not vim.tbl_contains(exclude, value)
+  end
+
   return vim.tbl_contains(M.ui_filetypes, value)
 end
 

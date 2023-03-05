@@ -50,9 +50,11 @@ return {
       v = { "j", "k" },
     },
   },
-  config = function(_, option)
+  config = function(_, opts)
     local which_key = require "which-key"
-    local opts = {
+    local f = require "utils"
+
+    local n_opts = {
       mode = "n",
       prefix = "<leader>",
       buffer = nil,
@@ -61,7 +63,7 @@ return {
       nowait = true,
     }
 
-    local mappings = {
+    local n_mappings = {
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
       b = { "<cmd>Telescope buffers<cr>", "Buffers" },
       q = { "<cmd>q!<cr>", "Quit" },
@@ -172,7 +174,15 @@ return {
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
       },
 
-      t = {
+      T = {
+        name = "Treesitter",
+        H = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+        p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+      },
+    }
+
+    if f.has('neotest') then
+      n_mappings.t = {
         name = "Test",
         O = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Open Summary" },
         o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Show Output" },
@@ -183,14 +193,8 @@ return {
         f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "Run File" },
         F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "Run File (DAP)" },
         s = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-      },
-
-      T = {
-        name = "Treesitter",
-        H = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-        p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-      },
-    }
+      }
+    end
 
     -- Visual Options
     local v_opts = {
@@ -285,8 +289,8 @@ return {
       n = { "<cmd>lua require('neotest').jump.next({ status = 'failed' })", "Next Failed" },
     }
 
-    which_key.setup(option)
-    which_key.register(mappings, opts)
+    which_key.setup(opts)
+    which_key.register(n_mappings, n_opts)
     which_key.register(backslash_mappings, backslash_opts)
     which_key.register(v_mappings, v_opts)
     which_key.register(v_backslash_mappings, v_backslash_opts)
