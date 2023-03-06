@@ -77,9 +77,11 @@ if require("utils").has "gopher.nvim" then
   local mappings = {
     m = {
       name = "Golang",
-      t = { "<cmd>GoTagAdd<cr>", "Tag Add" },
-      T = { "<cmd>GoTagRm<cr>", "Tag remove" },
-      m = { "<cmd>GoMod tidy<cr>", "Mod tidy" },
+      j = { "<cmd>GoTagAdd json<cr>", "Tag Add (JSON)" },
+      J = { "<cmd>GoTagRm json<cr>", "Tag Remove (JSON)" },
+      b = { "<cmd>GoTagAdd bson<cr>", "Tag Add (BSON)" },
+      B = { "<cmd>GoTagRm bson<cr>", "Tag Remove (BSON)" },
+      m = { "<cmd>GoMod tidy<cr>", "Mod Tidy" },
       c = { "<cmd>GoCmt<cr>", "Comment" },
     },
   }

@@ -5,6 +5,7 @@ autocmd
 axios
 bcrypt
 blockchain
+bson
 builtins
 coinbase
 colorscheme
@@ -25,6 +26,7 @@ graphql
 keymap
 keymaps
 kubernetes
+leetcode
 lodash
 mempool
 microservice
@@ -40,6 +42,7 @@ ormconfig
 postgres
 prisma
 promisify
+pyright
 redux
 rxjs
 scrypt

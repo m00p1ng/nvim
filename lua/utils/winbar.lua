@@ -30,8 +30,11 @@ M.get_filename = function()
   end
 
   if vim.startswith(full_filename, "diffview") then
-    filename = vim.split(full_filename, ".git", { plain = true })[2]
-    output_filename = "diffview:" .. filename
+    local paths = vim.split(full_filename, ".git", { plain = true })
+    if #paths >= 2 then
+      filename = paths[2]
+      output_filename = "diffview:/" .. filename
+    end
   end
 
   local hl_filename = ""
@@ -64,6 +67,11 @@ end
 
 local excludes = function()
   local filetype = vim.bo.filetype
+  local full_filename = vim.fn.expand "%"
+
+  if vim.startswith(full_filename, "diffview:/") then
+    return false
+  end
 
   local extra_includes = {
     "dapui_watches",
