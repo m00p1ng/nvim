@@ -5,20 +5,25 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 local snippets = {
   s(
-    "lctest",
+    "lct",
     fmt(
       [[
       import unittest
 
+      __unittest = True
+
+
       class Test(unittest.TestCase):
+          solution = Solution()
+
           def helper(self, {params}):
-              result = self.{function_name}
+              result = self.solution.{function_name}
               self.assertEqual(result, expected)
 
           def test_1(self):
               self.helper(
-                {user_params},
-                expected = {expected}
+                  {user_params},
+                  expected={expected},
               )
 
 
@@ -28,7 +33,7 @@ local snippets = {
       {
         params = i(1, "params"),
         function_name = i(2, "function_name()"),
-        user_params = i(3, "name = \"test\""),
+        user_params = i(3, "name=\"test\""),
         expected = i(4, "\"expected\""),
       }
     )
