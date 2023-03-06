@@ -1,3 +1,5 @@
+local icons = require "utils.icons"
+
 return {
   -- lspconfig
   {
@@ -59,7 +61,6 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(plugin, opts)
-      local icons = require "utils.icons"
       local signs = {
         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
         { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
@@ -180,9 +181,9 @@ return {
       ui = {
         border = "rounded",
         icons = {
-          package_installed = "◍",
-          package_pending = "◍",
-          package_uninstalled = "◍",
+          package_installed = icons.ui.FilledCircle,
+          package_pending = icons.ui.FilledCircle,
+          package_uninstalled = icons.ui.FilledCircle,
         },
       },
       log_level = vim.log.levels.INFO,

@@ -83,10 +83,10 @@ return {
           modified = false,
         },
         glyphs = {
-          default = "",
+          default = icons.documents.FileWithContent,
           symlink = icons.documents.Symlink,
           bookmark = icons.ui.Fire,
-          modified = "●",
+          modified = icons.ui.Circle,
           folder = {
             arrow_closed = icons.ui.ArrowClosed,
             arrow_open = icons.ui.ArrowOpen,
@@ -104,7 +104,7 @@ return {
             renamed = "➜",
             untracked = "U",
             deleted = icons.git.Remove,
-            ignored = "◌",
+            ignored = icons.ui.DashedCircle,
           },
         },
       },

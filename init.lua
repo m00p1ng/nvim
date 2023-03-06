@@ -15,6 +15,8 @@ require "configs.keymaps"
 require "configs.options"
 require "configs.autocmds"
 
+local icons = require"utils.icons"
+
 require("lazy").setup("plugins", {
   root = vim.fn.stdpath "data" .. "/lazy", -- directory where plugins will be installed
   defaults = {
@@ -57,21 +59,21 @@ require("lazy").setup("plugins", {
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
     border = "rounded",
     icons = {
-      cmd = " ",
-      config = "",
-      event = "",
-      ft = " ",
-      init = " ",
+      cmd = icons.ui.Terminal .. " ",
+      config = icons.ui.Gear .. " ",
+      event = icons.kind.Event .. " ",
+      ft = icons.documents.File .. " ",
+      init = icons.ui.Gear .. " ",
       import = " ",
-      keys = " ",
-      lazy = "󰒲 ",
-      loaded = "●",
-      not_loaded = "○",
-      plugin = " ",
+      keys = icons.misc.Keyboard .. " ",
+      lazy = icons.misc.Lazy .. " ",
+      loaded = icons.ui.Circle .. " ",
+      not_loaded = icons.ui.UnfilledCircle .. " ",
+      plugin = icons.misc.Package .. " ",
       runtime = " ",
-      source = " ",
-      start = "",
-      task = "✔ ",
+      source = icons.ui.Code .. " ",
+      start = icons.debug.Start .. " ",
+      task = icons.ui.Check .. " ",
       list = {
         "●",
         "➜",

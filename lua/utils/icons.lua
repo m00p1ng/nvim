@@ -42,6 +42,7 @@ return {
   },
   documents = {
     File = "",
+    FileWithContent = "",
     Files = "",
     NewFile = "",
     Symlink = "",
@@ -69,6 +70,9 @@ return {
     Lock = "",
     SmallCircle = "",
     Circle = "●",
+    FilledCircle = "◍",
+    UnfilledCircle = "○",
+    DashedCircle = "◌",
     BigCircle = "",
     BigUnfilledCircle = "",
     Close = "",
@@ -133,5 +137,7 @@ return {
     Package = "",
     CircuitBoard = "",
     Lightning = "",
+    Keyboard = "",
+    Lazy = "󰒲",
   },
 }

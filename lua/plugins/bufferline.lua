@@ -1,3 +1,5 @@
+local icons = require ("utils.icons")
+
 return {
   "akinsho/bufferline.nvim",
   dependencies = {
@@ -17,11 +19,11 @@ return {
         icon = "▎", -- this should be omitted if indicator style is not 'icon'
         style = "icon", -- "icon" | "underline" | "none",
       },
-      buffer_close_icon = "",
-      modified_icon = "●",
-      close_icon = "",
-      left_trunc_marker = "",
-      right_trunc_marker = "",
+      buffer_close_icon = icons.ui.Close,
+      modified_icon = icons.ui.Circle,
+      close_icon = icons.ui.TickClose,
+      left_trunc_marker = icons.ui.LeftArrow,
+      right_trunc_marker = icons.ui.RightArrow,
       --- name_formatter can be used to change the buffer's label in the bufferline.
       --- Please note some names can/will break the
       --- bufferline so use this at your discretion knowing that it has

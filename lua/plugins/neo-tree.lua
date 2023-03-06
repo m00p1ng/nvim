@@ -62,7 +62,7 @@ return {
         folder_empty = icons.documents.EmptyFolder,
         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
         -- then these will never be used.
-        default = "",
+        default = icons.documents.FileWithContent,
         -- highlight = "NeoTreeFileIcon",
         highlight = "NeoTreeFileName",
       },
@@ -84,7 +84,7 @@ return {
           renamed = "", -- this can only be used in the git_status source
           -- Status type
           untracked = "U",
-          ignored = "◌",
+          ignored = icons.ui.DashedCircle,
           unstaged = icons.ui.SmallCircle,
           staged = "S",
           conflict = icons.git.Merge,
