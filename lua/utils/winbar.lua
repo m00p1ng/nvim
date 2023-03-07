@@ -69,6 +69,10 @@ local excludes = function()
   local filetype = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
+  if filetype == "dap-repl" then
+    return true
+  end
+
   if vim.startswith(full_filename, "diffview:/") then
     return false
   end
@@ -90,9 +94,7 @@ local excludes = function()
   end
 
   if f.is_ui_filetype(filetype) then
-    if filetype == "dap-repl" then
-      vim.opt_local.winbar = nil
-    end
+    vim.opt_local.winbar = nil
     return true
   end
   return false

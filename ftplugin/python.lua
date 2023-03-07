@@ -1,6 +1,8 @@
 local dap_python = require "dap-python"
 
-dap_python.setup()
+local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
+
+dap_python.setup(installation_path .. "/debugpy/venv/bin/python")
 
 local which_key = require "which-key"
 
