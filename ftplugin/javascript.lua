@@ -1,11 +1,21 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("_js_eslint_fix", { clear = true }),
+  group = vim.api.nvim_create_augroup("js_eslint_fix", { clear = true }),
   pattern = { "*.js" },
   command = "silent! EslintFixAll",
 })
 
 local dap = require "dap"
 local dap_vscode_js = require "dap-vscode-js"
+vim.keymap.set("n", "<leader>dl", function()
+  require('dap.ext.vscode').load_launchjs(nil, {
+    ['pwa-node'] = {
+      'javascript',
+    },
+    ['pwa-chrome'] = {
+      'javascript',
+    }
+  })
+end, { noremap = true, silent = true })
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
@@ -25,6 +35,20 @@ dap.configurations.javascript = {
   {
     name = "Launch",
     type = "pwa-node",
+    request = "launch",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+  },
+  {
+    name = "Attach",
+    type = "pwa-chrome",
+    request = "attach",
+    port = 9229,
+    cwd = "${workspaceFolder}",
+  },
+  {
+    name = "Launch",
+    type = "pwa-chrome",
     request = "launch",
     program = "${file}",
     cwd = "${workspaceFolder}",

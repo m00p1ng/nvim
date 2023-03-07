@@ -1,44 +1,27 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("ts_eslint_fix", { clear = true }),
-  pattern = { "*.ts" },
+  group = vim.api.nvim_create_augroup("tsx_eslint_fix", { clear = true }),
+  pattern = { "*.tsx" },
   command = "silent! EslintFixAll",
 })
 
 local dap = require "dap"
 local dap_vscode_js = require "dap-vscode-js"
 vim.keymap.set("n", "<leader>dl", function()
-  require('dap.ext.vscode').load_launchjs(nil, {
-    ['pwa-node'] = {
-      'typescript',
+  require("dap.ext.vscode").load_launchjs(nil, {
+    ["pwa-chrome"] = {
+      "typescriptreact",
     },
-    ['pwa-chrome'] = {
-      'typescript',
-    }
   })
 end, { noremap = true, silent = true })
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
 dap_vscode_js.setup {
-  adapters = { "pwa-node", "pwa-chrome" },
+  adapters = { "pwa-chrome" },
   debugger_path = installation_path .. "/js-debug-adapter",
 }
 
-dap.configurations.typescript = {
-  {
-    name = "Attach",
-    type = "pwa-node",
-    request = "attach",
-    port = 9229,
-    cwd = "${workspaceFolder}",
-  },
-  {
-    name = "Launch",
-    type = "pwa-node",
-    request = "launch",
-    program = "${file}",
-    cwd = "${workspaceFolder}",
-  },
+dap.configurations.typescriptreact = {
   {
     name = "Attach",
     type = "pwa-chrome",

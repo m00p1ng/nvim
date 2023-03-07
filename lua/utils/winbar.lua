@@ -90,7 +90,9 @@ local excludes = function()
   end
 
   if f.is_ui_filetype(filetype) then
-    vim.opt_local.winbar = nil
+    if filetype == "dap-repl" then
+      vim.opt_local.winbar = nil
+    end
     return true
   end
   return false

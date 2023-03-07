@@ -177,6 +177,9 @@ return {
         "shfmt",
         "flake8",
         "black",
+        "js-debug-adapter",
+        "delve",
+        "debugpy",
       },
       ui = {
         border = "rounded",
