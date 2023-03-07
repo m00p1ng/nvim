@@ -1,6 +1,5 @@
 return {
   "vuki656/package-info.nvim",
-  enabled = false,
   opts = {
     colors = {
       up_to_date = "#3C4048", -- Text color for up to date dependency virtual text
@@ -13,9 +12,9 @@ return {
         outdated = "|  ", -- Icon for outdated dependencies
       },
     },
-    autostart = true, -- Whether to autostart when `package.json` is opened
-    hide_up_to_date = false, -- It hides up to date versions when displaying virtual text
-    hide_unstable_versions = false, -- It hides unstable versions from version list e.g next-11.1.3-canary3
+    autostart = false, -- Whether to autostart when `package.json` is opened
+    hide_up_to_date = true, -- It hides up to date versions when displaying virtual text
+    hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
     -- Can be `npm`, `yarn`, or `pnpm`. Used for `delete`, `install` etc...
     -- The plugin will try to auto-detect the package manager based on
     -- `yarn.lock` or `package-lock.json`. If none are found it will use the
