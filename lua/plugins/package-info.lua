@@ -1,5 +1,6 @@
 return {
   "vuki656/package-info.nvim",
+  lazy = true,
   opts = {
     colors = {
       up_to_date = "#3C4048", -- Text color for up to date dependency virtual text

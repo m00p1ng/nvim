@@ -12,6 +12,7 @@ autocmd("FileType", {
     "dap-repl",
     "startuptime",
     "tsplayground",
+    "neotest-output",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

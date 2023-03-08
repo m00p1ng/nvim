@@ -26,6 +26,7 @@ M.ui_filetypes = {
   "dapui_hover",
   "dap-repl",
   "neotest-summary",
+  "neotest-output",
   "noice",
   "startuptime",
   "neo-tree",

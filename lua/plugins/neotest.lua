@@ -2,6 +2,7 @@ return {
   "nvim-neotest/neotest",
   dependencies = {
     "haydenmeade/neotest-jest",
+    "nvim-neotest/neotest-python",
   },
   lazy = true,
   opts = function()
@@ -14,6 +15,9 @@ return {
           cwd = function()
             return vim.fn.getcwd()
           end,
+        },
+        require "neotest-python" {
+          runner = "unittest",
         },
       },
     }
