@@ -12,7 +12,7 @@ function M.get()
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition" },
       { "K", vim.lsp.buf.hover, desc = "Hover" },
-      { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
+      { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
       { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
       { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
