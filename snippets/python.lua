@@ -29,15 +29,12 @@ if __name__ == '__main__':
 
 local lct_snip = s(
   "lct",
-  fmt(
-    lct_template,
-    {
-      params = i(1, "params"),
-      function_name = i(2, "function_name()"),
-      user_params = i(3, "name=\"test\""),
-      expected = i(4, "\"expected\""),
-    }
-  )
+  fmt(lct_template, {
+    params = i(1, "params"),
+    function_name = i(2, "function_name()"),
+    user_params = i(3, 'name="test"'),
+    expected = i(4, '"expected"'),
+  })
 )
 
 local snippets = {

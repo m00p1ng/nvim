@@ -15,7 +15,7 @@ require "configs.keymaps"
 require "configs.options"
 require "configs.autocmds"
 
-local icons = require"utils.icons"
+local icons = require "utils.icons"
 
 require("lazy").setup("plugins", {
   root = vim.fn.stdpath "data" .. "/lazy", -- directory where plugins will be installed

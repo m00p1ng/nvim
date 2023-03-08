@@ -19,9 +19,9 @@ return {
     local luasnip = require "luasnip"
     local compare = require "cmp.config.compare"
     require("luasnip/loaders/from_vscode").lazy_load()
-    require("luasnip/loaders/from_lua").load({
+    require("luasnip/loaders/from_lua").load {
       paths = vim.fn.stdpath "config" .. "/snippets/",
-    })
+    }
 
     local icons = require "utils.icons"
 

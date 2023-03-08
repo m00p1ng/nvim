@@ -7,13 +7,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 local dap = require "dap"
 local dap_vscode_js = require "dap-vscode-js"
 vim.keymap.set("n", "<leader>dl", function()
-  require('dap.ext.vscode').load_launchjs(nil, {
-    ['pwa-node'] = {
-      'typescript',
+  require("dap.ext.vscode").load_launchjs(nil, {
+    ["pwa-node"] = {
+      "typescript",
     },
-    ['pwa-chrome'] = {
-      'typescript',
-    }
+    ["pwa-chrome"] = {
+      "typescript",
+    },
   })
 end, { noremap = true, silent = true })
 

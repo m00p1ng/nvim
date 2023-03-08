@@ -1,4 +1,4 @@
-local icons = require ("utils.icons")
+local icons = require "utils.icons"
 
 return {
   "akinsho/bufferline.nvim",
