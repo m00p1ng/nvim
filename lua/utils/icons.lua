@@ -139,5 +139,6 @@ return {
     Lightning = "",
     Keyboard = "",
     Lazy = "󰒲",
+    Tabnine = "⌬",
   },
 }

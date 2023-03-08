@@ -71,6 +71,8 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
           else
             fallback()
           end
@@ -83,10 +85,10 @@ return {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
           -- Kind icons
-          vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+          vim_item.kind = kind_icons[vim_item.kind]
 
           if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = icons.misc.Lightning
+            vim_item.kind = icons.debug.Start
             local detail = (entry.completion_item.data or {}).detail
             if detail and detail:find ".*%%.*" then
               vim_item.kind = vim_item.kind .. " " .. detail
@@ -97,6 +99,11 @@ return {
             end
 
             vim_item.kind_hl_group = "CmpItemKindTabnine"
+          end
+
+          if entry.source.name == "lab.quick_data" then
+            vim_item.kind = icons.misc.CircuitBoard
+            vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 
           if entry.source.name == "emoji" then
