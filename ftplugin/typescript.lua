@@ -40,14 +40,14 @@ dap.configurations.typescript = {
     cwd = "${workspaceFolder}",
   },
   {
-    name = "Attach",
+    name = "Attach chrome",
     type = "pwa-chrome",
     request = "attach",
     port = 9229,
     cwd = "${workspaceFolder}",
   },
   {
-    name = "Launch",
+    name = "Launch chrome",
     type = "pwa-chrome",
     request = "launch",
     program = "${file}",
