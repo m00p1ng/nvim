@@ -8,11 +8,7 @@ return {
       sort = true,
       run_on_every_keystroke = true,
       snippet_placeholder = "..",
-      ignored_file_types = {
-        -- default is not to ignore
-        ["dap-repl"] = true,
-        dapui_watches = true,
-      },
+      ignored_file_types = require("utils").ui_filetypes,
       show_prediction_strength = true,
     },
   },
@@ -22,7 +18,7 @@ return {
     build = "./dl_binaries.sh",
     opts = {
       disable_auto_comment = true,
-      accept_keymap = "<Tab>",
+      accept_keymap = "<C-F>",
       dismiss_keymap = "<C-]>",
       debounce_ms = 800,
       suggestion_color = { gui = "#808080", cterm = 244 },

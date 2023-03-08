@@ -73,10 +73,6 @@ local excludes = function()
     return true
   end
 
-  if vim.startswith(full_filename, "diffview:/") then
-    return false
-  end
-
   local extra_includes = {
     "dapui_watches",
     "dapui_stacks",
@@ -90,6 +86,11 @@ local excludes = function()
 
   local buf_number = vim.api.nvim_get_current_buf()
   if 1 == vim.fn.buflisted(buf_number) then
+    return false
+  end
+
+  -- diffview://null case
+  if filetype == "" and vim.startswith(full_filename, "diffview://") then
     return false
   end
 
@@ -133,6 +134,7 @@ M.create_winbar = function()
     "CursorHold",
     "BufWinEnter",
     "BufFilePost",
+    "BufRead",
     "InsertEnter",
     "BufWritePost",
     "TabClosed",
