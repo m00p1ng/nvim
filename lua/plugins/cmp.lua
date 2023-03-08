@@ -9,7 +9,6 @@ return {
     "hrsh7th/cmp-emoji",
     "hrsh7th/cmp-cmdline",
     "rcarriga/cmp-dap",
-    { "tzachar/cmp-tabnine", build = "./install.sh" },
 
     "L3MON4D3/LuaSnip", --snippet engine
     "rafamadriz/friendly-snippets", -- a bunch of snippets to use
