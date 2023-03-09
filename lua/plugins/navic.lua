@@ -34,7 +34,7 @@ return {
     },
     highlight = true,
     separator = " " .. icons.ui.ChevronRight .. " ",
-    depth_limit = 0,
+    depth_limit = 5,
     depth_limit_indicator = "..",
   },
   init = function()
