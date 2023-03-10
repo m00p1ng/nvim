@@ -85,7 +85,7 @@ local excludes = function()
   end
 
   local buf_number = vim.api.nvim_get_current_buf()
-  if 1 == vim.fn.buflisted(buf_number) then
+  if 1 == vim.fn.buflisted(buf_number) and filetype ~= "NeogitCommitMessage" and filetype ~= "NeogitCommitPopup" then
     return false
   end
 
