@@ -9,6 +9,7 @@ return {
       "rcarriga/nvim-dap-ui",
       { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
       { "mfussenegger/nvim-dap-python", ft = "python" },
+      { "leoluz/nvim-dap-go", ft = "go" },
     },
     config = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
@@ -64,6 +65,14 @@ return {
           },
           size = 40,
           position = "left", -- Can be "left", "right", "top", "bottom"
+        },
+        {
+          elements = {
+            { id = "repl", size = 0.45 },
+            { id = "console", size = 0.55 },
+          },
+          size = 0.27,
+          position = "bottom",
         },
       },
       controls = {

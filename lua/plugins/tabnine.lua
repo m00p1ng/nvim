@@ -2,7 +2,7 @@ return {
   {
     "tzachar/cmp-tabnine",
     event = "InsertEnter",
-    -- build = "./install.sh",
+    build = "./install.sh",
     opts = {
       max_lines = 1000,
       max_num_results = 20,

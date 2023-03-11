@@ -24,6 +24,7 @@ M.ui_filetypes = {
   "dapui_breakpoints",
   "dapui_scopes",
   "dapui_hover",
+  "dapui_console",
   "dap-repl",
   "neotest-summary",
   "neotest-output",
