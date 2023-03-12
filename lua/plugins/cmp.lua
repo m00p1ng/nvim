@@ -59,7 +59,7 @@ return {
             cmp.select_next_item()
           elseif luasnip.expandable() then
             luasnip.expand()
-          elseif luasnip.expand_or_locally_jumpable() then
+          elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
             fallback()
@@ -210,13 +210,13 @@ return {
       },
     })
 
-    -- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-    --   group = vim.api.nvim_create_augroup("fix_luasnaip", { clear = true }),
-    --   callback = function()
-    --     if luasnip.expand_or_jumpable() then
-    --       luasnip.unlink_current()
-    --     end
-    --   end,
-    -- })
+    vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+      group = vim.api.nvim_create_augroup("fix_luasnaip", { clear = true }),
+      callback = function()
+        if luasnip.expand_or_jumpable() then
+          luasnip.unlink_current()
+        end
+      end,
+    })
   end,
 }
