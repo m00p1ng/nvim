@@ -44,15 +44,4 @@ keymap("v", "p", '"_dP', opts)
 keymap("n", "<cr>", "<cmd>noh<cr>", opts)
 keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
 keymap("n", "*", "*``", opts)
-
-vim.cmd [[
-  function! QuickFixToggle()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-      copen
-    else
-      cclose
-    endif
-  endfunction
-]]
-
-keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
+keymap("n", "<m-q>", "<cmd>copen<cr>", opts)
