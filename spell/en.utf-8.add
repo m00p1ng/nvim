@@ -9,6 +9,7 @@ bson
 builtins
 coinbase
 colorscheme
+concat
 configs
 diffview
 dirname
@@ -23,6 +24,10 @@ filetype
 filetypes
 frontend
 graphql
+heappop
+heappush
+heapq
+ipairs
 keymap
 keymaps
 kubernetes

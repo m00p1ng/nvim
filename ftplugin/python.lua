@@ -22,6 +22,10 @@ local mappings = {
       "<cmd>lua require('utils.tmux').run_command(\"python3 '\" .. vim.fn.expand('%:~:.') .. \"'\")<cr>",
       "Run Tmux",
     },
+    t = {
+      "<cmd>lua require('utils.tmux').run_command(\"python3 '\" .. vim.fn.expand('%:~:.') .. \"'\" .. ' ' .. require('utils.treesitter').get_ref())<cr>",
+      "Run Tmux",
+    },
   },
 }
 
