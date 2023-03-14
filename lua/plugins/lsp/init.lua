@@ -23,7 +23,7 @@ return {
         severity_sort = true,
         float = {
           border = "rounded",
-          wrap_at = 80,
+          -- wrap_at = 80,
           source = "always",
           header = "",
           -- prefix = "",
@@ -136,7 +136,6 @@ return {
         "eslint",
         "golangci_lint_ls",
         "gopls",
-        "grammarly",
         "graphql",
         "html",
         "jsonls",
