@@ -2,6 +2,8 @@ local ts_utils = require'nvim-treesitter.ts_utils'
 
 local M = {}
 
+M.last_ref = nil
+
 local get_line_for_node = function(node)
   local type_patterns = {'class', 'function', 'method'}
   local node_type = node:type()
@@ -31,7 +33,10 @@ function M.get_ref()
     expr = expr:parent()
   end
 
-  return table.concat(lines, '.')
+  local ref = table.concat(lines, '.')
+  M.last_ref = ref
+
+  return ref
 end
 
 return M
