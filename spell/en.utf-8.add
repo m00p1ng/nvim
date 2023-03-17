@@ -18,15 +18,18 @@ dropdown
 dtos
 ecdsa
 entrypoint
+errmap
 eslint
 filesize
 filetype
 filetypes
 frontend
+gomock
 graphql
 heappop
 heappush
 heapq
+httptest
 ipairs
 keymap
 keymaps
@@ -39,6 +42,7 @@ microservices
 mixin
 modules
 mongo
+mongodb
 mooping
 nestjs
 nums
@@ -56,6 +60,7 @@ signout
 signup
 sqlite
 startswith
+stderr
 strconv
 stringify
 supertest
@@ -74,6 +79,7 @@ unittest
 unmarshal
 unshift
 upgrader
+upsert
 uuid
 websocket
 whitelist
