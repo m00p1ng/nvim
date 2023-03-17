@@ -2,10 +2,13 @@ local M = {}
 
 M.ui_filetypes = {
   "alpha",
-  "NvimTree",
   "help",
+  "qf",
   "",
+  "notfile",
+  "quickfix",
   "lazy",
+  "NvimTree",
   "NeogitStatus",
   "NeogitPopup",
   "NeogitCommitPopup",
@@ -15,7 +18,6 @@ M.ui_filetypes = {
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Outline",
-  "qf",
   "TelescopePrompt",
   "lspinfo",
   "mason",

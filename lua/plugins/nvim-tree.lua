@@ -118,10 +118,11 @@ return {
     update_focused_file = {
       enable = true,
       update_root = true,
-      ignore_list = {
-        "/nix/store",
-        "~/.config",
-      },
+      ignore_list = vim.tbl_deep_extend(
+        "force",
+        require('utils').ui_filetypes,
+        { "/nix/store", "~/.config", }
+      ),
     },
     ignore_ft_on_setup = {},
     system_open = {
