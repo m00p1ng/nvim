@@ -105,7 +105,7 @@ return {
 
         local max_length = 30
         if str:len() > max_length then
-          return str:sub(1, max_length) .. "..."
+          return str:sub(1, max_length) .. "…"
         end
 
         return str
