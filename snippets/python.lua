@@ -6,14 +6,13 @@ local fmt = require("luasnip.extras.fmt").fmt
 local lct_template = [[
 import unittest
 
-__unittest = True
+__unittest = True  # pyright: ignore
 
 
 class Test(unittest.TestCase):
-    solution = Solution()
-
     def helper(self, {params}):
-        result = self.solution.{function_name}
+        solution = Solution()
+        result = solution.{function_name}
         self.assertEqual(result, expected)
 
     def test_A1(self):
