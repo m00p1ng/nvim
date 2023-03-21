@@ -7,6 +7,7 @@ bcrypt
 blockchain
 bson
 builtins
+classmethod
 coinbase
 colorscheme
 concat
@@ -63,6 +64,7 @@ signout
 signup
 sqlite
 startswith
+staticmethod
 stderr
 strconv
 stringify

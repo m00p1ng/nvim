@@ -4,21 +4,28 @@ local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 local lct_template = [[
+from typing import List
 import unittest
 
 __unittest = True  # pyright: ignore
 
 
 class Test(unittest.TestCase):
-    def helper(self, {params}):
+    def helper(self, {params}, want):
         solution = Solution()
-        result = solution.{function_name}
-        self.assertEqual(result, expected)
+        got = solution.{function_name}
+        self.assertEqual(got, want)
 
     def test_A1(self):
         self.helper(
             {user_params},
-            expected={expected},
+            want={want},
+        )
+
+    def test_B1(self):
+        self.helper(
+            {user_params},
+            want={want},
         )
 
 
@@ -31,8 +38,8 @@ local lct_snip = s(
   fmt(lct_template, {
     params = i(1, "params"),
     function_name = i(2, "function_name()"),
-    user_params = i(3, 'name="test"'),
-    expected = i(4, '"expected"'),
+    user_params = i(3, 'params="test"'),
+    want = i(4, '"want"'),
   })
 )
 
