@@ -13,6 +13,7 @@ autocmd("FileType", {
     "startuptime",
     "tsplayground",
     "neotest-output",
+    "NeogitGitCommandHistory",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
