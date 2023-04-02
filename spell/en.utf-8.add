@@ -14,6 +14,8 @@ concat
 configs
 cstdio
 deepcopy
+defaultdict
+deque
 diffview
 dirname
 dockerfile
@@ -29,11 +31,14 @@ filetypes
 frontend
 gomock
 graphql
+heapify
 heappop
 heappush
 heapq
 httptest
 ipairs
+isalpha
+isdigit
 keymap
 keymaps
 kubernetes
@@ -51,6 +56,8 @@ nestjs
 nums
 omitempty
 ormconfig
+popleft
+popleft
 postgres
 prisma
 promisify
