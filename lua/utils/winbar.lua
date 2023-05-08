@@ -8,6 +8,7 @@ M.get_filename = function()
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
   local extension = vim.fn.expand "%:e"
+  local buf_ft = vim.bo.filetype
 
   if f.is_empty(filename) then
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
@@ -25,7 +26,15 @@ M.get_filename = function()
   end
 
   if vim.startswith(filename, "DAP") then
-    file_icon = icons.ui.Bug
+    if buf_ft == "dapui_breakpoints" then
+      file_icon = icons.ui.Bug
+    elseif buf_ft == "dapui_stacks" then
+      file_icon = icons.ui.Stacks
+    elseif buf_ft == "dapui_scopes" then
+      file_icon = icons.ui.Scopes
+    elseif buf_ft == "dapui_watches" then
+      file_icon = icons.ui.Watches
+    end
     file_icon_color = ""
   end
 

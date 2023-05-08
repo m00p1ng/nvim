@@ -12,9 +12,6 @@ return {
       ignored_file_types = require("utils").ui_filetypes,
       show_prediction_strength = true,
     },
-    config = function(_, opts)
-      require('cmp_tabnine.config').setup(opts)
-    end
   },
   {
     "codota/tabnine-nvim",
