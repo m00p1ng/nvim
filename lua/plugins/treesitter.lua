@@ -18,7 +18,6 @@ return {
       "bash",
       "c",
       "gitcommit",
-      "help",
       "html",
       "javascript",
       "json",
