@@ -1,7 +1,7 @@
 local icons = require "utils.icons"
 
 return {
-  "TimUntersberger/neogit",
+  "NeogitOrg/neogit",
   cmd = "Neogit",
   opts = {
     disable_signs = false,

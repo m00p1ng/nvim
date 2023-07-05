@@ -11,6 +11,11 @@ return {
         pattern = "%s*%-%-%-%s*(@%w+)",
         hl = "Constant",
       },
+      {
+        filter = { filetype = "go" },
+        pattern = "%s*//%s*(@%w+)",
+        hl = "Constant",
+      },
     },
   },
 }
