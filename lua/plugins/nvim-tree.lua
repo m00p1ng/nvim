@@ -160,6 +160,7 @@ return {
       ignore = false,
       show_on_dirs = true,
       show_on_open_dirs = true,
+      disable_for_dirs = {},
       timeout = 400,
     },
     modified = {
@@ -235,11 +236,7 @@ return {
         trash = true,
       },
     },
-    experimental = {
-      git = {
-        async = false,
-      },
-    },
+    experimental = {},
     log = {
       enable = false,
       truncate = false,
