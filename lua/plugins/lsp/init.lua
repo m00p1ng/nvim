@@ -216,6 +216,7 @@ return {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.black.with { extra_args = { "--fast" } },
           nls.builtins.diagnostics.flake8,
+          nls.builtins.code_actions.ts_node_action,
         },
       }
     end,

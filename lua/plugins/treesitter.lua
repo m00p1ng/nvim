@@ -6,6 +6,7 @@ return {
     { "JoosepAlviste/nvim-ts-context-commentstring" },
     { "windwp/nvim-ts-autotag" },
     { "Wansmer/treesj" },
+    { "ckolkey/ts-node-action" },
   },
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
