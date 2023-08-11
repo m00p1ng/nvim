@@ -164,6 +164,7 @@ return {
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>Mason<cr>", "Installer Info" },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        L = { "<cmd>LspLensToggle<cr>", "Toggle Lens" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
