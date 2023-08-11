@@ -130,7 +130,8 @@ return {
 
       g = {
         name = "Git",
-        l = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
+        -- l = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
+        l = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle Blame" },
         P = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
         r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
         R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
@@ -146,9 +147,9 @@ return {
         h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
         g = { "<cmd>Neogit<cr>", "Neogit" },
         D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
-        w = { "<cmd>lua require('utils').open_git_commit_on_web()<cr>", "Open Commit on Web" },
-        O = { "<cmd>lua require('utils').open_git_project_on_web()<cr>", "Open Project on Web" },
-        p = { "<cmd>lua require('utils').git_previous_change()<cr>", "Diff Previous" },
+        w = { "<cmd>lua require('utils.git').open_git_commit_on_web()<cr>", "Open Commit on Web" },
+        O = { "<cmd>lua require('utils.git').open_git_project_on_web()<cr>", "Open Project on Web" },
+        p = { "<cmd>lua require('utils.git').git_previous_change()<cr>", "Diff Previous" },
         y = {
           "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').system })<cr>",
           "Open line on Web",

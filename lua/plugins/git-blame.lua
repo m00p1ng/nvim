@@ -1,5 +1,6 @@
 return {
   "f-person/git-blame.nvim",
+  enabled = false,
   event = { "BufReadPost", "BufNewFile" },
   config = function()
     vim.g.gitblame_enabled = 1
