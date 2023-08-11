@@ -150,8 +150,12 @@ return {
         O = { "<cmd>lua require('utils').open_git_project_on_web()<cr>", "Open Project on Web" },
         p = { "<cmd>lua require('utils').git_previous_change()<cr>", "Diff Previous" },
         y = {
-          "<cmd>lua require('gitlinker').get_buf_range_url('n', {action_callback = require('gitlinker.actions').open_in_browser})<cr>",
+          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').system })<cr>",
           "Open line on Web",
+        },
+        Y = {
+          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').clipboard })<cr>",
+          "Copy git link to clipboard",
         },
       },
 
@@ -220,8 +224,12 @@ return {
         r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
         s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
         y = {
-          "<cmd>lua require('gitlinker').get_buf_range_url('v', {action_callback = require('gitlinker.actions').open_in_browser})<cr>",
+          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').system })<cr>",
           "Open line on Web",
+        },
+        Y = {
+          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').clipboard })<cr>",
+          "Copy git link to clipboard",
         },
       },
       f = {
