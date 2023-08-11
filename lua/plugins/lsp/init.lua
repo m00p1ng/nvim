@@ -221,4 +221,9 @@ return {
       }
     end,
   },
+
+  {
+    "aznhe21/actions-preview.nvim",
+    enabled = false,
+  },
 }
