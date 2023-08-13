@@ -43,5 +43,5 @@ keymap("v", "p", '"_dP', opts)
 -- Other --
 keymap("n", "<cr>", "<cmd>noh<cr>", opts)
 keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
-keymap("n", "*", "*``", opts)
+keymap("n", "*", "g*``", opts)
 keymap("n", "<m-q>", "<cmd>copen<cr>", opts)
