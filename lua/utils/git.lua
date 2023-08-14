@@ -73,7 +73,7 @@ end
 function M.open_git_commit_on_web()
   local remote_url = get_remote_url()
   local sha = get_git_commit_sha()
-  local commit_path = "/commit/" .. sha
+  local commit_path = "commit/" .. sha
 
   actions.system(remote_url .. '/' .. commit_path)
 end
