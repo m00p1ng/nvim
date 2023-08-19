@@ -9,14 +9,16 @@ return {
     hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    sort_by = "name",
+    sort = {
+      sorter = "name",
+      folders_first = true,
+    },
     root_dirs = {},
     prefer_startup_root = false,
     sync_root_with_cwd = false,
     reload_on_bufenter = false,
     respect_buf_cwd = false,
     on_attach = "default",
-    remove_keymaps = false,
     select_prompts = false,
     view = {
       centralize_selection = false,
@@ -29,10 +31,6 @@ return {
       number = false,
       relativenumber = false,
       signcolumn = "yes",
-      mappings = {
-        custom_only = false,
-        list = {},
-      },
       float = {
         enable = false,
         quit_on_focus_loss = true,
@@ -141,6 +139,7 @@ return {
       },
     },
     filters = {
+      git_ignored = true,
       dotfiles = false,
       git_clean = false,
       no_buffer = false,
@@ -157,7 +156,6 @@ return {
     },
     git = {
       enable = true,
-      ignore = false,
       show_on_dirs = true,
       show_on_open_dirs = true,
       disable_for_dirs = {},
@@ -190,6 +188,7 @@ return {
       },
       open_file = {
         quit_on_open = false,
+        eject = true,
         resize_window = true,
         window_picker = {
           enable = true,
@@ -229,6 +228,7 @@ return {
     },
     notify = {
       threshold = vim.log.levels.INFO,
+      absolute_path = true,
     },
     ui = {
       confirm = {
