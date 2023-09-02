@@ -9,6 +9,7 @@ autocmd("FileType", {
     "man",
     "lspinfo",
     "notify",
+    "query",
     "dap-repl",
     "startuptime",
     "tsplayground",
