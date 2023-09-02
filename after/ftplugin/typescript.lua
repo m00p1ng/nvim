@@ -70,6 +70,13 @@ local mappings = {
   m = {
     name = "Typescript",
     f = { "<cmd>EslintFixAll<Cr>", "FixAll" },
+    r = {
+      function()
+        local cmd = "pnpm exec ts-node '" .. vim.fn.expand "%:~:." .. "'"
+        require("utils.tmux").run_command(cmd)
+      end,
+      "Run",
+    },
   },
 }
 
