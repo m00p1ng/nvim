@@ -100,14 +100,7 @@ return {
       }
 
       local servers = opts.servers
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
+      local capabilities = require("plugins.lsp.keymaps").capabilities
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
