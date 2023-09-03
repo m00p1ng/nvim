@@ -51,7 +51,7 @@ return {
     dev_log = {
       enabled = true,
       notify_errors = false, -- if there is an error whilst running then notify the user
-      open_cmd = "e",        -- command to use to open the log buffer
+      open_cmd = "20sp",        -- command to use to open the log buffer
     },
     dev_tools = {
       autostart = false,         -- autostart devtools server if not detected
@@ -63,7 +63,7 @@ return {
     },
     lsp = {
       color = { -- show the derived colours for dart variables
-        enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+        enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
         background = true, -- highlight the background
         background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 20, g = 17, b = 24},)
         foreground = false, -- highlight the foreground
