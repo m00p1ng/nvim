@@ -139,7 +139,7 @@ return {
       },
     },
     filters = {
-      git_ignored = true,
+      git_ignored = false,
       dotfiles = false,
       git_clean = false,
       no_buffer = false,
@@ -189,7 +189,7 @@ return {
       open_file = {
         quit_on_open = false,
         eject = true,
-        resize_window = true,
+        resize_window = false,
         window_picker = {
           enable = true,
           picker = "default",
