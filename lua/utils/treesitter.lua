@@ -15,7 +15,7 @@ local get_line_for_node = function(node)
     end
   end
   if not is_valid then return '' end
-  return vim.trim(vim.treesitter.query.get_node_text(node:child(1), vim.api.nvim_get_current_buf()) or '')
+  return vim.trim(vim.treesitter.get_node_text(node:child(1), vim.api.nvim_get_current_buf()) or '')
 end
 
 function M.get_ref()
