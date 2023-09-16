@@ -10,13 +10,13 @@ return {
         suggestions = 20,
       },
       presets = {
-        operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-        motions = true, -- adds help for motions
+        operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
+        motions = true,       -- adds help for motions
         text_objects = false, -- help for text objects triggered after entering an operator
-        windows = true, -- default bindings on <c-w>
-        nav = false, -- misc bindings to work with windows
-        z = true, -- bindings for folds, spelling and others prefixed with z
-        g = false, -- bindings for prefixed with g
+        windows = true,       -- default bindings on <c-w>
+        nav = false,          -- misc bindings to work with windows
+        z = true,             -- bindings for folds, spelling and others prefixed with z
+        g = false,            -- bindings for prefixed with g
       },
     },
     icons = {
@@ -271,6 +271,12 @@ return {
     local v_backslash_mappings = {
       e = { ":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<cr>", "Comment" },
       r = { ":lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
+      b = {
+        name = "Base64",
+        e = { ":lua require('decipher').encode_selection('base64')<cr>", "Encode" },
+        d = { ":lua require('decipher').decode_selection('base64')<cr>", "Decode" },
+        p = { ":lua require('decipher').decode_selection('base64', { preview = true })<cr>", "Preview" },
+      },
     }
 
     -- Prev Bracket

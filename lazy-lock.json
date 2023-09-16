@@ -13,6 +13,7 @@
   "cmp-tabnine": { "branch": "main", "commit": "b93f82ef5150e578677fc2e2b4b328b19eed77e1" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "darkplus.nvim": { "branch": "master", "commit": "ef33a353bb63d204576ff59e83a75116c6d1c685" },
+  "decipher.nvim": { "branch": "master", "commit": "f268daac709f1344b3a72b214b5d0bdc124f2a7c" },
   "dial.nvim": { "branch": "master", "commit": "611cf5e84f655c96318b803785f89e3146d8e48f" },
   "diffview.nvim": { "branch": "main", "commit": "7e5a85c186027cab1e825d018f07c350177077fc" },
   "dressing.nvim": { "branch": "master", "commit": "c1e1d5fa44fe08811b6ef4aadac2b50e602f9504" },
