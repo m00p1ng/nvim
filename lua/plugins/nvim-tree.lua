@@ -2,7 +2,7 @@ local icons = require "utils.icons"
 
 return {
   "nvim-tree/nvim-tree.lua",
-  cmd = "NvimTreeToggle",
+  -- cmd = "NvimTreeToggle",
   opts = {
     auto_reload_on_write = true,
     disable_netrw = false,
