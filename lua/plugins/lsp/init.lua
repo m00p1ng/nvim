@@ -19,7 +19,7 @@ return {
         underline = true,
         update_in_insert = true,
         -- virtual_text = { spacing = 4, prefix = "●" },
-        virtual_text = false,
+        virtual_text = true,
         severity_sort = true,
         float = {
           border = "rounded",

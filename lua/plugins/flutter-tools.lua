@@ -39,7 +39,7 @@ return {
     },
     -- flutter_path = "<full/path/if/needed>", -- <-- this takes priority over the lookup
     flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
-    fvm = false,              -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+    fvm = true,              -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
     widget_guides = {
       enabled = true,
     },
@@ -51,7 +51,7 @@ return {
     dev_log = {
       enabled = true,
       notify_errors = false, -- if there is an error whilst running then notify the user
-      open_cmd = "20sp",        -- command to use to open the log buffer
+      open_cmd = "10sp",        -- command to use to open the log buffer
     },
     dev_tools = {
       autostart = false,         -- autostart devtools server if not detected

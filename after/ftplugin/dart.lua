@@ -12,7 +12,7 @@ local opts = {
 local mappings = {
   m = {
     name = "Flutter",
-    m = { "<cmd>Telescope flutter commands<cr>", "Menu" },
+    t = { "<cmd>Telescope flutter commands<cr>", "Menu" },
     f = { "<cmd>Telescope flutter fvm<cr>", "FVM" },
   },
 }

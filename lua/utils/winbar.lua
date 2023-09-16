@@ -78,7 +78,7 @@ local excludes = function()
   local filetype = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
-  if filetype == "dap-repl" then
+  if filetype == "dap-repl" or full_filename == "__FLUTTER_DEV_LOG__" then
     return true
   end
 
