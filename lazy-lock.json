@@ -16,7 +16,7 @@
   "darkplus.nvim": { "branch": "master", "commit": "ef33a353bb63d204576ff59e83a75116c6d1c685" },
   "decipher.nvim": { "branch": "master", "commit": "f268daac709f1344b3a72b214b5d0bdc124f2a7c" },
   "dial.nvim": { "branch": "master", "commit": "611cf5e84f655c96318b803785f89e3146d8e48f" },
-  "diffview.nvim": { "branch": "main", "commit": "da23b9a9b106d95c093444778558061d69e9d111" },
+  "diffview.nvim": { "branch": "main", "commit": "a111d19ccceac6530448d329c63f998f77b5626e" },
   "dressing.nvim": { "branch": "master", "commit": "c1e1d5fa44fe08811b6ef4aadac2b50e602f9504" },
   "f-string-toggle.nvim": { "branch": "main", "commit": "4e2ad79dfc5122dd65515ebbdd671e8ee01d157e" },
   "flutter-tools.nvim": { "branch": "main", "commit": "974859e9fafbff48450a85c0c7f57cb576c53626" },

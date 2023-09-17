@@ -10,11 +10,13 @@ return {
   opts = {
     options = {
       mode = "buffers", -- set to "tabs" to only show tabpages instead
+      -- style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
+      themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
       numbers = "none", -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-      close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-      right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-      left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-      middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+      close_command = "Bdelete! %d", -- can be a string | function, | false see "Mouse actions"
+      right_mouse_command = "Bdelete! %d", -- can be a string | function | false, see "Mouse actions"
+      left_mouse_command = "buffer %d", -- can be a string | function, | false see "Mouse actions"
+      middle_mouse_command = nil, -- can be a string | function, | false see "Mouse actions"
       indicator = {
         icon = "▎", -- this should be omitted if indicator style is not 'icon'
         style = "icon", -- "icon" | "underline" | "none",
@@ -73,11 +75,11 @@ return {
       get_element_icon = nil,
       show_buffer_icons = true, -- true | false, -- disable filetype icons for buffers
       show_buffer_close_icons = true, -- true | false,
-      show_buffer_default_icon = true, -- true | false, -- whether or not an unrecognised filetype should show a default icon
       show_close_icon = true, -- true | false,
       show_tab_indicators = true, -- true | false,
       show_duplicate_prefix = true, -- true | false, -- whether to show duplicate buffer prefix
       persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+      move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
       -- can also be a table containing 2 custom separators
       -- [focused and unfocused]. eg: { '|', '|' }
       separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { "any", "any" },
