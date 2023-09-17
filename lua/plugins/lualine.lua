@@ -188,6 +188,12 @@ return {
       cond = require("noice").api.status.search.has,
     }
 
+    local command = {
+      require("noice").api.status.command.get,
+      cond = require("noice").api.status.command.has,
+      color = { fg = "#ff9e64" },
+    }
+
     local updated_plugin = {
       require("lazy.status").updates,
       cond = require("lazy.status").has_updates,
@@ -210,7 +216,7 @@ return {
         lualine_a = { mode, branch },
         lualine_b = { diagnostics, tabs },
         lualine_c = { status_mode, search_result },
-        lualine_x = { filesize },
+        lualine_x = { command, filesize },
         lualine_y = { spaces, filetype },
         lualine_z = { updated_plugin, location },
       },
