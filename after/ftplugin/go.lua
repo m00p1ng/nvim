@@ -10,7 +10,7 @@ local function org_imports(wait_ms)
   for _, res in pairs(result or {}) do
     for _, r in pairs(res.result or {}) do
       if r.edit then
-        vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+        vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
       else
         vim.lsp.buf.execute_command(r.command)
       end
@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = go_group,
 })
 
-require('dap-go').setup()
+require("dap-go").setup()
 
 if require("utils").has "gopher.nvim" then
   local which_key = require "which-key"
