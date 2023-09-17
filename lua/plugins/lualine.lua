@@ -200,6 +200,26 @@ return {
       color = { fg = "Special" },
     }
 
+    local current_signature = {
+      function()
+        local buf_ft = vim.bo.filetype
+
+        if buf_ft == "TelescopePrompt" then
+          return ""
+        end
+
+        local sig = require("lsp_signature").status_line(30)
+        local hint = sig.hint
+
+        if not require("utils").is_empty(hint) then
+          return "%#SLSeparator# " .. hint .. "%*"
+        end
+
+        return ""
+      end,
+      padding = 0,
+    }
+
     return {
       options = {
         globalstatus = true,
@@ -215,7 +235,7 @@ return {
       sections = {
         lualine_a = { mode, branch },
         lualine_b = { diagnostics, tabs },
-        lualine_c = { status_mode, search_result },
+        lualine_c = { status_mode, search_result, current_signature },
         lualine_x = { command, filesize },
         lualine_y = { spaces, filetype },
         lualine_z = { updated_plugin, location },

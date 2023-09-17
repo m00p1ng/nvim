@@ -127,7 +127,6 @@ return {
         end,
       },
       sources = {
-        { name = "lab.quick_data", keyword_length = 4 },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
@@ -136,6 +135,7 @@ return {
         { name = "path" },
         { name = "emoji" },
         { name = "dap" },
+        { name = "lab.quick_data", keyword_length = 4 },
       },
       sorting = {
         priority_weight = 2,
