@@ -4,6 +4,9 @@ return {
       completion = {
         callSnippet = "Replace",
       },
+      format = {
+        enable = false,
+      },
       diagnostics = {
         globals = { "vim" },
       },

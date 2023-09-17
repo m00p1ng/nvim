@@ -10,13 +10,13 @@ return {
         suggestions = 20,
       },
       presets = {
-        operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
-        motions = true,       -- adds help for motions
+        operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+        motions = true, -- adds help for motions
         text_objects = false, -- help for text objects triggered after entering an operator
-        windows = true,       -- default bindings on <c-w>
-        nav = false,          -- misc bindings to work with windows
-        z = true,             -- bindings for folds, spelling and others prefixed with z
-        g = false,            -- bindings for prefixed with g
+        windows = true, -- default bindings on <c-w>
+        nav = false, -- misc bindings to work with windows
+        z = true, -- bindings for folds, spelling and others prefixed with z
+        g = false, -- bindings for prefixed with g
       },
     },
     icons = {
@@ -165,7 +165,8 @@ return {
         -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Diagnostics" },
         w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
-        f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
+        -- f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
+        f = { "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>Mason<cr>", "Installer Info" },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
