@@ -66,6 +66,7 @@ redux
 rxjs
 scanf
 scrypt
+sharding
 signin
 signout
 signup
