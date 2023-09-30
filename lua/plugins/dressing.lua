@@ -8,13 +8,12 @@ return {
       -- Default prompt string
       default_prompt = "Input:",
       -- Can be 'left', 'right', or 'center'
-      prompt_align = "left",
+      title_pos = "left",
       -- When true, <Esc> will close the modal
       insert_only = true,
       -- When true, input will start in insert mode.
       start_in_insert = true,
       -- These are passed to nvim_open_win
-      anchor = "SW",
       border = "rounded",
       -- 'editor' and 'win' will default to being centered
       relative = "cursor",
@@ -31,6 +30,11 @@ return {
         winblend = 10,
         -- Disable line wrapping
         wrap = false,
+        -- Indicator for when text exceeds window
+        list = true,
+        listchars = "precedes:…,extends:…",
+        -- Increase this for more context when text scrolls off the window
+        sidescrolloff = 0,
       },
       -- Set to `false` to disable
       mappings = {
@@ -71,12 +75,12 @@ return {
           height = 0.4,
         },
       },
-      -- Options for fzf_lua selector
+      -- Options for fzf-lua
       fzf_lua = {
-        winopts = {
-          width = 0.5,
-          height = 0.4,
-        },
+        -- winopts = {
+        --   height = 0.5,
+        --   width = 0.5,
+        -- },
       },
       -- Options for nui Menu
       nui = {
@@ -100,8 +104,9 @@ return {
       },
       -- Options for built-in selector
       builtin = {
+        -- Display numbers for options and set up keymaps
+        show_numbers = true,
         -- These are passed to nvim_open_win
-        anchor = "NW",
         border = "rounded",
         -- 'editor' and 'win' will default to being centered
         relative = "editor",
@@ -109,6 +114,8 @@ return {
         win_options = {
           -- Window transparency (0-100)
           winblend = 10,
+          cursorline = true,
+          cursorlineopt = "both",
         },
         -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
         -- the min_ and max_ options can be a list of mixed types.

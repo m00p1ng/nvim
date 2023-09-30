@@ -27,6 +27,16 @@ keymap("i", ":", ":<c-g>u", opts)
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
+-- ref: https://nanotipsforvim.prose.sh/keeping-your-register-clean-from-dd
+keymap("n", "x", '"_x', opts)
+keymap("n", "dd", function()
+  local cur_line = vim.fn.getline "."
+  if cur_line == "" or #cur_line == 1 then
+    return '"_dd'
+  end
+  return "dd"
+end, { expr = true })
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<cr>", opts)
 keymap("n", "<C-Down>", ":resize +2<cr>", opts)
