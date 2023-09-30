@@ -4,33 +4,33 @@ return {
   "nvim-tree/nvim-tree.lua",
   -- cmd = "NvimTreeToggle",
   opts = {
+    on_attach = "default",
+    hijack_cursor = false,
     auto_reload_on_write = true,
     disable_netrw = false,
-    hijack_cursor = false,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    sort = {
-      sorter = "name",
-      folders_first = true,
-    },
     root_dirs = {},
     prefer_startup_root = false,
     sync_root_with_cwd = false,
     reload_on_bufenter = false,
     respect_buf_cwd = false,
-    on_attach = "default",
     select_prompts = false,
+    sort = {
+      sorter = "name",
+      folders_first = true,
+      files_first = false,
+    },
     view = {
       centralize_selection = false,
       cursorline = true,
       debounce_delay = 15,
-      width = 35,
-      hide_root_folder = false,
       side = "left",
       preserve_window_proportions = false,
       number = false,
       relativenumber = false,
       signcolumn = "yes",
+      width = 35,
       float = {
         enable = false,
         quit_on_focus_loss = true,
@@ -47,12 +47,17 @@ return {
     renderer = {
       add_trailing = false,
       group_empty = false,
-      highlight_git = true,
       full_name = false,
-      highlight_opened_files = "none",
-      highlight_modified = "none",
       root_folder_label = ":t",
       indent_width = 2,
+      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+      symlink_destination = true,
+      highlight_git = true,
+      highlight_diagnostics = false,
+      highlight_opened_files = "none",
+      highlight_modified = "none",
+      highlight_bookmarks = "none",
+      highlight_clipboard = "name",
       indent_markers = {
         enable = true,
         inline_arrows = true,
@@ -65,9 +70,20 @@ return {
         },
       },
       icons = {
-        webdev_colors = true,
+        web_devicons = {
+          file = {
+            enable = true,
+            color = true,
+          },
+          folder = {
+            enable = false,
+            color = true,
+          },
+        },
         git_placement = "after",
         modified_placement = "after",
+        diagnostics_placement = "signcolumn",
+        bookmarks_placement = "signcolumn",
         padding = " ",
         symlink_arrow = " ➛ ",
         show = {
@@ -76,6 +92,8 @@ return {
           folder_arrow = false,
           git = true,
           modified = false,
+          diagnostics = true,
+          bookmarks = true,
         },
         glyphs = {
           default = icons.documents.FileWithContent,
@@ -103,28 +121,33 @@ return {
           },
         },
       },
-      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
-      symlink_destination = true,
     },
     hijack_directories = {
-      enable = false,
-      auto_open = false,
+      enable = true,
+      auto_open = true,
     },
     update_focused_file = {
       enable = true,
-      update_root = true,
+      update_root = false,
       ignore_list = {
         "/nix/store",
         "~/.config",
       },
     },
     system_open = {
-      cmd = "codium",
-      args = { "." },
+      cmd = "",
+      args = {},
+    },
+    git = {
+      enable = true,
+      show_on_dirs = true,
+      show_on_open_dirs = true,
+      disable_for_dirs = {},
+      timeout = 400,
     },
     diagnostics = {
       enable = true,
-      show_on_dirs = false,
+      show_on_dirs = true,
       show_on_open_dirs = true,
       debounce_delay = 50,
       severity = {
@@ -138,6 +161,11 @@ return {
         error = icons.diagnostics.Error,
       },
     },
+    modified = {
+      enable = false,
+      show_on_dirs = true,
+      show_on_open_dirs = true,
+    },
     filters = {
       git_ignored = false,
       dotfiles = false,
@@ -149,22 +177,14 @@ return {
       },
       exclude = {},
     },
+    live_filter = {
+      prefix = "[FILTER]: ",
+      always_show_folders = true,
+    },
     filesystem_watchers = {
       enable = true,
       debounce_delay = 50,
       ignore_dirs = {},
-    },
-    git = {
-      enable = true,
-      show_on_dirs = true,
-      show_on_open_dirs = true,
-      disable_for_dirs = {},
-      timeout = 400,
-    },
-    modified = {
-      enable = false,
-      show_on_dirs = true,
-      show_on_open_dirs = true,
     },
     actions = {
       use_system_clipboard = true,
@@ -214,10 +234,6 @@ return {
     },
     trash = {
       -- cmd = "gio trash",
-    },
-    live_filter = {
-      prefix = "[FILTER]: ",
-      always_show_folders = true,
     },
     tab = {
       sync = {
