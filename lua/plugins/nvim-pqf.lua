@@ -1,5 +1,6 @@
 return {
   "yorickpeterse/nvim-pqf",
+  lazy = true,
   opts = {
     signs = {
       error = "E",
