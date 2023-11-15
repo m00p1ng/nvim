@@ -63,7 +63,7 @@ autocmd("User", {
 })
 
 autocmd("BufReadPost", {
-  group = augroup("last_loc", { clear = true}),
+  group = augroup("last_loc", { clear = true }),
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)

@@ -135,8 +135,8 @@ return {
       },
     },
     system_open = {
-      cmd = "",
-      args = {},
+      cmd = "code",
+      args = { "." },
     },
     git = {
       enable = true,
