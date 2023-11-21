@@ -7,7 +7,6 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       -- commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
     },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
     { "windwp/nvim-ts-autotag" },
     { "Wansmer/treesj" },
     { "ckolkey/ts-node-action" },
@@ -61,10 +60,6 @@ return {
         scope_incremental = "<nop>",
         node_decremental = "<bs>",
       },
-    },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
     },
     autopairs = {
       enable = true,
