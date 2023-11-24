@@ -1,5 +1,6 @@
 local icons = require "utils.icons"
 
+-- alternative: https://github.com/hedyhli/outline.nvim
 return {
   "simrat39/symbols-outline.nvim",
   cmd = "SymbolsOutline",

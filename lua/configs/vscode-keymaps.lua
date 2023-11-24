@@ -47,6 +47,7 @@ keymap("v", "<leader>c", "<cmd>lua require('vscode-neovim').call('execCopy')<cr>
 keymap("n", "<leader>c", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<cr>", opts)
 keymap("n", "<leader>q", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<cr>", opts)
 keymap({ "n", "v" }, "\\e", "<cmd>lua require('vscode-neovim').call('editor.action.commentLine')<cr>", opts)
+keymap("n", "za", "<cmd>lua require('vscode-neovim').call('editor.toggleFold')<cr>", opts)
 
 -- Git --
 keymap({ "n", "v" }, "<leader>gs", "<cmd>lua require('vscode-neovim').call('git.stageSelectedRanges')<cr>", opts)
