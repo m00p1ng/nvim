@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 if require("utils").has "rest.nvim" then
   local which_key = require "which-key"
   local opts = {

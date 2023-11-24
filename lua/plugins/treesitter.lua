@@ -15,7 +15,7 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   keys = {
     { "<c-q>", desc = "Increment selection" },
-    { "<bs>", desc = "Schrink selection", mode = "x" },
+    { "<bs>", desc = "Shrink selection", mode = "x" },
   },
   opts = {
     ensure_installed = {

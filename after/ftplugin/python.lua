@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local dap_python = require "dap-python"
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
@@ -20,24 +24,24 @@ local mappings = {
     name = "Python",
     r = {
       function()
-        local cmd = "python3 '" .. vim.fn.expand('%:~:.') .. "'"
-        require('utils.tmux').run_command(cmd)
+        local cmd = "python3 '" .. vim.fn.expand "%:~:." .. "'"
+        require("utils.tmux").run_command(cmd)
       end,
       "Run",
     },
     t = {
       function()
-        local cmd = "python3 '" .. vim.fn.expand('%:~:.') .. "'"
-        cmd = cmd .. " " .. require('utils.treesitter').get_ref()
-        require('utils.tmux').run_command(cmd)
+        local cmd = "python3 '" .. vim.fn.expand "%:~:." .. "'"
+        cmd = cmd .. " " .. require("utils.treesitter").get_ref()
+        require("utils.tmux").run_command(cmd)
       end,
       "Run Cursor",
     },
     l = {
       function()
-        local cmd = "python3 '" .. vim.fn.expand('%:~:.') .. "'"
-        cmd = cmd .. " " .. require('utils.treesitter').last_ref
-        require('utils.tmux').run_command(cmd)
+        local cmd = "python3 '" .. vim.fn.expand "%:~:." .. "'"
+        cmd = cmd .. " " .. require("utils.treesitter").last_ref
+        require("utils.tmux").run_command(cmd)
       end,
       "Run Last",
     },

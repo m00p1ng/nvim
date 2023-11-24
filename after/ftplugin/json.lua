@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return
+end
+
 local filename = vim.fn.expand "%:t"
 
 if filename == "package.json" then
