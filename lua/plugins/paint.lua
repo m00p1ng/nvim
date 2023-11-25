@@ -1,6 +1,7 @@
 return {
   "folke/paint.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  cond = vim.g.vscode == nil,
   opts = {
     highlights = {
       {

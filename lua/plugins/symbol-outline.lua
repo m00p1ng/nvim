@@ -4,6 +4,7 @@ local icons = require "utils.icons"
 return {
   "simrat39/symbols-outline.nvim",
   cmd = "SymbolsOutline",
+  cond = vim.g.vscode == nil,
   opts = {
     highlight_hovered_item = true,
     show_guides = true,

@@ -7,9 +7,6 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       -- commit = "35a60f093fa15a303874975f963428a5cd24e4a0",
     },
-    { "windwp/nvim-ts-autotag" },
-    { "Wansmer/treesj" },
-    { "ckolkey/ts-node-action" },
   },
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
@@ -60,13 +57,6 @@ return {
         scope_incremental = "<nop>",
         node_decremental = "<bs>",
       },
-    },
-    autopairs = {
-      enable = true,
-    },
-    autotag = {
-      enable = true,
-      disable = { "xml" },
     },
     textobjects = {
       select = {

@@ -2,6 +2,7 @@ return {
   "pwntester/octo.nvim",
   enabled = false,
   cmd = "Octo",
+  cond = vim.g.vscode == nil,
   opts = {
     default_remote = { "upstream", "origin" }, -- order to try remotes
     ssh_aliases = {}, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`

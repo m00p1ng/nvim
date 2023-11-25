@@ -1,6 +1,7 @@
 return {
   "akinsho/flutter-tools.nvim",
   ft = "dart",
+  cond = vim.g.vscode == nil,
   opts = {
     ui = {
       -- the border type to use for all floating windows, the same options/formats
@@ -25,7 +26,7 @@ return {
         project_config = false,
       },
     },
-    debugger = {           -- integrate with nvim dap + install dart code debugger
+    debugger = { -- integrate with nvim dap + install dart code debugger
       enabled = false,
       run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
       -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
@@ -39,27 +40,27 @@ return {
     },
     -- flutter_path = "<full/path/if/needed>", -- <-- this takes priority over the lookup
     flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
-    fvm = true,              -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+    fvm = true, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
     widget_guides = {
       enabled = true,
     },
     closing_tags = {
       highlight = "GitBlame", -- highlight for the closing tag
-      prefix = "> ",           -- character to use for close tag e.g. > Widget
-      enabled = true,         -- set to false to disable
+      prefix = "> ", -- character to use for close tag e.g. > Widget
+      enabled = true, -- set to false to disable
     },
     dev_log = {
       enabled = true,
       notify_errors = false, -- if there is an error whilst running then notify the user
-      open_cmd = "10sp",        -- command to use to open the log buffer
+      open_cmd = "10sp", -- command to use to open the log buffer
     },
     dev_tools = {
-      autostart = false,         -- autostart devtools server if not detected
+      autostart = false, -- autostart devtools server if not detected
       auto_open_browser = false, -- Automatically opens devtools in the browser
     },
     outline = {
       open_cmd = "30vnew", -- command to use to open the outline buffer
-      auto_open = false,   -- if true this will open the outline automatically when it is first populated
+      auto_open = false, -- if true this will open the outline automatically when it is first populated
     },
     lsp = {
       color = { -- show the derived colours for dart variables
@@ -80,7 +81,7 @@ return {
         -- analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
         renameFilesWithClasses = "prompt", -- "always"
         enableSnippets = true,
-        updateImportsOnRename = true,      -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
+        updateImportsOnRename = true, -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.
       },
     },
   },

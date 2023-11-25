@@ -2,6 +2,7 @@
 return {
   "hrsh7th/nvim-cmp", -- The completion plugin
   event = "InsertEnter",
+  cond = vim.g.vscode == nil,
   dependencies = {
     "hrsh7th/cmp-buffer", -- buffer completions
     "hrsh7th/cmp-path", -- path completions

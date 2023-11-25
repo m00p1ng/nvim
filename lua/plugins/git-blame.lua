@@ -2,6 +2,7 @@ return {
   "f-person/git-blame.nvim",
   enabled = false,
   event = { "BufReadPost", "BufNewFile" },
+  cond = vim.g.vscode == nil,
   config = function()
     vim.g.gitblame_enabled = 1
     vim.g.gitblame_date_format = "%r"

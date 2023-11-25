@@ -2,6 +2,7 @@ return {
   "sontungexpt/url-open",
   event = "VeryLazy",
   cmd = "URLOpenUnderCursor",
+  cond = vim.g.vscode == nil,
   opts = {
     -- default will open url with default browser of your system or you can choose your browser like this
     -- open_app = "micorsoft-edge-stable",

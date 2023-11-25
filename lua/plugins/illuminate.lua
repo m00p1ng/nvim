@@ -1,6 +1,7 @@
 return {
   "RRethy/vim-illuminate",
   event = { "BufReadPre", "BufNewFile" },
+  cond = vim.g.vscode == nil,
   opts = {
     providers = {
       "lsp",

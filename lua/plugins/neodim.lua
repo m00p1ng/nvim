@@ -1,6 +1,7 @@
 return {
   "zbirenbaum/neodim",
   event = "LspAttach",
+  cond = vim.g.vscode == nil,
   enabled = false,
   opts = {
     refresh_delay = 75,

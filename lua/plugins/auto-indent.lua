@@ -1,6 +1,8 @@
 return {
   {
     "vidocqh/auto-indent.nvim",
+    event = "InsertEnter",
+    cond = vim.g.vscode == nil,
     opts = {
       lightmode = true, -- Lightmode assumes tabstop and indentexpr not change within buffer's lifetime
       indentexpr = nil, -- Use vim.bo.indentexpr by default, see 'Custom Indent Evaluate Method'

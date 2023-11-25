@@ -2,6 +2,7 @@ return {
   "Wansmer/sibling-swap.nvim",
   dependencies = { "nvim-treesitter" },
   keys = { "<C-.>", "<C-,>", "<space>.", "<space>," },
+  cond = vim.g.vscode == nil,
   opts = {
     allowed_separators = {
       ",",

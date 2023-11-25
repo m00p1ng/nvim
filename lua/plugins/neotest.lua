@@ -5,6 +5,7 @@ return {
     "nvim-neotest/neotest-python",
   },
   lazy = true,
+  cond = vim.g.vscode == nil,
   opts = {
     benchmark = {
       enabled = true,

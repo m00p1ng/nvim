@@ -1,6 +1,7 @@
 return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    cond = vim.g.vscode == nil,
     opts = {
       enable_autocmd = false,
     },

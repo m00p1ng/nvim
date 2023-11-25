@@ -1,6 +1,7 @@
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  cond = vim.g.vscode == nil,
   opts = function()
     local actions = require "diffview.actions"
     local icons = require "utils.icons"

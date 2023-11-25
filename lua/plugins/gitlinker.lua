@@ -1,6 +1,7 @@
 return {
   "linrongbin16/gitlinker.nvim",
   lazy = true,
+  cond = vim.g.vscode == nil,
   opts = function()
     return {
       -- print message in command line
@@ -56,7 +57,6 @@ return {
       --
       --- @overload fun(remote_url:string):string|nil
       custom_rules = nil,
-
 
       -- enable debug
       debug = false,

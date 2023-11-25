@@ -2,5 +2,6 @@
 return {
   "Bekaboo/dropbar.nvim",
   enabled = false,
+  cond = vim.g.vscode == nil,
   opts = {},
 }

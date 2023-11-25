@@ -2,6 +2,7 @@ return {
   {
     "tzachar/cmp-tabnine",
     event = "InsertEnter",
+    cond = vim.g.vscode == nil,
     build = "./install.sh",
     opts = {
       max_lines = 1000,
@@ -16,6 +17,7 @@ return {
   {
     "codota/tabnine-nvim",
     event = "InsertEnter",
+    cond = vim.g.vscode == nil,
     build = "./dl_binaries.sh",
     opts = {
       disable_auto_comment = true,

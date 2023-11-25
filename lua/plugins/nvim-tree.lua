@@ -3,6 +3,7 @@ local icons = require "utils.icons"
 return {
   "nvim-tree/nvim-tree.lua",
   -- cmd = "NvimTreeToggle",
+  cond = vim.g.vscode == nil,
   opts = {
     on_attach = "default",
     hijack_cursor = false,

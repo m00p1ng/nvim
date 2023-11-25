@@ -24,6 +24,7 @@ return {
   -- },
   enabled = false,
   cmd = "Neotree",
+  cond = vim.g.vscode == nil,
   opts = {
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",

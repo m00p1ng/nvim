@@ -3,6 +3,7 @@ local icons = require "utils.icons"
 return {
   "SmiteshP/nvim-navic",
   lazy = true,
+  cond = vim.g.vscode == nil,
   opts = {
     icons = {
       File = icons.documents.File .. " ",

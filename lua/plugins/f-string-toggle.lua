@@ -1,6 +1,7 @@
 return {
   "roobert/f-string-toggle.nvim",
   ft = "python",
+  cond = vim.g.vscode == nil,
   enabled = false,
   opts = {
     key_binding = "\\f",

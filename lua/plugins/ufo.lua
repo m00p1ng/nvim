@@ -34,6 +34,7 @@ return {
   "kevinhwang91/nvim-ufo",
   dependencies = { "kevinhwang91/promise-async" },
   event = { "BufReadPost", "BufNewFile" },
+  cond = vim.g.vscode == nil,
   config = function()
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99

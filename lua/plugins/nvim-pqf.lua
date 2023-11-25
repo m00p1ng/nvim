@@ -1,6 +1,7 @@
 return {
   "yorickpeterse/nvim-pqf",
   lazy = true,
+  cond = vim.g.vscode == nil,
   opts = {
     signs = {
       error = "E",

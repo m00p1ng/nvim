@@ -1,6 +1,7 @@
 return {
   "krivahtoo/silicon.nvim",
   enabled = false,
+  cond = vim.g.vscode == nil,
   build = "./install.sh",
   opts = {
     output = {
