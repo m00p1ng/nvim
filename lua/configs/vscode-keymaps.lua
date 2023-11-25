@@ -55,3 +55,9 @@ keymap({ "n", "v" }, "<leader>gr", "<cmd>lua require('vscode-neovim').call('git.
 keymap("n", "<leader>gS", "<cmd>lua require('vscode-neovim').call('git.stageAll')<cr>", opts)
 keymap("n", "<leader>gR", "<cmd>lua require('vscode-neovim').call('workbench.action.files.revert')<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<cr>", opts)
+keymap("n", "<leader>gd", "<cmd>lua require('vscode-neovim').call('git.openChange')<cr>", opts)
+-- Git Lens --
+keymap({ "n", "v" }, "<leader>gy", "<cmd>lua require('vscode-neovim').call('gitlens.openFileOnRemote')<cr>", opts)
+keymap("n", "<leader>gw", "<cmd>lua require('vscode-neovim').call('gitlens.openCommitOnRemote')<cr>", opts)
+keymap("n", "<leader>gO", "<cmd>lua require('vscode-neovim').call('gitlens.openRepoOnRemote')<cr>", opts)
+keymap("n", "<leader>gh", "<cmd>lua require('vscode-neovim').call('gitlens.showFileHistoryView')<cr>", opts)
