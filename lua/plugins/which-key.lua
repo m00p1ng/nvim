@@ -151,14 +151,8 @@ return {
         w = { "<cmd>lua require('utils.git').open_git_commit_on_web()<cr>", "Open Commit on Web" },
         O = { "<cmd>lua require('utils.git').open_git_project_on_web()<cr>", "Open Project on Web" },
         p = { "<cmd>lua require('utils.git').git_previous_change()<cr>", "Diff Previous" },
-        y = {
-          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').system })<cr>",
-          "Open line on Web",
-        },
-        Y = {
-          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').clipboard })<cr>",
-          "Copy git link to clipboard",
-        },
+        y = { "<cmd>GitLink!<cr>", "Open line on Web" },
+        Y = { "<cmd>GitLink<cr>", "Copy git link to clipboard" },
       },
 
       l = {
@@ -226,14 +220,8 @@ return {
         name = "Git",
         r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
         s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
-        y = {
-          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').system })<cr>",
-          "Open line on Web",
-        },
-        Y = {
-          "<cmd>lua require('gitlinker').link({ action = require('gitlinker.actions').clipboard })<cr>",
-          "Copy git link to clipboard",
-        },
+        y = { ":GitLink!<cr>", "Open line on Web" },
+        Y = { ":GitLink<cr>", "Copy git link to clipboard" },
       },
       f = {
         name = "Find",

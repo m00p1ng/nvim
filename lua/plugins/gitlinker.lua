@@ -1,6 +1,6 @@
 return {
   "linrongbin16/gitlinker.nvim",
-  lazy = true,
+  event = { "BufReadPost", "BufNewFile" },
   cond = vim.g.vscode == nil,
   opts = function()
     return {
@@ -18,22 +18,6 @@ return {
         -- to use blame router, use: 'GitLink blame' and 'GitLink! blame'
         name = "GitLink",
         desc = "Generate git permanent link",
-      },
-
-      -- regex pattern based rules
-      pattern_rules = {
-        {
-          ["^git@github%.([_%.%-%w]+):([%.%-%w]+)/([_%.%-%w]+)%.git$"] = "https://github.%1/%2/%3/blob/",
-          ["^https?://github%.([_%.%-%w]+)/([%.%-%w]+)/([_%.%-%w]+)%.git$"] = "https://github.%1/%2/%3/blob/",
-          ["^git@gitlab%.([_%.%-%w]+):([%.%-%w]+)/([_%.%-%w]+)%.git$"] = "https://gitlab.%1/%2/%3/blob/",
-          ["^https?://gitlab%.([_%.%-%w]+)/([%.%-%w]+)/([_%.%-%w]+)%.git$"] = "https://gitlab.%1/%2/%3/blob/",
-        },
-        {
-          ["^git@github%.([_%.%-%w]+):([%.%-%w]+)/([_%.%-%w]+)$"] = "https://github.%1/%2/%3/blob/",
-          ["^https?://github%.([_%.%-%w]+)/([%.%-%w]+)/([_%.%-%w]+)$"] = "https://github.%1/%2/%3/blob/",
-          ["^git@gitlab%.([_%.%-%w]+):([%.%-%w]+)/([_%.%-%w]+)$"] = "https://gitlab.%1/%2/%3/blob/",
-          ["^https?://gitlab%.([_%.%-%w]+)/([%.%-%w]+)/([_%.%-%w]+)$"] = "https://gitlab.%1/%2/%3/blob/",
-        },
       },
 
       -- router bindings
