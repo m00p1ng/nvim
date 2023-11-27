@@ -7,8 +7,18 @@ return {
       -- print message in command line
       message = true,
 
-      -- key mapping
-      mapping = false,
+      -- highlights the linked line(s) by the time in ms
+      -- disable highlight by setting a value equal or less than 0
+      highlight_duration = 500,
+
+      -- user command
+      command = {
+        -- to copy link to clipboard, use: 'GitLink'
+        -- to open link in browser, use bang: 'GitLink!'
+        -- to use blame router, use: 'GitLink blame' and 'GitLink! blame'
+        name = "GitLink",
+        desc = "Generate git permanent link",
+      },
 
       -- regex pattern based rules
       pattern_rules = {
@@ -26,37 +36,86 @@ return {
         },
       },
 
-      -- function based rules: function(remote_url) => host_url.
-      -- this function will override the `pattern_rules`.
-      -- here's an example of custom_rules:
-      --
-      -- ```
-      -- custom_rules = function(remote_url)
-      --   local pattern_rules = {
-      --     {
-      --       ["^git@github%.([_%.%-%w]+):([%.%-%w]+)/([%.%-%w]+)%.git$"] = "https://github.%1/%2/%3/blob/",
-      --       ["^https://github%.([_%.%-%w]+)/([%.%-%w]+)/([%.%-%w]+)%.git$"] = "https://github.%1/%2/%3/blob/",
-      --     },
-      --     -- http(s)://github.(com|*)/linrongbin16/gitlinker.nvim(.git)? -> https://github.com/linrongbin16/gitlinker.nvim(.git)?
-      --     {
-      --       ["^git@github%.([_%.%-%w]+):([%.%-%w]+)/([%.%-%w]+)$"] = "https://github.%1/%2/%3/blob/",
-      --       ["^https://github%.([_%.%-%w]+)/([%.%-%w]+)/([%.%-%w]+)$"] = "https://github.%1/%2/%3/blob/",
-      --     },
-      --   }
-      --   for _, group in ipairs(pattern_rules) do
-      --     for pattern, replace in pairs(group) do
-      --       if string.match(remote_url, pattern) then
-      --         local result = string.gsub(remote_url, pattern, replace)
-      --         return result
-      --       end
-      --     end
-      --   end
-      --   return nil
-      -- end,
-      -- ```
-      --
-      --- @overload fun(remote_url:string):string|nil
-      custom_rules = nil,
+      -- router bindings
+      router = {
+        browse = {
+          -- example: https://github.com/linrongbin16/gitlinker.nvim/blob/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
+          ["^github%.com"] = "https://github.com/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blob/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}?plain=1" -- '?plain=1'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          -- example: https://gitlab.com/linrongbin16/gitlinker.nvim/blob/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
+          ["^gitlab%.com"] = "https://gitlab.com/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blob/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}"
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          -- example: https://bitbucket.org/linrongbin16/gitlinker.nvim/src/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#lines-3:4
+          ["^bitbucket%.org"] = "https://bitbucket.org/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/src/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}"
+            .. "#lines-{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and (':' .. _A.LEND) or '')}",
+          -- example: https://codeberg.org/linrongbin16/gitlinker.nvim/src/commit/a570f22ff833447ee0c58268b3bae4f7197a8ad8/LICENSE#L5-L6
+          ["^codeberg%.org"] = "https://codeberg.org/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/src/commit/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}?display=source" -- '?display=source'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          -- example:
+          -- main repo: https://git.samba.org/?p=samba.git;a=blob;f=wscript;hb=83e8971c0f1c1db8c3574f83107190ac1ac23db0#l6
+          -- dev repo: https://git.samba.org/?p=bbaumbach/samba.git;a=blob;f=wscript;hb=8de348e9d025d336a7985a9025fe08b7096c0394#l7
+          ["^git%.samba%.org"] = "https://git.samba.org/?p="
+            .. "{string.len(_A.USER) > 0 and (_A.USER .. '/') or ''}" -- 'p=samba.git;' or 'p=bbaumbach/samba.git;'
+            .. "{_A.REPO .. '.git'};a=blob;"
+            .. "f={_A.FILE};"
+            .. "hb={_A.REV}"
+            .. "#l{_A.LSTART}",
+        },
+        blame = {
+          -- example: https://github.com/linrongbin16/gitlinker.nvim/blame/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
+          ["^github%.com"] = "https://github.com/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blame/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}?plain=1" -- '?plain=1'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          -- example: https://gitlab.com/linrongbin16/gitlinker.nvim/blame/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
+          ["^gitlab%.com"] = "https://gitlab.com/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blame/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}"
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          -- example: https://bitbucket.org/linrongbin16/gitlinker.nvim/annotate/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#lines-3:4
+          ["^bitbucket%.org"] = "https://bitbucket.org/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/annotate/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}"
+            .. "#lines-{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and (':' .. _A.LEND) or '')}",
+          -- example: https://codeberg.org/linrongbin16/gitlinker.nvim/blame/commit/a570f22ff833447ee0c58268b3bae4f7197a8ad8/LICENSE#L5-L6
+          ["^codeberg%.org"] = "https://codeberg.org/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blame/commit/"
+            .. "{_A.REV}/"
+            .. "{_A.FILE}?display=source" -- '?display=source'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+        },
+      },
 
       -- enable debug
       debug = false,
