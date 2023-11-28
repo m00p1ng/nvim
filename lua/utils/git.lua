@@ -83,4 +83,14 @@ function M.open_git_project_on_web()
   actions.system(remote_url)
 end
 
+--- @return boolean
+function M.is_remote_rev()
+  local args = { "git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}" }
+  local result = cmd(args)
+
+  print(vim.inspect(result))
+
+  return result.stdout[1] ~= nil
+end
+
 return M

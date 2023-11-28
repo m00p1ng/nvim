@@ -11,6 +11,7 @@ return {
 
     --- @param lk gitlinker.Linker
     local function github_router(lk)
+      local git = require "utils.git"
       local builder = "https://"
       -- host: 'github.com', 'gitlab.com', 'bitbucket.org'
       builder = builder .. lk.host .. "/"
@@ -20,10 +21,10 @@ return {
       builder = builder .. (string_endswith(lk.repo, ".git") and lk.repo:sub(1, #lk.repo - 4) or lk.repo) .. "/"
       builder = builder .. "blob/"
       -- rev: git commit, e.g. 'e605210941057849491cca4d7f44c0e09f363a69'
-      if lk.current_branch == "HEAD" then
-        builder = builder .. lk.rev .. "/"
-      else
+      if git.is_remote_rev() then
         builder = builder .. lk.current_branch .. "/"
+      else
+        builder = builder .. lk.rev .. "/"
       end
       -- file: 'lua/gitlinker/logger.lua'
       builder = builder .. lk.file .. (string_endswith(lk.file, ".md") and "?plain=1" or "")
