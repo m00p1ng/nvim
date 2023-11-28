@@ -58,6 +58,9 @@ return {
         browse = {
           ["^github%.com"] = github_router,
         },
+        project = {
+          ["^github%.com"] = "https://github.com/{_A.USER}/{_A.REPO}",
+        },
       },
 
       -- enable debug

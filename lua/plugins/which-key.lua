@@ -148,11 +148,11 @@ return {
         h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
         g = { "<cmd>Neogit<cr>", "Neogit" },
         D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
-        w = { "<cmd>lua require('utils.git').open_git_commit_on_web()<cr>", "Open Commit on Web" },
-        O = { "<cmd>lua require('utils.git').open_git_project_on_web()<cr>", "Open Project on Web" },
-        p = { "<cmd>lua require('utils.git').git_previous_change()<cr>", "Diff Previous" },
+        w = { "<cmd>lua require('utils.git').open_commit_on_web()<cr>", "Open Commit on Web" },
+        p = { "<cmd>lua require('utils.git').previous_change()<cr>", "Diff Previous" },
         y = { "<cmd>GitLink!<cr>", "Open line on Web" },
         Y = { "<cmd>GitLink<cr>", "Copy git link to clipboard" },
+        O = { "<cmd>GitLink! project<cr>", "Open Project on Web" },
       },
 
       l = {

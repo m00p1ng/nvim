@@ -65,22 +65,17 @@ local function get_remote_url()
   return parse_git_url(remote_url)
 end
 
-function M.git_previous_change()
+function M.previous_change()
   local sha = get_git_commit_sha()
   vim.api.nvim_command(":DiffviewOpen " .. sha .. "^!")
 end
 
-function M.open_git_commit_on_web()
+function M.open_commit_on_web()
   local remote_url = get_remote_url()
   local sha = get_git_commit_sha()
   local commit_path = "commit/" .. sha
 
   actions.system(remote_url .. "/" .. commit_path)
-end
-
-function M.open_git_project_on_web()
-  local remote_url = get_remote_url()
-  actions.system(remote_url)
 end
 
 --- @return boolean
