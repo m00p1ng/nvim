@@ -3,6 +3,38 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   cond = vim.g.vscode == nil,
   opts = function()
+    --- @param s string
+    --- @param t string
+    local function string_endswith(s, t)
+      return string.len(s) >= string.len(t) and string.sub(s, #s - #t + 1) == t
+    end
+
+    --- @param lk gitlinker.Linker
+    local function github_router(lk)
+      local builder = "https://"
+      -- host: 'github.com', 'gitlab.com', 'bitbucket.org'
+      builder = builder .. lk.host .. "/"
+      -- user: 'linrongbin16', 'neovim'
+      builder = builder .. lk.user .. "/"
+      -- repo: 'gitlinker.nvim.git', 'neovim'
+      builder = builder .. (string_endswith(lk.repo, ".git") and lk.repo:sub(1, #lk.repo - 4) or lk.repo) .. "/"
+      builder = builder .. "blob/"
+      -- rev: git commit, e.g. 'e605210941057849491cca4d7f44c0e09f363a69'
+      if lk.current_branch == "HEAD" then
+        builder = builder .. lk.rev .. "/"
+      else
+        builder = builder .. lk.current_branch .. "/"
+      end
+      -- file: 'lua/gitlinker/logger.lua'
+      builder = builder .. lk.file .. (string_endswith(lk.file, ".md") and "?plain=1" or "")
+      -- line range: start line number, end line number
+      builder = builder .. string.format("#L%d", lk.lstart)
+      if lk.lend > lk.lstart then
+        builder = builder .. string.format("-L%d", lk.lend)
+      end
+      return builder
+    end
+
     return {
       -- print message in command line
       message = true,
@@ -23,74 +55,7 @@ return {
       -- router bindings
       router = {
         browse = {
-          -- example: https://github.com/linrongbin16/gitlinker.nvim/blob/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
-          ["^github%.com"] = "https://github.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}?plain=1" -- '?plain=1'
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-          -- example: https://gitlab.com/linrongbin16/gitlinker.nvim/blob/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
-          ["^gitlab%.com"] = "https://gitlab.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-          -- example: https://bitbucket.org/linrongbin16/gitlinker.nvim/src/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#lines-3:4
-          ["^bitbucket%.org"] = "https://bitbucket.org/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/src/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#lines-{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and (':' .. _A.LEND) or '')}",
-        },
-        blame = {
-          -- example: https://github.com/linrongbin16/gitlinker.nvim/blame/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
-          ["^github%.com"] = "https://github.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blame/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}?plain=1" -- '?plain=1'
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-          -- example: https://gitlab.com/linrongbin16/gitlinker.nvim/blame/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#L3-L4
-          ["^gitlab%.com"] = "https://gitlab.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blame/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-          -- example: https://bitbucket.org/linrongbin16/gitlinker.nvim/annotate/9679445c7a24783d27063cd65f525f02def5f128/lua/gitlinker.lua#lines-3:4
-          ["^bitbucket%.org"] = "https://bitbucket.org/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/annotate/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#lines-{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and (':' .. _A.LEND) or '')}",
-        },
-        default_branch = {
-          ["^github%.com"] = "https://github.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/"
-            .. "{_A.DEFAULT_BRANCH}/" -- always 'master'/'main' branch
-            .. "{_A.FILE}?plain=1" -- '?plain=1'
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
-        },
-        current_branch = {
-          ["^github%.com"] = "https://github.com/"
-            .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/"
-            .. "{_A.CURRENT_BRANCH}/" -- always current branch
-            .. "{_A.FILE}?plain=1" -- '?plain=1'
-            .. "#L{_A.LSTART}"
-            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+          ["^github%.com"] = github_router,
         },
       },
 
