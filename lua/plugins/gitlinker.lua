@@ -18,7 +18,7 @@ return {
       -- user: 'linrongbin16', 'neovim'
       builder = builder .. lk.user .. "/"
       -- repo: 'gitlinker.nvim.git', 'neovim'
-      builder = builder .. (string_endswith(lk.repo, ".git") and lk.repo:sub(1, #lk.repo - 4) or lk.repo) .. "/"
+      builder = builder .. string.gsub(lk.repo, ".git", "") .. "/"
       builder = builder .. "blob/"
       -- rev: git commit, e.g. 'e605210941057849491cca4d7f44c0e09f363a69'
       if git.is_remote_rev() then

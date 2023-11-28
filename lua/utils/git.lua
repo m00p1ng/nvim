@@ -1,5 +1,5 @@
-local git = require "gitlinker.git"
 local actions = require "gitlinker.actions"
+local linker = require "gitlinker.linker"
 local cmd = require("utils").cmd
 
 local M = {}
@@ -26,43 +26,13 @@ local function get_git_commit_sha()
   return string.sub(text, 1, 40)
 end
 
-local function parse_git_url(remote_url)
-  local domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)%.git")
-  if domain and path then
-    return "https://" .. domain .. "/" .. path
-  end
-
-  local url = string.match(remote_url, ".*git%@(.*)%.git")
-  if url then
-    return "https://" .. url
-  end
-
-  local https_url = string.match(remote_url, "(https%:%/%/.*)%.git")
-  if https_url then
-    return https_url
-  end
-
-  -- Don't have .git extension
-  domain, path = string.match(remote_url, ".*git%@(.*)%:(.*)")
-  if domain and path then
-    return "https://" .. domain .. "/" .. path
-  end
-
-  url = string.match(remote_url, ".*git%@(.*)")
-  if url then
-    return "https://" .. url
-  end
-
-  https_url = string.match(remote_url, "(https%:%/%/.*)")
-  if https_url then
-    return https_url
-  end
-end
-
 local function get_remote_url()
-  local remote = git.get_branch_remote()
-  local remote_url = git.get_remote_url(remote)
-  return parse_git_url(remote_url)
+  local lk = linker.make_linker()
+  if lk == nil then
+    return "http://localhost/404"
+  end
+
+  return "https://" .. lk.host .. "/" .. lk.user .. "/" .. string.gsub(lk.repo, ".git", "") .. "/"
 end
 
 function M.previous_change()
@@ -80,8 +50,13 @@ end
 
 --- @return boolean
 function M.is_remote_rev()
-  local args = { "git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}" }
-  local result = cmd(args)
+  local result = cmd {
+    "git",
+    "rev-parse",
+    "--abbrev-ref",
+    "--symbolic-full-name",
+    "@{u}",
+  }
 
   print(vim.inspect(result))
 
