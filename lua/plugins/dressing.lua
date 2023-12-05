@@ -45,6 +45,8 @@ return {
         },
         i = {
           ["<C-c>"] = "Close",
+          ["<C-a>"] = "<Home>",
+          ["<C-e>"] = "<End>",
           ["<CR>"] = "Confirm",
           ["<Up>"] = "HistoryPrev",
           ["<Down>"] = "HistoryNext",
