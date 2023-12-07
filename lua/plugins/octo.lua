@@ -4,8 +4,18 @@ return {
   cmd = "Octo",
   cond = vim.g.vscode == nil,
   opts = {
+    use_local_fs = false, -- use local files on right side of reviews
+    enable_builtin = false, -- shows a list of builtin actions when no action is provided
     default_remote = { "upstream", "origin" }, -- order to try remotes
     ssh_aliases = {}, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
+    picker_config = {
+      mappings = {
+        open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+        copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
+        checkout_pr = { lhs = "<C-o>", desc = "checkout pull request" },
+        merge_pr = { lhs = "<C-r>", desc = "merge pull request" },
+      },
+    },
     reaction_viewer_hint_icon = "", -- marker for user reactions
     user_icon = " ", -- user icon
     timeline_marker = "", -- timeline marker
@@ -20,15 +30,13 @@ return {
       use_signcolumn = true, -- show "modified" marks on the sign column
     },
     issues = {
-      order_by = {
-        -- criteria to sort results of `Octo issue list`
+      order_by = { -- criteria to sort results of `Octo issue list`
         field = "CREATED_AT", -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
         direction = "DESC", -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
       },
     },
     pull_requests = {
-      order_by = {
-        -- criteria to sort the results of `Octo pr list`
+      order_by = { -- criteria to sort the results of `Octo pr list`
         field = "CREATED_AT", -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
         direction = "DESC", -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
       },
@@ -136,6 +144,7 @@ return {
         select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
         close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
         toggle_viewed = { lhs = "<leader><space>", desc = "toggle viewer viewed state" },
+        goto_file = { lhs = "gf", desc = "go to file" },
       },
       file_panel = {
         next_entry = { lhs = "j", desc = "move to next changed file" },
