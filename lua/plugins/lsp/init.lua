@@ -162,7 +162,6 @@ return {
         "black",
         "js-debug-adapter",
         "delve",
-        "debugpy",
       },
       ui = {
         border = "rounded",

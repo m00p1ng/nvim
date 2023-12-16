@@ -2,11 +2,8 @@ if vim.g.vscode then
   return
 end
 
-local dap_python = require "dap-python"
-
-local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
-
-dap_python.setup(installation_path .. "/debugpy/venv/bin/python")
+-- ref: https://github.com/mfussenegger/nvim-dap-python#debugpy
+require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
 
 local which_key = require "which-key"
 
