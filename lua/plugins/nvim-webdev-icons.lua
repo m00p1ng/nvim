@@ -141,17 +141,17 @@ return {
         name = "Markdown",
       },
       ["LICENSE"] = {
-        icon = "",
+        icon = "󰄤",
         color = "#d0bf41",
         name = "License",
       },
       ["secrets"] = {
-        icon = "ﳳ",
+        icon = "󰟵",
         color = "#d0bf41",
         name = "Secret",
       },
       [".nvmrc"] = {
-        icon = "",
+        icon = "󰎙",
         color = "#8bc34a",
         name = "NodeJS",
       },
@@ -161,16 +161,10 @@ return {
         name = "Js",
       },
       ["csv"] = {
-        icon = "",
+        icon = "󰈛",
         color = "#89e051",
         cterm_color = "113",
         name = "Csv",
-      },
-      ["vue"] = {
-        icon = "󰡄",
-        color = "#8dc149",
-        cterm_color = "107",
-        name = "Vue",
       },
       ["tf"] = {
         icon = "󱁢",
