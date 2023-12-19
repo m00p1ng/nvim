@@ -6,7 +6,7 @@
 
 return {
   kind = {
-    Text = "",
+    Text = "󰉿",
     Method = "",
     Function = "",
     Constructor = "",
@@ -42,7 +42,7 @@ return {
   },
   documents = {
     File = "",
-    FileWithContent = "",
+    FileWithContent = "",
     Files = "",
     NewFile = "",
     Symlink = "",
@@ -106,7 +106,7 @@ return {
     Calendar = "",
     CloudDownload = "",
     Terminal = "",
-    ShiftWidth = "",
+    ShiftWidth = "󰌒",
     Version = "",
     Trash = "",
   },

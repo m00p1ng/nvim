@@ -25,6 +25,8 @@ return {
       dismiss_keymap = "<C-]>",
       debounce_ms = 800,
       suggestion_color = { gui = "#b668cd", cterm = 244 },
+      codelens_color = { gui = "#b668cd", cterm = 244 },
+      codelens_enabled = true,
       exclude_filetypes = require("utils").ui_filetypes,
     },
     config = function(_, opts)
