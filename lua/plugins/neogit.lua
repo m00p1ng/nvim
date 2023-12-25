@@ -205,7 +205,6 @@ return {
         ["<c-s>"] = "StageAll",
         ["u"] = "Unstage",
         ["U"] = "UnstageStaged",
-        ["d"] = "DiffAtFile",
         ["$"] = "CommandHistory",
         ["#"] = "Console",
         ["<c-r>"] = "RefreshBuffer",
