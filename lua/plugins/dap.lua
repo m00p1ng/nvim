@@ -43,8 +43,8 @@ return {
     cond = vim.g.vscode == nil,
     opts = {
       icons = {
-        expanded = icons.ui.ArrowOpen,
-        collapsed = icons.ui.ArrowClosed,
+        expanded = icons.ui.ChevronShortRight,
+        collapsed = icons.ui.ChevronShortDown,
       },
       mappings = {
         -- Use a table to apply multiple mappings

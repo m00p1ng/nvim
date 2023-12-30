@@ -92,8 +92,8 @@ return {
     signs = {
       -- { CLOSED, OPENED }
       hunk = { "", "" },
-      section = { icons.ui.ArrowClosed, icons.ui.ArrowOpen },
-      item = { icons.ui.ArrowClosed, icons.ui.ArrowOpen },
+      section = { icons.ui.ChevronShortRight, icons.ui.ChevronShortDown },
+      item = { icons.ui.ChevronShortRight, icons.ui.ChevronShortDown },
     },
     -- Each Integration is auto-detected through plugin presence, however, it can be disabled by setting to `false`
     integrations = {

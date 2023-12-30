@@ -58,12 +58,12 @@ return {
         expander_highlight = "NeoTreeExpander",
       },
       icon = {
-        folder_closed = icons.documents.Folder,
-        folder_open = icons.documents.OpenFolder,
-        folder_empty = icons.documents.EmptyFolder,
+        folder_closed = icons.ui.Folder,
+        folder_open = icons.ui.FolderOpen,
+        folder_empty = icons.ui.EmptyFolder,
         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
         -- then these will never be used.
-        default = icons.documents.FileWithContent,
+        default = icons.ui.Text,
         -- highlight = "NeoTreeFileIcon",
         highlight = "NeoTreeFileName",
       },
@@ -79,16 +79,16 @@ return {
       git_status = {
         symbols = {
           -- Change type
-          added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-          modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted = "✖", -- this can only be used in the git_status source
-          renamed = "", -- this can only be used in the git_status source
+          added = icons.git.FileStaged, -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified = icons.git.FileUnstaged, -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted = icons.git.FileDeleted, -- this can only be used in the git_status source
+          renamed = icons.git.FileRenamed, -- this can only be used in the git_status source
           -- Status type
-          untracked = "U",
-          ignored = icons.ui.DashedCircle,
-          unstaged = icons.ui.SmallCircle,
-          staged = "S",
-          conflict = icons.git.Merge,
+          untracked = icons.git.FileUntracked,
+          ignored = icons.git.FileIgnored,
+          unstaged = icons.git.FileUnstaged,
+          staged = icons.git.FileStaged,
+          conflict = icons.git.FileUnmerged,
         },
       },
     },

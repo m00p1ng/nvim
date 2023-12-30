@@ -131,7 +131,7 @@ return {
         end
 
         -- TODO: update codicons and use their indent
-        return hl_str(icons.ui.ShiftWidth .. " " .. shiftwidth, "SLIndent")
+        return hl_str(icons.ui.Tab .. shiftwidth, "SLIndent")
       end,
     }
 

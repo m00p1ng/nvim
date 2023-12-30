@@ -14,12 +14,12 @@ return {
       show_help_hints = false, -- Show hints for how to open the help panel
       watch_index = true, -- Update views and index buffers when the git index changes.
       icons = { -- Only applies when use_icons is true.
-        folder_closed = icons.documents.Folder,
-        folder_open = icons.documents.OpenFolder,
+        folder_closed = icons.ui.Folder,
+        folder_open = icons.ui.FolderOpen,
       },
       signs = {
-        fold_closed = icons.ui.ArrowClosed,
-        fold_open = icons.ui.ArrowOpen,
+        fold_closed = icons.ui.ChevronShortRight,
+        fold_open = icons.ui.ChevronShortDown,
         done = "✓",
       },
       view = {

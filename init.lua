@@ -64,7 +64,7 @@ require("lazy").setup("plugins", {
       cmd = icons.ui.Terminal .. " ",
       config = icons.ui.Gear .. " ",
       event = icons.kind.Event .. " ",
-      ft = icons.documents.File .. " ",
+      ft = icons.kind.File .. " ",
       init = icons.ui.Gear .. " ",
       import = " ",
       keys = icons.misc.Keyboard .. " ",
