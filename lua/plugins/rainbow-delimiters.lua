@@ -14,9 +14,9 @@ return {
         -- lua = "rainbow-blocks",
       },
       highlight = {
-        "RainbowDelimiter1",
-        "RainbowDelimiter2",
-        "RainbowDelimiter3",
+        "TSRainbowYellow",
+        "TSRainbowViolet",
+        "TSRainbowBlue",
       },
     }
   end,
