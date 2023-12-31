@@ -46,7 +46,7 @@ return {
       auto_attach = true,
     },
     click = true,
-    separator = " " .. icons.ui.ChevronRight .. " ",
+    separator = " " .. icons.ui.ChevronShortRight .. " ",
     depth_limit = 5,
     depth_limit_indicator = "..",
   },

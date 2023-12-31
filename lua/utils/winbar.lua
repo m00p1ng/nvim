@@ -71,7 +71,7 @@ local get_location = function()
     return ""
   end
 
-  return "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. location
+  return "%#NavicSeparator#" .. icons.ui.ChevronShortRight .. "%*" .. " " .. location
 end
 
 local excludes = function()
