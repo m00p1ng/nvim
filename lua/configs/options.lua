@@ -11,6 +11,7 @@ opt.conceallevel = 0                        -- so that `` is visible in markdown
 opt.confirm = true
 opt.cursorline = true                       -- highlight the current line
 opt.expandtab = true                        -- convert tabs to spaces
+opt.exrc = true
 opt.fileencoding = "utf-8"                  -- the encoding written to a file
 opt.formatoptions = "jcroqlnt"              -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
@@ -28,6 +29,7 @@ opt.pumblend = 5                            -- Popup blend
 opt.pumheight = 10                          -- pop up menu height
 opt.relativenumber = false                  -- set relative numbered lines
 opt.scrolloff = 6                           -- is one of my fav
+opt.secure = true
 opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
 opt.shortmess:append { W = true, I = true, c = true }
 opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
