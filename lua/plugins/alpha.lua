@@ -20,7 +20,7 @@ return {
 
     dashboard.section.header.val = vim.split(logo, "\n")
     dashboard.section.buttons.val = {
-      dashboard.button("f", icons.kind.File .. " Find file", "<cmd>lua require('utils').project_files()<cr>"),
+      dashboard.button("f", icons.ui.File .. " Find file", "<cmd>lua require('utils').project_files()<cr>"),
       dashboard.button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert<cr>"),
       dashboard.button("r", icons.ui.History .. " Recent files", "<cmd>Telescope oldfiles<cr>"),
       dashboard.button("t", icons.ui.List .. " Find text", "<cmd>Telescope live_grep<cr>"),
