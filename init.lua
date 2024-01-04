@@ -11,10 +11,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "configs.keymaps"
+require "config.keymaps"
 if vim.g.vscode == nil then
-  require "configs.options"
-  require "configs.autocmds"
+  require "config.options"
+  require "config.autocmds"
 end
 
 local icons = require "utils.icons"
