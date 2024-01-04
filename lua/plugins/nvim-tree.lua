@@ -136,7 +136,7 @@ return {
       },
     },
     system_open = {
-      cmd = "codium",
+      cmd = "code",
       args = { "." },
     },
     git = {

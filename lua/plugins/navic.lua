@@ -41,13 +41,19 @@ return {
       Value = icons.kind.Value .. " ",
       Variable = icons.kind.Variable .. " ",
     },
-    highlight = true,
     lsp = {
       auto_attach = true,
+      preference = nil,
     },
-    click = true,
+    highlight = false,
     separator = " " .. icons.ui.ChevronShortRight .. " ",
     depth_limit = 5,
     depth_limit_indicator = "..",
+    safe_output = true,
+    lazy_update_context = true,
+    click = true,
+    format_text = function(text)
+      return text
+    end,
   },
 }

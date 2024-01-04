@@ -216,6 +216,12 @@ return {
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
+
+        local ignore_filetypes = {}
+        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+          return
+        end
+
         -- I recommend these options. See :help conform.format for details.
         return { lsp_fallback = true, timeout_ms = 500 }
       end,
