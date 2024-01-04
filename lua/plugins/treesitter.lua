@@ -48,7 +48,12 @@ return {
     },
     indent = {
       enable = true, -- not stable yet
-      disable = { "yaml", "python" },
+      disable = {
+        "yaml",
+        -- https://github.com/akinsho/flutter-tools.nvim/issues/267#issuecomment-1616728174
+        -- NOTE: enabling indentation significantly slows down editing in Dart files
+        "dart",
+      },
     },
     incremental_selection = {
       enable = true,
