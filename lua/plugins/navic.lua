@@ -45,7 +45,7 @@ return {
       auto_attach = true,
       preference = nil,
     },
-    highlight = false,
+    highlight = true,
     separator = " " .. icons.ui.ChevronShortRight .. " ",
     depth_limit = 5,
     depth_limit_indicator = "..",
