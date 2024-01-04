@@ -45,7 +45,7 @@ return {
       enabled = true,
     },
     closing_tags = {
-      highlight = "GitBlame", -- highlight for the closing tag
+      highlight = "NonText", -- highlight for the closing tag
       prefix = "> ", -- character to use for close tag e.g. > Widget
       enabled = true, -- set to false to disable
     },
