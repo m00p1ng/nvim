@@ -47,6 +47,8 @@ return {
           ["<C-c>"] = "Close",
           ["<C-a>"] = "<Home>",
           ["<C-e>"] = "<End>",
+          ["<C-f>"] = "<Right>",
+          ["<C-b>"] = "<Left>",
           ["<CR>"] = "Confirm",
           ["<Up>"] = "HistoryPrev",
           ["<Down>"] = "HistoryNext",
