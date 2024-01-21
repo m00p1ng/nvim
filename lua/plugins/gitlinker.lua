@@ -36,6 +36,24 @@ return {
       return builder
     end
 
+    --- @param lk gitlinker.Linker
+    local function github_commit_router(lk)
+      local git = require "utils.git"
+      local builder = "https://"
+      -- host: 'github.com', 'gitlab.com', 'bitbucket.org'
+      builder = builder .. lk.host .. "/"
+      -- user: 'linrongbin16', 'neovim'
+      builder = builder .. lk.user .. "/"
+      -- repo: 'gitlinker.nvim.git', 'neovim'
+      builder = builder .. string.gsub(lk.repo, ".git", "") .. "/"
+      builder = builder .. "commit/"
+      -- rev: git commit, e.g. 'e605210941057849491cca4d7f44c0e09f363a69'
+      local sha = git.get_commit_sha()
+      builder = builder .. sha .. "/"
+
+      return builder
+    end
+
     return {
       -- print message in command line
       message = true,
@@ -59,7 +77,10 @@ return {
           ["^github%.com"] = github_router,
         },
         project = {
-          ["^github%.com"] = "https://github.com/{_A.USER}/{_A.REPO}",
+          ["^github%.com"] = "https://{_A.HOST}/{_A.USER}/{_A.REPO}",
+        },
+        commit = {
+          ["^github%.com"] = github_commit_router,
         },
       },
 
