@@ -3,10 +3,10 @@ local M = {}
 function M.check()
   vim.health.report_start "m00p1ng"
 
-  if vim.fn.has "nvim-0.8.0" == 1 then
-    vim.health.report_ok "Using Neovim >= 0.8.0"
+  if vim.fn.has "nvim-0.9.5" == 1 then
+    vim.health.report_ok "Using Neovim >= 0.9.5"
   else
-    vim.health.report_error "Neovim >= 0.8.0 is required"
+    vim.health.report_error "Neovim >= 0.9.5 is required"
   end
 
   local cmds = {
