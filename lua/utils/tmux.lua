@@ -24,12 +24,26 @@ local function create_pane()
   vim.fn.system "tmux split-window -h -c '#{pane_current_path}'"
 end
 
+local function is_copy_mode()
+  local result = vim.fn.system "tmux display-message -p -F '#{pane_in_mode}'"
+  return tonumber(result) == 1
+end
+
+local function exit_copy_mode()
+  vim.fn.system "tmux send-keys C-c"
+end
+
 M.run_command = function(cmd)
   if get_total_panes() > 1 then
     select_pane()
   else
     create_pane()
   end
+
+  if is_copy_mode() then
+    exit_copy_mode()
+  end
+
   clear_screen()
   send_command(cmd)
   select_pane()
