@@ -8,6 +8,7 @@ return {
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
       { "mxsdev/nvim-dap-vscode-js", ft = { "javascript", "typescript" } },
       { "mfussenegger/nvim-dap-python", ft = "python" },
       { "leoluz/nvim-dap-go", ft = "go" },
