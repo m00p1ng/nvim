@@ -44,6 +44,7 @@ return {
       target = "NeotestTarget",
       test = "NeotestTest",
       unknown = "NeotestUnknown",
+      watching = "NeotestWatching",
     },
     icons = {
       child_indent = "│",
@@ -59,6 +60,7 @@ return {
       running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
       skipped = "",
       unknown = "",
+      watching = "",
     },
     jump = {
       enabled = true,
@@ -110,6 +112,7 @@ return {
         debug_marked = "D",
         expand = { "<CR>", "<2-LeftMouse>" },
         expand_all = "e",
+        help = "?",
         jumpto = "i",
         mark = "m",
         next_failed = "J",
@@ -120,8 +123,12 @@ return {
         short = "O",
         stop = "u",
         target = "t",
+        watch = "w",
       },
       open = "botright vsplit | vertical resize 50",
+    },
+    watch = {
+      enabled = true,
     },
   },
   config = function(_, opts)
