@@ -3,6 +3,7 @@ return {
   dependencies = {
     "haydenmeade/neotest-jest",
     "nvim-neotest/neotest-python",
+    "nvim-neotest/neotest-go",
   },
   lazy = true,
   cond = vim.g.vscode == nil,
@@ -147,6 +148,7 @@ return {
           return vim.endswith(file_path, ".py")
         end,
       },
+      require "neotest-go" {},
     }
 
     require("neotest").setup(opts)
