@@ -8,7 +8,6 @@ return {
     "hrsh7th/cmp-path", -- path completions
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-emoji",
     "hrsh7th/cmp-cmdline",
     "rcarriga/cmp-dap",
 
@@ -30,7 +29,6 @@ return {
     local kind_icons = icons.kind
 
     vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-    vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
     cmp.setup {
       snippet = {
@@ -108,10 +106,6 @@ return {
             vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 
-          if entry.source.name == "emoji" then
-            vim_item.kind = icons.misc.Smiley
-            vim_item.kind_hl_group = "CmpItemKindEmoji"
-          end
           -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
           -- NOTE: order matters
           vim_item.menu = ({
@@ -121,7 +115,6 @@ return {
             buffer = "[Buffer]",
             cmp_tabnine = "[T9]",
             path = "[Path]",
-            emoji = "",
             dap = "",
           })[entry.source.name]
           return vim_item
@@ -134,7 +127,6 @@ return {
         { name = "buffer" },
         { name = "cmp_tabnine" },
         { name = "path" },
-        { name = "emoji" },
         { name = "dap" },
         { name = "lab.quick_data", keyword_length = 4 },
       },
