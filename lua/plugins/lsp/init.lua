@@ -10,7 +10,7 @@ return {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       { "b0o/SchemaStore.nvim", lazy = true },
-      "hinell/lsp-timeout.nvim",
+      { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
