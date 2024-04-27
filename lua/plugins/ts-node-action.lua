@@ -1,5 +1,5 @@
 return {
-  "ckolkey/ts-node-action",
+  "CKolkey/ts-node-action",
   lazy = true,
   cond = vim.g.vscode == nil,
   opts = {},

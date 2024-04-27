@@ -21,7 +21,7 @@ local function get_total_panes()
 end
 
 local function create_pane()
-  vim.fn.system "tmux split-window -h -c '#{pane_current_path}'"
+  vim.fn.system "tmux split-window -h -p 40 -c '#{pane_current_path}'"
 end
 
 local function is_copy_mode()
