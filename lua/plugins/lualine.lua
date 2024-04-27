@@ -4,46 +4,46 @@ return {
   cond = vim.g.vscode == nil,
   opts = function()
     local f = require "utils"
-    local dark = "#181818"
+    local dark = "#181825"
 
-    vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#e8ab53", bg = dark })
-    vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = dark, bold = false })
-    vim.api.nvim_set_hl(0, "SLLocation", { fg = "#5e81ac", bg = dark })
-    vim.api.nvim_set_hl(0, "SLFiletype", { fg = "#88c0d0", bg = dark })
-    vim.api.nvim_set_hl(0, "SLIndent", { fg = "#a3be8c", bg = dark })
-    vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = dark, italic = true })
-    vim.api.nvim_set_hl(0, "SLError", { fg = "#bf616a", bg = dark })
-    vim.api.nvim_set_hl(0, "SLWarning", { fg = "#d7ba7d", bg = dark })
-    vim.api.nvim_set_hl(0, "SLFileSize", { fg = "#abb2bf", bg = dark })
-    vim.api.nvim_set_hl(0, "SLTabs", { fg = "#6CC644", bg = dark })
+    vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#fab387", bg = dark })
+    vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#bac2de", bg = dark, bold = false })
+    vim.api.nvim_set_hl(0, "SLLocation", { fg = "#89b4fa", bg = dark })
+    vim.api.nvim_set_hl(0, "SLFiletype", { fg = "#89dceb", bg = dark })
+    vim.api.nvim_set_hl(0, "SLIndent", { fg = "#a6e3a1", bg = dark })
+    vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6c7086", bg = dark, italic = true })
+    vim.api.nvim_set_hl(0, "SLError", { fg = "#f38ba8", bg = dark })
+    vim.api.nvim_set_hl(0, "SLWarning", { fg = "#f9e2af", bg = dark })
+    vim.api.nvim_set_hl(0, "SLFileSize", { fg = "#bac2de", bg = dark })
+    vim.api.nvim_set_hl(0, "SLTabs", { fg = "#a6e3a1", bg = dark })
 
     local hl_str = function(str, hl)
       return "%#" .. hl .. "#" .. str
     end
 
     local mode_color = {
-      n = "#5e81ac",
-      i = "#c68a75",
-      v = "#b668cd",
-      [""] = "#b668cd",
-      V = "#b668cd",
+      n = "#89b4fa",
+      i = "#fab387",
+      v = "#cba6f7",
+      [""] = "#cba6f7",
+      V = "#cba6f7",
       -- c      = '#b5cea8',
-      -- c      = '#d7ba7d',
-      c = "#46a6b2",
-      no = "#d16d9e",
-      s = "#a3be8c",
-      S = "#c68a75",
-      [""] = "#c68a75",
-      ic = "#bf616a",
-      R = "#d16d9e",
-      Rv = "#bf616a",
-      cv = "#5e81ac",
-      ce = "#5e81ac",
-      r = "#bf616a",
-      rm = "#46a6b2",
-      ["r?"] = "#46a6b2",
-      ["!"] = "#46a6b2",
-      t = "#bf616a",
+      -- c      = '#f9e2af',
+      c = "#74c7ec",
+      no = "#eba0ac",
+      s = "#a6e3a1",
+      S = "#fab387",
+      [""] = "#fab387",
+      ic = "#f38ba8",
+      R = "#eba0ac",
+      Rv = "#f38ba8",
+      cv = "#89b4fa",
+      ce = "#89b4fa",
+      r = "#f38ba8",
+      rm = "#74c7ec",
+      ["r?"] = "#74c7ec",
+      ["!"] = "#74c7ec",
+      t = "#f38ba8",
     }
 
     local icons = require "utils.icons"
@@ -192,13 +192,13 @@ return {
     local command = {
       require("noice").api.status.command.get,
       cond = require("noice").api.status.command.has,
-      color = { fg = "#ff9e64" },
+      color = { fg = "#eba0ac" },
     }
 
     local updated_plugin = {
       require("lazy.status").updates,
       cond = require("lazy.status").has_updates,
-      color = { fg = "Special" },
+      color = { fg = "Special", bg = "NONE" },
     }
 
     local current_signature = {
@@ -224,7 +224,7 @@ return {
     return {
       options = {
         icons_enabled = true,
-        theme = "darkplus_dark",
+        theme = "catppuccin-mocha",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {

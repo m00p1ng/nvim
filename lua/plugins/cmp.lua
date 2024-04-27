@@ -28,8 +28,6 @@ return {
 
     local kind_icons = icons.kind
 
-    vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-
     cmp.setup {
       snippet = {
         expand = function(args)
@@ -40,8 +38,14 @@ return {
         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or cmp_dap.is_dap_buffer()
       end,
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered {
+          col_offset = -3,
+          side_padding = 0,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        },
+        documentation = cmp.config.window.bordered {
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        },
       },
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -85,10 +89,10 @@ return {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
           -- Kind icons
-          vim_item.kind = kind_icons[vim_item.kind]
+          vim_item.kind = " " .. (kind_icons[vim_item.kind] or "") .. " "
 
           if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = icons.debug.Start
+            vim_item.kind = " " .. icons.misc.Lightning .. " "
             local detail = (entry.completion_item.data or {}).detail
             if detail and detail:find ".*%%.*" then
               vim_item.kind = vim_item.kind .. " " .. detail
@@ -102,7 +106,7 @@ return {
           end
 
           if entry.source.name == "lab.quick_data" then
-            vim_item.kind = icons.misc.CircuitBoard
+            vim_item.kind = " " .. icons.misc.CircuitBoard .. " "
             vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 

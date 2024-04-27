@@ -22,7 +22,7 @@ return {
       },
       cursor_move = {
         enabled = true,
-        fg = "#199eff", -- "text" or "#rrggbb"
+        fg = "#89b4fa", -- "text" or "#rrggbb"
         -- fg = "text", -- text will set underline same color with text
         bg = nil, -- nil or "#rrggbb"
         underline = true,
