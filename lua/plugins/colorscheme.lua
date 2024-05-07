@@ -89,7 +89,7 @@ return {
         CmpItemKindOperator = { fg = C.base, bg = C.blue },
         CmpItemKindTypeParameter = { fg = C.base, bg = C.blue },
         CmpItemKindCopilot = { fg = C.base, bg = C.teal },
-        CmpItemKindTabnine = { fg = C.base, bg = C.mauve },
+        CmpItemKindTabnine = { fg = C.base, bg = "#b668cd" },
       }
     end,
     default_integrations = false,
