@@ -55,14 +55,6 @@ return {
         NvimTreeGitMerge = { fg = C.yellow },
         NvimTreeGitDirty = { fg = C.yellow },
 
-        DiffviewNormal = { bg = C.mantle },
-        DiffviewStatusAdded = { fg = C.green },
-        DiffviewStatusModified = { fg = C.yellow },
-        DiffviewStatusRenamed = { fg = C.yellow },
-        DiffviewStatusDeleted = { fg = C.red },
-        DiffviewFilePanelInsertion = { fg = C.green },
-        DiffviewFilePanelDeletion = { fg = C.red },
-
         CmpItemKindSnippet = { fg = C.base, bg = C.mauve },
         CmpItemKindKeyword = { fg = C.base, bg = C.red },
         CmpItemKindText = { fg = C.base, bg = C.teal },
@@ -99,6 +91,7 @@ return {
       cmp = true,
       dap = true,
       dap_ui = true,
+      diffview = true,
       gitsigns = true,
       indent_blankline = {
         enabled = true,
