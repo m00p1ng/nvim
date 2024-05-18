@@ -3,6 +3,7 @@ local icons = require "utils.icons"
 return {
   "williamboman/mason.nvim",
   cmd = "Mason",
+  cond = vim.g.vscode == nil,
   opts = {
     ensure_installed = {
       "stylua",
