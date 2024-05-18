@@ -226,7 +226,7 @@ return {
       f = {
         name = "Find",
         s = {
-          "<cmd>lua require('telescope.builtin').live_grep({ default_text = require('utils').getVisualSelection() })<cr>",
+          "<cmd>lua require('telescope.builtin').live_grep({ default_text = require('utils').get_visual_selection() })<cr>",
           "Find String",
         },
       },

@@ -128,7 +128,7 @@ function M.project_files(opts)
   end
 end
 
-function M.getVisualSelection()
+function M.get_visual_selection()
   vim.cmd 'noau normal! "vy"'
   local text = vim.fn.getreg "v"
   vim.fn.setreg("v", {})

@@ -24,15 +24,11 @@ function M.get()
     M._keys =  {
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition" },
-      { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
       { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
       { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
       { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
       { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-      { "[d", vim.diagnostic.goto_prev, desc = "Prev Diagnostic" },
-      { "]d", vim.diagnostic.goto_next, desc = "Next Diagnostic" },
-      -- { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
     }
   end
   return M._keys
