@@ -90,31 +90,6 @@ function M.get_user_input_char()
   return vim.fn.nr2char(c)
 end
 
-function M.smart_quit(quit)
-  local bufnr = vim.api.nvim_get_current_buf()
-  local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
-  if modified then
-    print "You have unsaved changes. Quit anyway? (y/N) "
-    local input = M.get_user_input_char()
-
-    if input == "y" then
-      if quit == true then
-        vim.cmd "q!"
-      else
-        vim.cmd "Bdelete!"
-      end
-    end
-
-    M.clear_prompt()
-  else
-    if quit == true then
-      vim.cmd "q!"
-    else
-      vim.cmd "Bdelete!"
-    end
-  end
-end
-
 function M.is_empty(s)
   return s == nil or s == ""
 end
@@ -168,11 +143,6 @@ end
 
 function M.has(plugin)
   return require("lazy.core.config").plugins[plugin] ~= nil
-end
-
-function M.get_clients(...)
-  local fn = vim.lsp.get_clients or vim.lsp.get_active_clients
-  return fn(...)
 end
 
 ---@param on_attach fun(client, buffer)
