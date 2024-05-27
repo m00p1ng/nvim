@@ -39,9 +39,9 @@ return {
     custom_highlights = function(C)
       return {
         ColorColumn = { bg = "#2a2b3d" },
-        CmpGhostText = { fg = C.overlay0, bg = C.bg },
         NavicText = { fg = C.subtext0, bg = C.bg },
         IndentBlanklineContextChar = { fg = C.overlay2 },
+        UfoFoldedEllipsis = { fg = C.overlay2, bg = nil },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
         NvimTreeOpenedFolderName = { fg = C.text, style = { "bold", "italic" } },
@@ -55,6 +55,7 @@ return {
         NvimTreeGitMerge = { fg = C.yellow },
         NvimTreeGitDirty = { fg = C.yellow },
 
+        CmpGhostText = { fg = C.overlay0, bg = C.bg },
         CmpItemKindSnippet = { fg = C.base, bg = C.mauve },
         CmpItemKindKeyword = { fg = C.base, bg = C.red },
         CmpItemKindText = { fg = C.base, bg = C.teal },

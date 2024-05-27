@@ -9,66 +9,6 @@ return {
         color = "#1DC123",
         name = "Sh",
       },
-      [".gitattributes"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitAttributes",
-      },
-      [".gitconfig"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitConfig",
-      },
-      [".gitignore"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitIgnore",
-      },
-      [".gitkeep"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitKeep",
-      },
-      [".gitlab-ci.yml"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitlabCI",
-      },
-      [".gitmodules"] = {
-        icon = "",
-        color = "#e24329",
-        name = "GitModules",
-      },
-      ["spec.js"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "JSTest",
-      },
-      ["spec.ts"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "TSTest",
-      },
-      ["spec.tsx"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "TSTest",
-      },
-      ["test.js"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "JSTest",
-      },
-      ["test.ts"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "TSTest",
-      },
-      ["test.tsx"] = {
-        icon = "",
-        color = "#0277bd",
-        name = "TSTest",
-      },
       ["tsx"] = {
         icon = "",
         color = "#519aba",
