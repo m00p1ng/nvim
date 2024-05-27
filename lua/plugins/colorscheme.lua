@@ -41,7 +41,7 @@ return {
         ColorColumn = { bg = "#2a2b3d" },
         NavicText = { fg = C.subtext0, bg = C.bg },
         IndentBlanklineContextChar = { fg = C.overlay2 },
-        UfoFoldedEllipsis = { fg = C.overlay2, bg = nil },
+        UfoFoldedEllipsis = { fg = C.overlay2, bg = "NONE" },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
         NvimTreeOpenedFolderName = { fg = C.text, style = { "bold", "italic" } },
