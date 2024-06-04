@@ -121,18 +121,6 @@ M.get_winbar = function()
     value = value .. " " .. gps_value .. "%<"
   end
 
-  local bufnrs = f.get_buf_list()
-  local cur_buf = vim.api.nvim_get_current_buf()
-  local num_bufs = #bufnrs
-
-  if num_bufs > 1 and 1 == vim.fn.buflisted(cur_buf) and not f.is_empty(value) then
-    local buf_idx = f.find_index(bufnrs, cur_buf)
-
-    if buf_idx ~= nil then
-      value = value .. "%=" .. "%#Normal#" .. tostring(buf_idx) .. "/" .. tostring(num_bufs)
-    end
-  end
-
   pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
 end
 
