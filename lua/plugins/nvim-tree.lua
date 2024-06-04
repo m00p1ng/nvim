@@ -1,4 +1,5 @@
 local icons = require "utils.icons"
+local f = require "utils"
 
 return {
   "nvim-tree/nvim-tree.lua",
@@ -269,4 +270,21 @@ return {
       },
     },
   },
+  config = function(_, config_opts)
+    config_opts.on_attach = function(bufnr)
+      local api = require "nvim-tree.api"
+
+      local function opts(desc)
+        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+      end
+
+      -- default mappings
+      api.config.mappings.default_on_attach(bufnr)
+
+      -- custom mappings
+      vim.keymap.set("n", "t", f.grep_at_current_tree_node, opts "Search in folder")
+    end
+
+    require("nvim-tree").setup(config_opts)
+  end,
 }

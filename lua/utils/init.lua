@@ -102,16 +102,6 @@ function M.find_index(source, value)
   end
 end
 
-function M.get_buf_list()
-  return vim.tbl_filter(function(b)
-    if 1 ~= vim.fn.buflisted(b) then
-      return false
-    end
-
-    return true
-  end, vim.api.nvim_list_bufs())
-end
-
 function M.get_buf_option(opt)
   local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
   if not status_ok then
@@ -164,6 +154,14 @@ function M.opts(name)
   end
   local Plugin = require "lazy.core.plugin"
   return Plugin.values(plugin, "opts", false)
+end
+
+function M.grep_at_current_tree_node()
+  local node = require("nvim-tree.lib").get_node_at_cursor()
+  if not node then
+    return
+  end
+  require("telescope.builtin").live_grep { search_dirs = { node.absolute_path } }
 end
 
 return M
