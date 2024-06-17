@@ -25,6 +25,7 @@ return {
     }
 
     local icons = require "utils.icons"
+    local f = require "utils"
 
     local kind_icons = icons.kind
 
@@ -35,7 +36,7 @@ return {
         end,
       },
       enabled = function()
-        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or cmp_dap.is_dap_buffer()
+        return f.get_buf_option "buftype" ~= "prompt" or cmp_dap.is_dap_buffer()
       end,
       window = {
         completion = cmp.config.window.bordered {

@@ -124,13 +124,11 @@ return {
           return ""
         end
 
-        local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-
+        local shiftwidth = f.get_buf_option "shiftwidth"
         if shiftwidth == nil then
           return ""
         end
 
-        -- TODO: update codicons and use their indent
         return hl_str(icons.ui.Tab .. shiftwidth, "SLIndent")
       end,
     }
