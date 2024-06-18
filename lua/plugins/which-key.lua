@@ -243,7 +243,6 @@ return {
     }
 
     local backslash_mappings = {
-      e = { "<cmd>lua require('Comment.api').locked('toggle.linewise.current')()<cr>", "Comment" },
       j = { "<cmd>lua require('treesj').split()<cr>", "Break Line" },
       J = { "<cmd>lua require('treesj').join()<cr>", "Join Line" },
     }
@@ -259,7 +258,6 @@ return {
     }
 
     local v_backslash_mappings = {
-      e = { ":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<cr>", "Comment" },
       r = { ":lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
       b = {
         name = "Base64",
