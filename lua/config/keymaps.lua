@@ -58,6 +58,10 @@ local function nvim_mapping()
   keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
   keymap("n", "*", "g*``", opts)
   keymap("n", "<m-q>", "<cmd>copen<cr>", opts)
+
+  -- Comment --
+  keymap("n", "\\e", ":normal gcc<cr>", opts)
+  keymap("v", "\\e", "<esc>:normal gvgc<cr>", opts)
 end
 
 local function vscode_mapping()
