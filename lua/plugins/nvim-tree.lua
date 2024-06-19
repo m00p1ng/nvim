@@ -1,5 +1,4 @@
 local icons = require "utils.icons"
-local f = require "utils"
 
 return {
   "nvim-tree/nvim-tree.lua",
@@ -282,6 +281,7 @@ return {
       api.config.mappings.default_on_attach(bufnr)
 
       -- custom mappings
+      local f = require "utils.telescope"
       vim.keymap.set("n", "t", f.grep_at_current_tree_node, opts "Search in folder")
     end
 

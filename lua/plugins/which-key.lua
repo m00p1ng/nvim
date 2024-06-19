@@ -110,7 +110,7 @@ return {
       f = {
         name = "Find",
         S = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>lua require('utils').project_files()<cr>", "Find files" },
+        f = { "<cmd>lua require('utils.telescope').project_files()<cr>", "Find files" },
         t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
         T = { "<cmd>Telescope live_grep_args theme=ivy<cr>", "Find Text (Args)" },
         s = { "<cmd>Telescope grep_string<cr>", "Find String" },

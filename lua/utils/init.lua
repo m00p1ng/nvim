@@ -107,13 +107,6 @@ function M.get_buf_option(opt)
   end
 end
 
-function M.project_files(opts)
-  local ok = pcall(require("telescope.builtin").git_files, opts)
-  if not ok then
-    require("telescope.builtin").find_files(opts)
-  end
-end
-
 function M.get_visual_selection()
   vim.cmd 'noau normal! "vy"'
   local text = vim.fn.getreg "v"
@@ -150,14 +143,6 @@ function M.opts(name)
   end
   local Plugin = require "lazy.core.plugin"
   return Plugin.values(plugin, "opts", false)
-end
-
-function M.grep_at_current_tree_node()
-  local node = require("nvim-tree.lib").get_node_at_cursor()
-  if not node then
-    return
-  end
-  require("telescope.builtin").live_grep { search_dirs = { node.absolute_path } }
 end
 
 return M
