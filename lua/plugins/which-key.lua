@@ -71,7 +71,6 @@ return {
       Q = { "<cmd>qall!<cr>", "Quit All" },
       c = { "<cmd>bd<cr>", "Close Buffer" },
       O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
-      z = { "<cmd>ZenMode<cr>", "Zen" },
       n = { "<cmd>Noice<cr>", "Noice" },
       N = { "<cmd>NoiceLast<cr>", "Noice" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
@@ -183,21 +182,6 @@ return {
       },
     }
 
-    if f.has "neotest" then
-      n_mappings.t = {
-        name = "Test",
-        O = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Open Summary" },
-        o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Show Output" },
-        r = { "<cmd>lua require('neotest').run.run()<cr>", "Run" },
-        R = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' }))<cr>", "Run (DAP)" },
-        l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
-        L = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Run Last (DAP)" },
-        f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "Run File" },
-        F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "Run File (DAP)" },
-        s = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
-      }
-    end
-
     -- Visual Options
     local v_opts = {
       mode = "v",
@@ -274,7 +258,6 @@ return {
     local prev_bracket_mappings = {
       g = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
       t = { "<cmd>tabprev<cr>", "Previous Tab" },
-      n = { "<cmd>lua require('neotest').jump.prev({ status = 'failed' })", "Previous Failed" },
     }
 
     -- Next Bracket
@@ -290,7 +273,6 @@ return {
     local next_bracket_mappings = {
       g = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
       t = { "<cmd>tabnext<cr>", "Next Tab" },
-      n = { "<cmd>lua require('neotest').jump.next({ status = 'failed' })", "Next Failed" },
     }
 
     which_key.setup(opts)

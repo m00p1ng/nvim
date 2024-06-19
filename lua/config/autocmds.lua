@@ -13,7 +13,6 @@ autocmd("FileType", {
     "dap-repl",
     "startuptime",
     "tsplayground",
-    "neotest-output",
     "NeogitGitCommandHistory",
   },
   callback = function(event)
