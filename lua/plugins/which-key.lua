@@ -237,12 +237,6 @@ return {
 
     local v_backslash_mappings = {
       r = { ":lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
-      b = {
-        name = "Base64",
-        e = { ":lua require('decipher').encode_selection('base64')<cr>", "Encode" },
-        d = { ":lua require('decipher').decode_selection('base64')<cr>", "Decode" },
-        p = { ":lua require('decipher').decode_selection('base64', { preview = true })<cr>", "Preview" },
-      },
     }
 
     -- Prev Bracket
