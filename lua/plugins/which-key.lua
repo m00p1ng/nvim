@@ -74,6 +74,8 @@ return {
       z = { "<cmd>ZenMode<cr>", "Zen" },
       n = { "<cmd>Noice<cr>", "Noice" },
       N = { "<cmd>NoiceLast<cr>", "Noice" },
+      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" },
 
       p = {
         name = "Lazy",
@@ -180,14 +182,6 @@ return {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
       },
     }
-
-    if f.has "nvim-tree.lua" then
-      n_mappings.e = { "<cmd>NvimTreeToggle<cr>", "Explorer" }
-      n_mappings.E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" }
-    elseif f.has "neo-tree.nvim" then
-      n_mappings.e = { "<cmd>Neotree toggle<cr>", "Explorer" }
-      n_mappings.E = { "<cmd>Neotree focus<cr>", "Focus Explorer" }
-    end
 
     if f.has "neotest" then
       n_mappings.t = {

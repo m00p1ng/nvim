@@ -34,8 +34,6 @@ M.ui_filetypes = {
   "noice",
   "startuptime",
   "notify",
-  "neo-tree",
-  "neo-tree-popup",
   "DressingInput",
 }
 
