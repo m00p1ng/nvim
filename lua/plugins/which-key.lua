@@ -53,7 +53,6 @@ return {
   },
   config = function(_, opts)
     local which_key = require "which-key"
-    local f = require "utils"
 
     local n_opts = {
       mode = "n",
