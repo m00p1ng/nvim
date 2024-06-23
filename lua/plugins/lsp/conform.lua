@@ -1,7 +1,6 @@
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   dependencies = { "mason.nvim" },
   opts = {
     -- Map of filetype to formatters

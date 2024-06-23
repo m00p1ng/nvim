@@ -1,7 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   opts = function()
     local f = require "utils"
     local dark = "#181825"

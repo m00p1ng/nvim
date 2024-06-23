@@ -1,7 +1,6 @@
 return {
   "NvChad/nvim-colorizer.lua",
   -- event = { "BufReadPost", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   opts = {
     filetypes = {
       "*",

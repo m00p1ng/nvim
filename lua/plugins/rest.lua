@@ -1,7 +1,6 @@
 return {
   "rest-nvim/rest.nvim",
   ft = "http",
-  cond = vim.g.vscode == nil,
   opts = {
     -- Open request results in a horizontal split
     result_split_horizontal = false,

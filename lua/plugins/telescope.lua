@@ -1,7 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
-  cond = vim.g.vscode == nil,
   dependencies = {
     "nvim-telescope/telescope-live-grep-args.nvim",
     { "ThePrimeagen/refactoring.nvim", lazy = true },

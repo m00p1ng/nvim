@@ -1,7 +1,6 @@
 return {
   "nvim-tree/nvim-web-devicons",
   lazy = true,
-  cond = vim.g.vscode == nil,
   config = function()
     require("nvim-web-devicons").set_icon {
       sh = {

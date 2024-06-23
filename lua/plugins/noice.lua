@@ -1,7 +1,6 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   opts = function()
     return {
       cmdline = {

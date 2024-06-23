@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
-  cond = vim.g.vscode == nil,
   opts = function()
     local dashboard = require "alpha.themes.dashboard"
     local logo = [[

@@ -1,7 +1,6 @@
 return {
   "ntpeters/vim-better-whitespace",
   event = { "BufReadPost", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   config = function()
     vim.g.better_whitespace_enabled = 1
     vim.g.strip_whitespace_on_save = 0

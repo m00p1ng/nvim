@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   "NeogitOrg/neogit",
   cmd = "Neogit",
-  cond = vim.g.vscode == nil,
   opts = {
     -- Hides the hints at the top of the status buffer
     disable_hint = false,

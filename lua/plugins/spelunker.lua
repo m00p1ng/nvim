@@ -1,7 +1,6 @@
 return {
   "kamykn/spelunker.vim",
   event = { "BufReadPost", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   config = function()
     vim.api.nvim_set_hl(0, "SpelunkerSpellBad", { sp = "#89dceb", fg = nil, undercurl = true })
     vim.api.nvim_set_hl(0, "SpelunkerComplexOrCompoundWord", { sp = "#89dceb", fg = nil, undercurl = true })

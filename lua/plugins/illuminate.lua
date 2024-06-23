@@ -1,7 +1,6 @@
 return {
   "RRethy/vim-illuminate",
   event = { "BufReadPre", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   opts = {
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {

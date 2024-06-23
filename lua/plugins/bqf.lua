@@ -1,7 +1,6 @@
 return {
   "kevinhwang91/nvim-bqf",
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   opts = {
     auto_enable = true,
     auto_resize_height = false, -- highly recommended enable

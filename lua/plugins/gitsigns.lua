@@ -1,7 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = { "BufReadPre", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   opts = {
     signs = {
       add = { text = "▎" },

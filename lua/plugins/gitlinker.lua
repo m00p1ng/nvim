@@ -52,7 +52,6 @@ end
 return {
   "linrongbin16/gitlinker.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   opts = {
     -- print message in command line
     message = true,

@@ -4,7 +4,6 @@ return {
   {
     "mfussenegger/nvim-dap",
     lazy = true,
-    cond = vim.g.vscode == nil,
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
@@ -41,7 +40,6 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     lazy = true,
-    cond = vim.g.vscode == nil,
     opts = {
       icons = {
         expanded = icons.ui.ChevronShortRight,

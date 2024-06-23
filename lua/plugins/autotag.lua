@@ -1,7 +1,6 @@
 return {
   "windwp/nvim-ts-autotag",
   event = "InsertEnter",
-  cond = vim.g.vscode == nil,
   opts = {
     opts = {
       enable_rename = true,

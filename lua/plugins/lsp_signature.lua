@@ -1,7 +1,6 @@
 return {
   "ray-x/lsp_signature.nvim",
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   -- event = { "BufReadPost", "BufNewFile" },
   opts = {
     debug = false, -- set to true to enable debug logging

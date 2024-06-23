@@ -7,7 +7,6 @@ return {
   },
   enabled = false,
   event = "VeryLazy",
-  cond = vim.g.vscode == nil,
   opts = {
     options = {
       mode = "buffers", -- set to "tabs" to only show tabpages instead

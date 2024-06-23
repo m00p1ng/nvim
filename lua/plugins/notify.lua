@@ -2,7 +2,6 @@ local icons = require "utils.icons"
 
 return {
   "rcarriga/nvim-notify",
-  cond = vim.g.vscode == nil,
   opts = {
     -- Animation style (see below for details)
     stages = "fade_in_slide_out",

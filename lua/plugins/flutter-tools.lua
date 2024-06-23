@@ -1,7 +1,6 @@
 return {
   "akinsho/flutter-tools.nvim",
   ft = "dart",
-  cond = vim.g.vscode == nil,
   opts = {
     ui = {
       -- the border type to use for all floating windows, the same options/formats

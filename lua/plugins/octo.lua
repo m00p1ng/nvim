@@ -2,7 +2,6 @@ return {
   "pwntester/octo.nvim",
   enabled = false,
   cmd = "Octo",
-  cond = vim.g.vscode == nil,
   opts = {
     use_local_fs = false, -- use local files on right side of reviews
     enable_builtin = false, -- shows a list of builtin actions when no action is provided

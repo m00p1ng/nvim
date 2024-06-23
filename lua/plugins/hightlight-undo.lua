@@ -1,6 +1,5 @@
 return {
   "tzachar/highlight-undo.nvim",
-  cond = vim.g.vscode == nil,
   opts = {
     duration = 300,
     undo = {

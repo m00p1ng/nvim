@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   "hedyhli/outline.nvim",
   cmd = { "Outline", "OutlineOpen" },
-  cond = vim.g.vscode == nil,
   opts = {
     outline_window = {
       -- Where to open the split window: right/left

@@ -1,7 +1,6 @@
 return {
   "vuki656/package-info.nvim",
   lazy = true,
-  cond = vim.g.vscode == nil,
   opts = {
     colors = {
       up_to_date = "#3C4048", -- Text color for up to date dependency virtual text

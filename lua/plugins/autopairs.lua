@@ -1,7 +1,6 @@
 return {
   "windwp/nvim-autopairs",
   event = "InsertEnter",
-  cond = vim.g.vscode == nil,
   opts = {
     check_ts = true,
     ts_config = {

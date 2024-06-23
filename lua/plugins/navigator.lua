@@ -1,6 +1,5 @@
 return {
   "numToStr/Navigator.nvim",
-  cond = vim.g.vscode == nil,
   opts = {
     disable_on_zoom = true,
   },

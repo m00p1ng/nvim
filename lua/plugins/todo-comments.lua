@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   "folke/todo-comments.nvim",
   event = { "BufReadPost", "BufNewFile" },
-  cond = vim.g.vscode == nil,
   opts = {
     signs = true,
     sign_priority = 8,
