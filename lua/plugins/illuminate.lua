@@ -1,6 +1,5 @@
 return {
   "RRethy/vim-illuminate",
-  enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   cond = vim.g.vscode == nil,
   opts = {
