@@ -145,7 +145,14 @@ return {
       -- Used to override format_item. See :help dressing-format
       format_item_override = {},
       -- see :help dressing_get_config
-      get_config = nil,
+      get_config = function(opts)
+        if opts.kind == "codeaction" then
+          return {
+            backend = "telescope",
+            telescope = require("telescope.themes").get_cursor {},
+          }
+        end
+      end,
     },
   },
   init = function()
