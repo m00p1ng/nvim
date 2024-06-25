@@ -173,5 +173,6 @@ return {
     Keyboard = "",
     Lazy = "󰒲",
     Tabnine = "⌬",
+    Stars = "󰙴",
   },
 }

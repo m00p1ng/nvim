@@ -38,14 +38,8 @@ return {
         return f.get_buf_option "buftype" ~= "prompt" or cmp_dap.is_dap_buffer()
       end,
       window = {
-        completion = cmp.config.window.bordered {
-          col_offset = -3,
-          side_padding = 0,
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-        },
-        documentation = cmp.config.window.bordered {
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-        },
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       },
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -89,10 +83,10 @@ return {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
           -- Kind icons
-          vim_item.kind = " " .. (kind_icons[vim_item.kind] or "") .. " "
+          vim_item.kind = kind_icons[vim_item.kind] or ""
 
           if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = " " .. icons.misc.Lightning .. " "
+            vim_item.kind = icons.misc.Stars
             local detail = (entry.completion_item.data or {}).detail
             if detail and detail:find ".*%%.*" then
               vim_item.kind = vim_item.kind .. " " .. detail
@@ -106,7 +100,7 @@ return {
           end
 
           if entry.source.name == "lab.quick_data" then
-            vim_item.kind = " " .. icons.misc.CircuitBoard .. " "
+            vim_item.kind = icons.misc.CircuitBoard
             vim_item.kind_hl_group = "CmpItemKindConstant"
           end
 
