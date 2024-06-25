@@ -208,5 +208,7 @@ return {
     telescope.load_extension "notify"
     telescope.load_extension "diffview"
     telescope.load_extension "live_grep_args"
+
+    vim.keymap.set("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
   end,
 }

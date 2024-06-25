@@ -55,7 +55,6 @@ local function nvim_mapping()
   keymap("n", "L", "<cmd>bn<cr>", opts)
 
   -- Other --
-  keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>", opts)
   keymap("n", "*", "g*``", opts)
   keymap("n", "<m-q>", "<cmd>copen<cr>", opts)
 
