@@ -1,6 +1,5 @@
 return {
   "Wansmer/treesj",
-  lazy = true,
   opts = {
     ---@type boolean Use default keymaps (<space>m - toggle, <space>j - join, <space>s - split)
     use_default_keymaps = false,
@@ -8,7 +7,7 @@ return {
     check_syntax_error = true,
     ---If line after join will be longer than max value,
     ---@type number If line after join will be longer than max value, node will not be formatted
-    max_join_length = 120,
+    max_join_length = 300,
     ---Cursor behavior:
     ---hold - cursor follows the node/place on which it was called
     ---start - cursor jumps to the first symbol of the node being formatted
@@ -23,5 +22,9 @@ return {
     dot_repeat = true,
     ---@type nil|function Callback for treesj error handler. func (err_text, level, ...other_text)
     on_error = nil,
+  },
+  keys = {
+    { "\\j", "<cmd>lua require('treesj').split()<cr>", noremap = true, silent = true, desc = "Break Line" },
+    { "\\J", "<cmd>lua require('treesj').join()<cr>", noremap = true, silent = true, desc = "Join Line" },
   },
 }

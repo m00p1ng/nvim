@@ -1,8 +1,5 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-
-autocmd("FileType", {
-  group = augroup("close_with_q", { clear = true }),
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
   pattern = {
     "qf",
     "help",
@@ -22,20 +19,20 @@ autocmd("FileType", {
   end,
 })
 
-autocmd("TextYankPost", {
-  group = augroup("highlight_yank", { clear = true }),
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
   end,
 })
 
-autocmd("VimResized", {
-  group = augroup("resize_splits", { clear = true }),
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("resize_splits", { clear = true }),
   command = "tabdo wincmd =",
 })
 
-autocmd("BufEnter", {
-  group = augroup("changed_title", { clear = true }),
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("changed_title", { clear = true }),
   callback = function()
     local get_project_dir = function()
       local cwd = vim.fn.getcwd()
@@ -48,21 +45,21 @@ autocmd("BufEnter", {
   end,
 })
 
-autocmd("BufWinEnter", {
-  group = augroup("check_file_changed", { clear = true }),
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = vim.api.nvim_create_augroup("check_file_changed", { clear = true }),
   command = "checktime",
 })
 
-autocmd("User", {
-  group = augroup("winbar", { clear = true }),
+vim.api.nvim_create_autocmd("User", {
+  group = vim.api.nvim_create_augroup("winbar", { clear = true }),
   pattern = "VeryLazy",
   callback = function()
     require("utils.winbar").create_winbar()
   end,
 })
 
-autocmd("BufReadPost", {
-  group = augroup("last_loc", { clear = true }),
+vim.api.nvim_create_autocmd("BufReadPost", {
+  group = vim.api.nvim_create_augroup("last_loc", { clear = true }),
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)

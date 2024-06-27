@@ -172,12 +172,6 @@ return {
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
       },
-
-      T = {
-        name = "Treesitter",
-        H = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-        p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-      },
     }
 
     -- Visual Options
@@ -206,21 +200,6 @@ return {
           "Find String",
         },
       },
-    }
-
-    -- Backslash Options
-    local backslash_opts = {
-      mode = "n",
-      prefix = "\\",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    local backslash_mappings = {
-      j = { "<cmd>lua require('treesj').split()<cr>", "Break Line" },
-      J = { "<cmd>lua require('treesj').join()<cr>", "Join Line" },
     }
 
     -- Visual Backslash Options
@@ -269,7 +248,6 @@ return {
 
     which_key.setup(opts)
     which_key.register(n_mappings, n_opts)
-    which_key.register(backslash_mappings, backslash_opts)
     which_key.register(v_mappings, v_opts)
     which_key.register(v_backslash_mappings, v_backslash_opts)
     which_key.register(prev_bracket_mappings, prev_bracket_opts)
