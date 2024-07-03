@@ -202,20 +202,6 @@ return {
       },
     }
 
-    -- Visual Backslash Options
-    local v_backslash_opts = {
-      mode = "v",
-      prefix = "\\",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    local v_backslash_mappings = {
-      r = { ":lua require('telescope').extensions.refactoring.refactors()<cr>", "Refactoring" },
-    }
-
     -- Prev Bracket
     local prev_bracket_opts = {
       mode = "n",
@@ -249,7 +235,6 @@ return {
     which_key.setup(opts)
     which_key.register(n_mappings, n_opts)
     which_key.register(v_mappings, v_opts)
-    which_key.register(v_backslash_mappings, v_backslash_opts)
     which_key.register(prev_bracket_mappings, prev_bracket_opts)
     which_key.register(next_bracket_mappings, next_bracket_opts)
   end,
