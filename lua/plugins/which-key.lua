@@ -109,8 +109,8 @@ return {
         name = "Find",
         S = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>lua require('utils.telescope').project_files()<cr>", "Find files" },
-        t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-        T = { "<cmd>Telescope live_grep_args theme=ivy<cr>", "Find Text (Args)" },
+        -- t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+        t = { "<cmd>Telescope live_grep_args theme=ivy<cr>", "Find Text (Args)" },
         s = { "<cmd>Telescope grep_string<cr>", "Find String" },
         h = { "<cmd>Telescope help_tags<cr>", "Help" },
         H = { "<cmd>Telescope highlights<cr>", "Highlight" },
@@ -130,7 +130,6 @@ return {
 
       g = {
         name = "Git",
-        -- l = { "<cmd>GitBlameToggle<cr>", "Toggle Blame" },
         l = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle Blame" },
         P = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
         r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
@@ -156,7 +155,6 @@ return {
 
       l = {
         name = "LSP",
-        -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Diagnostics" },
         w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
         -- f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
