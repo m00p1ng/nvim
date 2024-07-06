@@ -163,6 +163,9 @@ return {
         R = { "<cmd>LspRestart<cr>", "Restart" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+        k = { "<cmd>FormatDisable<cr>", "Disable Format" },
+        K = { "<cmd>FormatDisable!<cr>", "Disable Format (Buffer)" },
+        j = { "<cmd>FormatEnable<cr>", "Enable Format" },
       },
     }
 
