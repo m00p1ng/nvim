@@ -34,10 +34,10 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 
 -- Visual Block --
 vim.keymap.set("v", "p", '"_dP')
-vim.keymap.set("v", "<space>c", '"+y', { desc =  "Copy to System Clipboard" })
+vim.keymap.set("v", "<space>c", '"+y', { desc = "Copy to System Clipboard" })
 
 -- Search --
-vim.keymap.set("n", "*", "g*``", { desc = "Search Current Word"})
+vim.keymap.set("n", "*", "g*``", { desc = "Search Current Word" })
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
 vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
@@ -65,11 +65,11 @@ local function nvim_mapping()
   vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 
   -- Comment --
-  vim.keymap.set("n", "\\e", ":normal gcc<cr>", { desc = "Toggle Comment"})
-  vim.keymap.set("v", "\\e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment"})
+  vim.keymap.set("n", "\\e", ":normal gcc<cr>", { desc = "Toggle Comment" })
+  vim.keymap.set("v", "\\e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment" })
 
   -- Other --
-  vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List"})
+  vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })
 end
 
 local function vscode_mapping()
