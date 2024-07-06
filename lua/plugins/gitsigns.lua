@@ -41,4 +41,8 @@ return {
       col = 1,
     },
   },
+  keys = {
+    { "[g", "<cmd>Gitsigns prev_hunk<cr>", desc = "Previous Hunk" },
+    { "]g", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk" },
+  },
 }

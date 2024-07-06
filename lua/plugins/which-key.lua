@@ -144,11 +144,7 @@ return {
         h = { "<cmd>DiffviewFileHistory %<cr>", "File History" },
         g = { "<cmd>Neogit<cr>", "Neogit" },
         D = { "<cmd>Telescope diffview<cr>", "Compare HEAD" },
-        w = { "<cmd>GitLink! commit<cr>", "Open Commit on Web" },
         p = { "<cmd>lua require('utils.git').previous_change()<cr>", "Diff Previous" },
-        y = { "<cmd>GitLink!<cr>", "Open line on Web" },
-        Y = { "<cmd>GitLink<cr>", "Copy git link to clipboard" },
-        O = { "<cmd>GitLink! project<cr>", "Open Project on Web" },
       },
 
       l = {
@@ -185,8 +181,6 @@ return {
         name = "Git",
         r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
         s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
-        y = { ":GitLink!<cr>", "Open line on Web" },
-        Y = { ":GitLink<cr>", "Copy git link to clipboard" },
       },
       f = {
         name = "Find",
@@ -197,38 +191,8 @@ return {
       },
     }
 
-    -- Prev Bracket
-    local prev_bracket_opts = {
-      mode = "n",
-      prefix = "[",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    local prev_bracket_mappings = {
-      g = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
-    }
-
-    -- Next Bracket
-    local next_bracket_opts = {
-      mode = "n",
-      prefix = "]",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    local next_bracket_mappings = {
-      g = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
-    }
-
     which_key.setup(opts)
     which_key.register(n_mappings, n_opts)
     which_key.register(v_mappings, v_opts)
-    which_key.register(prev_bracket_mappings, prev_bracket_opts)
-    which_key.register(next_bracket_mappings, next_bracket_opts)
   end,
 }

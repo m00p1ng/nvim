@@ -91,4 +91,13 @@ return {
     -- write logs to file
     file_log = false,
   },
+  keys = {
+    { "<leader>gw", "<cmd>GitLink! commit<cr>", desc = "Open Commit on Web" },
+    { "<leader>gy", "<cmd>GitLink!<cr>", desc = "Open Line on Web" },
+    { "<leader>gY", "<cmd>GitLink<cr>", desc = "Copy GitLink to Clipboard" },
+    { "<leader>gO", "<cmd>GitLink! project<cr>", desc = "Open Project on Web" },
+
+    { "<leader>gy", ":GitLink!<cr>", desc = "Open Line on Web", mode = "v" },
+    { "<leader>gY", ":GitLink<cr>", desc = "Copy GitLink to Clipboard", mode = "v" },
+  },
 }
