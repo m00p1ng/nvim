@@ -71,8 +71,6 @@ return {
       O = { "<cmd>%bd|e#|bd#<cr>", "Buffer Only" },
       n = { "<cmd>Noice<cr>", "Noice" },
       N = { "<cmd>NoiceLast<cr>", "Noice" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      E = { "<cmd>NvimTreeFocus<cr>", "Focus Explorer" },
 
       p = {
         name = "Lazy",
@@ -183,7 +181,6 @@ return {
     }
 
     local v_mappings = {
-      c = { '"+y', "Copy" },
       g = {
         name = "Git",
         r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
@@ -212,7 +209,6 @@ return {
 
     local prev_bracket_mappings = {
       g = { "<cmd>Gitsigns prev_hunk<cr>", "Previous Hunk" },
-      t = { "<cmd>tabprev<cr>", "Previous Tab" },
     }
 
     -- Next Bracket
@@ -227,7 +223,6 @@ return {
 
     local next_bracket_mappings = {
       g = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
-      t = { "<cmd>tabnext<cr>", "Next Tab" },
     }
 
     which_key.setup(opts)

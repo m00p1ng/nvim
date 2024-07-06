@@ -2,7 +2,6 @@ local icons = require "utils.icons"
 
 return {
   "nvim-tree/nvim-tree.lua",
-  -- cmd = "NvimTreeToggle",
   opts = {
     on_attach = "default",
     hijack_cursor = false,
@@ -286,4 +285,8 @@ return {
 
     require("nvim-tree").setup(config_opts)
   end,
+  keys = {
+    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+    { "<leader>E", "<cmd>NvimTreeFocus<cr>", desc = "Focus NvimTree" },
+  },
 }
