@@ -166,33 +166,7 @@ return {
       },
     }
 
-    -- Visual Options
-    local v_opts = {
-      mode = "v",
-      prefix = "<leader>",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = true,
-    }
-
-    local v_mappings = {
-      g = {
-        name = "Git",
-        r = { ":Gitsigns reset_hunk<cr>", "Reset Hunk" },
-        s = { ":Gitsigns stage_hunk<cr>", "Stage Hunk" },
-      },
-      f = {
-        name = "Find",
-        s = {
-          "<cmd>lua require('telescope.builtin').live_grep({ default_text = require('utils').get_visual_selection() })<cr>",
-          "Find String",
-        },
-      },
-    }
-
     which_key.setup(opts)
     which_key.register(n_mappings, n_opts)
-    which_key.register(v_mappings, v_opts)
   end,
 }

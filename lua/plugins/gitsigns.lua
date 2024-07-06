@@ -44,5 +44,8 @@ return {
   keys = {
     { "[g", "<cmd>Gitsigns prev_hunk<cr>", desc = "Previous Hunk" },
     { "]g", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk" },
+
+    { "<leader>gr", ":Gitsigns reset_hunk<cr>", desc = "Reset Hunk", mode = "v" },
+    { "<leader>gs", ":Gitsigns stage_hunk<cr>", desc = "Stage Hunk", mode = "v" },
   },
 }

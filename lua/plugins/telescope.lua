@@ -209,6 +209,8 @@ return {
     telescope.load_extension "live_grep_args"
   end,
   keys = {
-    { "z=", "<cmd>Telescope spell_suggest<cr>", noremap = true, desc = "spell suggestion" },
+    { "z=", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggestion" },
+
+    { "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ theme = 'ivy' })<cr>", desc = "Find String", mode = "v" },
   },
 }
