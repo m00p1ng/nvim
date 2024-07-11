@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local icons = require "utils.icons"
 
-require("lazy").setup("plugins", {
+require("lazy").setup {
   root = vim.fn.stdpath "data" .. "/lazy", -- directory where plugins will be installed
   defaults = {
     -- Set this to `true` to have all your plugins lazy-loaded by default.
@@ -28,7 +28,10 @@ require("lazy").setup("plugins", {
     cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
   },
   -- leave nil when passing the spec as the first argument to setup()
-  spec = nil, ---@type LazySpec
+  spec = {
+    { import = "plugins" },
+    { import = "override" },
+  }, ---@type LazySpec
   local_spec = true, -- load project specific .lazy.lua spec files. They will be added at the end of the spec.
   lockfile = vim.fn.stdpath "config" .. "/lazy-lock.json", -- lockfile generated after running update.
   ---@type number? limit the maximum amount of concurrent tasks
@@ -118,23 +121,8 @@ require("lazy").setup("plugins", {
       -- be shown in the help menu.
       -- To disable one of the defaults, set it to false.
 
-      ["<localleader>l"] = {
-        function(plugin)
-          require("lazy.util").float_term({ "lazygit", "log" }, {
-            cwd = plugin.dir,
-          })
-        end,
-        desc = "Open lazygit log",
-      },
-
-      ["<localleader>t"] = {
-        function(plugin)
-          require("lazy.util").float_term(nil, {
-            cwd = plugin.dir,
-          })
-        end,
-        desc = "Open terminal in plugin dir",
-      },
+      ["<localleader>l"] = false,
+      ["<localleader>t"] = false,
     },
   },
   diff = {
@@ -201,4 +189,4 @@ require("lazy").setup("plugins", {
     -- Track each new require in the Lazy profiling tab
     require = false,
   },
-})
+}
