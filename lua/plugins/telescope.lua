@@ -15,7 +15,7 @@ return {
       defaults = {
         prompt_prefix = icons.ui.Telescope .. " ",
         -- selection_caret = " ",
-        path_display = { "smart" },
+        path_display = { "filename_first" },
 
         mappings = {
           i = {
