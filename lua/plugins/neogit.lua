@@ -293,4 +293,8 @@ return {
       },
     },
   },
+  keys = {
+    { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+    { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit: Commit changes" },
+  },
 }

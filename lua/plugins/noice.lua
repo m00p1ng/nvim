@@ -207,4 +207,8 @@ return {
       format = {}, --- @see section on formatting
     }
   end,
+  keys = {
+    { "<leader>n", "<cmd>Noice<cr>", desc = "Noice" },
+    { "<leader>N", "<cmd>NoiceLast<cr>", desc = "Noice Last" },
+  },
 }
