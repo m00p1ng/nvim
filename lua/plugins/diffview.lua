@@ -211,4 +211,9 @@ return {
       group = vim.api.nvim_create_augroup("Diffview_ab", { clear = true }),
     })
   end,
+  keys = {
+    { "<leader>gt", "<cmd>DiffviewOpen<cr>", desc = "Diff view" },
+    { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+    { "<leader>gp", "<cmd>lua require('utils.git').previous_change()<cr>", desc = "Diff Previous" },
+  },
 }

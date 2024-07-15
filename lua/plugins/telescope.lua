@@ -211,6 +211,53 @@ return {
   keys = {
     { "z=", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggestion" },
 
-    { "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ theme = 'ivy' })<cr>", desc = "Find String", mode = "v" },
+    -- Find --
+    { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+
+    { "<leader>fS", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>ff", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
+    -- { "<leader>ft",  { "<cmd>Telescope live_grep<cr>", "Find Text" },
+    { "<leader>ft", "<cmd>Telescope live_grep_args theme=ivy<cr>", desc = "Find Text (Args)" },
+    -- { "<leader>fs", "<cmd>Telescope grep_string<cr>", "Find String" },
+    {
+      "<leader>fs",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor({ theme = 'ivy' })<cr>",
+      desc = "Find String",
+    },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Highlight" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+    { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fR", "<cmd>Telescope registers<cr>", desc = "Registers" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+    { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    { "<leader>fc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    { "<leader>fN", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Notify" },
+    { "<leader>fV", "<cmd>Telescope vim_options<cr>", desc = "Vim Options" },
+    { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jump list" },
+    { "<leader>fo", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
+
+    -- Find Visual --
+    {
+      "<leader>fs",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ theme = 'ivy' })<cr>",
+      desc = "Find String",
+      mode = "v",
+    },
+
+    -- Git --
+    { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+    { "<leader>gb", "<cmd>Telescope git_branches show_remote_tracking_branches=false<cr>", desc = "Checkout branch" },
+    { "<leader>gB", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+    { "<leader>gC", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+    { "<leader>gD", "<cmd>Telescope diffview<cr>", desc = "Compare HEAD" },
+
+    -- LSP --
+    { "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Diagnostics" },
+    { "<leader>lw", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
+    { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+    { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
   },
 }
