@@ -68,9 +68,13 @@ return {
       end
 
       -- setup keymaps
-      require("utils").on_attach(function(client, buffer)
-        require("plugins.lsp.keymaps").on_attach(client, buffer)
-      end)
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local buffer = args.buf ---@type number
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          require("plugins.lsp.keymaps").on_attach(client, buffer)
+        end,
+      })
 
       -- diagnostics
       -- for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do

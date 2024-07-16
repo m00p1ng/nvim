@@ -192,6 +192,22 @@ return {
       color = { fg = "#eba0ac" },
     }
 
+    local autoformat = {
+      function()
+        if not vim.g.autoformat then
+          return "G"
+        end
+
+        if vim.b.autoformat ~= nil and not vim.b.autoformat then
+          return "B"
+        end
+      end,
+      icon = "󱏟",
+      cond = function()
+        return not vim.g.autoformat or (vim.b.autoformat ~= nil and not vim.b.autoformat)
+      end,
+    }
+
     local updated_plugin = {
       require("lazy.status").updates,
       cond = require("lazy.status").has_updates,
@@ -241,7 +257,7 @@ return {
         lualine_a = { mode, branch },
         lualine_b = { diagnostics, tabs },
         lualine_c = { status_mode, search_result, current_signature },
-        lualine_x = { command, filesize },
+        lualine_x = { autoformat, command, filesize },
         lualine_y = { spaces, filetype },
         lualine_z = { updated_plugin, location },
       },

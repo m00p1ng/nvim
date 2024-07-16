@@ -78,14 +78,6 @@ function M.clear_prompt()
   vim.api.nvim_command "normal! :<cr>"
 end
 
-function M.get_user_input_char()
-  local c = vim.fn.getchar()
-  while type(c) ~= "number" do
-    c = vim.fn.getchar()
-  end
-  return vim.fn.nr2char(c)
-end
-
 function M.is_empty(s)
   return s == nil or s == ""
 end
@@ -107,32 +99,8 @@ function M.get_buf_option(opt)
   end
 end
 
-function M.get_visual_selection()
-  vim.cmd 'noau normal! "vy"'
-  local text = vim.fn.getreg "v"
-  vim.fn.setreg("v", {})
-
-  text = string.gsub(text, "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ""
-  end
-end
-
 function M.has(plugin)
   return require("lazy.core.config").plugins[plugin] ~= nil
-end
-
----@param on_attach fun(client, buffer)
-function M.on_attach(on_attach)
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      local buffer = args.buf ---@type number
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      on_attach(client, buffer)
-    end,
-  })
 end
 
 ---@param name string

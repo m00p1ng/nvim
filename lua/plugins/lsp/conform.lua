@@ -24,12 +24,11 @@ return {
     -- This can also be a function that returns the table.
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
-      if not vim.g.autoformat or not vim.b[bufnr].autoformat then
+      if not vim.g.autoformat or (vim.b[bufnr].autoformat ~= nil and not vim.b[bufnr].autoformat) then
         return
       end
 
-      local ignore_filetypes = {}
-      if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+      if vim.tbl_contains(vim.g.autoformat_ignore_filetypes, vim.bo[bufnr].filetype) then
         return
       end
 
@@ -40,7 +39,7 @@ return {
     -- It will pass the table to conform.format().
     -- This can also be a function that returns the table.
     format_after_save = function(bufnr)
-      if not vim.g.autoformat or vim.b[bufnr].autoformat then
+      if not vim.g.autoformat or (vim.b[bufnr].autoformat ~= nil and not vim.b[bufnr].autoformat) then
         return
       end
       -- ...additional logic...
@@ -58,31 +57,24 @@ return {
     },
   },
   init = function()
-    vim.b.autoformat = true
     vim.g.autoformat = true
+    vim.g.autoformat_ignore_filetypes = {}
 
-    vim.api.nvim_create_user_command("FormatDisable", function(args)
+    vim.api.nvim_create_user_command("FormatToggle", function(args)
       if args.bang then
-        -- FormatDisable! will disable formatting just for this buffer
-        vim.b.autoformat = false
+        if vim.b.autoformat == nil then
+          vim.b.autoformat = true
+        end
+
+        vim.b.autoformat = not vim.b.autoformat
       else
-        vim.g.autoformat = false
+        vim.g.autoformat = not vim.g.autoformat
       end
-    end, {
-      desc = "Disable autoformat-on-save",
-      bang = true,
-    })
-    vim.api.nvim_create_user_command("FormatEnable", function()
-      vim.b.autoformat = true
-      vim.g.autoformat = true
-    end, {
-      desc = "Re-enable autoformat-on-save",
-    })
+    end, { desc = "Toggle autoformat", bang = true })
   end,
   keys = {
     { "<leader>lf", "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>", desc = "Format" },
-    { "<leader>lk", "<cmd>FormatDisable<cr>", desc = "Disable Format" },
-    { "<leader>lK", "<cmd>FormatDisable!<cr>", desc = "Disable Format (Buffer)" },
-    { "<leader>lj", "<cmd>FormatEnable<cr>", desc = "Enable Format" },
+    { "<leader>lk", "<cmd>FormatToggle<cr>", desc = "Toggle Format" },
+    { "<leader>lK", "<cmd>FormatToggle!<cr>", desc = "Toggle Format (Buffer)" },
   },
 }
