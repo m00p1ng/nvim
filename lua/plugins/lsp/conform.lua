@@ -76,4 +76,10 @@ return {
       desc = "Re-enable autoformat-on-save",
     })
   end,
+  keys = {
+    { "<leader>lf", "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>", desc = "Format" },
+    { "<leader>lk", "<cmd>FormatDisable<cr>", desc = "Disable Format" },
+    { "<leader>lK", "<cmd>FormatDisable!<cr>", desc = "Disable Format (Buffer)" },
+    { "<leader>lj", "<cmd>FormatEnable<cr>", desc = "Enable Format" },
+  },
 }

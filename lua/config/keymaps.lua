@@ -1,7 +1,7 @@
 --Remap space as leader key
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Modes
 --   normal_mode = "n",
@@ -34,7 +34,9 @@ vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 
 -- Visual Block --
 vim.keymap.set("v", "p", '"_dP')
-vim.keymap.set("v", "<space>c", '"+y', { desc = "Copy to System Clipboard" })
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<leader>c", '"+y', { desc = "Copy to System Clipboard" })
 
 -- Search --
 vim.keymap.set("n", "*", "g*``", { desc = "Search Current Word" })
@@ -53,12 +55,14 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "Decrease Wi
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase Window Width" })
 
 -- Navigate buffers
-vim.keymap.set("n", "H", "<cmd>bp<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "L", "<cmd>bn<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "H", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "L", "<cmd>bnnext<cr>", { desc = "Next Buffer" })
 
 -- Navigate Tabs
 vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Comment --
 vim.keymap.set("n", "\\e", ":normal gcc<cr>", { desc = "Toggle Comment" })

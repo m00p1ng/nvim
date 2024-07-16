@@ -253,4 +253,7 @@ return {
       },
     },
   },
+  keys = {
+    { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline" },
+  },
 }

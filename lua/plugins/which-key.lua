@@ -56,7 +56,7 @@ return {
         g = true, -- bindings for prefixed with g
       },
     },
-    ---@type wk.Win
+    ---@type wk.Win.opts
     win = {
       -- don't allow the popup to overlap with the cursor
       no_overlap = true,
@@ -146,7 +146,7 @@ return {
         ScrollWheelUp = "󱕑 ",
         NL = "󰌑 ",
         BS = "⌫",
-        Space = "󱁐 ",
+        Space = "<space>",
         Tab = "󰌒 ",
         F1 = "󱊫",
         F2 = "󱊬",
@@ -203,23 +203,9 @@ return {
       { "<leader>g", group = "Git" },
 
       { "<leader>l", group = "LSP" },
-      -- f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
-      {
-        "<leader>lf",
-        "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>",
-        desc = "Format",
-      },
-      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-      { "<leader>lI", "<cmd>Mason<cr>", desc = "Installer Info" },
       { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-      { "<leader>lL", "<cmd>LspLensToggle<cr>", desc = "Toggle Lens" },
       { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
       { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-      { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline" },
-      { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
-      { "<leader>lk", "<cmd>FormatDisable<cr>", desc = "Disable Format" },
-      { "<leader>lK", "<cmd>FormatDisable!<cr>", desc = "Disable Format (Buffer)" },
-      { "<leader>lj", "<cmd>FormatEnable<cr>", desc = "Enable Format" },
     }
   end,
 }

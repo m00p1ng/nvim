@@ -25,7 +25,7 @@ return {
     max_concurrent_installers = 4,
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}
-  config = function(plugin, opts)
+  config = function(_, opts)
     require("mason").setup(opts)
     local mr = require "mason-registry"
     for _, tool in ipairs(opts.ensure_installed) do
@@ -35,4 +35,7 @@ return {
       end
     end
   end,
+  keys = {
+    { "<leader>lI", "<cmd>Mason<cr>", desc = "Installer Info" },
+  },
 }

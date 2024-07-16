@@ -147,6 +147,10 @@ return {
       }
       require("mason-lspconfig").setup_handlers { setup }
     end,
+    keys = {
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+      { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
+    },
   },
 
   { import = "plugins.lsp.conform" },
