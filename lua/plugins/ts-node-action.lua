@@ -3,12 +3,6 @@ return {
   lazy = true,
   opts = {},
   keys = {
-    {
-      "s",
-      ":lua require('ts-node-action').node_action()<cr>",
-      noremap = true,
-      silent = true,
-      desc = "Trigger Node Action",
-    },
+    { "s", ":lua require('ts-node-action').node_action()<cr>", desc = "Trigger Node Action" },
   },
 }

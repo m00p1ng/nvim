@@ -65,8 +65,8 @@ vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Comment --
-vim.keymap.set("n", "\\e", ":normal gcc<cr>", { desc = "Toggle Comment" })
-vim.keymap.set("v", "\\e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment" })
+vim.keymap.set("n", "<localleader>e", ":normal gcc<cr>", { desc = "Toggle Comment" })
+vim.keymap.set("v", "<localleader>e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment" })
 
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })

@@ -18,44 +18,48 @@ Config.options.defaults.cond = function(plugin)
   return vim.tbl_contains(enabled, plugin.name) or plugin.vscode
 end
 
+local function vscode_call(action)
+  return "<cmd>lua require('vscode-neovim').call('" .. action .. "')<cr>"
+end
+
 -- LSP --
-vim.keymap.set("n", "gl", "<cmd>lua require('vscode-neovim').call('editor.action.showHover')<cr>")
-vim.keymap.set("n", "gi", "<cmd>lua require('vscode-neovim').call('editor.action.revealDeclaration')<cr>")
-vim.keymap.set("n", "gr", "<cmd>lua require('vscode-neovim').call('editor.action.referenceSearch.trigger')<cr>")
-vim.keymap.set("n", "<leader>a", "<cmd>lua require('vscode-neovim').call('editor.action.quickFix')<cr>")
-vim.keymap.set("n", "<leader>lr", "<cmd>lua require('vscode-neovim').call('editor.action.rename')<cr>")
-vim.keymap.set("n", "<leader>lf", "<cmd>lua require('vscode-neovim').call('editor.action.formatDocument')<cr>")
+vim.keymap.set("n", "gl", vscode_call "editor.action.showHover")
+vim.keymap.set("n", "gi", vscode_call "editor.action.revealDeclaration")
+vim.keymap.set("n", "gr", vscode_call "editor.action.referenceSearch.trigger")
+vim.keymap.set("n", "<leader>a", vscode_call "editor.action.quickFix")
+vim.keymap.set("n", "<leader>lr", vscode_call "editor.action.rename")
+vim.keymap.set("n", "<leader>lf", vscode_call "editor.action.formatDocument")
 
 -- Navigate --
-vim.keymap.set("n", "H", "<cmd>lua require('vscode-neovim').call('workbench.action.previousEditor')<cr>")
-vim.keymap.set("n", "L", "<cmd>lua require('vscode-neovim').call('workbench.action.nextEditor')<cr>")
-vim.keymap.set("n", "<leader>e", "<cmd>lua require('vscode-neovim').call('workbench.view.explorer')<cr>")
+vim.keymap.set("n", "H", vscode_call('workbench.action.previousEditor'))
+vim.keymap.set("n", "L", vscode_call('workbench.action.nextEditor'))
+vim.keymap.set("n", "<leader>e", vscode_call('workbench.view.explorer'))
 
 -- Telescope --
-vim.keymap.set("n", "<leader>ff", "<cmd>lua require('vscode-neovim').call('workbench.action.quickOpen')<cr>")
-vim.keymap.set("n", "<leader>fr", "<cmd>lua require('vscode-neovim').call('workbench.action.quickOpen')<cr>")
-vim.keymap.set("n", "<leader>ft", "<cmd>lua require('vscode-neovim').call('workbench.action.findInFiles')<cr>")
+vim.keymap.set("n", "<leader>ff", vscode_call('workbench.action.quickOpen'))
+vim.keymap.set("n", "<leader>fr", vscode_call('workbench.action.quickOpen'))
+vim.keymap.set("n", "<leader>ft", vscode_call('workbench.action.findInFiles'))
 vim.keymap.set("v", "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
 
 -- Utils --
-vim.keymap.set("v", "<leader>c", "<cmd>lua require('vscode-neovim').call('execCopy')<cr>")
-vim.keymap.set("n", "<leader>c", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<cr>")
-vim.keymap.set("n", "<leader>q", "<cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<cr>")
-vim.keymap.set({ "n", "v" }, "\\e", "<cmd>lua require('vscode-neovim').call('editor.action.commentLine')<cr>")
-vim.keymap.set("n", "za", "<cmd>lua require('vscode-neovim').call('editor.toggleFold')<cr>")
+vim.keymap.set("v", "<leader>c", vscode_call('execCopy'))
+vim.keymap.set("n", "<leader>c", vscode_call('workbench.action.closeActiveEditor'))
+vim.keymap.set("n", "<leader>q", vscode_call('workbench.action.closeActiveEditor'))
+vim.keymap.set({ "n", "v" }, "<localleader>e", vscode_call('editor.action.commentLine'))
+vim.keymap.set("n", "za", vscode_call('editor.toggleFold'))
 
 -- Git --
-vim.keymap.set({ "n", "v" }, "<leader>gs", "<cmd>lua require('vscode-neovim').call('git.stageSelectedRanges')<cr>")
-vim.keymap.set({ "n", "v" }, "<leader>gr", "<cmd>lua require('vscode-neovim').call('git.revertSelectedRanges')<cr>")
-vim.keymap.set("n", "<leader>gS", "<cmd>lua require('vscode-neovim').call('git.stageAll')<cr>")
-vim.keymap.set("n", "<leader>gR", "<cmd>lua require('vscode-neovim').call('workbench.action.files.revert')<cr>")
-vim.keymap.set("n", "<leader>gt", "<cmd>lua require('vscode-neovim').call('workbench.view.scm')<cr>")
-vim.keymap.set("n", "<leader>gd", "<cmd>lua require('vscode-neovim').call('git.openChange')<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>gs", vscode_call('git.stageSelectedRanges'))
+vim.keymap.set({ "n", "v" }, "<leader>gr", vscode_call('git.revertSelectedRanges'))
+vim.keymap.set("n", "<leader>gS", vscode_call('git.stageAll'))
+vim.keymap.set("n", "<leader>gR", vscode_call('workbench.action.files.revert'))
+vim.keymap.set("n", "<leader>gt", vscode_call('workbench.view.scm'))
+vim.keymap.set("n", "<leader>gd", vscode_call('git.openChange'))
 -- Git Lens --
-vim.keymap.set({ "n", "v" }, "<leader>gy", "<cmd>lua require('vscode-neovim').call('gitlens.openFileOnRemote')<cr>")
-vim.keymap.set("n", "<leader>gw", "<cmd>lua require('vscode-neovim').call('gitlens.openCommitOnRemote')<cr>")
-vim.keymap.set("n", "<leader>gO", "<cmd>lua require('vscode-neovim').call('gitlens.openRepoOnRemote')<cr>")
-vim.keymap.set("n", "<leader>gh", "<cmd>lua require('vscode-neovim').call('gitlens.showFileHistoryView')<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>gy", vscode_call('gitlens.openFileOnRemote'))
+vim.keymap.set("n", "<leader>gw", vscode_call('gitlens.openCommitOnRemote'))
+vim.keymap.set("n", "<leader>gO", vscode_call('gitlens.openRepoOnRemote'))
+vim.keymap.set("n", "<leader>gh", vscode_call('gitlens.showFileHistoryView'))
 
 return {
   {

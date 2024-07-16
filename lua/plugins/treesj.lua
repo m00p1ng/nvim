@@ -24,7 +24,7 @@ return {
     on_error = nil,
   },
   keys = {
-    { "\\j", "<cmd>lua require('treesj').split()<cr>", noremap = true, silent = true, desc = "Break Line" },
-    { "\\J", "<cmd>lua require('treesj').join()<cr>", noremap = true, silent = true, desc = "Join Line" },
+    { "<localleader>j", "<cmd>lua require('treesj').split()<cr>", desc = "Break Line" },
+    { "<localleader>J", "<cmd>lua require('treesj').join()<cr>", desc = "Join Line" },
   },
 }
