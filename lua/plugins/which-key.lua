@@ -127,7 +127,7 @@ return {
       --- See `lua/which-key/icons.lua` for more details
       --- Set to `false` to disable keymap icons
       ---@type wk.IconRule[]|false
-      rules = {},
+      rules = false,
       -- use the highlights from mini.icons
       -- When `false`, it will use `WhichKeyIcon` instead
       colors = true,
@@ -185,11 +185,10 @@ return {
 
     wk.setup(opts)
     wk.add {
-      { "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-      { "<leader>q", "<cmd>q!<cr>", desc = "Quit" },
-      { "<leader>Q", "<cmd>qall!<cr>", desc = "Quit All" },
-      { "<leader>c", "<cmd>bd<cr>", desc = "Close Buffer" },
-      { "<leader>O", "<cmd>%bd|e#|bd#<cr>", desc = "Buffer Only" },
+      { "<leader>d", group = "Debug" },
+      { "<leader>f", group = "Find" },
+      { "<leader>g", group = "Git" },
+      { "<leader>l", group = "LSP" },
 
       { "<leader>p", group = "Lazy" },
       { "<leader>pc", "<cmd>Lazy check<cr>", desc = "Check" },
@@ -197,15 +196,6 @@ return {
       { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install" },
       { "<leader>ps", "<cmd>Lazy sync<cr>", desc = "Sync" },
       { "<leader>pu", "<cmd>Lazy update<cr>", desc = "Update" },
-
-      { "<leader>d", group = "Debug" },
-      { "<leader>f", group = "Find" },
-      { "<leader>g", group = "Git" },
-
-      { "<leader>l", group = "LSP" },
-      { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-      { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
-      { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
     }
   end,
 }

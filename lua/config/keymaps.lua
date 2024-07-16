@@ -71,3 +71,8 @@ vim.keymap.set("v", "\\e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment" })
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })
 vim.keymap.set("n", "<cr>", "<cmd>noh<cr>", { desc = "Clear Search" })
+vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit" })
+vim.keymap.set("n", "<leader>Q", "<cmd>qall!<cr>", { desc = "Quit All" })
+vim.keymap.set("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
+vim.keymap.set("n", "<leader>O", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer Only" })
+

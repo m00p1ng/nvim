@@ -286,7 +286,7 @@ return {
     require("nvim-tree").setup(config_opts)
   end,
   keys = {
-    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
-    { "<leader>E", "<cmd>NvimTreeFocus<cr>", desc = "Focus NvimTree" },
+    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },
+    { "<leader>E", "<cmd>NvimTreeFocus<cr>", desc = "Focus Explorer" },
   },
 }
