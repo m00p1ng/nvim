@@ -59,29 +59,17 @@ dap.configurations.typescript = {
   },
 }
 
-local which_key = require "which-key"
+local wk = require "which-key"
 
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-  m = {
-    name = "Typescript",
-    f = { "<cmd>EslintFixAll<Cr>", "FixAll" },
-    r = {
-      function()
-        local cmd = "pnpm exec ts-node '" .. vim.fn.expand "%:~:." .. "'"
-        require("utils.tmux").run_command(cmd)
-      end,
-      "Run",
-    },
+wk.add {
+  { "<leader>m", group = "Typescript" },
+  { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All" },
+  {
+    "<leader>mr",
+    function()
+      local cmd = "pnpm exec ts-node '" .. vim.fn.expand "%:~:." .. "'"
+      require("utils.tmux").run_command(cmd)
+    end,
+    desc = "Run",
   },
 }
-
-which_key.register(mappings, opts)

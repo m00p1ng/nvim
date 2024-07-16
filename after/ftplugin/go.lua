@@ -34,27 +34,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 require("dap-go").setup()
 
 if require("utils").has "gopher.nvim" then
-  local which_key = require "which-key"
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
-  }
+  local wk = require "which-key"
 
-  local mappings = {
-    m = {
-      name = "Golang",
-      j = { "<cmd>GoTagAdd json -transform camelcase<cr>", "Tag Add (JSON)" },
-      J = { "<cmd>GoTagRm json<cr>", "Tag Remove (JSON)" },
-      b = { "<cmd>GoTagAdd bson -transform camelcase<cr>", "Tag Add (BSON)" },
-      B = { "<cmd>GoTagRm bson<cr>", "Tag Remove (BSON)" },
-      m = { "<cmd>GoMod tidy<cr>", "Mod Tidy" },
-      c = { "<cmd>GoCmt<cr>", "Comment" },
-    },
+  wk.add {
+    { "<leader>m", group = "Golang" },
+    { "<leader>mj", "<cmd>GoTagAdd json -transform camelcase<cr>", desc = "Tag Add (JSON)" },
+    { "<leader>mJ", "<cmd>GoTagRm json<cr>", desc = "Tag Remove (JSON)" },
+    { "<leader>mb", "<cmd>GoTagAdd bson -transform camelcase<cr>", desc = "Tag Add (BSON)" },
+    { "<leader>mB", "<cmd>GoTagRm bson<cr>", desc = "Tag Remove (BSON)" },
+    { "<leader>mm", "<cmd>GoMod tidy<cr>", desc = "Mod Tidy" },
+    { "<leader>mc", "<cmd>GoCmt<cr>", desc = "Comment" },
   }
-
-  which_key.register(mappings, opts)
 end
