@@ -38,6 +38,8 @@ return {
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
         yamlls = require "plugins.lsp.lang.yamlls",
         jsonls = require "plugins.lsp.lang.jsonls",
+        gopls = require "plugins.lsp.lang.gopls",
+        tsserver = require "plugins.lsp.lang.tsserver",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig

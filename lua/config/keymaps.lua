@@ -76,3 +76,8 @@ vim.keymap.set("n", "<leader>Q", "<cmd>qall!<cr>", { desc = "Quit All" })
 vim.keymap.set("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>O", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer Only" })
 
+if vim.lsp.inlay_hint then
+  vim.keymap.set("n", "<leader>lu", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 })
+  end, { desc = "Toggle Inlay Hints" })
+end
