@@ -22,7 +22,7 @@ return {
       dashboard.button("f", icons.ui.File .. " Find file", "<cmd>lua require('utils.telescope').project_files()<cr>"),
       dashboard.button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert<cr>"),
       dashboard.button("r", icons.ui.History .. " Recent files", "<cmd>Telescope oldfiles<cr>"),
-      dashboard.button("t", icons.ui.List .. " Find text", "<cmd>Telescope live_grep<cr>"),
+      dashboard.button("t", icons.ui.List .. " Find text", "<cmd>Telescope live_grep_args theme=ivy<cr>"),
       dashboard.button("c", icons.ui.Gear .. " Config", "<cmd>e ~/.config/nvim/init.lua<cr>"),
       dashboard.button("u", icons.ui.CloudDownload .. " Update", "<cmd>Lazy sync<cr>"),
       dashboard.button("q", icons.diagnostics.Error .. "  Quit", "<cmd>qa<cr>"),
