@@ -36,10 +36,11 @@ vim.keymap.set("n", "L", vscode_call('workbench.action.nextEditor'))
 vim.keymap.set("n", "<leader>e", vscode_call('workbench.view.explorer'))
 
 -- Telescope --
+vim.keymap.set("n", "<leader>b", vscode_call('workbench.action.showAllEditors'))
 vim.keymap.set("n", "<leader>ff", vscode_call('workbench.action.quickOpen'))
 vim.keymap.set("n", "<leader>fr", vscode_call('workbench.action.quickOpen'))
 vim.keymap.set("n", "<leader>ft", vscode_call('workbench.action.findInFiles'))
-vim.keymap.set("v", "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
 
 -- Utils --
 vim.keymap.set("v", "<leader>c", vscode_call('execCopy'))
@@ -60,6 +61,9 @@ vim.keymap.set({ "n", "v" }, "<leader>gy", vscode_call('gitlens.openFileOnRemote
 vim.keymap.set("n", "<leader>gw", vscode_call('gitlens.openCommitOnRemote'))
 vim.keymap.set("n", "<leader>gO", vscode_call('gitlens.openRepoOnRemote'))
 vim.keymap.set("n", "<leader>gh", vscode_call('gitlens.showFileHistoryView'))
+
+-- Other --
+vim.keymap.set("n", "<leader>O", vscode_call('workbench.action.closeOtherEditors'))
 
 return {
   {
