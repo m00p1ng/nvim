@@ -12,6 +12,7 @@ return {
       { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "ray-x/lsp_signature.nvim",
     },
     ---@class PluginLspOpts
     opts = {
