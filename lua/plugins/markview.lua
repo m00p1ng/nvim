@@ -412,4 +412,7 @@ return {
       use_virt_lines = false,
     },
   },
+  keys = {
+    { "<leader>mt", "<cmd>Markview toggleAll<cr>", desc = "Toggle Markview" },
+  }
 }
