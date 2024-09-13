@@ -40,7 +40,7 @@ return {
         yamlls = require "plugins.lsp.lang.yamlls",
         jsonls = require "plugins.lsp.lang.jsonls",
         gopls = require "plugins.lsp.lang.gopls",
-        tsserver = require "plugins.lsp.lang.tsserver",
+        ts_ls = require "plugins.lsp.lang.ts_ls",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -132,7 +132,7 @@ return {
         "pyright",
         "lua_ls",
         "tailwindcss",
-        "tsserver",
+        "ts_ls",
         "volar",
         "yamlls",
       } ---@type string[]
