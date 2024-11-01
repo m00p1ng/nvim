@@ -8,7 +8,12 @@ function M.project_files(opts)
 end
 
 function M.grep_at_current_tree_node()
-  local node = require("nvim-tree.lib").get_node_at_cursor()
+  local explorer = require("nvim-tree.core").get_explorer()
+  if not explorer then
+    return
+  end
+
+  local node = explorer:get_node_at_cursor()
   if not node then
     return
   end
