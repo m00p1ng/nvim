@@ -155,7 +155,8 @@ return {
       require("mason-lspconfig").setup_handlers { setup }
     end,
     keys = {
-      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+      -- https://github.com/neovim/nvim-lspconfig/pull/3339
+      { "<leader>li", "<cmd>check lspconfig<cr>", desc = "Info" },
       { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
     },
   },
