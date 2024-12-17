@@ -51,7 +51,6 @@ end
 
 return {
   "linrongbin16/gitlinker.nvim",
-  event = { "BufReadPost", "BufNewFile" },
   opts = {
     -- print message in command line
     message = true,

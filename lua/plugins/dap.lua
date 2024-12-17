@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
@@ -59,7 +58,6 @@ return {
 
   {
     "rcarriga/nvim-dap-ui",
-    lazy = true,
     opts = {
       icons = {
         expanded = icons.ui.ChevronShortRight,

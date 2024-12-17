@@ -10,7 +10,4 @@ return {
       enabled = true,
     },
   },
-  config = function(_, opts)
-    require("lab").setup(opts)
-  end,
 }
