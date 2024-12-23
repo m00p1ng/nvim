@@ -3,10 +3,53 @@ return {
   opts = {
     highlight = true, -- Whether to briefly highlight the node after jumping to it
   },
-  keys = {
-    { "<leader><leader>j", "<cmd>Treewalker Down<cr>", desc = "Move down to the next neighbor node" },
-    { "<leader><leader>k", "<cmd>Treewalker Up<cr>", desc = "Move up to the next neighbor node" },
-    { "<leader><leader>h", "<cmd>Treewalker Left<cr>", desc = "Finds the next good parent node" },
-    { "<leader><leader>l", "<cmd>Treewalker Right<cr>", desc = "Finds the next good child node" },
-  },
+  keys = function()
+    local function jump_neighbor(options)
+      return function()
+        require("demicolon.jump").repeatably_do(function(opts)
+          local direction = (opts.forward == nil or opts.forward)
+          if direction then
+            require("treewalker").move_down()
+          else
+            require("treewalker").move_up()
+          end
+        end, options)
+      end
+    end
+
+    local function jump_parent(options)
+      return function()
+        require("demicolon.jump").repeatably_do(function(opts)
+          local direction = (opts.forward == nil or opts.forward)
+          if direction then
+            require("treewalker").move_out()
+          else
+            require("treewalker").move_in()
+          end
+        end, options)
+      end
+    end
+
+    local function jump_child(options)
+      return function()
+        require("demicolon.jump").repeatably_do(function(opts)
+          local direction = (opts.forward == nil or opts.forward)
+          if direction then
+            require("treewalker").move_in()
+          else
+            require("treewalker").move_out()
+          end
+        end, options)
+      end
+    end
+
+    local mode = { "n", "x", "o" }
+
+    return {
+      { "<leader><leader>j", jump_neighbor { forward = true }, mode = mode, desc = "Move down to the next neighbor node" },
+      { "<leader><leader>k", jump_neighbor { forward = false }, mode = mode, desc = "Move up to the next neighbor node" },
+      { "<leader><leader>h", jump_parent { forward = true }, mode = mode, desc = "Finds the next good parent node" },
+      { "<leader><leader>l", jump_child { forward = true }, mode = mode, desc = "Finds the next good child node" },
+    }
+  end,
 }
