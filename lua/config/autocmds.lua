@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
+vim.api.nvim_create_autocmd("FocusGained", {
   group = vim.api.nvim_create_augroup("check_file_changed", { clear = true }),
   command = "checktime",
 })
