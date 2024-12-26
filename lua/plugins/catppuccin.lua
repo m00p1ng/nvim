@@ -39,7 +39,8 @@ return {
       return {
         ColorColumn = { bg = "#2a2b3d" },
         NavicText = { fg = C.subtext0, bg = C.bg },
-        IndentBlanklineContextChar = { fg = C.overlay2 },
+        SnacksIndent = { fg = C.surface0 },
+        SnacksIndentScope = { fg = C.overlay2 },
         UfoFoldedEllipsis = { fg = C.overlay2, bg = "NONE" },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
@@ -62,16 +63,14 @@ return {
     default_integrations = false,
     integrations = {
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-      alpha = true,
+      alpha = false,
       cmp = true,
       dap = true,
       dap_ui = true,
       diffview = true,
       gitsigns = true,
       indent_blankline = {
-        enabled = true,
-        scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-        colored_indent_levels = false,
+        enabled = false,
       },
       illuminate = {
         enabled = true,
@@ -105,6 +104,7 @@ return {
       nvimtree = true,
       rainbow_delimiters = true,
       semantic_tokens = true,
+      snacks = true,
       symbols_outline = true,
       telescope = {
         enabled = true,
