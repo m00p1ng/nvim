@@ -1,17 +1,22 @@
 local M = {}
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-  return
-end
-
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+M.capabilities = vim.tbl_deep_extend(
+  "force",
+  {},
+  vim.lsp.protocol.make_client_capabilities(),
+  has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+  {
+    textDocument = {
+      completion = { completionItem = { snippetSupport = true } },
+      -- for ufo plugin
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      },
+    },
+  }
+)
 
 ---@type LazyKeysLspSpec[]|nil
 M._keys = nil
