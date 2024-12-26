@@ -10,7 +10,6 @@ vim.api.nvim_create_autocmd("FileType", {
     "dap-repl",
     "startuptime",
     "tsplayground",
-    "NeogitGitCommandHistory",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -47,7 +46,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.api.nvim_create_autocmd("FocusGained", {
   group = vim.api.nvim_create_augroup("check_file_changed", { clear = true }),
-  command = "checktime",
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd "checktime"
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd("User", {
