@@ -16,12 +16,12 @@ return {
     cursor_behavior = "hold",
     ---@type boolean Notify about possible problems or not
     notify = true,
-    ---@type table Presets for languages
-    langs = {},
     ---@type boolean Use `dot` for repeat action
     dot_repeat = true,
     ---@type nil|function Callback for treesj error handler. func (err_text, level, ...other_text)
     on_error = nil,
+    ---@type table Presets for languages
+    -- langs = {}, -- See the default presets in lua/treesj/langs
   },
   keys = {
     { "<localleader>j", "<cmd>lua require('treesj').split()<cr>", desc = "Break Line" },

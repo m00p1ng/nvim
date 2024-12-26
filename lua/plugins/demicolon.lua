@@ -23,7 +23,7 @@ return {
       -- Create `]s`/`[s` key mappings for jumping to spelling mistakes
       spell_motions = true,
       -- Create `]z`/`[z` key mappings for jumping to folds
-      fold_motions = true,
+      fold_motions = false,
     },
     integrations = {
       -- Integration with https://github.com/lewis6991/gitsigns.nvim

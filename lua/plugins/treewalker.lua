@@ -30,26 +30,11 @@ return {
       end
     end
 
-    local function jump_child(options)
-      return function()
-        require("demicolon.jump").repeatably_do(function(opts)
-          local direction = (opts.forward == nil or opts.forward)
-          if direction then
-            require("treewalker").move_in()
-          else
-            require("treewalker").move_out()
-          end
-        end, options)
-      end
-    end
-
-    local mode = { "n", "x", "o" }
-
     return {
-      { "<leader><leader>j", jump_neighbor { forward = true }, mode = mode, desc = "Move down to the next neighbor node" },
-      { "<leader><leader>k", jump_neighbor { forward = false }, mode = mode, desc = "Move up to the next neighbor node" },
-      { "<leader><leader>h", jump_parent { forward = true }, mode = mode, desc = "Finds the next good parent node" },
-      { "<leader><leader>l", jump_child { forward = true }, mode = mode, desc = "Finds the next good child node" },
+      { "]k", jump_neighbor { forward = true }, desc = "Move down to the next neighbor node" },
+      { "[k", jump_neighbor { forward = false }, desc = "Move up to the next neighbor node" },
+      { "[p", jump_parent { forward = true }, desc = "Finds the next good parent node" },
+      { "]p", jump_parent { forward = false }, desc = "Finds the next good child node" },
     }
   end,
 }
