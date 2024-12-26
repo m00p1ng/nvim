@@ -1,7 +1,7 @@
 local M = {}
 
 M.ui_filetypes = {
-  "alpha",
+  "snacks_dashboard",
   "help",
   "qf",
   "",

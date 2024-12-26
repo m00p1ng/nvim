@@ -6,7 +6,7 @@ local ftMap = {
   yaml = { "treesitter", "indent" },
   markdown = "",
 
-  alpha = "",
+  snacks_dashboard = "",
   NvimTree = "",
   help = "",
   lazy = "",
