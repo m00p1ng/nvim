@@ -1,4 +1,7 @@
 vim.filetype.add {
+  extension = {
+    mdx = "markdown",
+  },
   filename = {
     ["Podfile"] = "ruby",
     ["terraform.tfstate"] = "json",
