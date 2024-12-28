@@ -2,6 +2,8 @@ local M = {}
 
 M.ui_filetypes = {
   "snacks_dashboard",
+  "snacks_notif",
+  "snacks_notif_history",
   "help",
   "qf",
   "",
@@ -30,8 +32,6 @@ M.ui_filetypes = {
   "dapui_console",
   "dap-repl",
   "noice",
-  "startuptime",
-  "notify",
   "DressingInput",
 }
 

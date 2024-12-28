@@ -5,10 +5,9 @@ vim.api.nvim_create_autocmd("FileType", {
     "help",
     "man",
     "lspinfo",
-    "notify",
+    "snacks_notif",
     "query",
     "dap-repl",
-    "startuptime",
     "tsplayground",
   },
   callback = function(event)

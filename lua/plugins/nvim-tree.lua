@@ -215,7 +215,7 @@ return {
           chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
           exclude = {
             filetype = {
-              "notify",
+              "snacks_notif",
               "lazy",
               "qf",
               "diff",

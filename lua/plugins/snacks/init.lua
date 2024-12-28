@@ -7,10 +7,12 @@ return {
     opts = {
       dashboard = { enabled = true },
       indent = { enabled = true },
+      notifier = { enabled = true },
       quickfile = { enabled = true },
     },
   },
 
   { import = "plugins.snacks.dashboard" },
   { import = "plugins.snacks.indent" },
+  { import = "plugins.snacks.notifier" },
 }

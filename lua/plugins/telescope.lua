@@ -206,7 +206,6 @@ return {
     telescope.setup(opts)
 
     telescope.load_extension "fzf"
-    telescope.load_extension "notify"
     telescope.load_extension "diffview"
     telescope.load_extension "live_grep_args"
   end,
@@ -236,7 +235,6 @@ return {
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
     { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },
     { "<leader>fc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader>fN", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Notify" },
     { "<leader>fV", "<cmd>Telescope vim_options<cr>", desc = "Vim Options" },
     { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jump list" },
     { "<leader>fo", "<cmd>Telescope symbols<cr>", desc = "Symbols" },

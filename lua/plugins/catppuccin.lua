@@ -41,6 +41,11 @@ return {
         NavicText = { fg = C.subtext0, bg = C.bg },
         SnacksIndent = { fg = C.surface0 },
         SnacksIndentScope = { fg = C.overlay2 },
+        SnacksNotifierInfo = { link = "Normal" },
+        SnacksNotifierWarn = { link = "Normal" },
+        SnacksNotifierDebug = { link = "Normal" },
+        SnacksNotifierError = { link = "Normal" },
+        SnacksNotifierTrace = { link = "Normal" },
         UfoFoldedEllipsis = { fg = C.overlay2, bg = "NONE" },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
