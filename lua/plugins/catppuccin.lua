@@ -78,7 +78,7 @@ return {
         enabled = false,
       },
       illuminate = {
-        enabled = true,
+        enabled = false,
         lsp = false,
       },
       mason = true,
@@ -105,7 +105,7 @@ return {
         custom_bg = "NONE", -- "lualine" will set background to mantle
       },
       neogit = true,
-      notify = true,
+      notify = false,
       nvimtree = true,
       rainbow_delimiters = true,
       semantic_tokens = true,
