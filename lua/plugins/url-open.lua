@@ -1,7 +1,6 @@
 return {
   "sontungexpt/url-open",
   event = "VeryLazy",
-  cmd = "URLOpenUnderCursor",
   opts = {
     -- default will open url with default browser of your system or you can choose your browser like this
     -- open_app = "micorsoft-edge-stable",
@@ -57,6 +56,6 @@ return {
     },
   },
   keys = {
-    { "gx", "<esc>:URLOpenUnderCursor<cr>" },
+    { "gx", "<cmd>URLOpenUnderCursor<cr>" },
   },
 }

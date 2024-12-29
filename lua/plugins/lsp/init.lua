@@ -96,9 +96,7 @@ return {
       --   border = "rounded",
       -- })
       require("lspconfig.ui.windows").default_options.border = "rounded"
-      require("lspconfig.ui.windows").default_opts {
-        percentage = 0.8,
-      }
+      require("lspconfig.ui.windows").default_options.percentage = 0.8
 
       local servers = opts.servers
       local capabilities = require("plugins.lsp.keymaps").capabilities
@@ -167,4 +165,5 @@ return {
 
   { import = "plugins.lsp.conform" },
   { import = "plugins.lsp.mason" },
+  { import = "plugins.lsp.lsp_signature" },
 }
