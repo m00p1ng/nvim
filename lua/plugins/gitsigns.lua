@@ -52,9 +52,6 @@ return {
     },
   },
   keys = {
-    { "[g", "<cmd>Gitsigns prev_hunk<cr>", desc = "Previous Hunk" },
-    { "]g", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk" },
-
     -- Normal --
     { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle Blame" },
     { "<leader>gP", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },

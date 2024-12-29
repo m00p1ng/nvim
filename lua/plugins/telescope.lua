@@ -214,9 +214,9 @@ return {
 
     -- Find --
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader><leader>", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
 
     { "<leader>fS", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
     -- { "<leader>ft",  { "<cmd>Telescope live_grep<cr>", "Find Text" },
     { "<leader>ft", "<cmd>Telescope live_grep_args theme=ivy<cr>", desc = "Find Text (Args)" },
     -- { "<leader>fs", "<cmd>Telescope grep_string<cr>", "Find String" },

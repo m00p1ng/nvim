@@ -11,20 +11,23 @@ return {
       modes = { "n", "i", "c" }, -- modes to show references
     },
   },
-  keys = {
-    {
-      "]r",
-      function()
-        require("snacks").words.jump(vim.v.count1)
-      end,
-      desc = "Next Reference",
-    },
-    {
-      "[r",
-      function()
-        require("snacks").words.jump(-vim.v.count1)
-      end,
-      desc = "Prev Reference",
-    },
-  },
+  keys = function()
+    local function jump_reference(options)
+      return function()
+        require("demicolon.jump").repeatably_do(function(opts)
+          local direction = (opts.forward == nil or opts.forward)
+          if direction then
+            require("snacks").words.jump(vim.v.count1)
+          else
+            require("snacks").words.jump(-vim.v.count1)
+          end
+        end, options)
+      end
+    end
+
+    return {
+      { "]]", jump_reference { forward = true }, desc = "Next Reference" },
+      { "[[", jump_reference { forward = false }, desc = "Prev Reference" },
+    }
+  end,
 }

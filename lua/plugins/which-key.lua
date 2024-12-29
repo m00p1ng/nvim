@@ -178,12 +178,12 @@ return {
 
     wk.setup(opts)
     wk.add {
-      { "<leader>d", group = "Debug" },
-      { "<leader>f", group = "Find" },
-      { "<leader>g", group = "Git" },
-      { "<leader>l", group = "LSP" },
+      { "<leader>d", group = "debug" },
+      { "<leader>f", group = "find" },
+      { "<leader>g", group = "git" },
+      { "<leader>l", group = "code" },
 
-      { "<leader>p", group = "Lazy" },
+      { "<leader>p", group = "lazy" },
       { "<leader>pc", "<cmd>Lazy check<cr>", desc = "Check" },
       { "<leader>pC", "<cmd>Lazy clean<cr>", desc = "Clean" },
       { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install" },

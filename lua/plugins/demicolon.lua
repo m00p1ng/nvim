@@ -19,7 +19,7 @@ return {
       -- Create ; and , key mappings
       repeat_motions = true,
       -- Create ]q/[q/]<C-q>/[<C-q> and ]l/[l/]<C-l>/[<C-l> quickfix and location list mappings
-      list_motions = true,
+      list_motions = false,
       -- Create `]s`/`[s` key mappings for jumping to spelling mistakes
       spell_motions = true,
       -- Create `]z`/`[z` key mappings for jumping to folds
