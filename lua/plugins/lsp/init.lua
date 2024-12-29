@@ -7,7 +7,11 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {},
+      },
       { "b0o/SchemaStore.nvim", lazy = true },
       { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
