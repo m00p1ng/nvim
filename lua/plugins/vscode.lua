@@ -9,6 +9,7 @@ local enabled = {
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
   "treesj",
+  "text-case.nvim",
 }
 
 local Config = require "lazy.core.config"
