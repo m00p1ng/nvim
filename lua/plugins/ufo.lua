@@ -8,6 +8,8 @@ local ftMap = {
 
   snacks_dashboard = "",
   NvimTree = "",
+  ["neo-tree"] = "",
+  ["neo-tree-popup"] = "",
   help = "",
   lazy = "",
   NeogitStatus = "",

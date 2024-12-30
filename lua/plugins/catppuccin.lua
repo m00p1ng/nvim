@@ -61,6 +61,14 @@ return {
         NvimTreeGitMerge = { fg = C.yellow },
         NvimTreeGitDirty = { fg = C.yellow },
 
+        NeoTreeFileName = { fg = C.subtext1 },
+        NeoTreeDirectoryName = { fg = C.subtext1, style = { "bold" } },
+        NeoTreeNormal = { fg = C.subtext1 },
+        NeoTreeIndentMarker = { fg = C.surface0 },
+        NeoTreeGitAdded = { fg = C.green },
+        NeoTreeGitUntracked = { fg = C.green },
+        NeoTreeGitUnstaged = { fg = C.yellow },
+
         CmpGhostText = { fg = C.overlay0, bg = C.bg },
         CmpItemKindCopilot = { fg = C.teal },
         CmpItemKindTabnine = { fg = "#b668cd" },
@@ -106,8 +114,9 @@ return {
         custom_bg = "NONE", -- "lualine" will set background to mantle
       },
       neogit = true,
+      neotree = true,
       notify = false,
-      nvimtree = true,
+      nvimtree = false,
       rainbow_delimiters = true,
       semantic_tokens = true,
       snacks = true,
