@@ -20,12 +20,12 @@ return {
         -- When using a function, the `items` argument are the default keymaps.
         ---@type snacks.dashboard.Item[]
         keys = {
-          {
-            icon = icons.ui.File,
-            key = "f",
-            desc = "Find File",
-            action = ":lua Snacks.dashboard.pick('files')",
-          },
+          -- {
+          --   icon = icons.ui.File,
+          --   key = "f",
+          --   desc = "Find File",
+          --   action = ":lua Snacks.dashboard.pick('files')",
+          -- },
           {
             icon = icons.ui.NewFile,
             key = "n",
