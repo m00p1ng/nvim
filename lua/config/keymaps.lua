@@ -28,6 +28,11 @@ vim.keymap.set("n", "dd", function()
   return "dd"
 end, { expr = true })
 
+vim.keymap.set("v", "c", '"_c')
+vim.keymap.set("v", "C", '"_C')
+vim.keymap.set("n", "c", '"_c')
+vim.keymap.set("n", "C", '"_C')
+
 -- Normal --
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
