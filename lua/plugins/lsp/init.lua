@@ -7,16 +7,13 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {},
-      },
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },
       { "b0o/SchemaStore.nvim", lazy = true },
       { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "ray-x/lsp_signature.nvim",
+      { "antosha417/nvim-lsp-file-operations", opts = {} },
     },
     ---@class PluginLspOpts
     opts = {
