@@ -48,11 +48,11 @@ M.get_filename = function()
 
   local hl_filename = ""
   if f.get_buf_option "modified" then
-    hl_filename = "%#NvimTreeGitDirty#"
-    file_icon = "%#NvimTreeGitDirty#" .. icons.ui.Circle .. "%*"
+    hl_filename = "%#WinbarModified#"
+    file_icon = "%#WinbarModified#" .. icons.ui.Circle .. "%*"
   elseif f.get_buf_option "readonly" then
     hl_filename = "%#LspDiagnosticsSignError#"
-    file_icon = "%#NvimTreeGitDirty#" .. icons.ui.Lock .. "%*"
+    file_icon = "%#WinbarModified#" .. icons.ui.Lock .. "%*"
   else
     hl_filename = "%#NavicText#"
   end
