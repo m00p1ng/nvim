@@ -36,6 +36,7 @@ M.ui_filetypes = {
   "dap-repl",
   "noice",
   "DressingInput",
+  "oil",
 }
 
 function M.cmd(args, cwd)
