@@ -116,7 +116,7 @@ return {
       neogit = true,
       neotree = true,
       notify = false,
-      nvimtree = false,
+      nvimtree = true,
       rainbow_delimiters = true,
       semantic_tokens = true,
       snacks = true,

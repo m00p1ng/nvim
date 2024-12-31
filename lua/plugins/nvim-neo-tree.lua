@@ -2,6 +2,7 @@ local icons = require "utils.icons"
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
   cmd = "Neotree",
   dependencies = {
     {

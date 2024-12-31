@@ -25,8 +25,7 @@ return {
       keep = function(notif)
         return vim.fn.getcmdpos() > 0
       end,
-      ---@type snacks.notifier.style
-      style = "fancy",
+      style = "compact",
       top_down = true, -- place notifications from top to bottom
       date_format = "%R", -- time format for notifications
       -- format for footer when more lines are available
