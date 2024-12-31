@@ -1,6 +1,7 @@
 vim.filetype.add {
   extension = {
     mdx = "markdown",
+    http = "http",
   },
   filename = {
     ["Podfile"] = "ruby",

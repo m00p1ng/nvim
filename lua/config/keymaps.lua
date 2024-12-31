@@ -61,7 +61,7 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase W
 
 -- Navigate buffers
 vim.keymap.set("n", "H", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "L", "<cmd>bnnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "L", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Navigate Tabs
 vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
