@@ -49,6 +49,11 @@ return {
         SnacksNotifierError = { link = "Normal" },
         SnacksNotifierTrace = { link = "Normal" },
 
+        MatchWord = { bg = C.surface1 },
+        MatchWordCur = { bg = C.surface1 },
+        MatchParen = { bg = C.surface1, style = { "bold" } },
+        MatchParenCur = { bg = C.surface1, style = { "bold" } },
+
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
         NvimTreeOpenedFolderName = { fg = C.text, style = { "bold", "italic" } },
         NvimTreeEmptyFolderName = { fg = C.subtext1 },
