@@ -80,7 +80,7 @@ return {
       keymaps = {
         init_selection = "<c-q>",
         node_incremental = "<c-q>",
-        scope_incremental = "<nop>",
+        scope_incremental = false,
         node_decremental = "<bs>",
       },
     },
