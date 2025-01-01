@@ -39,11 +39,13 @@ httptest
 ipairs
 isalpha
 isdigit
+keybind
 keymap
 keymaps
 kubernetes
 leetcode
 lodash
+macos
 mempool
 microservice
 microservices

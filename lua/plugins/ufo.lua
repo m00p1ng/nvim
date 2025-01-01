@@ -1,35 +1,22 @@
-local ftMap = {
+local f = require "utils"
+
+local function mapped_filetype(l)
+  local res = {}
+  for _, v in pairs(l) do
+    res[v] = ""
+  end
+
+  return res
+end
+
+local ftMap = vim.tbl_extend("force", {
   vim = { "treesitter", "indent" },
   sh = { "treesitter", "indent" },
   git = { "treesitter", "indent" },
   conf = { "treesitter", "indent" },
   yaml = { "treesitter", "indent" },
   markdown = "",
-
-  snacks_dashboard = "",
-  NvimTree = "",
-  ["neo-tree"] = "",
-  ["neo-tree-popup"] = "",
-  help = "",
-  lazy = "",
-  NeogitStatus = "",
-  NeogitPopup = "",
-  NeogitCommitPopup = "",
-  NeogitCommitMessage = "",
-  DiffviewFiles = "",
-  DiffviewFileHistory = "",
-  Outline = "",
-  qf = "",
-  TelescopePrompt = "",
-  lspinfo = "",
-  mason = "",
-  dapui_watches = "",
-  dapui_stacks = "",
-  dapui_breakpoints = "",
-  dapui_scopes = "",
-  dapui_hover = "",
-  ["dap-repl"] = "",
-}
+}, mapped_filetype(f.ui_filetypes))
 
 return {
   "kevinhwang91/nvim-ufo",

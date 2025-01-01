@@ -11,6 +11,9 @@ M.get_filename = function()
   local buf_ft = vim.bo.filetype
 
   if f.is_empty(filename) then
+    if buf_ft == "oil" then
+      return "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (Oil)"
+    end
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
   end
 
@@ -87,6 +90,7 @@ local excludes = function()
     "dapui_stacks",
     "dapui_breakpoints",
     "dapui_scopes",
+    "oil",
   }
 
   if vim.tbl_contains(extra_includes, filetype) then
