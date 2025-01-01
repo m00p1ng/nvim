@@ -9,7 +9,6 @@ local enabled = {
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
   "treesj",
-  "text-case.nvim",
 }
 
 local Config = require "lazy.core.config"
@@ -32,39 +31,39 @@ vim.keymap.set("n", "<leader>lr", vscode_call "editor.action.rename")
 vim.keymap.set("n", "<leader>lf", vscode_call "editor.action.formatDocument")
 
 -- Navigate --
-vim.keymap.set("n", "H", vscode_call('workbench.action.previousEditor'))
-vim.keymap.set("n", "L", vscode_call('workbench.action.nextEditor'))
-vim.keymap.set("n", "<leader>e", vscode_call('workbench.view.explorer'))
+vim.keymap.set("n", "H", vscode_call "workbench.action.previousEditor")
+vim.keymap.set("n", "L", vscode_call "workbench.action.nextEditor")
+vim.keymap.set("n", "<leader>e", vscode_call "workbench.view.explorer")
 
 -- Telescope --
-vim.keymap.set("n", "<leader>b", vscode_call('workbench.action.showAllEditors'))
-vim.keymap.set("n", "<leader>ff", vscode_call('workbench.action.quickOpen'))
-vim.keymap.set("n", "<leader>fr", vscode_call('workbench.action.quickOpen'))
-vim.keymap.set("n", "<leader>ft", vscode_call('workbench.action.findInFiles'))
+vim.keymap.set("n", "<leader>b", vscode_call "workbench.action.showAllEditors")
+vim.keymap.set("n", "<leader>ff", vscode_call "workbench.action.quickOpen")
+vim.keymap.set("n", "<leader>fr", vscode_call "workbench.action.quickOpen")
+vim.keymap.set("n", "<leader>ft", vscode_call "workbench.action.findInFiles")
 vim.keymap.set({ "n", "v" }, "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
 
 -- Utils --
-vim.keymap.set("v", "<leader>c", vscode_call('execCopy'))
-vim.keymap.set("n", "<leader>c", vscode_call('workbench.action.closeActiveEditor'))
-vim.keymap.set("n", "<leader>q", vscode_call('workbench.action.closeActiveEditor'))
-vim.keymap.set({ "n", "v" }, "<localleader>e", vscode_call('editor.action.commentLine'))
-vim.keymap.set("n", "za", vscode_call('editor.toggleFold'))
+vim.keymap.set("v", "<leader>c", vscode_call "execCopy")
+vim.keymap.set("n", "<leader>c", vscode_call "workbench.action.closeActiveEditor")
+vim.keymap.set("n", "<leader>q", vscode_call "workbench.action.closeActiveEditor")
+vim.keymap.set({ "n", "v" }, "<localleader>e", vscode_call "editor.action.commentLine")
+vim.keymap.set("n", "za", vscode_call "editor.toggleFold")
 
 -- Git --
-vim.keymap.set({ "n", "v" }, "<leader>gs", vscode_call('git.stageSelectedRanges'))
-vim.keymap.set({ "n", "v" }, "<leader>gr", vscode_call('git.revertSelectedRanges'))
-vim.keymap.set("n", "<leader>gS", vscode_call('git.stageAll'))
-vim.keymap.set("n", "<leader>gR", vscode_call('workbench.action.files.revert'))
-vim.keymap.set("n", "<leader>gt", vscode_call('workbench.view.scm'))
-vim.keymap.set("n", "<leader>gd", vscode_call('git.openChange'))
+vim.keymap.set({ "n", "v" }, "<leader>gs", vscode_call "git.stageSelectedRanges")
+vim.keymap.set({ "n", "v" }, "<leader>gr", vscode_call "git.revertSelectedRanges")
+vim.keymap.set("n", "<leader>gS", vscode_call "git.stageAll")
+vim.keymap.set("n", "<leader>gR", vscode_call "workbench.action.files.revert")
+vim.keymap.set("n", "<leader>gt", vscode_call "workbench.view.scm")
+vim.keymap.set("n", "<leader>gd", vscode_call "git.openChange")
 -- Git Lens --
-vim.keymap.set({ "n", "v" }, "<leader>gy", vscode_call('gitlens.openFileOnRemote'))
-vim.keymap.set("n", "<leader>gw", vscode_call('gitlens.openCommitOnRemote'))
-vim.keymap.set("n", "<leader>gO", vscode_call('gitlens.openRepoOnRemote'))
-vim.keymap.set("n", "<leader>gh", vscode_call('gitlens.showFileHistoryView'))
+vim.keymap.set({ "n", "v" }, "<leader>gy", vscode_call "gitlens.openFileOnRemote")
+vim.keymap.set("n", "<leader>gw", vscode_call "gitlens.openCommitOnRemote")
+vim.keymap.set("n", "<leader>gO", vscode_call "gitlens.openRepoOnRemote")
+vim.keymap.set("n", "<leader>gh", vscode_call "gitlens.showFileHistoryView")
 
 -- Other --
-vim.keymap.set("n", "<leader>O", vscode_call('workbench.action.closeOtherEditors'))
+vim.keymap.set("n", "<leader>O", vscode_call "workbench.action.closeOtherEditors")
 
 return {
   {
