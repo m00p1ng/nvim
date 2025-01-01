@@ -11,9 +11,6 @@ M.get_filename = function()
   local buf_ft = vim.bo.filetype
 
   if f.is_empty(filename) then
-    if buf_ft == "oil" then
-      return "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (Oil)"
-    end
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
   end
 
@@ -78,10 +75,15 @@ local get_location = function()
 end
 
 local excludes = function()
-  local filetype = vim.bo.filetype
+  local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
-  if filetype == "dap-repl" or full_filename == "__FLUTTER_DEV_LOG__" then
+  local exclude_filetypes = {
+    "dap-repl",
+    "oil",
+  }
+
+  if vim.tbl_contains(exclude_filetypes, ft) or full_filename == "__FLUTTER_DEV_LOG__" then
     return true
   end
 
@@ -90,24 +92,23 @@ local excludes = function()
     "dapui_stacks",
     "dapui_breakpoints",
     "dapui_scopes",
-    "oil",
   }
 
-  if vim.tbl_contains(extra_includes, filetype) then
+  if vim.tbl_contains(extra_includes, ft) then
     return false
   end
 
   local buf_number = vim.api.nvim_get_current_buf()
-  if 1 == vim.fn.buflisted(buf_number) and filetype ~= "NeogitCommitMessage" and filetype ~= "NeogitCommitPopup" then
+  if 1 == vim.fn.buflisted(buf_number) and ft ~= "NeogitCommitMessage" and ft ~= "NeogitCommitPopup" then
     return false
   end
 
   -- diffview://null case
-  if filetype == "" and vim.startswith(full_filename, "diffview://") then
+  if ft == "" and vim.startswith(full_filename, "diffview://") then
     return false
   end
 
-  if f.is_ui_filetype(filetype) then
+  if f.is_ui_filetype(ft) then
     vim.opt_local.winbar = nil
     return true
   end

@@ -37,6 +37,7 @@ M.ui_filetypes = {
   "noice",
   "DressingInput",
   "oil",
+  "oil_preview",
 }
 
 function M.cmd(args, cwd)

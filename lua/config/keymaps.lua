@@ -18,6 +18,7 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 vim.keymap.set("i", ":", ":<c-g>u")
 
+-- Normal --
 -- ref: https://nanotipsforvim.prose.sh/keeping-your-register-clean-from-dd
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "dd", function()
@@ -33,7 +34,6 @@ vim.keymap.set("v", "C", '"_C')
 vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "C", '"_C')
 
--- Normal --
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
@@ -80,6 +80,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>qall!<cr>", { desc = "Quit All" })
 vim.keymap.set("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>O", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer Only" })
+vim.keymap.set("n", "q:", ":q")
 
 if vim.lsp.inlay_hint then
   vim.keymap.set("n", "<leader>lu", function()

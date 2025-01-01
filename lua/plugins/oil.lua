@@ -1,3 +1,5 @@
+local icons = require "utils.icons"
+
 return {
   "stevearc/oil.nvim",
   ---@module 'oil'
@@ -22,13 +24,15 @@ return {
     -- Window-local options to use for oil buffers
     win_options = {
       wrap = false,
-      signcolumn = "no",
+      signcolumn = "yes",
       cursorcolumn = false,
       foldcolumn = "0",
       spell = false,
       list = false,
       conceallevel = 3,
       concealcursor = "nvic",
+      number = false,
+      winbar = "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (Oil)",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
     delete_to_trash = false,
@@ -62,28 +66,46 @@ return {
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-      ["g?"] = { "actions.show_help", mode = "n" },
+      ["?"] = { "actions.show_help", mode = "n" },
       ["<CR>"] = "actions.select",
       ["<C-s>"] = { "actions.select", opts = { vertical = true } },
       ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
       ["<C-t>"] = { "actions.select", opts = { tab = true } },
       ["<C-p>"] = "actions.preview",
-      ["<C-c>"] = { "actions.close", mode = "n" },
-      ["<C-l>"] = "actions.refresh",
+      ["q"] = { "actions.close", mode = "n" },
+      ["R"] = "actions.refresh",
+      ["gt"] = {
+        function()
+          local oil = require "oil"
+          local function get_current_path()
+            local dir = oil.get_current_dir()
+            local entry = oil.get_cursor_entry()
+            if not dir or not entry then
+              return ""
+            end
+            return dir .. entry.parsed_name
+          end
+          require("telescope.builtin").live_grep {
+            search_dirs = { get_current_path() },
+          }
+        end,
+        mode = "n",
+        desc = "Find files in the current directory",
+      },
       ["-"] = { "actions.parent", mode = "n" },
       ["_"] = { "actions.open_cwd", mode = "n" },
       ["`"] = { "actions.cd", mode = "n" },
       ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
       ["gs"] = { "actions.change_sort", mode = "n" },
       ["gx"] = "actions.open_external",
-      ["g."] = { "actions.toggle_hidden", mode = "n" },
+      ["H"] = { "actions.toggle_hidden", mode = "n" },
       ["g\\"] = { "actions.toggle_trash", mode = "n" },
     },
     -- Set to false to disable all of the above keymaps
-    use_default_keymaps = true,
+    use_default_keymaps = false,
     view_options = {
       -- Show files and directories that start with "."
-      show_hidden = false,
+      show_hidden = true,
       -- This function defines what is considered a "hidden" file
       is_hidden_file = function(name, bufnr)
         local m = name:match "^%."
@@ -91,6 +113,14 @@ return {
       end,
       -- This function defines what will never be shown, even when `show_hidden` is set
       is_always_hidden = function(name, bufnr)
+        local hidden_list = {
+          ".DS_Store",
+        }
+
+        if vim.tbl_contains(hidden_list, name) then
+          return true
+        end
+
         return false
       end,
       -- Sort file names with numbers in a more intuitive order for humans.
