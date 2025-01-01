@@ -38,6 +38,7 @@ return {
     custom_highlights = function(C)
       return {
         ColorColumn = { bg = "#2a2b3d" },
+        Hlargs = { fg = C.maroon },
         NavicText = { fg = C.subtext0, bg = C.bg },
         WinbarModified = { fg = C.yellow },
 
