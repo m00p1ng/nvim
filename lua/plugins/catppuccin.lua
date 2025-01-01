@@ -51,7 +51,7 @@ return {
 
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },
-        MatchParen = { bg = C.surface1, style = { "bold" } },
+        MatchParen = { fg = "NONE", bg = C.surface1, style = { "bold" } },
         MatchParenCur = { bg = C.surface1, style = { "bold" } },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
