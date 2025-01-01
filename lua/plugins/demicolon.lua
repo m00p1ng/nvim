@@ -34,6 +34,9 @@ return {
           prev = "[c",
         },
       },
+      neotest = {
+        enabled = false,
+      },
     },
   },
 }
