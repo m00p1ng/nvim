@@ -42,6 +42,7 @@ return {
         jsonls = require "plugins.lsp.lang.jsonls",
         gopls = require "plugins.lsp.lang.gopls",
         ts_ls = require "plugins.lsp.lang.ts_ls",
+        nixd = require "plugins.lsp.lang.nixd",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
