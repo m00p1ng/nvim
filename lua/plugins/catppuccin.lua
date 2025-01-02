@@ -75,6 +75,10 @@ return {
         NeoTreeGitUntracked = { fg = C.green },
         NeoTreeGitUnstaged = { fg = C.yellow },
 
+        OilDir = { link = "Directory", style = { "bold" } },
+        OilDirIcon = { link = "Directory" },
+        OilFile = { fg = C.subtext1 },
+
         CmpGhostText = { fg = C.overlay0, bg = C.bg },
         CmpItemKindCopilot = { fg = C.teal },
         CmpItemKindTabnine = { fg = "#b668cd" },

@@ -1,5 +1,18 @@
 local icons = require "utils.icons"
 
+function _G.get_oil_winbar()
+  local dir = require("oil").get_current_dir()
+  local name = ""
+  if dir then
+    name = vim.fn.fnamemodify(dir, ":~")
+  else
+    -- If there is no current directory (e.g. over ssh), just show the buffer name
+    name = vim.api.nvim_buf_get_name(0)
+  end
+
+  return "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (" .. name .. ")"
+end
+
 return {
   "stevearc/oil.nvim",
   ---@module 'oil'
@@ -32,7 +45,7 @@ return {
       conceallevel = 3,
       concealcursor = "nvic",
       number = false,
-      winbar = "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (Oil)",
+      winbar = "%!v:lua.get_oil_winbar()",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
     delete_to_trash = false,
