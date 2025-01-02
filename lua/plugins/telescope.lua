@@ -20,8 +20,10 @@ return {
         mappings = {
           i = {
             ["<esc>"] = actions.close,
-            ["<C-n>"] = actions.cycle_history_next,
-            ["<C-p>"] = actions.cycle_history_prev,
+            -- ["<C-n>"] = actions.cycle_history_next,
+            -- ["<C-p>"] = actions.cycle_history_prev,
+            ["<C-n>"] = actions.move_selection_next,
+            ["<C-p>"] = actions.move_selection_previous,
             ["<C-a>"] = { "<esc>I", type = "command" },
             ["<C-e>"] = { "<esc>A", type = "command" },
 
@@ -214,7 +216,8 @@ return {
 
     -- Find --
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader><leader>", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
+    -- { "<leader><leader>", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
+    { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 
     { "<leader>fS", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
     -- { "<leader>ft",  { "<cmd>Telescope live_grep<cr>", "Find Text" },
