@@ -16,6 +16,7 @@ wk.add {
       require("utils.tmux").run_command(cmd)
     end,
     desc = "Run",
+    buffer = true,
   },
   {
     "<leader>mt",
@@ -25,6 +26,7 @@ wk.add {
       require("utils.tmux").run_command(cmd)
     end,
     desc = "Run Cursor",
+    buffer = true,
   },
   {
     "<leader>ml",
@@ -34,5 +36,6 @@ wk.add {
       require("utils.tmux").run_command(cmd)
     end,
     desc = "Run Last",
+    buffer = true,
   },
 }

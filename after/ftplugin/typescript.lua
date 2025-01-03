@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>dl", function()
       "typescript",
     },
   })
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, buffer = true })
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
@@ -63,7 +63,7 @@ local wk = require "which-key"
 
 wk.add {
   { "<leader>m", group = "Typescript" },
-  { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All" },
+  { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All", buffer = true },
   {
     "<leader>mr",
     function()
@@ -71,5 +71,6 @@ wk.add {
       require("utils.tmux").run_command(cmd)
     end,
     desc = "Run",
+    buffer = true,
   },
 }

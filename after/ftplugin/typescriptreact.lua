@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader>dl", function()
       "typescriptreact",
     },
   })
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, buffer = true })
 
 local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
 
@@ -46,5 +46,5 @@ local wk = require "which-key"
 
 wk.add {
   { "<leader>m", group = "Typescript" },
-  { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All" },
+  { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All", buffer = true },
 }
