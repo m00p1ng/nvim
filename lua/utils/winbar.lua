@@ -15,6 +15,7 @@ local extra_includes = {
   "dapui_scopes",
   "dapui_stacks",
   "dapui_watches",
+  "help",
 }
 
 M.get_filename = function()
@@ -37,6 +38,10 @@ M.get_filename = function()
   if f.is_empty(file_icon) then
     file_icon = icons.kind.File
     file_icon_color = ""
+  end
+
+  if ft == "help" then
+    output_filename = "Help: " .. filename
   end
 
   if vim.startswith(filename, "DAP") then
