@@ -3,12 +3,26 @@ local icons = require "utils.icons"
 
 local M = {}
 
+local dap_icons = {
+  dapui_breakpoints = icons.ui.Bug,
+  dapui_stacks = icons.ui.Stacks,
+  dapui_scopes = icons.ui.Scopes,
+  dapui_watches = icons.ui.Watches,
+}
+
+local extra_includes = {
+  "dapui_breakpoints",
+  "dapui_scopes",
+  "dapui_stacks",
+  "dapui_watches",
+}
+
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
   local extension = vim.fn.expand "%:e"
-  local buf_ft = vim.bo.filetype
+  local ft = vim.bo.filetype
 
   if f.is_empty(filename) then
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
@@ -26,16 +40,9 @@ M.get_filename = function()
   end
 
   if vim.startswith(filename, "DAP") then
-    if buf_ft == "dapui_breakpoints" then
-      file_icon = icons.ui.Bug
-    elseif buf_ft == "dapui_stacks" then
-      file_icon = icons.ui.Stacks
-    elseif buf_ft == "dapui_scopes" then
-      file_icon = icons.ui.Scopes
-    elseif buf_ft == "dapui_watches" then
-      file_icon = icons.ui.Watches
-    end
+    file_icon = vim.tbl_get(dap_icons, ft) or ""
     file_icon_color = ""
+    output_filename = vim.split(filename, " ")[2]
   end
 
   if vim.startswith(full_filename, "diffview") then
@@ -87,13 +94,6 @@ local excludes = function()
     return true
   end
 
-  local extra_includes = {
-    "dapui_watches",
-    "dapui_stacks",
-    "dapui_breakpoints",
-    "dapui_scopes",
-  }
-
   if vim.tbl_contains(extra_includes, ft) then
     return false
   end
@@ -142,9 +142,7 @@ M.create_winbar = function()
     "TabClosed",
   }, {
     group = vim.api.nvim_create_augroup("_winbar", {}),
-    callback = function()
-      M.get_winbar()
-    end,
+    callback = M.get_winbar,
   })
 end
 
