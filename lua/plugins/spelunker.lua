@@ -10,8 +10,15 @@ return {
 
     vim.api.nvim_create_autocmd("CursorHold", {
       callback = function()
-        local filetype = f.get_buf_option "ft"
-        if vim.tbl_contains(spelunker_ignored_filetypes, filetype) then
+        local ft = f.get_buf_option "ft"
+        if vim.tbl_contains(spelunker_ignored_filetypes, ft) then
+          return
+        end
+
+        local limit = 100 * 1024 -- 100KB
+        local file_size = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+
+        if file_size > limit then
           return
         end
 
