@@ -80,7 +80,11 @@ return {
     -- See :help oil-actions for a list of all available actions
     keymaps = {
       ["?"] = { "actions.show_help", mode = "n" },
-      ["<CR>"] = "actions.select",
+      ["<cr>"] = function()
+        require("oil").select({}, function()
+          vim.cmd "noh"
+        end)
+      end,
       -- ["<C-v>"] = { "actions.select", opts = { vertical = true } },
       -- ["<C-x>"] = { "actions.select", opts = { horizontal = true } },
       -- ["<C-t>"] = { "actions.select", opts = { tab = true } },
