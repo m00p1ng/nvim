@@ -3,7 +3,9 @@ if vim.g.vscode then
 end
 
 -- ref: https://github.com/mfussenegger/nvim-dap-python#debugpy
-require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
+local dap_python = require "dap-python"
+dap_python.setup "~/.virtualenvs/debugpy/bin/python"
+dap_python.test_runner = "unittest"
 
 local wk = require "which-key"
 
@@ -38,4 +40,5 @@ wk.add {
     desc = "Run Last",
     buffer = true,
   },
+  { "<leader>dn", dap_python.test_method, desc = "Debug method", buffer = true },
 }

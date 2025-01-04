@@ -124,4 +124,12 @@ return {
       { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "UI" },
     },
   },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    opts = {},
+    keys = {
+
+      { "<leader>dv", "<cmd>lua require('nvim-dap-virtual-text').toggle()<cr>", desc = "Toggle Virtual" },
+    },
+  },
 }

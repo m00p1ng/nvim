@@ -41,6 +41,7 @@ return {
         Hlargs = { fg = C.maroon },
         NavicText = { fg = C.subtext0, bg = C.bg },
         WinbarModified = { fg = C.yellow },
+        NvimDapVirtualText = { link = "LspInlayHint" },
 
         SnacksIndent = { fg = C.surface0 },
         SnacksIndentScope = { fg = C.overlay2 },
