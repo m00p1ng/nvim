@@ -13,6 +13,16 @@ function _G.get_oil_winbar()
   return "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (" .. name .. ")"
 end
 
+local function get_current_path()
+  local oil = require "oil"
+  local dir = oil.get_current_dir()
+  local entry = oil.get_cursor_entry()
+  if not dir or not entry then
+    return ""
+  end
+  return dir .. entry.parsed_name
+end
+
 return {
   "stevearc/oil.nvim",
   ---@module 'oil'
@@ -93,17 +103,9 @@ return {
       ["R"] = "actions.refresh",
       ["gt"] = {
         function()
-          local oil = require "oil"
-          local function get_current_path()
-            local dir = oil.get_current_dir()
-            local entry = oil.get_cursor_entry()
-            if not dir or not entry then
-              return ""
-            end
-            return dir .. entry.parsed_name
-          end
+          local path = get_current_path()
           require("telescope.builtin").live_grep {
-            search_dirs = { get_current_path() },
+            search_dirs = { path },
           }
         end,
         mode = "n",
@@ -114,7 +116,21 @@ return {
       ["`"] = { "actions.cd", mode = "n" },
       ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
       ["gs"] = { "actions.change_sort", mode = "n" },
-      ["gx"] = "actions.open_external",
+      ["gx"] = function()
+        local editor = { "codium", "code" }
+
+        local cmd = ""
+        local path = get_current_path()
+        for _, v in ipairs(editor) do
+          if vim.fn.executable(v) == 1 then
+            cmd = v .. " . " .. path
+            break
+          end
+        end
+
+        cmd = cmd or ("open " .. path)
+        vim.fn.system(cmd)
+      end,
       ["H"] = { "actions.toggle_hidden", mode = "n" },
       ["g\\"] = { "actions.toggle_trash", mode = "n" },
     },
