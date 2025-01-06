@@ -17,6 +17,15 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("CmdWinEnter", {
+  group = vim.api.nvim_create_augroup("cmdline_mapping", { clear = true }),
+  callback = function(event)
+    vim.keymap.set("n", "<cr>", "<cr>", { buffer = event.buf })
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "<esc>", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
   callback = function()

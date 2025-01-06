@@ -112,7 +112,7 @@ return {
     LineLeft = "▏",
     LineMiddle = "│",
     List = " ",
-    Lock = " ",
+    Lock = "",
     NewFile = " ",
     Note = " ",
     Package = " ",
