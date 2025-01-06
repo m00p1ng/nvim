@@ -10,12 +10,18 @@ local dap_icons = {
   dapui_watches = icons.ui.Watches,
 }
 
-local extra_includes = {
+local include_ft = {
   "dapui_breakpoints",
   "dapui_scopes",
   "dapui_stacks",
   "dapui_watches",
   "help",
+}
+
+-- let plugins show their own winbar
+local plugin_winbar_ft = {
+  "dap-repl",
+  "oil",
 }
 
 M.get_filename = function()
@@ -90,21 +96,11 @@ local excludes = function()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
-  local exclude_filetypes = {
-    "dap-repl",
-    "oil",
-  }
-
-  if vim.tbl_contains(exclude_filetypes, ft) or full_filename == "__FLUTTER_DEV_LOG__" then
+  if vim.tbl_contains(plugin_winbar_ft, ft) then
     return true
   end
 
-  if vim.tbl_contains(extra_includes, ft) then
-    return false
-  end
-
-  local buf_number = vim.api.nvim_get_current_buf()
-  if 1 == vim.fn.buflisted(buf_number) and ft ~= "NeogitCommitMessage" and ft ~= "NeogitCommitPopup" then
+  if vim.tbl_contains(include_ft, ft) then
     return false
   end
 
@@ -113,7 +109,8 @@ local excludes = function()
     return false
   end
 
-  if f.is_ui_filetype(ft) then
+  local empty_filename = f.is_empty(full_filename) and not f.is_empty(ft)
+  if f.is_ui_filetype(ft) or empty_filename then
     vim.opt_local.winbar = nil
     return true
   end
