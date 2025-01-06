@@ -16,12 +16,17 @@ local include_ft = {
   "dapui_stacks",
   "dapui_watches",
   "help",
+  "",
 }
 
 -- let plugins show their own winbar
 local plugin_winbar_ft = {
   "dap-repl",
   "oil",
+}
+
+local winbar_ft_opts = {
+  exclude = include_ft,
 }
 
 M.get_filename = function()
@@ -100,17 +105,14 @@ local excludes = function()
     return true
   end
 
-  if vim.tbl_contains(include_ft, ft) then
-    return false
-  end
-
   -- diffview://null case
   if ft == "" and vim.startswith(full_filename, "diffview://") then
     return false
   end
 
   local empty_filename = f.is_empty(full_filename) and not f.is_empty(ft)
-  if f.is_ui_filetype(ft) or empty_filename then
+  local is_neogit = vim.startswith(full_filename, "Neogit")
+  if f.is_ui_filetype(ft, winbar_ft_opts) or empty_filename or is_neogit then
     vim.opt_local.winbar = nil
     return true
   end
