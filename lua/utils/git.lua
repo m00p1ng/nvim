@@ -26,7 +26,7 @@ end
 
 function M.previous_change()
   local sha = M.get_commit_sha()
-  vim.api.nvim_command(":DiffviewOpen " .. sha .. "^!")
+  vim.cmd.DiffviewOpen { sha .. "^!" }
 end
 
 --- @return boolean
@@ -38,8 +38,6 @@ function M.is_remote_rev()
     "--symbolic-full-name",
     "@{u}",
   }
-
-  print(vim.inspect(result))
 
   return result.stdout[1] ~= nil
 end

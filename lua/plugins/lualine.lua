@@ -89,7 +89,7 @@ return {
       end,
       icons_enabled = false,
       on_click = function()
-        vim.cmd ":Telescope filetypes"
+        vim.cmd.Telescope "filetypes"
       end,
     }
 
@@ -111,7 +111,7 @@ return {
         return str
       end,
       on_click = function()
-        vim.cmd ":Telescope git_branches"
+        vim.cmd.Telescope "git_branches"
       end,
     }
 
