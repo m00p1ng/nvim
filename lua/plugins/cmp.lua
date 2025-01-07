@@ -35,7 +35,7 @@ return {
         end,
       },
       enabled = function()
-        return f.get_buf_option "buftype" ~= "prompt" or cmp_dap.is_dap_buffer()
+        return vim.bo.buftype ~= "prompt" or cmp_dap.is_dap_buffer()
       end,
       window = {
         completion = cmp.config.window.bordered(),

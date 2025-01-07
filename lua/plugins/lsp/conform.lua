@@ -28,7 +28,7 @@ return {
         return
       end
 
-      if vim.tbl_contains(vim.g.autoformat_ignore_filetypes, vim.bo[bufnr].filetype) then
+      if vim.tbl_contains(vim.g.autoformat_ignore_filetypes, vim.bo[bufnr].ft) then
         return
       end
 

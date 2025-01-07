@@ -34,7 +34,7 @@ M.get_filename = function()
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
   local extension = vim.fn.expand "%:e"
-  local ft = vim.bo.filetype
+  local ft = vim.bo.ft
 
   if f.is_empty(filename) then
     return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
@@ -70,10 +70,10 @@ M.get_filename = function()
   end
 
   local hl_filename = ""
-  if f.get_buf_option "modified" then
+  if vim.bo.modified then
     hl_filename = "%#WinbarModified#"
     file_icon = "%#WinbarModified#" .. icons.ui.Circle .. "%*"
-  elseif f.get_buf_option "readonly" then
+  elseif vim.bo.readonly then
     hl_filename = "%#LspDiagnosticsSignError#"
     file_icon = "%#WinbarModified#" .. icons.ui.Lock .. "%*"
   else

@@ -162,14 +162,12 @@ return {
 
     local spaces = {
       function()
-        local buf_ft = vim.bo.filetype
-
-        if f.is_ui_filetype(buf_ft) then
+        local ft = vim.bo.ft
+        if f.is_ui_filetype(ft) then
           return ""
         end
 
-        local shiftwidth = f.get_buf_option "shiftwidth"
-        if shiftwidth == nil then
+        if vim.bo.shiftwidth == nil then
           return ""
         end
 
@@ -186,9 +184,8 @@ return {
 
     local filesize = {
       function()
-        local buf_ft = vim.bo.filetype
-
-        if f.is_ui_filetype(buf_ft) then
+        local ft = vim.bo.ft
+        if f.is_ui_filetype(ft) then
           return ""
         end
 
@@ -261,9 +258,8 @@ return {
 
     local current_signature = {
       function()
-        local buf_ft = vim.bo.filetype
-
-        if buf_ft == "TelescopePrompt" then
+        local ft = vim.bo.ft
+        if ft == "TelescopePrompt" then
           return ""
         end
 

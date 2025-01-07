@@ -6,11 +6,10 @@ return {
     vim.api.nvim_set_hl(0, "SpelunkerComplexOrCompoundWord", { sp = "#89b4fa", fg = nil, undercurl = true })
 
     local spelunker_ignored_filetypes = require("utils").ui_filetypes
-    local f = require "utils"
 
     vim.api.nvim_create_autocmd("CursorHold", {
       callback = function()
-        local ft = f.get_buf_option "ft"
+        local ft = vim.bo.ft
         if vim.tbl_contains(spelunker_ignored_filetypes, ft) then
           return
         end

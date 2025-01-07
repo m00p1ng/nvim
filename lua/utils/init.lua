@@ -80,7 +80,7 @@ function M.is_ui_filetype(value, opts)
 end
 
 function M.clear_prompt()
-  vim.api.nvim_command "normal! :<cr>"
+  vim.cmd "normal! :<cr>"
 end
 
 function M.is_empty(s)
@@ -92,15 +92,6 @@ function M.find_index(source, value)
     if v == value then
       return k
     end
-  end
-end
-
-function M.get_buf_option(opt)
-  local status_ok, buf_option = pcall(vim.api.nvim_get_option_value, opt, { buf = 0 })
-  if not status_ok then
-    return nil
-  else
-    return buf_option
   end
 end
 
