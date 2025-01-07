@@ -119,17 +119,16 @@ return {
       ["gx"] = function()
         local editor = { "codium", "code" }
 
-        local cmd = ""
         local path = get_current_path()
+        local cmd = { "open ", path }
         for _, v in ipairs(editor) do
           if vim.fn.executable(v) == 1 then
-            cmd = v .. " . " .. path
+            cmd = { v, " . ", path }
             break
           end
         end
 
-        cmd = cmd or ("open " .. path)
-        vim.fn.system(cmd)
+        vim.system(cmd)
       end,
       ["H"] = { "actions.toggle_hidden", mode = "n" },
       ["g\\"] = { "actions.toggle_trash", mode = "n" },
