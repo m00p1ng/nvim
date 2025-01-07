@@ -2,9 +2,7 @@ if vim.g.vscode then
   return
 end
 
-local wk = require "which-key"
-
-wk.add {
+require("which-key").add {
   { "<leader>m", group = "Typescript" },
   { "<leader>mr", "<cmd>lua require('kulala').run()<cr>", desc = "Send Request", buffer = true },
   { "<leader>ml", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay", buffer = true },

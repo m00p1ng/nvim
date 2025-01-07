@@ -34,9 +34,7 @@ dap.configurations.typescript = {
   },
 }
 
-local wk = require "which-key"
-
-wk.add {
+require("which-key").add {
   { "<leader>m", group = "Typescript" },
   { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All", buffer = true },
   {

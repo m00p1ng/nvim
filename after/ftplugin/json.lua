@@ -5,9 +5,7 @@ end
 local filename = vim.fn.expand "%:t"
 
 if filename == "package.json" then
-  local wk = require "which-key"
-
-  wk.add {
+  require("which-key").add {
     { "<leader>m", group = "Package.json" },
     { "<leader>mt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle", buffer = true },
     { "<leader>mu", "<cmd>lua require('package-info').update()<cr>", desc = "Update", buffer = true },

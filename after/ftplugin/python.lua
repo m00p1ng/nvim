@@ -7,9 +7,7 @@ local dap_python = require "dap-python"
 dap_python.setup "~/.virtualenvs/debugpy/bin/python"
 dap_python.test_runner = "unittest"
 
-local wk = require "which-key"
-
-wk.add {
+require("which-key").add {
   { "<leader>m", group = "Python" },
   {
     "<leader>mr",

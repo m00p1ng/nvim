@@ -2,10 +2,10 @@ if vim.g.vscode then
   return
 end
 
-vim.api.nvim_set_option_value("tabstop", 4, { buf = 0 })
-vim.api.nvim_set_option_value("shiftwidth", 4, { buf = 0 })
-vim.api.nvim_set_option_value("softtabstop", 4, { buf = 0 })
-vim.api.nvim_set_option_value("expandtab", false, { buf = 0 })
+vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.expandtab = false
 
 local function org_imports(wait_ms)
   local params = vim.lsp.util.make_range_params()
@@ -21,22 +21,19 @@ local function org_imports(wait_ms)
   end
 end
 
-local go_group = vim.api.nvim_create_augroup("_go", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("_go", { clear = true }),
   pattern = { "*.go" },
   callback = function()
     vim.lsp.buf.format { async = true }
     org_imports(3000)
   end,
-  group = go_group,
 })
 
 require("dap-go").setup()
 
 if require("utils").has "gopher.nvim" then
-  local wk = require "which-key"
-
-  wk.add {
+  require("which-key").add {
     { "<leader>m", group = "Golang" },
     { "<leader>mj", "<cmd>GoTagAdd json -transform camelcase<cr>", desc = "Tag Add (JSON)", buffer = true },
     { "<leader>mJ", "<cmd>GoTagRm json<cr>", desc = "Tag Remove (JSON)", buffer = true },

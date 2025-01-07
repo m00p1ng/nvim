@@ -31,9 +31,7 @@ dap.configurations.javascript = {
   },
 }
 
-local wk = require "which-key"
-
-wk.add {
+require("which-key").add {
   { "<leader>m", group = "Javascript" },
   { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All", buffer = true },
 }

@@ -8,9 +8,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "silent! EslintFixAll",
 })
 
-local wk = require "which-key"
-
-wk.add {
+require("which-key").add {
   { "<leader>m", group = "Typescript" },
   { "<leader>mf", "<cmd>EslintFixAll<cr>", desc = "Fix All", buffer = true },
 }
