@@ -167,7 +167,8 @@ return {
           return ""
         end
 
-        if vim.bo.shiftwidth == nil then
+        local shiftwidth = vim.bo.shiftwidth
+        if shiftwidth == nil then
           return ""
         end
 
