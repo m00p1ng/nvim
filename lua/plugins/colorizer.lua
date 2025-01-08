@@ -1,6 +1,6 @@
 return {
-  "NvChad/nvim-colorizer.lua",
-  -- event = { "BufReadPost", "BufNewFile" },
+  "catgoose/nvim-colorizer.lua",
+  event = "BufReadPre",
   opts = {
     filetypes = {
       "*",

@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   -- ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/4945
   -- commit = "f2778bd1a28b74adf5b1aa51aa57da85adfa3d16",
+  lazy = true,
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
