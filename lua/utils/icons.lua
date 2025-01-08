@@ -2,6 +2,7 @@
 -- go to the above and then enter <c-v>u<unicode> and the symbold should appear
 -- or go here and upload the font file: https://mathew-kurian.github.io/CharacterMap/
 -- find more here: https://www.nerdfonts.com/cheat-sheet
+-- https://github.com/ayamir/nvimdots/blob/main/lua/modules/utils/icons.lua
 return {
   kind = {
     Array = "",
@@ -156,8 +157,8 @@ return {
     Information = "",
     BoldQuestion = "",
     Question = "",
-    BoldHint = "",
-    Hint = "",
+    BoldHint = "󰌵",
+    Hint = "󰌶",
     Debug = "",
     Trace = "✎",
   },
