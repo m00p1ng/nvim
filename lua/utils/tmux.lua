@@ -25,7 +25,8 @@ local function get_total_panes()
 end
 
 local function create_pane()
-  vim.system({ "tmux", "split-window", "-h", "-p", "40", "-c", "'#{pane_current_path}'" }):wait()
+  local cmd = { "tmux", "split-window", "-h", "-p", "40", "-c", "'#{pane_current_path}'" }
+  vim.fn.system(vim.fn.join(cmd, " "))
 end
 
 local function is_copy_mode()
