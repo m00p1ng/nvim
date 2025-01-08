@@ -5,17 +5,26 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-symbols.nvim", lazy = true },
+    { "nvim-telescope/telescope-frecency.nvim", lazy = true },
   },
   opts = function()
     local icons = require "utils.icons"
     local actions = require "telescope.actions"
-    local lga_actions = require "telescope-live-grep-args.actions"
 
     return {
       defaults = {
-        prompt_prefix = icons.ui.Telescope .. " ",
-        -- selection_caret = " ",
+        prompt_prefix = " " .. icons.ui.Telescope .. " ",
+        selection_caret = icons.ui.ChevronRight .. " ",
+        scroll_strategy = "limit",
+        results_title = false,
+        layout_strategy = "horizontal",
         path_display = { "filename_first" },
+        sorting_strategy = "ascending",
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+          },
+        },
 
         mappings = {
           i = {
@@ -194,11 +203,16 @@ return {
         live_grep_args = {
           mappings = {
             i = {
-              ["<C-h>"] = lga_actions.quote_prompt(),
+              ["<C-h>"] = require("telescope-live-grep-args.actions").quote_prompt(),
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
             },
           },
+          theme = "ivy",
+        },
+        frecency = {
+          show_filter_column = false,
+          previewer = false,
         },
       },
     }
@@ -210,6 +224,7 @@ return {
     telescope.load_extension "fzf"
     telescope.load_extension "diffview"
     telescope.load_extension "live_grep_args"
+    telescope.load_extension "frecency"
   end,
   keys = {
     { "z=", "<cmd>Telescope spell_suggest<cr>", desc = "Spell Suggestion" },
@@ -217,15 +232,19 @@ return {
     -- Find --
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     -- { "<leader><leader>", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
-    { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+    {
+      "<leader><leader>",
+      "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Find\\ Files<cr>",
+      desc = "Find files",
+    },
 
     { "<leader>fS", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
     -- { "<leader>ft",  { "<cmd>Telescope live_grep<cr>", "Find Text" },
-    { "<leader>ft", "<cmd>Telescope live_grep_args theme=ivy<cr>", desc = "Find Text (Args)" },
+    { "<leader>ft", "<cmd>Telescope live_grep_args<cr>", desc = "Find Text (Args)" },
     -- { "<leader>fs", "<cmd>Telescope grep_string<cr>", "Find String" },
     {
       "<leader>fs",
-      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor({ theme = 'ivy' })<cr>",
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
       desc = "Find String",
     },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },

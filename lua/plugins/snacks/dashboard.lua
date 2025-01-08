@@ -42,7 +42,7 @@ return {
             icon = icons.ui.List,
             key = "t",
             desc = "Find Text",
-            action = ":Telescope live_grep_args theme=ivy",
+            action = ":Telescope live_grep_args",
           },
           {
             icon = icons.ui.Gear,
