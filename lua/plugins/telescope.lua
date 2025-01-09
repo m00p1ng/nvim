@@ -4,7 +4,6 @@ return {
   dependencies = {
     "nvim-telescope/telescope-live-grep-args.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "nvim-telescope/telescope-symbols.nvim", lazy = true },
     { "nvim-telescope/telescope-frecency.nvim", lazy = true },
   },
   opts = function()
@@ -212,6 +211,7 @@ return {
         },
         frecency = {
           show_filter_column = false,
+          show_scores = true,
           previewer = false,
         },
       },
@@ -259,7 +259,6 @@ return {
     { "<leader>fc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     { "<leader>fV", "<cmd>Telescope vim_options<cr>", desc = "Vim Options" },
     { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jump list" },
-    { "<leader>fo", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
 
     -- Find Visual --
     {

@@ -44,7 +44,6 @@ M.get_filename = function()
 
   if vim.startswith(filename, "DAP") then
     file_icon = vim.tbl_get(dap_icons, ft) or ""
-    hl_icon = ""
     output_filename = vim.split(filename, " ")[2]
   end
 
@@ -69,7 +68,9 @@ M.get_filename = function()
     hl_filename = "NavicText"
   end
 
-  hl_icon = "%#" .. hl_icon .. "#"
+  if not f.is_empty(hl_icon) then
+    hl_icon = "%#" .. hl_icon .. "#"
+  end
   if not f.is_empty(hl_filename) then
     hl_filename = "%#" .. hl_filename .. "#"
   end
