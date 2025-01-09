@@ -9,6 +9,8 @@ local enabled = {
   "nvim-treesitter",
   "nvim-treesitter-textobjects",
   "treesj",
+  "text-case.nvim",
+  "nvim-surround",
 }
 
 local Config = require "lazy.core.config"
@@ -40,7 +42,8 @@ vim.keymap.set("n", "<leader>b", vscode_call "workbench.action.showAllEditors")
 vim.keymap.set("n", "<leader><leader>", vscode_call "workbench.action.quickOpen")
 vim.keymap.set("n", "<leader>fr", vscode_call "workbench.action.quickOpen")
 vim.keymap.set("n", "<leader>ft", vscode_call "workbench.action.findInFiles")
-vim.keymap.set({ "n", "v" }, "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>fs",
+  "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")
 
 -- Utils --
 vim.keymap.set("v", "<leader>c", vscode_call "execCopy")
