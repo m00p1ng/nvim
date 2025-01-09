@@ -33,19 +33,9 @@ M.get_filename = function()
   local extension = vim.fn.expand "%:e"
   local ft = vim.bo.ft
 
+  local file_icon, hl_icon = require("nvim-web-devicons").get_icon(filename, extension, { default = true })
   if f.is_empty(filename) then
-    return "%#NavicText#" .. " " .. icons.kind.File .. " " .. "[No Name]"
-  end
-
-  local file_icon, file_icon_color =
-    require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
-
-  local hl_group = "FileIconColor" .. extension
-
-  vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
-  if f.is_empty(file_icon) then
-    file_icon = icons.kind.File
-    file_icon_color = ""
+    return "%#NavicText#" .. " " .. file_icon .. " " .. "[No Name]"
   end
 
   if ft == "help" then
@@ -54,7 +44,7 @@ M.get_filename = function()
 
   if vim.startswith(filename, "DAP") then
     file_icon = vim.tbl_get(dap_icons, ft) or ""
-    file_icon_color = ""
+    hl_icon = ""
     output_filename = vim.split(filename, " ")[2]
   end
 
@@ -68,16 +58,23 @@ M.get_filename = function()
 
   local hl_filename = ""
   if vim.bo.modified then
-    hl_filename = "%#WinbarModified#"
-    file_icon = "%#WinbarModified#" .. icons.ui.Circle .. "%*"
+    hl_filename = "WinbarModified"
+    hl_icon = "WinbarModified"
+    file_icon = icons.ui.Circle
   elseif vim.bo.readonly then
-    hl_filename = "%#LspDiagnosticsSignError#"
-    file_icon = "%#WinbarModified#" .. icons.ui.Lock .. "%*"
+    hl_filename = "LspDiagnosticsSignError"
+    hl_icon = "WinbarModified"
+    file_icon = icons.ui.Lock
   else
-    hl_filename = "%#NavicText#"
+    hl_filename = "NavicText"
   end
 
-  return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. hl_filename .. output_filename .. "%*"
+  hl_icon = "%#" .. hl_icon .. "#"
+  if not f.is_empty(hl_filename) then
+    hl_filename = "%#" .. hl_filename .. "#"
+  end
+
+  return " " .. hl_icon .. file_icon .. "%*" .. " " .. hl_filename .. output_filename .. "%*"
 end
 
 local get_location = function()
