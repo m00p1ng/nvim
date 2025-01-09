@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>e", vscode_call "workbench.view.explorer")
 
 -- Telescope --
 vim.keymap.set("n", "<leader>b", vscode_call "workbench.action.showAllEditors")
-vim.keymap.set("n", "<leader>ff", vscode_call "workbench.action.quickOpen")
+vim.keymap.set("n", "<leader><leader>", vscode_call "workbench.action.quickOpen")
 vim.keymap.set("n", "<leader>fr", vscode_call "workbench.action.quickOpen")
 vim.keymap.set("n", "<leader>ft", vscode_call "workbench.action.findInFiles")
 vim.keymap.set({ "n", "v" }, "<leader>fs", "<cmd>lua require('vscode-neovim').action('workbench.action.findInFiles', { args = { { query = vim.fn.expand('<cword>') } } })<cr>")

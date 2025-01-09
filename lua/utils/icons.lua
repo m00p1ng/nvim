@@ -126,7 +126,7 @@ return {
     Tab = "󰌒 ",
     Table = " ",
     Target = "󰀘 ",
-    Telescope = " ",
+    Telescope = "",
     Terminal = "",
     Text = "",
     Tree = "",
