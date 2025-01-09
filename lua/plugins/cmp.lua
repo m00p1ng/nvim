@@ -1,3 +1,16 @@
+local border = function(hl)
+  return {
+    { "┌", hl },
+    { "─", hl },
+    { "┐", hl },
+    { "│", hl },
+    { "┘", hl },
+    { "─", hl },
+    { "└", hl },
+    { "│", hl },
+  }
+end
+
 ---@diagnostic disable: missing-fields
 return {
   "hrsh7th/nvim-cmp", -- The completion plugin
@@ -24,7 +37,6 @@ return {
     }
 
     local icons = require "utils.icons"
-    local f = require "utils"
 
     local kind_icons = icons.kind
 
@@ -38,8 +50,15 @@ return {
         return vim.bo.buftype ~= "prompt" or cmp_dap.is_dap_buffer()
       end,
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+          border = border "PmenuBorder",
+          winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+          scrollbar = false,
+        },
+        documentation = {
+          border = border "CmpDocBorder",
+          winhighlight = "Normal:CmpDoc",
+        },
       },
       mapping = cmp.mapping.preset.insert {
         ["<C-k>"] = cmp.mapping.select_prev_item(),

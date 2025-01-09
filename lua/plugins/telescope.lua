@@ -12,13 +12,14 @@ return {
 
     return {
       defaults = {
-        prompt_prefix = " " .. icons.ui.Telescope .. " ",
+        prompt_prefix = " " .. icons.ui.Telescope .. "  ",
         selection_caret = icons.ui.ChevronRight .. " ",
         scroll_strategy = "limit",
-        results_title = false,
+        -- results_title = true,
         layout_strategy = "horizontal",
         path_display = { "filename_first" },
         sorting_strategy = "ascending",
+        file_ignore_patterns = { ".git/", ".cache", "build/", "dist/", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
         layout_config = {
           horizontal = {
             prompt_position = "top",

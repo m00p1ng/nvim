@@ -37,11 +37,13 @@ return {
     color_overrides = {},
     custom_highlights = function(C)
       return {
-        ColorColumn = { bg = "#2a2b3d" },
+        ColorColumn = { bg = C.mantle },
         Hlargs = { fg = C.maroon },
         NavicText = { fg = C.subtext0, bg = C.bg },
         WinbarModified = { fg = C.yellow },
         NvimDapVirtualText = { link = "LspInlayHint" },
+
+        OutlineGuides = { fg = C.surface0 },
 
         SnacksIndent = { fg = C.surface0 },
         SnacksIndentScope = { fg = C.overlay2 },
@@ -51,10 +53,25 @@ return {
         SnacksNotifierError = { link = "Normal" },
         SnacksNotifierTrace = { link = "Normal" },
 
+        TelescopePathSeparator = { link = "TelescopeResultsComment" },
+        TelescopePromptBorder = { link = "FloatBorder" },
+        TelescopePromptNormal = { fg = C.text, bg = C.mantle },
+        TelescopePromptPrefix = { fg = C.flamingo, bg = C.mantle },
+        TelescopeMatching = { fg = C.red },
+
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },
         MatchParen = { fg = "NONE", bg = C.surface1, style = { "bold" } },
         MatchParenCur = { bg = C.surface1, style = { "bold" } },
+
+        NormalFloat = { fg = C.text, bg = C.mantle },
+        FloatBorder = {
+          fg = C.mantle,
+          bg = C.mantle,
+        },
+
+        -- For native lsp configs
+        LspInfoBorder = { link = "FloatBorder" },
 
         NvimTreeFolderName = { fg = C.subtext1, style = { "bold" } },
         NvimTreeOpenedFolderName = { fg = C.text, style = { "bold", "italic" } },
@@ -83,6 +100,17 @@ return {
         CmpGhostText = { fg = C.overlay0, bg = C.bg },
         CmpItemKindCopilot = { fg = C.teal },
         CmpItemKindTabnine = { fg = "#b668cd" },
+        CmpItemAbbr = { fg = C.overlay2 },
+        CmpItemAbbrMatch = { fg = C.blue, style = { "bold" } },
+        CmpDoc = { link = "NormalFloat" },
+        CmpDocBorder = {
+          fg = C.mantle,
+          bg = C.mantle,
+        },
+        -- For nvim-cmp and wilder.nvim
+        Pmenu = { fg = C.overlay2, bg = C.base },
+        PmenuBorder = { fg = C.surface1, bg = C.base },
+        PmenuSel = { bg = C.green, fg = C.base },
       }
     end,
     default_integrations = false,
@@ -134,7 +162,7 @@ return {
       symbols_outline = true,
       telescope = {
         enabled = true,
-        -- style = "nvchad"
+        style = "nvchad",
       },
       treesitter = true,
       ufo = true,

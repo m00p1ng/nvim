@@ -13,10 +13,12 @@ return {
       -- `position` will not be considered if `split_command` is non-nil.
       -- This should be a valid vim command used for opening the split for the
       -- outline window. Eg, 'rightbelow vsplit'.
+      -- Width can be included (with will override the width setting below):
+      -- Eg, `topleft 20vsp` to prevent a flash of windows when resizing.
       split_command = nil,
 
       -- Percentage or integer of columns
-      width = 25,
+      width = 20,
       -- Whether width is relative to the total width of nvim
       -- When relative_width = true, this means take 25% of the total
       -- screen width for outline window.
@@ -136,6 +138,11 @@ return {
       -- screen width for preview window, ensure the result width is at least 50
       -- characters wide.
       relative_width = true,
+      height = 50, -- Percentage or integer of lines
+      min_height = 10, -- Minimum number of lines
+      -- Similar to relative_width, except the height is relative to the outline
+      -- window's height.
+      relative_height = true,
       -- Border option for floating preview window.
       -- Options include: single/double/rounded/solid/shadow or an array of border
       -- characters.
@@ -192,9 +199,14 @@ return {
 
     providers = {
       priority = { "lsp", "coc", "markdown", "norg" },
+      -- Configuration for each provider (3rd party providers are supported)
       lsp = {
         -- Lsp client names to ignore
         blacklist_clients = {},
+      },
+      markdown = {
+        -- List of supported ft's to use the markdown provider
+        filetypes = { "markdown" },
       },
     },
 
@@ -216,9 +228,15 @@ return {
       -- You can use a custom function that returns the icon for each symbol kind.
       -- This function takes a kind (string) as parameter and should return an
       -- icon as string.
+      ---@param kind string Key of the icons table below
+      ---@param bufnr integer Code buffer
+      ---@param symbol outline.Symbol The current symbol object
+      ---@returns string|boolean The icon string to display, such as "f", or `false`
+      ---                        to fallback to `icon_source`.
       icon_fetcher = nil,
-      -- 3rd party source for fetching icons. Fallback if icon_fetcher returned
-      -- empty string. Currently supported values: 'lspkind'
+      -- 3rd party source for fetching icons. This is used as a fallback if
+      -- icon_fetcher returned an empty string.
+      -- Currently supported values: 'lspkind'
       icon_source = nil,
       -- The next fallback if both icon_fetcher and icon_source has failed, is
       -- the custom mapping of icons specified below. The icons table is also
@@ -250,6 +268,12 @@ return {
         Event = { icon = icons.kind.Event, hl = "CmpItemKindEvent" },
         Operator = { icon = icons.kind.Operator, hl = "CmpItemKindOperator" },
         TypeParameter = { icon = icons.kind.TypeParameter, hl = "CmpItemKindTypeParameter" },
+        -- Component = { icon = "󰅴", hl = "Function" },
+        -- Fragment = { icon = "󰅴", hl = "Constant" },
+        -- TypeAlias = { icon = " ", hl = "Type" },
+        -- Parameter = { icon = " ", hl = "Identifier" },
+        -- StaticMethod = { icon = " ", hl = "Function" },
+        -- Macro = { icon = " ", hl = "Function" },
       },
     },
   },
