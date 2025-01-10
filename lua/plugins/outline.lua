@@ -65,7 +65,7 @@ return {
       -- Winhighlight option for outline window.
       -- See :help 'winhl'
       -- To change background color to "CustomHl" for example, use "Normal:CustomHl".
-      winhl = "",
+      winhl = "Normal:OutlineNormal",
     },
 
     outline_items = {

@@ -44,6 +44,7 @@ return {
         NvimDapVirtualText = { link = "LspInlayHint" },
 
         OutlineGuides = { fg = C.surface0 },
+        OutlineNormal = { bg = C.mantle },
 
         SnacksIndent = { fg = C.surface0 },
         SnacksIndentScope = { fg = C.overlay2 },
