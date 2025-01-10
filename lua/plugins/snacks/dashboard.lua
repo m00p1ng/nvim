@@ -36,7 +36,7 @@ return {
             icon = icons.ui.History,
             key = "r",
             desc = "Recent Files",
-            action = ":lua Snacks.dashboard.pick('oldfiles')",
+            action = ":Telescope frecency workspace=CWD theme=dropdown prompt_title=Frecency",
           },
           {
             icon = icons.ui.List,

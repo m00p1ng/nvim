@@ -233,9 +233,10 @@ return {
     -- Find --
     { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     -- { "<leader><leader>", "<cmd>lua require('utils.telescope').project_files()<cr>", desc = "Find files" },
+    { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     {
-      "<leader><leader>",
-      "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Find\\ Files<cr>",
+      "<leader>fr",
+      "<cmd>Telescope frecency workspace=CWD theme=dropdown prompt_title=Frecency<cr>",
       desc = "Find files",
     },
 
@@ -253,7 +254,7 @@ return {
     { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
     { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
     { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fR", "<cmd>Telescope registers<cr>", desc = "Registers" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
     { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands" },

@@ -26,6 +26,14 @@ local plugin_winbar_ft = {
   "oil",
 }
 
+local function hl(hl_name, str)
+  if f.is_empty(hl_name) then
+    return str
+  end
+
+  return "%#" .. hl_name .. "#" .. str .. "%*"
+end
+
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local full_filename = vim.fn.expand "%"
@@ -34,12 +42,10 @@ M.get_filename = function()
   local ft = vim.bo.ft
 
   local file_icon, hl_icon = require("nvim-web-devicons").get_icon(filename, extension, { default = true })
-  if f.is_empty(filename) then
-    return "%#NavicText#" .. " " .. file_icon .. " " .. "[No Name]"
-  end
+  local hl_filename = "NavicText"
 
-  if ft == "help" then
-    output_filename = "Help: " .. filename
+  if f.is_empty(filename) then
+    output_filename = "[No Name]"
   end
 
   if vim.startswith(filename, "DAP") then
@@ -55,27 +61,21 @@ M.get_filename = function()
     end
   end
 
-  local hl_filename = ""
-  if vim.bo.modified then
+  if ft == "help" then
+    hl_icon = "WinbarModified"
+    file_icon = icons.git.Repo
+    output_filename = "Help: " .. filename
+  elseif vim.bo.modified then
     hl_filename = "WinbarModified"
     hl_icon = "WinbarModified"
     file_icon = icons.ui.Circle
   elseif vim.bo.readonly then
-    hl_filename = "LspDiagnosticsSignError"
+    hl_filename = "LspDiagnosticsError"
     hl_icon = "WinbarModified"
     file_icon = icons.ui.Lock
-  else
-    hl_filename = "NavicText"
   end
 
-  if not f.is_empty(hl_icon) then
-    hl_icon = "%#" .. hl_icon .. "#"
-  end
-  if not f.is_empty(hl_filename) then
-    hl_filename = "%#" .. hl_filename .. "#"
-  end
-
-  return " " .. hl_icon .. file_icon .. "%*" .. " " .. hl_filename .. output_filename .. "%*"
+  return " " .. hl(hl_icon, file_icon) .. " " .. hl(hl_filename, output_filename)
 end
 
 local get_location = function()
@@ -89,7 +89,7 @@ local get_location = function()
     return ""
   end
 
-  return "%#NavicSeparator#" .. icons.ui.ChevronShortRight .. "%*" .. " " .. location
+  return hl("NavicSeparator", icons.ui.ChevronShortRight) .. " " .. location
 end
 
 local excludes = function()
