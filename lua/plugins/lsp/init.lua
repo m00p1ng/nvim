@@ -43,6 +43,8 @@ return {
         gopls = require "plugins.lsp.lang.gopls",
         ts_ls = require "plugins.lsp.lang.ts_ls",
         nixd = require "plugins.lsp.lang.nixd",
+        volar = require "plugins.lsp.lang.volar",
+        vtsls = require "plugins.lsp.lang.vtsls",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -96,12 +98,28 @@ return {
       require("lspconfig.ui.windows").default_options.border = "rounded"
       require("lspconfig.ui.windows").default_options.percentage = 0.8
 
+      local function should_skip_setup(server)
+        if vim.g.is_vue == 3 and vim.tbl_contains({ "ts_ls", "vtsls" }, server) then
+          return true
+        end
+
+        if vim.g.is_vue == 2 and vim.tbl_contains({ "volar", "ts_ls" }, server) then
+          return true
+        end
+
+        return false
+      end
+
       local servers = opts.servers
       local capabilities = require("plugins.lsp.keymaps").capabilities
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
+
+        if should_skip_setup(server) then
+          return
+        end
 
         if opts.setup[server] then
           if opts.setup[server](server, server_opts) then
