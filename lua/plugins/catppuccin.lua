@@ -66,10 +66,7 @@ return {
         MatchParenCur = { bg = C.surface1, style = { "bold" } },
 
         NormalFloat = { fg = C.text, bg = C.mantle },
-        FloatBorder = {
-          fg = C.mantle,
-          bg = C.mantle,
-        },
+        FloatBorder = { fg = C.mantle, bg = C.mantle },
 
         -- For native lsp configs
         LspInfoBorder = { link = "FloatBorder" },
@@ -98,27 +95,22 @@ return {
         OilDirIcon = { link = "Directory" },
         OilFile = { fg = C.subtext1 },
 
-        CmpGhostText = { fg = C.overlay0, bg = C.bg },
-        CmpItemKindCopilot = { fg = C.teal },
-        CmpItemKindTabnine = { fg = "#b668cd" },
-        CmpItemAbbr = { fg = C.overlay2 },
-        CmpItemAbbrMatch = { fg = C.blue, style = { "bold" } },
-        CmpDoc = { link = "NormalFloat" },
-        CmpDocBorder = {
-          fg = C.mantle,
-          bg = C.mantle,
-        },
-        -- For nvim-cmp and wilder.nvim
         Pmenu = { fg = C.overlay2, bg = C.base },
         PmenuBorder = { fg = C.surface1, bg = C.base },
-        PmenuSel = { bg = C.green, fg = C.base },
+        -- PmenuSel = { bg = C.green, fg = C.base },
+
+        BlinkCmpMenu = { fg = C.overlay2, bg = C.base },
+        BlinkCmpMenuBorder = { fg = C.surface1, bg = C.base },
+        BlinkCmpDoc = { link = "NormalFloat" },
+        BlinkCmpDocBorder = { fg = C.mantle, bg = C.mantle },
       }
     end,
     default_integrations = false,
     integrations = {
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       alpha = false,
-      cmp = true,
+      blink_cmp = true,
+      cmp = false,
       dap = true,
       dap_ui = true,
       diffview = true,

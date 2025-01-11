@@ -1,13 +1,13 @@
 local M = {}
 
-local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 local has_lsp_file, lsp_file = pcall(require, "lsp-file-operations")
+local has_blink, blink_cmp = pcall(require, "blink.cmp")
 
 M.capabilities = vim.tbl_deep_extend(
   "force",
   {},
   vim.lsp.protocol.make_client_capabilities(),
-  has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+  has_blink and blink_cmp.get_lsp_capabilities() or {},
   has_lsp_file and lsp_file.default_capabilities() or {},
   {
     textDocument = {
