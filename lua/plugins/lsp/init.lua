@@ -99,11 +99,11 @@ return {
       require("lspconfig.ui.windows").default_options.percentage = 0.8
 
       local function should_skip_setup(server)
-        if vim.g.is_vue == 3 and vim.tbl_contains({ "ts_ls", "vtsls" }, server) then
+        if vim.g.vue_version == 3 and vim.tbl_contains({ "ts_ls", "vtsls" }, server) then
           return true
         end
 
-        if vim.g.is_vue == 2 and vim.tbl_contains({ "volar", "ts_ls" }, server) then
+        if vim.g.vue_version == 2 and vim.tbl_contains({ "ts_ls", "volar" }, server) then
           return true
         end
 
