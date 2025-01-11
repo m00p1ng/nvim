@@ -48,11 +48,6 @@ M.get_filename = function()
     output_filename = "[No Name]"
   end
 
-  if vim.startswith(filename, "DAP") then
-    file_icon = vim.tbl_get(dap_icons, ft) or ""
-    output_filename = vim.split(filename, " ")[2]
-  end
-
   if vim.startswith(full_filename, "diffview") then
     local paths = vim.split(full_filename, ".git", { plain = true })
     if #paths >= 2 then
@@ -61,7 +56,10 @@ M.get_filename = function()
     end
   end
 
-  if ft == "help" then
+  if vim.startswith(filename, "DAP") then
+    file_icon = vim.tbl_get(dap_icons, ft) or ""
+    output_filename = vim.split(filename, " ")[2]
+  elseif ft == "help" then
     hl_icon = "WinbarModified"
     file_icon = icons.git.Repo
     output_filename = "Help: " .. filename
