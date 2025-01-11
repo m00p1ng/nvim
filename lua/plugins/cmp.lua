@@ -52,7 +52,7 @@ return {
       window = {
         completion = {
           border = border "PmenuBorder",
-          winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+          winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:None",
           scrollbar = false,
         },
         documentation = {
