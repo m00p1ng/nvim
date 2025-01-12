@@ -41,7 +41,7 @@ return {
       -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         preset = "none",
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
 
@@ -67,6 +67,28 @@ return {
 
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        cmdline = {
+          preset = "none",
+          ["<CR>"] = {
+            function(cmp)
+              cmp.accept {
+                callback = function()
+                  vim.api.nvim_feedkeys("\n", "n", true)
+                end,
+              }
+            end,
+            "fallback",
+          },
+          ["<Tab>"] = { "select_next", "fallback" },
+          ["<S-Tab>"] = { "select_prev", "fallback" },
+
+          ["<Up>"] = { "select_prev", "fallback" },
+          ["<Down>"] = { "select_next", "fallback" },
+          -- ["<C-p>"] = { "select_prev", "fallback" },
+          -- ["<C-n>"] = { "select_next", "fallback" },
+          ["<C-j>"] = { "select_prev", "fallback" },
+          ["<C-k>"] = { "select_next", "fallback" },
+        },
       },
       completion = {
         menu = {
