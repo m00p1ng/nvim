@@ -16,12 +16,8 @@ return {
     event = "InsertEnter",
     -- optional: provides snippets for the snippet source
     dependencies = {
-      "rafamadriz/friendly-snippets",
-      {
-        "tzachar/cmp-tabnine",
-        event = "InsertEnter",
-        build = "./install.sh",
-      },
+      { "rafamadriz/friendly-snippets", event = "InsertEnter" },
+      { "tzachar/cmp-tabnine", event = "InsertEnter", build = "./install.sh" },
     },
 
     -- use a release tag to download pre-built binaries

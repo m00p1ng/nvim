@@ -98,12 +98,13 @@ return {
 
         Pmenu = { fg = C.overlay2, bg = C.base },
         PmenuBorder = { fg = C.surface1, bg = C.base },
-        -- PmenuSel = { bg = C.green, fg = C.base },
+        PmenuSel = { bg = "#313244" },
 
         BlinkCmpMenu = { fg = C.overlay2, bg = C.base },
         BlinkCmpMenuBorder = { fg = C.surface1, bg = C.base },
         BlinkCmpDoc = { link = "NormalFloat" },
         BlinkCmpDocBorder = { fg = C.mantle, bg = C.mantle },
+        BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
       }
     end,
     default_integrations = false,
