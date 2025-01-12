@@ -138,9 +138,6 @@ return {
             name = "cmp_tabnine", -- IMPORTANT: use the same name as you would for nvim-cmp
             module = "blink.compat.source",
             score_offset = 100,
-            transform_items = function(a, items)
-              return items
-            end,
             opts = {
               max_lines = 1000,
               max_num_results = 20,
@@ -149,6 +146,11 @@ return {
               snippet_placeholder = "..",
               ignored_file_types = require("utils").ui_filetypes,
               show_prediction_strength = true,
+            },
+          },
+          snippets = {
+            opts = {
+              search_paths = { "~/.config/nvim/snippets", vim.fn.getcwd() .. "/snippets" },
             },
           },
         },

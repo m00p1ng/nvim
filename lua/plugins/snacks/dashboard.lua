@@ -20,12 +20,12 @@ return {
         -- When using a function, the `items` argument are the default keymaps.
         ---@type snacks.dashboard.Item[]
         keys = {
-          -- {
-          --   icon = icons.ui.File,
-          --   key = "f",
-          --   desc = "Find File",
-          --   action = ":lua Snacks.dashboard.pick('files')",
-          -- },
+          {
+            icon = icons.ui.File,
+            key = "f",
+            desc = "Find File",
+            action = ":lua Snacks.dashboard.pick('files')",
+          },
           {
             icon = icons.ui.NewFile,
             key = "n",
@@ -36,7 +36,7 @@ return {
             icon = icons.ui.History,
             key = "r",
             desc = "Recent Files",
-            action = ":Telescope frecency workspace=CWD theme=dropdown prompt_title=Frecency",
+            action = ":Telescope oldfiles only_cwd=true",
           },
           {
             icon = icons.ui.List,
