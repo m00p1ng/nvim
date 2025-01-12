@@ -13,7 +13,7 @@ return {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "ray-x/lsp_signature.nvim",
-      { "antosha417/nvim-lsp-file-operations", event = "VeryLazy", opts = {} },
+      { "antosha417/nvim-lsp-file-operations", event = "LspAttach", opts = {} },
     },
     ---@class PluginLspOpts
     opts = {

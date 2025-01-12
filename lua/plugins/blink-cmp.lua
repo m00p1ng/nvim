@@ -82,8 +82,7 @@ return {
                   if ctx.source_id == "tabnine" then
                     return icons.misc.Stars
                   end
-                  local new_icon = vim.tbl_get(icons.kind, ctx.kind)
-                  return new_icon or ""
+                  return ctx.kind_icon
                 end,
               },
             },
@@ -123,10 +122,42 @@ return {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
         -- Useful for when your theme doesn't support blink.cmp
         -- Will be removed in a future release
-        use_nvim_cmp_as_default = true,
+        use_nvim_cmp_as_default = false,
         -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "normal",
+        kind_icons = {
+          Text = icons.kind.Text,
+          Method = icons.kind.Method,
+          Function = icons.kind.Function,
+          Constructor = icons.kind.Constructor,
+
+          Field = icons.kind.Field,
+          Variable = icons.kind.Variable,
+          Property = icons.kind.Property,
+
+          Class = icons.kind.Class,
+          Interface = icons.kind.Interface,
+          Struct = icons.kind.Struct,
+          Module = icons.kind.Module,
+
+          Unit = icons.kind.Unit,
+          Value = icons.kind.Value,
+          Enum = icons.kind.Enum,
+          EnumMember = icons.kind.EnumMember,
+
+          Keyword = icons.kind.Keyword,
+          Constant = icons.kind.Constant,
+
+          Snippet = icons.kind.Snippet,
+          Color = icons.kind.Color,
+          File = icons.kind.File,
+          Reference = icons.kind.Reference,
+          Folder = icons.kind.Folder,
+          Event = icons.kind.Event,
+          Operator = icons.kind.Operator,
+          TypeParameter = icons.kind.TypeParameter,
+        },
       },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
