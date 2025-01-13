@@ -31,10 +31,10 @@ return {
     end
 
     return {
-      { "]k", jump_neighbor { forward = true }, desc = "Move down to the next neighbor node" },
-      { "[k", jump_neighbor { forward = false }, desc = "Move up to the next neighbor node" },
-      { "[p", jump_parent { forward = true }, desc = "Finds the next good parent node" },
-      { "]p", jump_parent { forward = false }, desc = "Finds the next good child node" },
+      { "]k", jump_neighbor { forward = true }, mode = { "n", "v" }, desc = "Move down to the next neighbor node" },
+      { "[k", jump_neighbor { forward = false }, mode = { "n", "v" }, desc = "Move up to the next neighbor node" },
+      { "[p", jump_parent { forward = true }, mode = { "n", "v" }, desc = "Finds the next good parent node" },
+      { "]p", jump_parent { forward = false }, mode = { "n", "v" }, desc = "Finds the next good child node" },
     }
   end,
 }
