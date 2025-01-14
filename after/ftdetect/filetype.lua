@@ -13,6 +13,6 @@ vim.filetype.add {
     ["*.tpl"] = "yaml",
     [".env.*"] = "sh",
     ["*.env"] = "sh",
-    ["Dockerfile.*"] = "Dockerfile",
+    ["Dockerfile.*"] = "dockerfile",
   },
 }
