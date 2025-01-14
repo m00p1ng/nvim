@@ -22,8 +22,11 @@ return {
     -- If this is set, Conform will run the formatter on save.
     -- It will pass the table to conform.format().
     -- This can also be a function that returns the table.
-    format_on_save = function(bufnr)
-      -- Disable with a global or buffer-local variable
+    format_on_save = nil,
+    -- If this is set, Conform will run the formatter asynchronously after save.
+    -- It will pass the table to conform.format().
+    -- This can also be a function that returns the table.
+    format_after_save = function(bufnr)
       if not vim.g.autoformat or (vim.b[bufnr].autoformat ~= nil and not vim.b[bufnr].autoformat) then
         return
       end
@@ -32,16 +35,6 @@ return {
         return
       end
 
-      -- I recommend these options. See :help conform.format for details.
-      return { lsp_fallback = true, timeout_ms = 500 }
-    end,
-    -- If this is set, Conform will run the formatter asynchronously after save.
-    -- It will pass the table to conform.format().
-    -- This can also be a function that returns the table.
-    format_after_save = function(bufnr)
-      if not vim.g.autoformat or (vim.b[bufnr].autoformat ~= nil and not vim.b[bufnr].autoformat) then
-        return
-      end
       -- ...additional logic...
       return { lsp_fallback = true }
     end,
