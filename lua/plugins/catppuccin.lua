@@ -104,7 +104,9 @@ return {
         BlinkCmpMenuBorder = { fg = C.surface1, bg = C.base },
         BlinkCmpDoc = { link = "NormalFloat" },
         BlinkCmpDocBorder = { fg = C.mantle, bg = C.mantle },
+        BlinkCmpLabel = { fg = C.subtext1 },
         BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
+        BlinkCmpLabelDescription = { fg = C.overlay0 },
       }
     end,
     default_integrations = false,
