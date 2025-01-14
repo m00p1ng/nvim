@@ -102,7 +102,12 @@ return {
     -- end, { desc = "Toggle autoformat", bang = true })
   end,
   keys = {
-    { "<leader>lf", "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>", desc = "Format" },
+    {
+      "<leader>lf",
+      "<cmd>lua require('conform').format({async = true, lsp_fallback = true})<cr>",
+      mode = { "n", "v" },
+      desc = "Format",
+    },
     -- { "<leader>lk", "<cmd>FormatToggle<cr>", desc = "Toggle Format" },
     -- { "<leader>lK", "<cmd>FormatToggle!<cr>", desc = "Toggle Format (Buffer)" },
   },
