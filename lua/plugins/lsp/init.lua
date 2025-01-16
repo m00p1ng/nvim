@@ -35,7 +35,6 @@ return {
       ---@type lspconfig.options
       ---@diagnostic disable-next-line: missing-fields
       servers = {
-        tailwindcss = require "plugins.lsp.lang.tailwindcss",
         ts_ls = require "plugins.lsp.lang.ts_ls",
         volar = require "plugins.lsp.lang.volar",
         vtsls = require "plugins.lsp.lang.vtsls",
@@ -141,7 +140,6 @@ return {
         "eslint",
         "graphql",
         "html",
-        "tailwindcss",
         "ts_ls",
         "volar",
       } ---@type string[]
