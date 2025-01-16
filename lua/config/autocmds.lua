@@ -27,14 +27,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-  group = vim.api.nvim_create_augroup("dap_option_setup", { clear = true }),
-  pattern = { "dap-repl", "dap*" },
-  callback = function()
-    vim.opt_local.cursorline = false
-  end,
-})
-
 vim.api.nvim_create_autocmd("CmdWinEnter", {
   group = vim.api.nvim_create_augroup("cmdline_mapping", { clear = true }),
   callback = function(event)

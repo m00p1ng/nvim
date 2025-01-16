@@ -123,10 +123,22 @@ return {
     },
   },
   {
+    "rcarriga/nvim-dap-ui",
+    opts = function()
+      vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+        group = vim.api.nvim_create_augroup("dap_option_setup", { clear = true }),
+        pattern = { "dap-repl", "dap*" },
+        callback = function()
+          vim.opt_local.cursorline = false
+        end,
+      })
+    end,
+  },
+
+  {
     "theHamsta/nvim-dap-virtual-text",
     opts = {},
     keys = {
-
       { "<leader>dv", "<cmd>lua require('nvim-dap-virtual-text').toggle()<cr>", desc = "Toggle Virtual" },
     },
   },

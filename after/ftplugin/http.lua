@@ -3,7 +3,7 @@ if vim.g.vscode then
 end
 
 require("which-key").add {
-  { "<leader>m", group = "Typescript" },
+  { "<leader>m", group = "HTTP" },
   { "<leader>mr", "<cmd>lua require('kulala').run()<cr>", desc = "Send Request", buffer = true },
   { "<leader>ml", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay", buffer = true },
   { "<leader>mf", "<cmd>lua require('kulala').from_curl()<cr>", desc = "From cURL", buffer = true },
