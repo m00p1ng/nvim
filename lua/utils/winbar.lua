@@ -26,6 +26,18 @@ local plugin_winbar_ft = {
   "oil",
 }
 
+local diffview_ft = {
+  "DiffviewFiles",
+  "DiffviewFilesHistory",
+}
+
+local diffview_winbar = {
+  " OURS (Current changes)",
+  " THEIRS (Incoming changes)",
+  " BASE (Common ancestor)",
+  " LOCAL (Working tree)",
+}
+
 local function hl(hl_name, str)
   if f.is_empty(hl_name) then
     return str
@@ -102,12 +114,14 @@ local excludes = function()
     return false
   end
 
+  for _, dw in ipairs(diffview_winbar) do
+    if vim.startswith(full_filename, dw) then
+      return true
+    end
+  end
+
   -- diffview://null case
-  local diffview = {
-    "DiffviewFiles",
-    "DiffviewFilesHistory",
-  }
-  if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview, ft) then
+  if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, ft) then
     return false
   end
 
