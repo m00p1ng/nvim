@@ -34,7 +34,7 @@ return {
       view_search = false, -- view for search count messages. Set to `false` to disable
     },
     popupmenu = {
-      enabled = true, -- enables the Noice popupmenu UI
+      enabled = false, -- enables the Noice popupmenu UI
       ---@type 'nui'|'cmp'
       backend = "cmp", -- backend to use to show regular cmdline completions
       ---@type NoicePopupmenuItemKind|false
