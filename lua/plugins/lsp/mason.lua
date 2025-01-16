@@ -7,8 +7,6 @@ return {
     ensure_installed = {
       "shellcheck",
       "shfmt",
-      "flake8",
-      "black",
       "js-debug-adapter",
       "delve",
     },

@@ -144,7 +144,6 @@ return {
         "gopls",
         "graphql",
         "html",
-        "pyright",
         "tailwindcss",
         "ts_ls",
         "volar",
