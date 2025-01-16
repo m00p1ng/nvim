@@ -42,7 +42,7 @@ M.get_filename = function()
   local ft = vim.bo.ft
 
   local file_icon, hl_icon = require("nvim-web-devicons").get_icon(filename, extension, { default = true })
-  local hl_filename = "NavicText"
+  local hl_filename = "WinbarText"
 
   if f.is_empty(filename) then
     output_filename = "[No Name]"

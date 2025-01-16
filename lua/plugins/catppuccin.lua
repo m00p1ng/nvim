@@ -39,9 +39,11 @@ return {
     custom_highlights = function(C)
       return {
         ColorColumn = { bg = C.mantle },
+        WinbarText = { fg = C.subtext0 },
+        WinbarModified = { fg = C.yellow },
+
         Hlargs = { fg = C.maroon },
         NavicText = { fg = C.subtext0 },
-        WinbarModified = { fg = C.yellow },
         NvimDapVirtualText = { link = "LspInlayHint" },
 
         OutlineGuides = { fg = C.surface0 },

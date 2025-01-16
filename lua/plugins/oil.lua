@@ -10,7 +10,7 @@ function _G.get_oil_winbar()
     name = vim.api.nvim_buf_get_name(0)
   end
 
-  return "%#NavicText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (" .. name .. ")"
+  return "%#WinbarText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (" .. name .. ")"
 end
 
 local function get_current_path()
