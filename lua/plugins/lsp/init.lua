@@ -37,8 +37,6 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       servers = {
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
-        yamlls = require "plugins.lsp.lang.yamlls",
-        jsonls = require "plugins.lsp.lang.jsonls",
         gopls = require "plugins.lsp.lang.gopls",
         ts_ls = require "plugins.lsp.lang.ts_ls",
         nixd = require "plugins.lsp.lang.nixd",
@@ -143,18 +141,15 @@ return {
         "bashls",
         "cssls",
         "cssmodules_ls",
-        "dockerls",
         "eslint",
         "golangci_lint_ls",
         "gopls",
         "graphql",
         "html",
-        "jsonls",
         "pyright",
         "tailwindcss",
         "ts_ls",
         "volar",
-        "yamlls",
       } ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then

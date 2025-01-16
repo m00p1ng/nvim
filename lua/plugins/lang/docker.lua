@@ -1,13 +1,5 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "dockerfile" } },
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = { ensure_installed = { "dockerls" } },
-  },
-  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
@@ -15,5 +7,9 @@ return {
         docker_compose_language_service = {},
       },
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "dockerfile" } },
   },
 }
