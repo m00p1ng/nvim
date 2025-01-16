@@ -103,7 +103,11 @@ local excludes = function()
   end
 
   -- diffview://null case
-  if ft == "" and vim.startswith(full_filename, "diffview://") then
+  local diffview = {
+    "DiffviewFiles",
+    "DiffviewFilesHistory",
+  }
+  if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview, ft) then
     return false
   end
 
