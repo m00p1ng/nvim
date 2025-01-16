@@ -29,17 +29,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     org_imports(3000)
   end,
 })
-
-require("dap-go").setup()
-
-if require("utils").has "gopher.nvim" then
-  require("which-key").add {
-    { "<leader>m", group = "Golang" },
-    { "<leader>mj", "<cmd>GoTagAdd json -transform camelcase<cr>", desc = "Tag Add (JSON)", buffer = true },
-    { "<leader>mJ", "<cmd>GoTagRm json<cr>", desc = "Tag Remove (JSON)", buffer = true },
-    { "<leader>mb", "<cmd>GoTagAdd bson -transform camelcase<cr>", desc = "Tag Add (BSON)", buffer = true },
-    { "<leader>mB", "<cmd>GoTagRm bson<cr>", desc = "Tag Remove (BSON)", buffer = true },
-    { "<leader>mm", "<cmd>GoMod tidy<cr>", desc = "Mod Tidy", buffer = true },
-    { "<leader>mc", "<cmd>GoCmt<cr>", desc = "Comment", buffer = true },
-  }
-end

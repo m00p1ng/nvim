@@ -36,7 +36,6 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       servers = {
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
-        gopls = require "plugins.lsp.lang.gopls",
         ts_ls = require "plugins.lsp.lang.ts_ls",
         volar = require "plugins.lsp.lang.volar",
         vtsls = require "plugins.lsp.lang.vtsls",
@@ -140,8 +139,6 @@ return {
         "cssls",
         "cssmodules_ls",
         "eslint",
-        "golangci_lint_ls",
-        "gopls",
         "graphql",
         "html",
         "tailwindcss",

@@ -7,8 +7,6 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      { "mfussenegger/nvim-dap-python", ft = "python" },
-      { "leoluz/nvim-dap-go", ft = "go" },
     },
     config = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })

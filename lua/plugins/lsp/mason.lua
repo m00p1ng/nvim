@@ -8,7 +8,6 @@ return {
       "shellcheck",
       "shfmt",
       "js-debug-adapter",
-      "delve",
     },
     ui = {
       border = "rounded",
