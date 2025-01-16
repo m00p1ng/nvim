@@ -34,9 +34,7 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       ---@diagnostic disable-next-line: missing-fields
-      servers = {
-        volar = require "plugins.lsp.lang.volar",
-      },
+      servers = {},
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
@@ -137,7 +135,6 @@ return {
         "cssmodules_ls",
         "graphql",
         "html",
-        "volar",
       } ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then

@@ -7,5 +7,6 @@ return {
   { import = "plugins.lang.python" },
   { import = "plugins.lang.tailwind" },
   { import = "plugins.lang.typescript" },
+  { import = "plugins.lang.vue" },
   { import = "plugins.lang.yaml" },
 }
