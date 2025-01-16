@@ -8,7 +8,6 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/lazydev.nvim", ft = "lua", opts = {} },
-      { "b0o/SchemaStore.nvim", lazy = true },
       { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -39,7 +38,6 @@ return {
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
         gopls = require "plugins.lsp.lang.gopls",
         ts_ls = require "plugins.lsp.lang.ts_ls",
-        nixd = require "plugins.lsp.lang.nixd",
         volar = require "plugins.lsp.lang.volar",
         vtsls = require "plugins.lsp.lang.vtsls",
       },
