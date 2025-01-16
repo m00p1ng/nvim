@@ -23,8 +23,6 @@ return {
       "gitcommit",
       "html",
       "javascript",
-      "markdown",
-      "markdown_inline",
       "query",
       "regex",
       "tsx",
