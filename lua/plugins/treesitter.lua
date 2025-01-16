@@ -15,6 +15,7 @@ return {
     { "<c-q>", desc = "Increment selection" },
     { "<bs>", desc = "Shrink selection", mode = "x" },
   },
+  opts_extend = { "ensure_installed" },
   opts = {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
     ensure_installed = {

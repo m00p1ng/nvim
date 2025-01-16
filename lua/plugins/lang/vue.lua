@@ -1,6 +1,6 @@
 return {
   -- depends on the typescript extra
-  { import = "lazyvim.plugins.extras.lang.typescript" },
+  { import = "plugins.lang.typescript" },
 
   {
     "neovim/nvim-lspconfig",
@@ -30,7 +30,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       table.insert(opts.servers.vtsls.filetypes, "vue")
-      vim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+      require("utils").extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
         {
           name = "@vue/typescript-plugin",
           location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",

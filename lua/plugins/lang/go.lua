@@ -24,10 +24,12 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "go", "gomod", "gowork", "gosum" } },
   },
   {
     "williamboman/mason.nvim",
+    opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "delve" } },
   },
   { "leoluz/nvim-dap-go", ft = "go" },
