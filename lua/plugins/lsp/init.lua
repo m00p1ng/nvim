@@ -36,7 +36,6 @@ return {
       ---@type lspconfig.options
       ---@diagnostic disable-next-line: missing-fields
       servers = {
-        lua_ls = require "plugins.lsp.lang.lua_ls",
         tailwindcss = require "plugins.lsp.lang.tailwindcss",
         yamlls = require "plugins.lsp.lang.yamlls",
         jsonls = require "plugins.lsp.lang.jsonls",
@@ -152,7 +151,6 @@ return {
         "html",
         "jsonls",
         "pyright",
-        "lua_ls",
         "tailwindcss",
         "ts_ls",
         "volar",
