@@ -22,11 +22,8 @@ return {
       "c",
       "gitcommit",
       "html",
-      "javascript",
       "query",
       "regex",
-      "tsx",
-      "typescript",
       "vim",
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)

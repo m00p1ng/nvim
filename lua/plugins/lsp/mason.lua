@@ -7,7 +7,6 @@ return {
     ensure_installed = {
       "shellcheck",
       "shfmt",
-      "js-debug-adapter",
     },
     ui = {
       border = "rounded",

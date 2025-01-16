@@ -35,9 +35,7 @@ return {
       ---@type lspconfig.options
       ---@diagnostic disable-next-line: missing-fields
       servers = {
-        ts_ls = require "plugins.lsp.lang.ts_ls",
         volar = require "plugins.lsp.lang.volar",
-        vtsls = require "plugins.lsp.lang.vtsls",
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -137,10 +135,8 @@ return {
         "bashls",
         "cssls",
         "cssmodules_ls",
-        "eslint",
         "graphql",
         "html",
-        "ts_ls",
         "volar",
       } ---@type string[]
       for server, server_opts in pairs(servers) do

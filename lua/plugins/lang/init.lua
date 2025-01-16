@@ -6,5 +6,6 @@ return {
   { import = "plugins.lang.markdown" },
   { import = "plugins.lang.python" },
   { import = "plugins.lang.tailwind" },
+  { import = "plugins.lang.typescript" },
   { import = "plugins.lang.yaml" },
 }
