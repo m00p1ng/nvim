@@ -4,7 +4,7 @@ return {
     opts = {
       servers = {
         bashls = {},
-        shellchecke = {},
+        shellcheck = {},
         shfmt = {},
       },
     },
@@ -12,6 +12,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts_extend = { "ensure_installed" },
-    opts = { ensure_installed = { "sh", "bash" } },
+    opts = { ensure_installed = { "bash" } },
   },
 }
