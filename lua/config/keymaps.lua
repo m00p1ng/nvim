@@ -54,10 +54,10 @@ vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Se
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 -- Resize with arrows
-vim.keymap.set("n", "<C-Up>", ":resize -2<cr>", { desc = "Increase Window Height" })
-vim.keymap.set("n", "<C-Down>", ":resize +2<cr>", { desc = "Decrease Window Height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "Decrease Window Width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase Window Width" })
+-- vim.keymap.set("n", "<C-Up>", ":resize -2<cr>", { desc = "Increase Window Height" })
+-- vim.keymap.set("n", "<C-Down>", ":resize +2<cr>", { desc = "Decrease Window Height" })
+-- vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "Decrease Window Width" })
+-- vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase Window Width" })
 
 -- Navigate buffers
 vim.keymap.set("n", "H", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
@@ -70,8 +70,8 @@ vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Comment --
-vim.keymap.set("n", "<localleader>e", ":normal gcc<cr>", { desc = "Toggle Comment" })
-vim.keymap.set("v", "<localleader>e", "<esc>:normal gvgc<cr>", { desc = "Toggle Comment" })
+vim.keymap.set("n", "<localleader>e", "<cmd>normal gcc<cr>", { desc = "Toggle Comment" })
+vim.keymap.set("v", "<localleader>e", "<cmd>normal gc<cr>", { desc = "Toggle Comment" })
 
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })

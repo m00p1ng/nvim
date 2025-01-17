@@ -96,7 +96,7 @@ return {
     { "<leader>gY", "<cmd>GitLink<cr>", desc = "Copy GitLink to Clipboard" },
     { "<leader>gO", "<cmd>GitLink! project<cr>", desc = "Open Project on Web" },
 
-    { "<leader>gy", ":GitLink!<cr>", desc = "Open Line on Web", mode = "v" },
-    { "<leader>gY", ":GitLink<cr>", desc = "Copy GitLink to Clipboard", mode = "v" },
+    { "<leader>gy", "<cmd>GitLink!<cr>", desc = "Open Line on Web", mode = "v" },
+    { "<leader>gY", "<cmd>GitLink<cr>", desc = "Copy GitLink to Clipboard", mode = "v" },
   },
 }
