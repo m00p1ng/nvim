@@ -63,7 +63,21 @@ return {
     { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff" },
 
     -- Visual --
-    { "<leader>gr", ":Gitsigns reset_hunk<cr>", desc = "Reset Hunk", mode = "v" },
-    { "<leader>gs", ":Gitsigns stage_hunk<cr>", desc = "Stage Hunk", mode = "v" },
+    {
+      "<leader>gr",
+      function()
+        require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      desc = "Reset Hunk",
+      mode = "v",
+    },
+    {
+      "<leader>gs",
+      function()
+        require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+      end,
+      desc = "Stage Hunk",
+      mode = "v",
+    },
   },
 }
