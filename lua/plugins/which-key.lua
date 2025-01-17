@@ -182,6 +182,7 @@ return {
       { "<leader>f", group = "find" },
       { "<leader>g", group = "git" },
       { "<leader>l", group = "code" },
+      { "<leader>o", group = "option" },
 
       { "<leader>p", group = "lazy" },
       { "<leader>pc", "<cmd>Lazy check<cr>", desc = "Check" },

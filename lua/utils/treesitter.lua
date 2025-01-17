@@ -1,11 +1,9 @@
-local ts_utils = require'nvim-treesitter.ts_utils'
+local ts_utils = require "nvim-treesitter.ts_utils"
 
 local M = {}
 
-M.last_ref = nil
-
 local get_line_for_node = function(node)
-  local type_patterns = {'class', 'function', 'method'}
+  local type_patterns = { "class", "function", "method" }
   local node_type = node:type()
   local is_valid = false
   for _, rgx in ipairs(type_patterns) do
@@ -14,27 +12,30 @@ local get_line_for_node = function(node)
       break
     end
   end
-  if not is_valid then return '' end
-  return vim.trim(vim.treesitter.get_node_text(node:child(1), vim.api.nvim_get_current_buf()) or '')
+  if not is_valid then
+    return ""
+  end
+  return vim.trim(vim.treesitter.get_node_text(node:child(1), vim.api.nvim_get_current_buf()) or "")
 end
 
 function M.get_ref()
   local current_node = ts_utils.get_node_at_cursor()
-  if not current_node then return "" end
+  if not current_node then
+    return ""
+  end
 
   local lines = {}
   local expr = current_node
 
   while expr do
     local line = get_line_for_node(expr)
-    if line ~= '' and not vim.tbl_contains(lines, line) then
+    if line ~= "" and not vim.tbl_contains(lines, line) then
       table.insert(lines, 1, line)
     end
     expr = expr:parent()
   end
 
-  local ref = table.concat(lines, '.')
-  M.last_ref = ref
+  local ref = table.concat(lines, ".")
 
   return ref
 end

@@ -35,7 +35,7 @@ require("which-key").add {
     "<leader>mr",
     function()
       local cmd = "pnpm exec ts-node '" .. vim.fn.expand "%:~:." .. "'"
-      require("utils.tmux").run_command(cmd)
+      require("utils.tmux").run(cmd)
     end,
     desc = "Run",
     buffer = true,

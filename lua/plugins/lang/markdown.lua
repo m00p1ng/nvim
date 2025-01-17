@@ -25,4 +25,12 @@ return {
       { "<leader>mt", "<cmd>Markview toggleAll<cr>", desc = "Toggle Markview", buffer = true },
     },
   },
+  {
+    "OXY2DEV/markview.nvim",
+    opts = function()
+      require("which-key").add {
+        { "<leader>m", group = "Markdown" },
+      }
+    end,
+  },
 }

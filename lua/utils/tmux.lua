@@ -39,7 +39,7 @@ local function exit_copy_mode()
   vim.system({ "tmux", "send-keys", "C-c" }):wait()
 end
 
-M.run_command = function(cmd)
+M.run = function(cmd)
   if get_total_panes() > 1 then
     select_pane()
   else
