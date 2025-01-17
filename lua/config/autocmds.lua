@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("CmdWinEnter", {
   group = vim.api.nvim_create_augroup("cmdline_mapping", { clear = true }),
   callback = function(event)
+    vim.opt_local.colorcolumn = {}
     vim.keymap.set("n", "<cr>", "<cr>", { buffer = event.buf })
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     vim.keymap.set("n", "<esc>", "<cmd>close<cr>", { buffer = event.buf, silent = true })
@@ -87,5 +88,19 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("set_tab_instead_space", { clear = true }),
+  pattern = {
+    "go",
+    "groovy",
+  },
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.expandtab = false
   end,
 })

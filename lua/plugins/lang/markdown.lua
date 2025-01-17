@@ -21,5 +21,8 @@ return {
         shift_width = 1,
       },
     },
+    keys = {
+      { "<leader>mt", "<cmd>Markview toggleAll<cr>", desc = "Toggle Markview", buffer = true },
+    },
   },
 }
