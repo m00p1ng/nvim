@@ -133,8 +133,6 @@ return {
         "bashls",
         "cssls",
         "cssmodules_ls",
-        "graphql",
-        "html",
       } ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then
