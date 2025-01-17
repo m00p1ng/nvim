@@ -70,7 +70,7 @@ function M.resolve(buffer)
     return {}
   end
   local spec = M.get()
-  local opts = require("utils").opts "nvim-lspconfig"
+  local opts = require("utils.lazy").opts "nvim-lspconfig"
   local clients = vim.lsp.get_clients { bufnr = buffer }
   for _, client in ipairs(clients) do
     local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}

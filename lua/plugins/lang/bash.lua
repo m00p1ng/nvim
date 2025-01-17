@@ -4,8 +4,6 @@ return {
     opts = {
       servers = {
         bashls = {},
-        shellcheck = {},
-        shfmt = {},
       },
     },
   },
