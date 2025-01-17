@@ -115,7 +115,7 @@ local excludes = function()
   end
 
   for _, dw in ipairs(diffview_winbar) do
-    if vim.startswith(full_filename, dw) then
+    if vim.startswith(vim.opt_local.winbar._value, dw) then
       return true
     end
   end
