@@ -52,6 +52,7 @@ return {
           },
         },
         eslint = {},
+        cssmodules_ls = {},
       },
     },
   },

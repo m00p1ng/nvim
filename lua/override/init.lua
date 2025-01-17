@@ -1,8 +1,12 @@
 return {
+  -- { import = "plugins.lang.bash" },
+  -- { import = "plugins.lang.css" },
   -- { import = "plugins.lang.docker" },
   -- { import = "plugins.lang.go" },
   -- { import = "plugins.lang.graphql" },
   -- { import = "plugins.lang.html" },
+  -- { import = "plugins.lang.json" },
+  -- { import = "plugins.lang.lua" },
   -- { import = "plugins.lang.markdown" },
   -- { import = "plugins.lang.nix" },
   -- { import = "plugins.lang.python" },

@@ -5,10 +5,7 @@ return {
   cmd = "Mason",
   opts_extend = { "ensure_installed" },
   opts = {
-    ensure_installed = {
-      "shellcheck",
-      "shfmt",
-    },
+    ensure_installed = {},
     ui = {
       border = "rounded",
       icons = {
