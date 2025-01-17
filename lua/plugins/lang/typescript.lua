@@ -51,8 +51,8 @@ return {
             },
           },
         },
+        eslint = {},
       },
-      eslint = {},
     },
   },
   {
