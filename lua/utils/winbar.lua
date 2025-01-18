@@ -88,20 +88,6 @@ M.get_filename = function()
   return " " .. hl(hl_icon, file_icon) .. " " .. hl(hl_filename, output_filename)
 end
 
-local get_location = function()
-  local navic = require "nvim-navic"
-  if not navic.is_available() then
-    return ""
-  end
-
-  local location = navic.get_location()
-  if f.is_empty(location) then
-    return ""
-  end
-
-  return hl("NavicSeparator", icons.ui.ChevronShortRight) .. " " .. location
-end
-
 local excludes = function()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
@@ -138,11 +124,6 @@ M.get_winbar = function()
   end
   local value = M.get_filename()
 
-  if not f.is_empty(value) then
-    local gps_value = get_location()
-    value = value .. " " .. gps_value .. "%<"
-  end
-
   vim.opt_local.winbar = value
 end
 
@@ -154,7 +135,6 @@ M.create_winbar = function()
     "BufWinEnter",
     "BufFilePost",
     "BufRead",
-    "InsertEnter",
     "BufWritePost",
     "TabClosed",
   }, {

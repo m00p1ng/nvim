@@ -43,7 +43,6 @@ return {
         WinbarModified = { fg = C.yellow },
 
         Hlargs = { fg = C.maroon },
-        NavicText = { fg = C.subtext0 },
         NvimDapVirtualText = { link = "LspInlayHint" },
 
         OutlineGuides = { fg = C.surface0 },
@@ -146,10 +145,6 @@ return {
         inlay_hints = {
           background = true,
         },
-      },
-      navic = {
-        enabled = true,
-        custom_bg = "NONE", -- "lualine" will set background to mantle
       },
       neogit = true,
       neotree = true,
