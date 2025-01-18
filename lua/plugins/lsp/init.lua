@@ -7,7 +7,15 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/lazydev.nvim", ft = "lua", opts = {} },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
       { "hinell/lsp-timeout.nvim", enabled = false },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",

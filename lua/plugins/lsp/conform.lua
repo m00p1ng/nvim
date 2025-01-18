@@ -60,13 +60,13 @@ return {
         name = "Auto Format (" .. (buf and "Buffer" or "Global") .. ")",
         get = function()
           if vim.b.autoformat == nil then
-            vim.b.autoformat = true
+            vim.b.autoformat = vim.g.autoformat
           end
 
           if buf then
-            return vim.b.autoformat == true
+            return vim.b.autoformat
           else
-            return vim.g.autoformat == true
+            return vim.g.autoformat
           end
         end,
         set = function(state)
