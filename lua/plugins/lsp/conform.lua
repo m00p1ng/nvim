@@ -53,10 +53,8 @@ return {
     vim.g.autoformat = true
     vim.g.autoformat_ignore_filetypes = {}
 
-    local snacks = require "snacks"
-
     local function snack_toggle(buf)
-      return snacks.toggle {
+      return require("snacks").toggle {
         name = "Auto Format (" .. (buf and "Buffer" or "Global") .. ")",
         get = function()
           if vim.b.autoformat == nil then

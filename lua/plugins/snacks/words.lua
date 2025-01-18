@@ -17,9 +17,9 @@ return {
         require("demicolon.jump").repeatably_do(function(opts)
           local direction = (opts.forward == nil or opts.forward)
           if direction then
-            require("snacks").words.jump(vim.v.count1)
+            Snacks.words.jump(vim.v.count1, true)
           else
-            require("snacks").words.jump(-vim.v.count1)
+            Snacks.words.jump(-vim.v.count1, true)
           end
         end, options)
       end
