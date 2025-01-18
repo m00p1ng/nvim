@@ -76,6 +76,45 @@ return {
   },
   {
     "dmmulroy/ts-error-translator.nvim",
-    ft = "typescript",
+    ft = { "typescript", "typescriptreact" },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    opts = function()
+      local dap = require "dap"
+      local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
+
+      dap.adapters["pwa-node"] = {
+        type = "server",
+        host = "127.0.0.1",
+        port = "${port}",
+        executable = {
+          command = "node",
+          args = { installation_path .. "/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}" },
+        },
+      }
+
+      dap.configurations.javascript = {
+        {
+          name = "Launch",
+          type = "pwa-node",
+          request = "launch",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+      }
+      -- https://github.com/mfussenegger/nvim-dap/discussions/659
+      dap.configurations.typescript = {
+        {
+          name = "Launch",
+          type = "pwa-node",
+          request = "launch",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+          runtimeArgs = { "-r", "ts-node/register" },
+          runtimeExecutable = "node",
+        },
+      }
+    end,
   },
 }
