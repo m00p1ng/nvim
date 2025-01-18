@@ -7,6 +7,7 @@ return {
     opts = {
       servers = {
         volar = {
+          enabled = vim.g.vue_version ~= nil,
           filetypes = {
             "typescript",
             "javascript",
@@ -21,7 +22,6 @@ return {
             },
           },
         },
-        vtsls = {},
       },
     },
   },

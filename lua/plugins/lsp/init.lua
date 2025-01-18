@@ -87,32 +87,12 @@ return {
       require("lspconfig.ui.windows").default_options.border = "rounded"
       require("lspconfig.ui.windows").default_options.percentage = 0.8
 
-      local function should_skip_setup(server)
-        if vim.g.vue_version == nil and vim.tbl_contains({ "volar" }, server) then
-          return true
-        end
-
-        if vim.g.vue_version == 3 and vim.tbl_contains({ "vtsls" }, server) then
-          return true
-        end
-
-        if vim.g.vue_version == 2 and vim.tbl_contains({ "volar" }, server) then
-          return true
-        end
-
-        return false
-      end
-
       local servers = opts.servers
       local capabilities = require("plugins.lsp.keymaps").capabilities
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
-
-        if should_skip_setup(server) then
-          return
-        end
 
         if opts.setup[server] then
           if opts.setup[server](server, server_opts) then
