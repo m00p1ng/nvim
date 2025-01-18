@@ -4,6 +4,9 @@ M.ui_filetypes = {
   "snacks_dashboard",
   "snacks_notif",
   "snacks_notif_history",
+  "snacks_picker_input",
+  "snacks_picker_preview",
+  "snacks_picker_list",
   "help",
   "qf",
   "",
@@ -24,7 +27,6 @@ M.ui_filetypes = {
   "DiffviewFiles",
   "DiffviewFileHistory",
   "Outline",
-  "TelescopePrompt",
   "lspinfo",
   "mason",
   "dapui_watches",
@@ -40,7 +42,7 @@ M.ui_filetypes = {
   "oil_preview",
 }
 
-function M.cmd(args, cwd)
+M.cmd = function(args, cwd)
   local result = { stdout = {}, stderr = {} }
   local job = vim.fn.jobstart(args, {
     cwd = cwd,
@@ -63,7 +65,7 @@ function M.cmd(args, cwd)
   return result
 end
 
-function M.is_ui_filetype(value, opts)
+M.is_ui_filetype = function(value, opts)
   opts = opts or {}
   local include = opts.include or {}
   local exclude = opts.exclude or {}
@@ -79,15 +81,15 @@ function M.is_ui_filetype(value, opts)
   return vim.tbl_contains(M.ui_filetypes, value)
 end
 
-function M.clear_prompt()
+M.clear_prompt = function()
   vim.cmd "normal! :<cr>"
 end
 
-function M.is_empty(s)
+M.is_empty = function(s)
   return s == nil or s == ""
 end
 
-function M.find_index(source, value)
+M.find_index = function(source, value)
   for k, v in pairs(source) do
     if v == value then
       return k
@@ -103,7 +105,7 @@ end
 ---@param key string
 ---@param values T[]
 ---@return T[]?
-function M.extend(t, key, values)
+M.extend = function(t, key, values)
   local keys = vim.split(key, ".", { plain = true })
   for i = 1, #keys do
     local k = keys[i]
@@ -114,6 +116,19 @@ function M.extend(t, key, values)
     t = t[k]
   end
   return vim.list_extend(t, values)
+end
+
+M.get_visual = function()
+  local _, ls, cs = unpack(vim.fn.getpos "v")
+  local _, le, ce = unpack(vim.fn.getpos ".")
+  print(vim.inspect(vim.fn.getpos "v"))
+  print(vim.inspect(vim.fn.getpos "."))
+
+  -- nvim_buf_get_text requires start and end args be in correct order
+  ls, le = math.min(ls, le), math.max(ls, le)
+  cs, ce = math.min(cs, ce), math.max(cs, ce)
+
+  return vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {})
 end
 
 return M

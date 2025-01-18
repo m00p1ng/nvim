@@ -175,5 +175,6 @@ return {
     Lazy = "󰒲",
     Tabnine = "⌬",
     Stars = "󰙴",
+    Copilot = "",
   },
 }

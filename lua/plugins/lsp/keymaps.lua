@@ -36,9 +36,9 @@ function M.get()
   -- stylua: ignore
   M._keys = {
     { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-    { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
-    { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
-    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References",nowait = true },
+    { "gd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Goto Definition", has = "definition" },
+    { "gi", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
+    { "gr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "References",nowait = true },
     { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
     { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
     { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },

@@ -32,12 +32,7 @@ return {
       "to_lower_phrase_case",
     },
   },
-  config = function(_, opts)
-    require("textcase").setup(opts)
-    require("telescope").load_extension "textcase"
-  end,
   keys = {
     "s", -- Default invocation prefix
-    { "s.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
   },
 }

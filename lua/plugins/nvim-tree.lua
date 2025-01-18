@@ -279,8 +279,19 @@ return {
       api.config.mappings.default_on_attach(bufnr)
 
       -- custom mappings
-      local f = require "utils.telescope"
-      vim.keymap.set("n", "t", f.grep_at_current_tree_node, opts "Search in folder")
+      vim.keymap.set("n", "t", function()
+        local explorer = require("nvim-tree.core").get_explorer()
+        if not explorer then
+          return
+        end
+
+        local node = explorer:get_node_at_cursor()
+        if not node then
+          return
+        end
+
+        vim.notify(node.absolute_path)
+      end, opts "Search in folder")
     end
 
     require("nvim-tree").setup(config_opts)

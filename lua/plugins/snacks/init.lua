@@ -17,6 +17,7 @@ return {
   { import = "plugins.snacks.dashboard" },
   { import = "plugins.snacks.indent" },
   { import = "plugins.snacks.notifier" },
+  { import = "plugins.snacks.picker" },
   { import = "plugins.snacks.toggle" },
   { import = "plugins.snacks.words" },
 }

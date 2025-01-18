@@ -1,4 +1,5 @@
 local icons = require "utils.icons"
+
 return {
   {
     "saghen/blink.compat",

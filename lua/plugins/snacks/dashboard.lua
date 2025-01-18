@@ -24,7 +24,7 @@ return {
             icon = icons.ui.File,
             key = "f",
             desc = "Find File",
-            action = ":lua Snacks.dashboard.pick('files')",
+            action = ":lua Snacks.picker.files()",
           },
           {
             icon = icons.ui.NewFile,
@@ -36,13 +36,13 @@ return {
             icon = icons.ui.History,
             key = "r",
             desc = "Recent Files",
-            action = ":Telescope oldfiles only_cwd=true",
+            action = ":lua Snacks.picker.recent()",
           },
           {
             icon = icons.ui.List,
             key = "t",
             desc = "Find Text",
-            action = ":Telescope live_grep_args",
+            action = ":lua Snacks.picker.grep()",
           },
           {
             icon = icons.ui.Gear,

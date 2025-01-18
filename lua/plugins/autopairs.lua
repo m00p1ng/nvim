@@ -8,7 +8,7 @@ return {
       javascript = { "string", "template_string" },
       java = false,
     },
-    disable_filetype = { "TelescopePrompt" },
+    disable_filetype = require("utils").ui_filetypes,
     fast_wrap = {
       map = "<M-e>",
       chars = { "{", "[", "(", '"', "'" },

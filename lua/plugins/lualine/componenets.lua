@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 M = {}
 
 local f = require "utils"
@@ -71,23 +72,16 @@ M.mode = {
 M.filetype = {
   "filetype",
   fmt = function(str)
-    local return_val = function(str)
-      return hl_str(str, "SLFiletype")
-    end
-
-    if str == "TelescopePrompt" then
-      return return_val(icons.ui.Telescope)
-    end
-
-    if f.is_ui_filetype(str) or str == "" then
+    if str == "" then
       return ""
-    else
-      return return_val(str)
     end
+
+    return hl_str(str, "SLFiletype")
   end,
   icons_enabled = false,
-  on_click = function()
-    vim.cmd.Telescope "filetypes"
+  cond = function()
+    local ft = vim.bo.ft
+    return not f.is_ui_filetype(ft)
   end,
 }
 
@@ -107,9 +101,6 @@ M.branch = {
     end
 
     return str
-  end,
-  on_click = function()
-    vim.cmd.Telescope "git_branches"
   end,
 }
 
@@ -219,21 +210,20 @@ M.updated_plugin = {
 
 M.current_signature = {
   function()
-    local ft = vim.bo.ft
-    if ft == "TelescopePrompt" then
-      return ""
-    end
-
     local sig = require("lsp_signature").status_line(30)
     local hint = sig.hint
 
-    if not require("utils").is_empty(hint) then
+    if not f.is_empty(hint) then
       return "%#SLSeparator# " .. hint .. "%*"
     end
 
     return ""
   end,
   padding = 0,
+  cond = function()
+    local ft = vim.bo.ft
+    return not f.is_ui_filetype(ft)
+  end,
 }
 
 return M

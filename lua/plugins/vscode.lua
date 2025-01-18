@@ -37,7 +37,7 @@ vim.keymap.set("n", "H", vscode_call "workbench.action.previousEditor")
 vim.keymap.set("n", "L", vscode_call "workbench.action.nextEditor")
 vim.keymap.set("n", "<leader>e", vscode_call "workbench.view.explorer")
 
--- Telescope --
+-- Picker --
 vim.keymap.set("n", "<leader>b", vscode_call "workbench.action.showAllEditors")
 vim.keymap.set("n", "<leader><leader>", vscode_call "workbench.action.quickOpen")
 vim.keymap.set("n", "<leader>fr", vscode_call "workbench.action.quickOpen")

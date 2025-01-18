@@ -3,7 +3,7 @@ return {
   ---@type snacks.Config
   opts = {
     words = {
-      debounce = 200, -- time in ms to wait before updating
+      debounce = 300, -- time in ms to wait before updating
       notify_jump = false, -- show a notification when jumping
       notify_end = true, -- show a notification when reaching the end
       foldopen = true, -- open folds after jumping
@@ -11,7 +11,7 @@ return {
       modes = { "n", "i", "c" }, -- modes to show references
     },
   },
-  keys = function()
+  keys = function(_, keys)
     local function jump_reference(options)
       return function()
         require("demicolon.jump").repeatably_do(function(opts)
@@ -25,9 +25,15 @@ return {
       end
     end
 
-    return {
+    local k = {
       { "]]", jump_reference { forward = true }, desc = "Next Reference" },
       { "[[", jump_reference { forward = false }, desc = "Prev Reference" },
     }
+
+    for _, val in ipairs(k) do
+      keys[#keys + 1] = val
+    end
+
+    return keys
   end,
 }
