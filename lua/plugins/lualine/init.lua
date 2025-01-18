@@ -29,7 +29,7 @@ return {
         lualine_c = { c.status_mode, c.search_result, c.current_signature },
         lualine_x = { c.autoformat, c.command, c.filesize },
         lualine_y = { c.spaces, c.filetype },
-        lualine_z = { c.updated_plugin, c.location },
+        lualine_z = { c.updated_plugin, c.location, c.progress },
       },
       tabline = {},
       winbar = {},

@@ -136,6 +136,13 @@ M.location = {
   end,
 }
 
+M.progress = {
+  "progress",
+  color = function()
+    return { fg = dark, bg = mode_color[vim.fn.mode()], gui = "bold" }
+  end,
+}
+
 M.filesize = {
   function()
     local ft = vim.bo.ft
