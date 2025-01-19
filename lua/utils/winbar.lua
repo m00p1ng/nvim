@@ -20,22 +20,9 @@ local include_ft = {
   "help",
 }
 
--- let plugins show their own winbar
-local plugin_winbar_ft = {
-  "dap-repl",
-  "oil",
-}
-
 local diffview_ft = {
   "DiffviewFiles",
   "DiffviewFilesHistory",
-}
-
-local diffview_winbar = {
-  " OURS (Current changes)",
-  " THEIRS (Incoming changes)",
-  " BASE (Common ancestor)",
-  " LOCAL (Working tree)",
 }
 
 local function hl(hl_name, str)
@@ -92,20 +79,10 @@ local excludes = function()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
-  if vim.tbl_contains(plugin_winbar_ft, ft) then
-    return true
-  end
-
   if vim.tbl_contains(include_ft, ft) then
     return false
   end
-
-  for _, dw in ipairs(diffview_winbar) do
-    if vim.startswith(vim.opt_local.winbar._value, dw) then
-      return true
-    end
-  end
-
+  --
   -- diffview://null case
   if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, ft) then
     return false
@@ -124,12 +101,17 @@ M.get_winbar = function()
     return
   end
 
+  -- do not replace application winbar
+  if not vim.b.has_local_winbar and not f.is_empty(vim.wo.winbar) then
+    return
+  end
+
   if excludes() then
     return
   end
-  local value = M.get_filename()
 
-  vim.opt_local.winbar = value
+  vim.b.has_local_winbar = true
+  vim.opt_local.winbar = M.get_filename()
 end
 
 M.create_winbar = function()

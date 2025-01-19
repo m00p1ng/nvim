@@ -39,6 +39,10 @@ return {
         },
         buffers = {
           layout = "dropdown_fixed",
+          win = {
+            input = { keys = { ["<c-d>"] = { "bufdelete", mode = { "n", "i" } } } },
+            list = { keys = { ["<c-d>"] = "bufdelete" } },
+          },
         },
         smart = {
           layout = "dropdown_fixed",
