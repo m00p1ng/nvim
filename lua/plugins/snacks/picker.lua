@@ -92,7 +92,7 @@ return {
                 {
                   win = "input",
                   border = { "", " ", "", "", "", "─", "", "" },
-                  title = " {source} {live} {flags}",
+                  title = " {title} {live} {flags}",
                   title_pos = "center",
                   height = 1,
                 },
@@ -124,7 +124,7 @@ return {
             {
               box = "vertical",
               border = border.rounded,
-              title = "{source} {live} {flags}",
+              title = "{title} {live} {flags}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
               { win = "list", border = "none" },
@@ -144,7 +144,7 @@ return {
             {
               box = "vertical",
               border = border.rounded,
-              title = "{source} {live} {flags}",
+              title = "{title} {live} {flags}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
               { win = "list", height = 10, border = "none" },
