@@ -76,6 +76,9 @@ return {
         git_status = {
           layout = "dropdown_fixed",
         },
+        git_branches = {
+          layout = "dropdown_fixed",
+        },
         git_log = {
           layout = {
             preset = get_ivy_preset(),
@@ -102,6 +105,11 @@ return {
           },
         },
         lsp_symbols = {
+          layout = {
+            preset = get_ivy_preset(),
+          },
+        },
+        lsp_workspace_symbols = {
           layout = {
             preset = get_ivy_preset(),
           },
@@ -444,11 +452,7 @@ return {
 
     -- Git --
     { "<leader>go", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Open changed file" },
-    -- {
-    --   "<leader>gb",
-    --   "<cmd>lua Snacks.picker.git_branches show_remote_tracking_branches=false()<cr>",
-    --   desc = "Checkout branch",
-    -- },
+    { "<leader>gb", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout branch" },
     -- { "<leader>gB", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout branch" },
     { "<leader>gl", "<cmd>lua Snacks.picker.git_log_file()<cr>", desc = "Log (Buffer)" },
     { "<leader>gL", "<cmd>lua Snacks.picker.git_log()<cr>", desc = "Log" },
@@ -457,6 +461,6 @@ return {
     { "<leader>ld", "<cmd>lua Snacks.picker.diagnostics_buffer()<cr>", desc = "Diagnostics" },
     { "<leader>lw", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Workspace Diagnostics" },
     { "<leader>ls", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Document Symbols" },
-    -- { "<leader>lS", "<cmd>lua Snacks.picker.lsp_dynamic_workspace_symbols()<cr>", desc = "Workspace Symbols" },
+    { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
   },
 }
