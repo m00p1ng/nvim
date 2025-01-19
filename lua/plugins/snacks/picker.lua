@@ -117,7 +117,7 @@ return {
             -- row = 0.5,
             width = 0.4,
             min_width = 80,
-            max_width = 80,
+            -- max_width = 80,
             height = 14,
             border = "none",
             box = "vertical",
@@ -137,7 +137,7 @@ return {
             -- row = 0.5,
             width = 0.4,
             min_width = 80,
-            max_width = 80,
+            -- max_width = 80,
             height = 34,
             border = "none",
             box = "vertical",
@@ -195,27 +195,37 @@ return {
         tagstack = false, -- save the current position in the tagstack
         reuse_win = false, -- reuse an existing window if the buffer is already open
       },
+      actions = {
+        goto_start = function()
+          vim.cmd.normal "I"
+        end,
+        goto_end = function()
+          vim.cmd.normal "A"
+        end,
+      },
       win = {
         -- input window
         input = {
           keys = {
-            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-            ["<Esc>"] = "close",
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- ["<Esc>"] = "close",
             ["<C-c>"] = { "close", mode = "i" },
             ["<CR>"] = { "confirm", mode = { "n", "i" } },
-            ["G"] = "list_bottom",
-            ["gg"] = "list_top",
-            ["j"] = "list_down",
-            ["k"] = "list_up",
-            ["/"] = "toggle_focus",
-            ["q"] = "close",
+            -- ["G"] = "list_bottom",
+            -- ["gg"] = "list_top",
+            -- ["j"] = "list_down",
+            -- ["k"] = "list_up",
+            -- ["/"] = "toggle_focus",
+            -- ["q"] = "close",
             ["<C-_>"] = { "toggle_help", mode = { "n", "i" } },
             -- ["<m-d>"] = { "inspect", mode = { "n", "i" } },
-            ["<C-a>"] = { "select_all", mode = { "n", "i" } },
+            ["<M-a>"] = { "select_all", mode = { "n", "i" } },
             -- ["<m-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             -- ["<m-p>"] = { "toggle_preview", mode = { "i", "n" } },
             -- ["<m-w>"] = { "cycle_win", mode = { "i", "n" } },
-            ["<C-w>"] = { "cycle_win", mode = { "n", "i" }, nowait = true },
+            ["<C-a>"] = { "goto_start", mode = { "i" } },
+            ["<C-e>"] = { "goto_end", mode = { "i" } },
+            ["<C-w>"] = { "cycle_win", mode = { "n", "i" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
@@ -276,7 +286,7 @@ return {
             ["<C-n>"] = "list_down",
             ["<C-p>"] = "list_up",
             -- ["<m-w>"] = "cycle_win",
-            ["<c-w>"] = { "cycle_win", nowait = true },
+            ["<c-w>"] = "cycle_win",
             ["<Esc>"] = "close",
           },
         },
@@ -289,7 +299,7 @@ return {
             ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
             ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
             -- ["<m-w>"] = "cycle_win",
-            ["<C-w>"] = { "cycle_win", nowait = true },
+            ["<C-w>"] = "cycle_win",
           },
         },
       },
@@ -366,7 +376,7 @@ return {
     },
   },
   keys = {
-    -- { "z=", "<cmd>lua Snacks.picker.spell_suggests()<cr>", desc = "Spell Suggestion" },
+    { "z=", "<cmd>lua Snacks.picker.spelling()<cr>", desc = "Spell Suggestion" },
 
     -- Find --
     { "<leader>b", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
