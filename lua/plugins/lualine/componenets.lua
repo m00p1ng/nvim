@@ -6,7 +6,6 @@ local dark = "#181825"
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#fab387", bg = dark })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#bac2de", bg = dark, bold = false })
-vim.api.nvim_set_hl(0, "SLLocation", { fg = "#89b4fa", bg = dark })
 vim.api.nvim_set_hl(0, "SLFiletype", { fg = "#89dceb", bg = dark })
 vim.api.nvim_set_hl(0, "SLIndent", { fg = "#a6e3a1", bg = dark })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6c7086", bg = dark, italic = true })
@@ -46,6 +45,11 @@ local mode_color = {
 
 local icons = require "utils.icons"
 
+local function get_mode_color()
+  local mode = vim.fn.mode()
+  return mode_color[mode]
+end
+
 M.diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -64,7 +68,7 @@ M.mode = {
     return "▌"
   end,
   color = function()
-    return { fg = mode_color[vim.fn.mode()], bg = "NONE" }
+    return { fg = get_mode_color(), bg = "NONE" }
   end,
   padding = 0,
 }
@@ -85,6 +89,7 @@ M.filetype = {
   end,
 }
 
+local cached_branch = ""
 M.branch = {
   "branch",
   icons_enabled = true,
@@ -92,25 +97,25 @@ M.branch = {
   colored = false,
   fmt = function(str)
     if str == "" or str == nil then
-      return "[unknown]"
+      if cached_branch == "" then
+        return "[unknown]"
+      end
+
+      return cached_branch
     end
 
+    cached_branch = str
     local max_length = 30
-    if str:len() > max_length then
-      return str:sub(1, max_length) .. "…"
+    if #cached_branch > max_length then
+      cached_branch = cached_branch:sub(1, max_length) .. "…"
     end
 
-    return str
+    return cached_branch
   end,
 }
 
 M.spaces = {
   function()
-    local ft = vim.bo.ft
-    if f.is_ui_filetype(ft) then
-      return ""
-    end
-
     local shiftwidth = vim.bo.shiftwidth
     if shiftwidth == nil then
       return ""
@@ -118,29 +123,28 @@ M.spaces = {
 
     return hl_str(icons.ui.Tab .. shiftwidth, "SLIndent")
   end,
+  cond = function()
+    local ft = vim.bo.ft
+    return not f.is_ui_filetype(ft)
+  end,
 }
 
 M.location = {
   "location",
-  fmt = function(str)
-    return hl_str(str, "SLLocation")
+  color = function()
+    return { fg = get_mode_color(), bg = dark }
   end,
 }
 
 M.progress = {
   "progress",
   color = function()
-    return { fg = dark, bg = mode_color[vim.fn.mode()], gui = "bold" }
+    return { fg = dark, bg = get_mode_color(), gui = "bold" }
   end,
 }
 
 M.filesize = {
   function()
-    local ft = vim.bo.ft
-    if f.is_ui_filetype(ft) then
-      return ""
-    end
-
     local size = vim.fn.wordcount().bytes
 
     local suffixes = { "B", "KB", "MB", "GB" }
@@ -153,6 +157,10 @@ M.filesize = {
 
     local format = i == 1 and "%d%s" or "%.1f%s"
     return hl_str(string.format(format, size, suffixes[i]), "SLFilesize")
+  end,
+  cond = function()
+    local ft = vim.bo.ft
+    return not f.is_ui_filetype(ft)
   end,
 }
 
