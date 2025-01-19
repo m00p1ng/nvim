@@ -1,8 +1,11 @@
 local icons = require "utils.icons"
 
-local pad_border = {
+local bpad = {
   all = { " ", " ", " ", " ", " ", " ", " ", " " },
   top = { "", " ", "", "", "", "", "", "" },
+  right = { "", "", "", " ", "", "", "", "" },
+  bottom = { "", "", "", "", "", " ", "", "" },
+  left = { "", "", "", "", "", "", "", " " },
 }
 
 local function get_ivy_preset()
@@ -118,36 +121,23 @@ return {
       layouts = {
         ivy_fixed = {
           layout = {
-            box = "vertical",
+            box = "horizontal",
             backdrop = false,
             row = -1,
             width = 0,
             height = 25,
             border = "none",
             {
-              box = "horizontal",
+              box = "vertical",
               {
-                box = "vertical",
-                {
-                  win = "input",
-                  border = { "", " ", "", "", "", "─", "", "" },
-                  title = " {title} {live}",
-                  title_pos = "center",
-                  height = 1,
-                },
-                {
-                  win = "list",
-                  border = "hpad",
-                },
+                win = "input",
+                title = " {title} {live}",
+                height = 1,
+                border = { "", " ", "", "", "", "─", "", "" },
               },
-              {
-                win = "preview",
-                title = "{preview}",
-                title_pos = "center",
-                width = 0.5,
-                border = pad_border.top,
-              },
+              { win = "list", border = "none" },
             },
+            { win = "preview", title = "{preview}", width = 0.5, border = bpad.top },
           },
         },
         vertical_fixed = {
@@ -158,7 +148,7 @@ return {
             height = 0.8,
             min_height = 30,
             box = "vertical",
-            border = pad_border.all,
+            border = bpad.all,
             title = "{title} {live}",
             title_pos = "center",
             { win = "input", height = 1, border = "bottom" },
@@ -175,7 +165,7 @@ return {
             box = "vertical",
             {
               box = "vertical",
-              border = pad_border.all,
+              border = bpad.all,
               title = "{title} {live}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
@@ -328,8 +318,8 @@ return {
             -- ["<m-w>"] = "cycle_win",
             ["<C-w>"] = "cycle_win",
           },
-          wo = {
-            winbar = "",
+          b = {
+            winbar_enabled = false,
           },
         },
       },

@@ -119,6 +119,11 @@ local excludes = function()
 end
 
 M.get_winbar = function()
+  if vim.b.winbar_enabled == false then
+    vim.opt_local.winbar = nil
+    return
+  end
+
   if excludes() then
     return
   end
