@@ -53,7 +53,7 @@ return {
   },
   keys = {
     -- Normal --
-    { "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle Blame" },
+    { "<leader>gk", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle Blame" },
     { "<leader>gP", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
     { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
     { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset Buffer" },

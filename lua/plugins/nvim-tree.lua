@@ -290,7 +290,10 @@ return {
           return
         end
 
-        vim.notify(node.absolute_path)
+        ---@diagnostic disable-next-line: missing-fields
+        Snacks.picker.grep {
+          dirs = { node.absolute_path },
+        }
       end, opts "Search in folder")
     end
 

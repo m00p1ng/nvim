@@ -105,8 +105,9 @@ return {
       ["gt"] = {
         function()
           local path = get_current_path()
-          require("telescope.builtin").live_grep {
-            search_dirs = { path },
+          ---@diagnostic disable-next-line: missing-fields
+          Snacks.picker.grep {
+            dirs = { path },
           }
         end,
         mode = "n",
