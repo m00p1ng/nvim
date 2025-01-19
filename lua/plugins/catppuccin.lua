@@ -66,6 +66,7 @@ return {
         SnacksPickerPreviewTitle = { fg = C.surface0, bg = C.green },
         SnacksPickerPreviewCursorLine = { link = "CursorLine" },
         SnacksPickerListCursorLine = { link = "CursorLine" },
+        SnacksPickerSpinner = { fg = C.peach },
 
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },

@@ -6,10 +6,12 @@ local pad_border = {
 }
 
 local function get_ivy_preset()
-  if vim.o.columns >= 120 then
-    return "ivy_fixed"
-  else
-    return "vertical_fixed"
+  return function()
+    if vim.o.columns >= 120 then
+      return "ivy_fixed"
+    else
+      return "vertical_fixed"
+    end
   end
 end
 
@@ -40,32 +42,28 @@ return {
           filter = { cwd = true },
         },
         colorschemes = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         grep = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         grep_word = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         help = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         highlights = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         marks = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         registers = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         jumps = {
-          layout = "vertical_fixed",
+          layout = get_ivy_preset(),
         },
         commands = {
           layout = "dropdown_fixed",
@@ -80,49 +78,31 @@ return {
           layout = "dropdown_fixed",
         },
         git_log = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         git_log_file = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         lsp_definitions = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         lsp_implementations = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         lsp_references = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         lsp_symbols = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         lsp_workspace_symbols = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         diagnostics = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         diagnostics_buffer = {
-          layout = {
-            preset = get_ivy_preset(),
-          },
+          layout = get_ivy_preset(),
         },
         spelling = {
           layout = "dropdown_fixed",
