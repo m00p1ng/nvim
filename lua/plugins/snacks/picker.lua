@@ -1,9 +1,17 @@
 local icons = require "utils.icons"
 
-local border = {
-  rounded = { " ", " ", " ", " ", " ", " ", " ", " " },
+local pad_border = {
+  all = { " ", " ", " ", " ", " ", " ", " ", " " },
   top = { "", " ", "", "", "", "", "", "" },
 }
+
+local function get_ivy_preset()
+  if vim.o.columns >= 120 then
+    return "ivy_fixed"
+  else
+    return "vertical_fixed"
+  end
+end
 
 return {
   "folke/snacks.nvim",
@@ -11,6 +19,11 @@ return {
     ---@type snacks.picker.Config
     picker = {
       prompt = " ",
+      hidden = true,
+      exclude = {
+        "node_modules",
+        ".DS_store",
+      },
       sources = {
         files = {
           layout = "dropdown_fixed",
@@ -27,46 +40,84 @@ return {
           filter = { cwd = true },
         },
         colorschemes = {
-          layout = "dropdown_preview",
+          layout = "vertical_fixed",
         },
         grep = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         grep_word = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         help = {
-          layout = "dropdown_preview",
+          layout = "vertical_fixed",
         },
         highlights = {
-          layout = "dropdown_preview",
+          layout = "vertical_fixed",
         },
         marks = {
-          layout = "dropdown_preview",
+          layout = "vertical_fixed",
+        },
+        registers = {
+          layout = "vertical_fixed",
+        },
+        jumps = {
+          layout = "vertical_fixed",
+        },
+        commands = {
+          layout = "dropdown_fixed",
+        },
+        command_history = {
+          layout = "dropdown_fixed",
         },
         git_status = {
           layout = "dropdown_fixed",
         },
-        jumps = {
-          layout = "dropdown_preview",
+        git_log = {
+          layout = {
+            preset = get_ivy_preset(),
+          },
+        },
+        git_log_file = {
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         lsp_definitions = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         lsp_implementations = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         lsp_references = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         lsp_symbols = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         diagnostics = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
         },
         diagnostics_buffer = {
-          layout = "ivy_fixed",
+          layout = {
+            preset = get_ivy_preset(),
+          },
+        },
+        spelling = {
+          layout = "dropdown_fixed",
         },
       },
       layout = {
@@ -92,7 +143,7 @@ return {
                 {
                   win = "input",
                   border = { "", " ", "", "", "", "─", "", "" },
-                  title = " {title} {live} {flags}",
+                  title = " {title} {live}",
                   title_pos = "center",
                   height = 1,
                 },
@@ -106,54 +157,41 @@ return {
                 title = "{preview}",
                 title_pos = "center",
                 width = 0.5,
-                border = border.top,
+                border = pad_border.top,
               },
             },
+          },
+        },
+        vertical_fixed = {
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.8,
+            min_height = 30,
+            box = "vertical",
+            border = pad_border.all,
+            title = "{title} {live}",
+            title_pos = "center",
+            { win = "input", height = 1, border = "bottom" },
+            { win = "list", height = 0.4, max_height = 15, border = "none" },
+            { win = "preview", title = "{preview}", border = "top" },
           },
         },
         dropdown_fixed = {
           layout = {
             backdrop = false,
-            -- row = 0.5,
-            width = 0.4,
-            min_width = 80,
-            -- max_width = 80,
+            width = 80,
             height = 14,
             border = "none",
             box = "vertical",
             {
               box = "vertical",
-              border = border.rounded,
-              title = "{title} {live} {flags}",
+              border = pad_border.all,
+              title = "{title} {live}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
               { win = "list", border = "none" },
-            },
-          },
-        },
-        dropdown_preview = {
-          layout = {
-            backdrop = false,
-            -- row = 0.5,
-            width = 0.4,
-            min_width = 80,
-            -- max_width = 80,
-            height = 34,
-            border = "none",
-            box = "vertical",
-            {
-              box = "vertical",
-              border = border.rounded,
-              title = "{title} {live} {flags}",
-              title_pos = "center",
-              { win = "input", height = 1, border = "bottom" },
-              { win = "list", height = 10, border = "none" },
-              {
-                win = "preview",
-                title = "{preview}",
-                title_pos = "center",
-                border = "top",
-              },
             },
           },
         },
@@ -196,10 +234,10 @@ return {
         reuse_win = false, -- reuse an existing window if the buffer is already open
       },
       actions = {
-        goto_start = function()
+        input_start = function()
           vim.cmd.normal "I"
         end,
-        goto_end = function()
+        input_end = function()
           vim.cmd.normal "A"
         end,
       },
@@ -207,10 +245,11 @@ return {
         -- input window
         input = {
           keys = {
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
-            -- ["<Esc>"] = "close",
+            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<Esc>"] = "close",
             ["<C-c>"] = { "close", mode = "i" },
             ["<CR>"] = { "confirm", mode = { "n", "i" } },
+            ["-"] = { "close", mode = { "n" } },
             -- ["G"] = "list_bottom",
             -- ["gg"] = "list_top",
             -- ["j"] = "list_down",
@@ -223,8 +262,8 @@ return {
             -- ["<m-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             -- ["<m-p>"] = { "toggle_preview", mode = { "i", "n" } },
             -- ["<m-w>"] = { "cycle_win", mode = { "i", "n" } },
-            ["<C-a>"] = { "goto_start", mode = { "i" } },
-            ["<C-e>"] = { "goto_end", mode = { "i" } },
+            ["<C-a>"] = { "input_start", mode = { "i" } },
+            ["<C-e>"] = { "input_end", mode = { "i" } },
             ["<C-w>"] = { "cycle_win", mode = { "n", "i" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
@@ -300,6 +339,9 @@ return {
             ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
             -- ["<m-w>"] = "cycle_win",
             ["<C-w>"] = "cycle_win",
+          },
+          wo = {
+            winbar = "",
           },
         },
       },
@@ -390,12 +432,11 @@ return {
     { "<leader>fl", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Last Search" },
     { "<leader>fm", "<cmd>lua Snacks.picker.marks()<cr>", desc = "Marks" },
     { "<leader>fM", "<cmd>lua Snacks.picker.man_pages()<cr>", desc = "Man Pages" },
-    { "<leader>fr", "<cmd>lua Snacks.picker.recent({ filter = { cwd = true } })<cr>", desc = "Recent File" },
+    { "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent File" },
     { "<leader>fR", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Registers" },
     { "<leader>fk", "<cmd>lua Snacks.picker.keymaps()<cr>", desc = "Keymaps" },
     { "<leader>fC", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
     { "<leader>fc", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
-    -- { "<leader>fV", "<cmd>lua Snacks.picker.vim_options()<cr>", desc = "Vim Options" },
     { "<leader>fj", "<cmd>lua Snacks.picker.jumps()<cr>", desc = "Jump list" },
 
     -- Find Visual --
