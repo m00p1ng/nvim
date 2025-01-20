@@ -7,6 +7,7 @@ return {
   -- { import = "plugins.lang.go" },
   -- { import = "plugins.lang.graphql" },
   -- { import = "plugins.lang.html" },
+  -- { import = "plugins.lang.http" },
   -- { import = "plugins.lang.json" },
   -- { import = "plugins.lang.lua" },
   -- { import = "plugins.lang.markdown" },
