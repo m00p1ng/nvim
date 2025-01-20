@@ -67,6 +67,9 @@ return {
         SnacksPickerPreviewCursorLine = { link = "CursorLine" },
         SnacksPickerListCursorLine = { link = "CursorLine" },
         SnacksPickerSpinner = { fg = C.peach },
+        SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
+        SnacksInputBorder = { fg = C.red, bg = C.mantle },
+        SnacksInputTitle = { fg = C.red, bg = C.mantle, style = { "bold" } },
 
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },
@@ -90,6 +93,7 @@ return {
         NvimTreeGitDeleted = { fg = C.yellow },
         NvimTreeGitMerge = { fg = C.yellow },
         NvimTreeGitDirty = { fg = C.yellow },
+        NvimTreeEndOfBuffer = { fg = C.mantle },
 
         NeoTreeFileName = { fg = C.subtext1 },
         NeoTreeDirectoryName = { fg = C.subtext1, style = { "bold" } },

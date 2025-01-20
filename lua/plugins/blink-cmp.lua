@@ -31,7 +31,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       enabled = function()
-        return not vim.tbl_contains({ "DressingInput", "oil" }, vim.bo.filetype)
+        return not vim.tbl_contains({ "oil" }, vim.bo.filetype)
           and vim.bo.buftype ~= "prompt"
           and vim.b.completion ~= false
       end,
