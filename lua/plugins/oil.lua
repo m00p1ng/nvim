@@ -4,7 +4,14 @@ function _G.get_oil_winbar()
   local dir = require("oil").get_current_dir()
   local name = ""
   if dir then
-    name = vim.fn.fnamemodify(dir, ":~")
+    local cwd = vim.fn.getcwd()
+    if vim.startswith(dir, cwd) then
+      local p = vim.split(cwd, "/")
+      local project = p[#p]
+      name = project .. string.sub(dir, #cwd + 1, #dir)
+    else
+      name = vim.fn.fnamemodify(dir, ":~")
+    end
   else
     -- If there is no current directory (e.g. over ssh), just show the buffer name
     name = vim.api.nvim_buf_get_name(0)
