@@ -3,7 +3,7 @@ return {
   ---@type snacks.Config
   opts = {
     words = {
-      debounce = 300, -- time in ms to wait before updating
+      debounce = 500, -- time in ms to wait before updating
       notify_jump = false, -- show a notification when jumping
       notify_end = true, -- show a notification when reaching the end
       foldopen = true, -- open folds after jumping

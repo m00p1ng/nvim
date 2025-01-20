@@ -28,6 +28,7 @@ return {
       exclude = {
         "node_modules",
         ".DS_store",
+        ".git",
       },
       sources = {
         files = {

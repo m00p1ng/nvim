@@ -22,7 +22,7 @@ local include_ft = {
 
 local diffview_ft = {
   "DiffviewFiles",
-  "DiffviewFilesHistory",
+  "DiffviewFileHistory",
 }
 
 local function hl(hl_name, str)
