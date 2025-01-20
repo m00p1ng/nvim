@@ -26,7 +26,7 @@ return {
     -- Check the docs for more info.
     ---@type wk.Spec
     triggers = {
-      { "<auto>", mode = "nixsotc" },
+      { "<auto>", mode = "nxso" },
     },
     -- Start hidden and wait for a key to be pressed before showing the popup
     -- Only used by enabled xo mapping modes.
@@ -58,7 +58,7 @@ return {
       -- don't allow the popup to overlap with the cursor
       no_overlap = true,
       -- width = 1,
-      height = { min = 4, max = 25 },
+      height = { min = 5, max = 25 },
       -- col = 0,
       -- row = math.huge,
       -- border = "none",
@@ -122,7 +122,7 @@ return {
       group = "+", -- symbol prepended to a group
       ellipsis = "…",
       -- set to false to disable all mapping icons,
-      -- both those explicitely added in a mapping
+      -- both those explicitly added in a mapping
       -- and those from rules
       mappings = true,
       --- See `lua/which-key/icons.lua` for more details

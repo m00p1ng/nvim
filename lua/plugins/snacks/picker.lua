@@ -185,6 +185,7 @@ return {
         ignorecase = true, -- use ignorecase
         sort_empty = false, -- sort results when the search string is empty
         filename_bonus = true, -- give bonus for matching file names (last part of the path)
+        file_pos = true, -- support patterns like `file:line:col` and `file:line`
       },
       sort = {
         -- default sort is by score, text length and index
@@ -311,6 +312,10 @@ return {
             ["<c-w>"] = "cycle_win",
             ["<Esc>"] = "close",
           },
+          wo = {
+            conceallevel = 2,
+            concealcursor = "nvc",
+          },
         },
         -- preview window
         preview = {
@@ -337,10 +342,14 @@ return {
           middle = "├╴",
           last = "└╴",
         },
+        undo = {
+          saved = " ",
+        },
         ui = {
           live = "󰐰 ",
           hidden = "h",
           ignored = "i",
+          follow = "f",
           selected = "● ",
           unselected = "○ ",
           -- selected = " ",
@@ -397,6 +406,7 @@ return {
       },
       debug = {
         scores = false, -- show scores in the list
+        leaks = false, -- show when pickers don't get garbage collected
       },
     },
   },
