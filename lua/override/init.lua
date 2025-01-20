@@ -3,6 +3,7 @@ return {
   -- { import = "plugins.lang.bash" },
   -- { import = "plugins.lang.css" },
   -- { import = "plugins.lang.docker" },
+  -- { import = "plugins.lang.flutter" },
   -- { import = "plugins.lang.go" },
   -- { import = "plugins.lang.graphql" },
   -- { import = "plugins.lang.html" },
