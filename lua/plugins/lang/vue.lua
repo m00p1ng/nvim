@@ -7,7 +7,6 @@ return {
     opts = {
       servers = {
         volar = {
-          enabled = vim.g.vue_version ~= nil,
           filetypes = {
             "typescript",
             "javascript",
@@ -29,16 +28,22 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      table.insert(opts.servers.vtsls.filetypes, "vue")
-      require("utils").extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
-        {
-          name = "@vue/typescript-plugin",
-          location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-          languages = { "vue" },
-          configNamespace = "typescript",
-          enableForWorkspaceTypeScriptVersions = true,
-        },
-      })
+      local vue_version = vim.g.vue_version
+      opts.servers.volar.enabled = vue_version == 3
+      opts.servers.vtsls.enabled = vue_version == nil or vue_version == 2
+
+      if vue_version == 2 then
+        table.insert(opts.servers.vtsls.filetypes, "vue")
+        require("utils").extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+          {
+            name = "@vue/typescript-plugin",
+            location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            languages = { "vue" },
+            configNamespace = "typescript",
+            enableForWorkspaceTypeScriptVersions = true,
+          },
+        })
+      end
     end,
   },
 

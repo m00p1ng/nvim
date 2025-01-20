@@ -7,7 +7,6 @@ return {
           enabled = false,
         },
         vtsls = {
-          enabled = vim.g.vue_version == nil,
           filetypes = {
             "javascript",
             "javascriptreact",
