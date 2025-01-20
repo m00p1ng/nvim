@@ -19,5 +19,6 @@ return {
   -- { import = "plugins.lang.yaml" },
 
   -- AI
+  -- { import = "plugins.ai.copilot" },
   -- { import = "plugins.ai.tabnine" },
 }

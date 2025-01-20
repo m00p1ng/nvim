@@ -26,6 +26,7 @@ return {
 
   {
     "saghen/blink.cmp",
+    dependencies = { "tzachar/cmp-tabnine" },
     opts = {
       sources = {
         default = { "tabnine" },

@@ -100,6 +100,9 @@ return {
                   if ctx.source_id == "tabnine" then
                     return icons.misc.Stars
                   end
+                  if ctx.source_id == "copilot" then
+                    return icons.misc.Stars
+                  end
                   return ctx.kind_icon
                 end,
               },
