@@ -49,30 +49,6 @@ return {
           layout = "dropdown_fixed",
           filter = { cwd = true },
         },
-        colorschemes = {
-          layout = get_ivy_preset(),
-        },
-        grep = {
-          layout = get_ivy_preset(),
-        },
-        grep_word = {
-          layout = get_ivy_preset(),
-        },
-        help = {
-          layout = get_ivy_preset(),
-        },
-        highlights = {
-          layout = get_ivy_preset(),
-        },
-        marks = {
-          layout = get_ivy_preset(),
-        },
-        registers = {
-          layout = get_ivy_preset(),
-        },
-        jumps = {
-          layout = get_ivy_preset(),
-        },
         commands = {
           layout = "dropdown_fixed",
         },
@@ -85,33 +61,6 @@ return {
         git_branches = {
           layout = "dropdown_fixed",
         },
-        git_log = {
-          layout = get_ivy_preset(),
-        },
-        git_log_file = {
-          layout = get_ivy_preset(),
-        },
-        lsp_definitions = {
-          layout = get_ivy_preset(),
-        },
-        lsp_implementations = {
-          layout = get_ivy_preset(),
-        },
-        lsp_references = {
-          layout = get_ivy_preset(),
-        },
-        lsp_symbols = {
-          layout = get_ivy_preset(),
-        },
-        lsp_workspace_symbols = {
-          layout = get_ivy_preset(),
-        },
-        diagnostics = {
-          layout = get_ivy_preset(),
-        },
-        diagnostics_buffer = {
-          layout = get_ivy_preset(),
-        },
         spelling = {
           layout = "dropdown_fixed",
         },
@@ -119,9 +68,7 @@ return {
       layout = {
         cycle = true,
         --- Use the default layout or vertical if the window is too narrow
-        preset = function()
-          return vim.o.columns >= 120 and "default" or "vertical"
-        end,
+        preset = get_ivy_preset(),
       },
       layouts = {
         ivy_fixed = {
@@ -176,6 +123,22 @@ return {
               { win = "input", height = 1, border = "bottom" },
               { win = "list", border = "none" },
             },
+          },
+        },
+        select = {
+          preview = false,
+          layout = {
+            backdrop = false,
+            width = 80,
+            height = 14,
+            max_height = 14,
+            box = "vertical",
+            border = bpad.all,
+            title = " Select ",
+            title_pos = "center",
+            { win = "input", height = 1, border = "bottom" },
+            { win = "list", border = "none" },
+            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
           },
         },
       },

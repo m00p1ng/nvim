@@ -24,11 +24,18 @@ return {
     -- langs = {}, -- See the default presets in lua/treesj/langs
   },
   keys = {
-    -- { "<localleader>j", "<cmd>TSJSplit<cr>", desc = "Break Line" },
-    -- { "<localleader>J", "<cmd>TSJJoin<cr>", desc = "Join Line" },
     {
       "<localleader>j",
-      "<cmd>lua require('treesj').toggle({ split = { recursive = true } })<cr>",
+      function()
+        require("treesj").toggle {}
+      end,
+      desc = "Toggle TSJ",
+    },
+    {
+      "<localleader>J",
+      function()
+        require("treesj").toggle { split = { recursive = true } }
+      end,
       desc = "Toggle TSJ",
     },
   },
