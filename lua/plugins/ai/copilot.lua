@@ -71,4 +71,17 @@ return {
     },
     opts_extend = { "sources.default" },
   },
+  {
+    "saghen/blink.cmp",
+    opts = function(_, opts)
+      local text_func = opts.completion.menu.draw.components.kind_icon.text
+
+      opts.completion.menu.draw.components.kind_icon.text = function(ctx)
+        if ctx.source_id == "copilot" then
+          return require("utils.icons").misc.Stars
+        end
+        return text_func and text_func(ctx) or ctx.kind_icon
+      end
+    end,
+  },
 }
