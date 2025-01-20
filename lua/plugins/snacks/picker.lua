@@ -180,14 +180,6 @@ return {
         tagstack = false, -- save the current position in the tagstack
         reuse_win = false, -- reuse an existing window if the buffer is already open
       },
-      actions = {
-        input_start = function()
-          vim.cmd.normal "I"
-        end,
-        input_end = function()
-          vim.cmd.normal "A"
-        end,
-      },
       win = {
         -- input window
         input = {
@@ -209,8 +201,8 @@ return {
             -- ["<m-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             -- ["<m-p>"] = { "toggle_preview", mode = { "i", "n" } },
             -- ["<m-w>"] = { "cycle_win", mode = { "i", "n" } },
-            ["<C-a>"] = { "input_start", mode = { "i" } },
-            ["<C-e>"] = { "input_end", mode = { "i" } },
+            ["<C-a>"] = { "<Home>", mode = { "i" }, expr = true },
+            ["<C-e>"] = { "<End>", mode = { "i" }, expr = true },
             ["<C-w>"] = { "cycle_win", mode = { "n", "i" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
