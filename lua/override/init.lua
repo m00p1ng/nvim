@@ -1,4 +1,5 @@
 return {
+  -- Lang
   -- { import = "plugins.lang.bash" },
   -- { import = "plugins.lang.css" },
   -- { import = "plugins.lang.docker" },
@@ -14,4 +15,7 @@ return {
   -- { import = "plugins.lang.typescript" },
   -- { import = "plugins.lang.vue" },
   -- { import = "plugins.lang.yaml" },
+
+  -- AI
+  -- { import = "plugins.ai.tabnine" },
 }

@@ -18,7 +18,6 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = {
       { "rafamadriz/friendly-snippets", event = "InsertEnter" },
-      { "tzachar/cmp-tabnine", event = "InsertEnter", build = "./install.sh" },
     },
 
     -- use a release tag to download pre-built binaries
@@ -181,26 +180,14 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "tabnine" },
+        default = { "lsp", "path", "snippets", "buffer" },
         providers = {
-          -- create provider
-          tabnine = {
-            name = "cmp_tabnine", -- IMPORTANT: use the same name as you would for nvim-cmp
-            module = "blink.compat.source",
-            score_offset = 100,
-            opts = {
-              max_lines = 1000,
-              max_num_results = 20,
-              sort = true,
-              run_on_every_keystroke = true,
-              snippet_placeholder = "..",
-              ignored_file_types = require("utils").ui_filetypes,
-              show_prediction_strength = true,
-            },
-          },
           snippets = {
             opts = {
-              search_paths = { "~/.config/nvim/snippets", vim.fn.getcwd() .. "/snippets" },
+              search_paths = {
+                "~/.config/nvim/snippets",
+                vim.fn.getcwd() .. "/snippets",
+              },
             },
           },
         },
