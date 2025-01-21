@@ -9,14 +9,14 @@ local function mapped_filetype(l)
   return res
 end
 
-local ftMap = vim.tbl_extend("force", {
+local ftMap = vim.tbl_extend("force", mapped_filetype(f.ui_filetypes), {
   vim = { "treesitter", "indent" },
   sh = { "treesitter", "indent" },
   git = { "treesitter", "indent" },
   conf = { "treesitter", "indent" },
   yaml = { "treesitter", "indent" },
   markdown = "",
-}, mapped_filetype(f.ui_filetypes))
+})
 
 return {
   "kevinhwang91/nvim-ufo",
