@@ -68,8 +68,8 @@ return {
         SnacksPickerListCursorLine = { link = "CursorLine" },
         SnacksPickerSpinner = { fg = C.peach },
         SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
-        SnacksInputBorder = { fg = C.red, bg = C.mantle },
-        SnacksInputTitle = { fg = C.red, bg = C.mantle, style = { "bold" } },
+        SnacksInputBorder = { fg = C.blue, bg = C.mantle },
+        SnacksInputTitle = { fg = C.text, bg = C.mantle, style = { "bold" } },
 
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },
