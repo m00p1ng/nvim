@@ -64,6 +64,9 @@ return {
         command_history = {
           layout = "dropdown_fixed",
         },
+        colorschemes = {
+          layout = "vertical_fixed",
+        },
         git_status = {
           layout = "dropdown_fixed",
         },
@@ -71,6 +74,9 @@ return {
           layout = "dropdown_fixed",
         },
         spelling = {
+          layout = "dropdown_fixed",
+        },
+        pickers = {
           layout = "dropdown_fixed",
         },
       },
@@ -382,11 +388,14 @@ return {
 
     -- Find --
     { "<leader>b", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-    { "<leader><leader>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Find files" },
+    { "<leader><leader>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Open" },
 
+    { "<leader>fp", "<cmd>lua Snacks.picker()<cr>", desc = "Command Palette" },
+    { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find files" },
     { "<leader>fS", "<cmd>lua Snacks.picker.colorschemes()<cr>", desc = "Colorscheme" },
     { "<leader>ft", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Find Text" },
     { "<leader>fs", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Find String" },
+    { "<leader>fb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Find String (Buffer)" },
     { "<leader>fh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
     { "<leader>fH", "<cmd>lua Snacks.picker.highlights()<cr>", desc = "Highlight" },
     { "<leader>fl", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Last Search" },
@@ -398,6 +407,8 @@ return {
     { "<leader>fC", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
     { "<leader>fc", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
     { "<leader>fj", "<cmd>lua Snacks.picker.jumps()<cr>", desc = "Jump list" },
+    { "<leader>fq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quick fix" },
+    { "<leader>fu", "<cmd>lua Snacks.picker.undo()<cr>", desc = "Undo" },
 
     -- Find Visual --
     { "<leader>fs", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Find String", mode = "v" },
@@ -416,3 +427,15 @@ return {
     { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
   },
 }
+
+-- how to add new sources
+-- ref: https://github.com/folke/snacks.nvim/discussions/498
+
+-- cycle layout
+-- ref: https://github.com/folke/snacks.nvim/discussions/458
+
+-- grep filter
+-- ref: https://github.com/folke/snacks.nvim/discussions/461
+
+-- switch mode
+-- ref: https://github.com/folke/snacks.nvim/discussions/499
