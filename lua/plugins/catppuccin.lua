@@ -66,6 +66,7 @@ return {
         SnacksPickerPreviewTitle = { fg = C.surface0, bg = C.green },
         SnacksPickerPreviewCursorLine = { link = "CursorLine" },
         SnacksPickerListCursorLine = { link = "CursorLine" },
+        SnacksPickerSearch = { fg = C.surface0, bg = C.sapphire },
         SnacksPickerSpinner = { fg = C.peach },
         SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
         SnacksInputBorder = { fg = C.blue, bg = C.mantle },

@@ -50,6 +50,7 @@ return {
             list = {
               keys = {
                 ["<c-d>"] = "bufdelete",
+                ["dd"] = false,
               },
             },
           },
@@ -57,6 +58,20 @@ return {
         smart = {
           layout = "dropdown_fixed",
           filter = { cwd = true },
+          win = {
+            input = {
+              keys = {
+                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+                ["<c-x>"] = false,
+              },
+            },
+            list = {
+              keys = {
+                ["<c-d>"] = "bufdelete",
+                ["dd"] = false,
+              },
+            },
+          },
         },
         commands = {
           layout = "dropdown_fixed",
@@ -72,6 +87,15 @@ return {
         },
         git_branches = {
           layout = "dropdown_fixed",
+        },
+        help = {
+          win = {
+            preview = {
+              wo = {
+                number = false,
+              },
+            },
+          },
         },
         spelling = {
           layout = "dropdown_fixed",
