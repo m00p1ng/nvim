@@ -68,6 +68,8 @@ return {
         SnacksPickerListCursorLine = { link = "CursorLine" },
         SnacksPickerSearch = { fg = C.surface0, bg = C.sapphire },
         SnacksPickerSpinner = { fg = C.peach },
+        SnacksPickerRow = { link = "LineNr" },
+        SnacksPickerDelim = { link = "LineNr" },
         SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
         SnacksInputBorder = { fg = C.blue, bg = C.mantle },
         SnacksInputTitle = { fg = C.text, bg = C.mantle, style = { "bold" } },
@@ -166,7 +168,8 @@ return {
       snacks = true,
       symbols_outline = true,
       telescope = {
-        enabled = false,
+        enabled = true,
+        style = "nvchad",
       },
       treesitter = true,
       ufo = true,
