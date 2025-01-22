@@ -7,20 +7,8 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            { path = "snacks.nvim", words = { "Snacks" } },
-          },
-        },
-      },
       { "hinell/lsp-timeout.nvim", enabled = false },
-      "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "ray-x/lsp_signature.nvim",
       { "antosha417/nvim-lsp-file-operations", event = "LspAttach", opts = {} },
     },
     ---@class PluginLspOpts

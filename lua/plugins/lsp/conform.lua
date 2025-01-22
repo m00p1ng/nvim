@@ -1,7 +1,6 @@
 return {
   "stevearc/conform.nvim",
   event = "BufReadPost",
-  dependencies = { "mason.nvim" },
   opts = {
     -- Map of filetype to formatters
     formatters_by_ft = {

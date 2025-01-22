@@ -3,11 +3,6 @@ local icons = require "utils.icons"
 return {
   {
     "mfussenegger/nvim-dap",
-    dependencies = {
-      "theHamsta/nvim-dap-virtual-text",
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-    },
     opts = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
@@ -55,6 +50,9 @@ return {
 
   {
     "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+    },
     opts = {
       icons = {
         expanded = icons.ui.ChevronShortRight,
