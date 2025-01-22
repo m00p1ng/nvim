@@ -16,6 +16,7 @@ return {
   },
 
   { import = "plugins.snacks.dashboard" },
+  { import = "plugins.snacks.debug" },
   { import = "plugins.snacks.indent" },
   { import = "plugins.snacks.input" },
   { import = "plugins.snacks.notifier" },
