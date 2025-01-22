@@ -28,14 +28,14 @@ return {
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
-    config = function()
+    opts = function()
       -- ref: https://github.com/mfussenegger/nvim-dap-python#debugpy
       local dap_python = require "dap-python"
       dap_python.setup "~/.virtualenvs/debugpy/bin/python"
       dap_python.test_runner = "unittest"
     end,
     keys = {
-      { "<leader>dn", require("dap-python").test_method, desc = "Debug method", buffer = true },
+      { "<leader>dn", "<cmd>lua require('dap-python').test_method()<cr>", desc = "Debug method", buffer = true },
     },
   },
 }
