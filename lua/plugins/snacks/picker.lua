@@ -199,27 +199,24 @@ return {
         -- input window
         input = {
           keys = {
-            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-            ["<Esc>"] = "close",
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<C-c>"] = { "close", mode = "i" },
             ["<CR>"] = { "confirm", mode = { "n", "i" } },
-            ["-"] = { "close", mode = { "n" } },
-            ["G"] = "list_bottom",
-            ["gg"] = "list_top",
-            ["j"] = "list_down",
-            ["k"] = "list_up",
-            ["/"] = "toggle_focus",
-            ["q"] = "close",
+            ["G"] = false,
+            ["gg"] = false,
+            ["j"] = false,
+            ["k"] = false,
+            ["/"] = false,
+            ["q"] = false,
             ["<C-_>"] = { "toggle_help", mode = { "n", "i" } },
             ["?"] = false,
             ["<a-d>"] = { "inspect", mode = { "n", "i" } },
             ["<c-a>"] = { "select_all", mode = { "n", "i" } },
             ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
-            ["<a-w>"] = false,
+            ["<a-w>"] = { "cycle_win", mode = { "n", "i" } },
             ["<C-a>"] = { "<Home>", mode = { "i" }, expr = true },
             ["<C-e>"] = { "<End>", mode = { "i" }, expr = true },
-            ["<C-w>"] = { "cycle_win", mode = { "n", "i" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
@@ -280,8 +277,7 @@ return {
             ["<c-k>"] = "list_up",
             ["<c-n>"] = "list_down",
             ["<c-p>"] = "list_up",
-            ["<a-w>"] = false,
-            ["<c-w>"] = "cycle_win",
+            ["<a-w>"] = "cycle_win",
             ["<Esc>"] = "close",
           },
           wo = {
@@ -297,8 +293,7 @@ return {
             ["i"] = "focus_input",
             ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
             ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
-            ["<a-w>"] = false,
-            ["<C-w>"] = "cycle_win",
+            ["<a-w>"] = "cycle_win",
           },
           b = {
             winbar_enabled = false,
@@ -432,9 +427,6 @@ return {
 
 -- cycle layout
 -- ref: https://github.com/folke/snacks.nvim/discussions/458
-
--- grep filter
--- ref: https://github.com/folke/snacks.nvim/discussions/461
 
 -- switch mode
 -- ref: https://github.com/folke/snacks.nvim/discussions/499
