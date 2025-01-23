@@ -82,26 +82,29 @@ local excludes = function()
   if vim.tbl_contains(include_ft, ft) then
     return false
   end
-  --
+
   -- diffview://null case
   if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, ft) then
     return false
   end
 
   if not f.is_empty(vim.bo.buftype) then
+    vim.b.has_local_winbar = false
     vim.opt_local.winbar = nil
     return true
   end
+
   return false
 end
 
 M.get_winbar = function()
   if vim.b.winbar_enabled == false then
+    vim.b.has_local_winbar = false
     vim.opt_local.winbar = nil
     return
   end
 
-  -- do not replace application winbar
+  -- do not replace plugin winbar
   if not vim.b.has_local_winbar and not f.is_empty(vim.wo.winbar) then
     return
   end
