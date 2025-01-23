@@ -61,8 +61,7 @@ return {
       list = false,
       conceallevel = 3,
       concealcursor = "nvic",
-      number = false,
-      relativenumber = false,
+      relativenumber = true,
       winbar = "%!v:lua.get_oil_winbar()",
     },
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)

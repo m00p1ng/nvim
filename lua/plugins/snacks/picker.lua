@@ -24,7 +24,6 @@ return {
     ---@type snacks.picker.Config
     picker = {
       prompt = " ",
-      hidden = true,
       exclude = {
         "node_modules",
         ".DS_store",
@@ -33,6 +32,7 @@ return {
       sources = {
         files = {
           layout = "dropdown_fixed",
+          hidden = true,
         },
         recent = {
           layout = "dropdown_fixed",
@@ -57,6 +57,7 @@ return {
         },
         smart = {
           layout = "dropdown_fixed",
+          hidden = true,
           filter = { cwd = true },
           win = {
             input = {
@@ -86,6 +87,9 @@ return {
           layout = "dropdown_fixed",
         },
         git_branches = {
+          layout = "dropdown_fixed",
+        },
+        icons = {
           layout = "dropdown_fixed",
         },
         help = {
@@ -122,7 +126,7 @@ return {
               box = "vertical",
               {
                 win = "input",
-                title = " {title} {live}",
+                title = " {title} {live} {flags}",
                 height = 1,
                 border = { "", " ", "", "", "", "─", "", "" },
               },
@@ -140,7 +144,7 @@ return {
             min_height = 30,
             box = "vertical",
             border = bpad.all,
-            title = "{title} {live}",
+            title = " {title} {live} {flags}",
             title_pos = "center",
             { win = "input", height = 1, border = "bottom" },
             { win = "list", height = 0.4, max_height = 15, border = "none" },
@@ -157,7 +161,7 @@ return {
             {
               box = "vertical",
               border = bpad.all,
-              title = "{title} {live}",
+              title = " {title} {live} {flags}",
               title_pos = "center",
               { win = "input", height = 1, border = "bottom" },
               { win = "list", border = "none" },
