@@ -188,6 +188,10 @@ return {
         sort_empty = false, -- sort results when the search string is empty
         filename_bonus = true, -- give bonus for matching file names (last part of the path)
         file_pos = true, -- support patterns like `file:line:col` and `file:line`
+        -- the bonusses below, possibly require string concatenation and path normalization,
+        -- so this can have a performance impact for large lists and increase memory usage
+        cwd_bonus = false, -- give bonus for matching files in the cwd
+        frecency = false, -- frecency bonus
       },
       sort = {
         -- default sort is by score, text length and index
@@ -195,6 +199,9 @@ return {
       },
       ui_select = true, -- replace `vim.ui.select` with the snacks picker
       formatters = {
+        text = {
+          ft = nil, ---@type string? filetype for highlighting
+        },
         file = {
           filename_first = true, -- display filename before the file path
         },
@@ -238,9 +245,10 @@ return {
             ["<c-a>"] = { "select_all", mode = { "n", "i" } },
             ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
-            ["<a-w>"] = { "cycle_win", mode = { "n", "i" } },
-            ["<C-a>"] = { "<Home>", mode = { "i" }, expr = true },
-            ["<C-e>"] = { "<End>", mode = { "i" }, expr = true },
+            ["<a-w>"] = { "cycle_win", mode = { "i", "n" } },
+            ["<C-a>"] = { "<Home>", mode = { "i" }, expr = true, desc = "start line" },
+            ["<C-e>"] = { "<End>", mode = { "i" }, expr = true, desc = "end line" },
+            ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
@@ -251,6 +259,8 @@ return {
             ["<c-k>"] = { "list_up", mode = { "i", "n" } },
             ["<c-n>"] = { "list_down", mode = { "i", "n" } },
             ["<c-p>"] = { "list_up", mode = { "i", "n" } },
+            ["<c-l>"] = { "preview_scroll_left", mode = { "i", "n" } },
+            ["<c-h>"] = { "preview_scroll_right", mode = { "i", "n" } },
             ["<c-b>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<c-d>"] = { "list_scroll_down", mode = { "i", "n" } },
             ["<c-f>"] = { "preview_scroll_down", mode = { "i", "n" } },
@@ -295,6 +305,8 @@ return {
             ["<c-a>"] = "select_all",
             ["<c-f>"] = "preview_scroll_down",
             ["<c-b>"] = "preview_scroll_up",
+            ["<c-l>"] = "preview_scroll_right",
+            ["<c-h>"] = "preview_scroll_left",
             ["<c-v>"] = "edit_vsplit",
             ["<c-s>"] = "edit_split",
             ["<c-j>"] = "list_down",
@@ -327,6 +339,9 @@ return {
       icons = {
         files = {
           enabled = true, -- show file icons
+        },
+        keymaps = {
+          nowait = "󰓅 ",
         },
         indent = {
           vertical = "│ ",
