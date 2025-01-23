@@ -20,9 +20,20 @@ local include_ft = {
   "help",
 }
 
+local plugin_ft = {
+  "oil",
+}
+
 local diffview_ft = {
   "DiffviewFiles",
   "DiffviewFileHistory",
+}
+
+local diffview_winbar = {
+  " OURS (Current changes)",
+  " THEIRS (Incoming changes)",
+  " BASE (Common ancestor)",
+  " LOCAL (Working tree)",
 }
 
 local function hl(hl_name, str)
@@ -33,7 +44,7 @@ local function hl(hl_name, str)
   return "%#" .. hl_name .. "#" .. str .. "%*"
 end
 
-M.get_filename = function()
+local get_filename = function()
   local filename = vim.fn.expand "%:t"
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
@@ -75,46 +86,48 @@ M.get_filename = function()
   return " " .. hl(hl_icon, file_icon) .. " " .. hl(hl_filename, output_filename)
 end
 
-local excludes = function()
+local use_local_winbar = function()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
   if vim.tbl_contains(include_ft, ft) then
+    return true
+  end
+
+  if vim.tbl_contains(plugin_ft, ft) then
     return false
+  end
+
+  for _, dw in ipairs(diffview_winbar) do
+    if vim.startswith(vim.wo.winbar, dw) then
+      return false
+    end
   end
 
   -- diffview://null case
   if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, ft) then
-    return false
-  end
-
-  if not f.is_empty(vim.bo.buftype) then
-    vim.b.has_local_winbar = false
-    vim.opt_local.winbar = nil
     return true
   end
 
-  return false
+  if not f.is_empty(vim.bo.buftype) then
+    vim.opt_local.winbar = nil
+    return false
+  end
+
+  return true
 end
 
-M.get_winbar = function()
+local get_winbar = function()
   if vim.b.winbar_enabled == false then
-    vim.b.has_local_winbar = false
     vim.opt_local.winbar = nil
     return
   end
 
-  -- do not replace plugin winbar
-  if not vim.b.has_local_winbar and not f.is_empty(vim.wo.winbar) then
+  if not use_local_winbar() then
     return
   end
 
-  if excludes() then
-    return
-  end
-
-  vim.b.has_local_winbar = true
-  vim.opt_local.winbar = M.get_filename()
+  vim.opt_local.winbar = get_filename()
 end
 
 M.create_winbar = function()
@@ -129,7 +142,7 @@ M.create_winbar = function()
     "TabClosed",
   }, {
     group = vim.api.nvim_create_augroup("_winbar", {}),
-    callback = M.get_winbar,
+    callback = get_winbar,
   })
 end
 
