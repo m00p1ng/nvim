@@ -3,7 +3,7 @@ local icons = require "utils.icons"
 return {
   {
     "mfussenegger/nvim-dap",
-    opts = function()
+    config = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
 

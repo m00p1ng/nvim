@@ -28,7 +28,7 @@ return {
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
-    opts = function()
+    config = function()
       -- ref: https://github.com/mfussenegger/nvim-dap-python#debugpy
       local dap_python = require "dap-python"
       dap_python.setup "~/.virtualenvs/debugpy/bin/python"
