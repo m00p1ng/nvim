@@ -185,6 +185,7 @@ return {
       { "<leader>o", group = "option" },
 
       { "<leader>p", group = "lazy" },
+      { "<leader>pp", "<cmd>Lazy<cr>", desc = "Lazy" },
       { "<leader>pc", "<cmd>Lazy check<cr>", desc = "Check" },
       { "<leader>pC", "<cmd>Lazy clean<cr>", desc = "Clean" },
       { "<leader>pi", "<cmd>Lazy install<cr>", desc = "Install" },
