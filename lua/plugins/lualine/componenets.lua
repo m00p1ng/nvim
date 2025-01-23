@@ -119,7 +119,7 @@ M.spaces = {
       return ""
     end
 
-    return hl_str(icons.ui.Tab .. shiftwidth, "SLIndent")
+    return hl_str(icons.ui.Tab .. " " .. shiftwidth, "SLIndent")
   end,
   cond = function()
     local ft = vim.bo.ft

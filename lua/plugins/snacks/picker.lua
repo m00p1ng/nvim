@@ -355,15 +355,15 @@ return {
           last = "└╴",
         },
         undo = {
-          saved = " ",
+          saved = icons.ui.Save,
         },
         ui = {
           live = "󰐰 ",
-          hidden = "h",
-          ignored = "i",
-          follow = "f",
-          selected = "● ",
-          unselected = "○ ",
+          hidden = icons.ui.Hidden,
+          ignored = icons.git.FileIgnored,
+          follow = icons.ui.Tab,
+          selected = icons.ui.Circle .. " ",
+          unselected = icons.ui.UnfilledCircle .. " ",
           -- selected = " ",
         },
         git = {

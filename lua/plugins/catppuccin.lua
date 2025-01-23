@@ -72,7 +72,7 @@ return {
         SnacksPickerDelim = { link = "LineNr" },
         SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
         SnacksInputBorder = { fg = C.blue, bg = C.mantle },
-        SnacksPickerFlag = { fg = C.mantle, bg = C.red, style = { "italic" } },
+        SnacksPickerFlag = { fg = C.red, bg = C.mantle, style = { "italic" } },
         SnacksInputTitle = { fg = C.text, bg = C.mantle, style = { "bold" } },
 
         MatchWord = { bg = C.surface1 },
