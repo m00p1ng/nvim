@@ -8,7 +8,7 @@ function _G.get_oil_winbar()
     if vim.startswith(dir, cwd) then
       local p = vim.split(cwd, "/")
       local project = p[#p]
-      name = project .. string.sub(dir, #cwd + 1, #dir)
+      name = "@" .. project .. string.sub(dir, #cwd + 1, #dir - 1)
     else
       name = vim.fn.fnamemodify(dir, ":~")
     end
@@ -17,7 +17,12 @@ function _G.get_oil_winbar()
     name = vim.api.nvim_buf_get_name(0)
   end
 
-  return "%#WinbarText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer (" .. name .. ")"
+  local title = "%#WinbarText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer"
+  if name ~= "" then
+    title = title .. " (" .. name .. ")"
+  end
+
+  return title
 end
 
 local function get_current_path()
@@ -124,20 +129,24 @@ return {
       ["`"] = { "actions.cd", mode = "n" },
       ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
       ["gs"] = { "actions.change_sort", mode = "n" },
-      ["gx"] = function()
-        local editor = { "codium", "code" }
+      ["gx"] = {
+        function()
+          local editor = { "codium", "code" }
 
-        local path = get_current_path()
-        local cmd = { "open ", path }
-        for _, v in ipairs(editor) do
-          if vim.fn.executable(v) == 1 then
-            cmd = { v, " . ", path }
-            break
+          local path = get_current_path()
+          local cmd = { "open ", path }
+          for _, v in ipairs(editor) do
+            if vim.fn.executable(v) == 1 then
+              cmd = { v, " . ", path }
+              break
+            end
           end
-        end
 
-        vim.system(cmd)
-      end,
+          vim.system(cmd)
+        end,
+        desc = "Open the entry under the cursor in an external program",
+        mode = "n",
+      },
       ["H"] = { "actions.toggle_hidden", mode = "n" },
       ["g\\"] = { "actions.toggle_trash", mode = "n" },
     },
