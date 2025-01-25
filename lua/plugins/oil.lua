@@ -284,6 +284,15 @@ return {
     end
   end,
   keys = {
-    { "-", "<cmd>Oil<cr>", { desc = "Open parent directory" } },
+    {
+      "-",
+      function()
+        if require("utils").is_ui_filetype(vim.bo.ft) then
+          return
+        end
+        vim.cmd "Oil"
+      end,
+      desc = "Open parent directory",
+    },
   },
 }
