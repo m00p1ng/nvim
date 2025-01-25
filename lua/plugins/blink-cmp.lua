@@ -31,9 +31,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
       enabled = function()
-        return not vim.tbl_contains({ "oil" }, vim.bo.filetype)
-          and vim.bo.buftype ~= "prompt"
-          and vim.b.completion ~= false
+        return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
       end,
       -- 'default' for mappings similar to built-in completion
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
