@@ -80,7 +80,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>Q", "<cmd>qall!<cr>", { desc = "Quit All" })
 vim.keymap.set("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>O", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer Only" })
-vim.keymap.set("n", "<leader>m", "<cmd>messages<cr>", { desc = "Messages" })
+vim.keymap.set("n", "<leader>M", "<cmd>messages<cr>", { desc = "Messages" })
 
 -- if vim.lsp.inlay_hint then
 --   vim.keymap.set("n", "<leader>lu", function()
