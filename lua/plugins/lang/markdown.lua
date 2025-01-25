@@ -16,9 +16,14 @@ return {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
     opts = {
-      initial_state = false,
-      headings = {
-        shift_width = 1,
+      preview = {
+        enable = true,
+        -- hybrid_modes = { "n" },
+      },
+      markdown = {
+        headings = {
+          shift_width = 1,
+        },
       },
     },
   },
@@ -27,7 +32,8 @@ return {
     opts = function()
       require("which-key").add {
         { "<leader>m", group = "Markdown" },
-        { "<leader>mt", "<cmd>Markview toggleAll<cr>", desc = "Toggle Markview", buffer = true },
+        { "<leader>mt", "<cmd>Markview<cr>", desc = "Toggle preview", buffer = true },
+        { "<leader>ms", "<cmd>Markview splitToggle<cr>", desc = "Toggle split", buffer = true },
       }
     end,
   },
