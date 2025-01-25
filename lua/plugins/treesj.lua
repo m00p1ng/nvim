@@ -36,7 +36,7 @@ return {
       function()
         require("treesj").toggle { split = { recursive = true } }
       end,
-      desc = "Toggle TSJ",
+      desc = "Toggle TSJ (Recur)",
     },
   },
 }
