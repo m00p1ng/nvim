@@ -7,11 +7,11 @@ return {
     return {
       options = {
         icons_enabled = true,
-        theme = "catppuccin-mocha",
+        theme = "mooping",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
-          statusline = { "snacks_dashboard", "dashboard" },
+          statusline = { "snacks_dashboard" },
           winbar = {},
         },
         ignore_focus = {},

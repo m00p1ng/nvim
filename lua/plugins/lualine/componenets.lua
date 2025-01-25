@@ -2,33 +2,19 @@
 M = {}
 
 local f = require "utils"
-local dark = "#181825"
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#fab387", bg = dark })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#bac2de", bg = dark, bold = false })
-vim.api.nvim_set_hl(0, "SLFiletype", { fg = "#89dceb", bg = dark })
-vim.api.nvim_set_hl(0, "SLIndent", { fg = "#a6e3a1", bg = dark })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6c7086", bg = dark, italic = true })
-vim.api.nvim_set_hl(0, "SLError", { fg = "#f38ba8", bg = dark })
-vim.api.nvim_set_hl(0, "SLWarning", { fg = "#f9e2af", bg = dark })
-vim.api.nvim_set_hl(0, "SLFileSize", { fg = "#bac2de", bg = dark })
-vim.api.nvim_set_hl(0, "SLTabs", { fg = "#a6e3a1", bg = dark })
-
-local hl_str = function(str, hl)
-  return "%#" .. hl .. "#" .. str
-end
-
+-- https://github.com/nvim-lualine/lualine.nvim/blob/2a5bae925481f999263d6f5ed8361baef8df4f83/lua/lualine/utils/mode.lua
 local mode_color = {
   n = "#8caaee",
   i = "#a6d189",
   v = "#ca9ee6",
-  [""] = "#ca9ee6",
+  ["\22"] = "#ca9ee6",
   V = "#ca9ee6",
   c = "#ef9f76",
   no = "#8caaee",
   s = "#a6d189",
   S = "#ef9f76",
-  [""] = "#ef9f76",
+  ["\19"] = "#ef9f76",
   ic = "#a6d189",
   R = "#e78284",
   Rv = "#e78284",
@@ -53,10 +39,9 @@ M.diagnostics = {
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
   symbols = {
-    error = "%#SLError#" .. icons.diagnostics.Error .. " ",
-    warn = "%#SLWarning#" .. icons.diagnostics.Warning .. " ",
+    error = icons.diagnostics.Error .. " ",
+    warn = icons.diagnostics.Warning .. " ",
   },
-  colored = false,
   update_in_insert = false,
   always_visible = true,
 }
@@ -78,21 +63,20 @@ M.filetype = {
       return ""
     end
 
-    return hl_str(str, "SLFiletype")
+    return str
   end,
   icons_enabled = false,
   cond = function()
-    local ft = vim.bo.ft
-    return not f.is_ui_filetype(ft)
+    return not f.is_ui_filetype(vim.bo.ft)
   end,
+  color = { fg = "#85c1dc" },
 }
 
 local cached_branch = ""
 M.branch = {
   "branch",
   icons_enabled = true,
-  icon = "%#SLGitIcon#" .. icons.git.Branch .. "%*" .. "%#SLBranchName#",
-  colored = false,
+  icon = { icons.git.Branch, color = { fg = "#ef9f76" } },
   fmt = function(str)
     if str == "" or str == nil then
       if cached_branch == "" then
@@ -114,30 +98,26 @@ M.branch = {
 
 M.spaces = {
   function()
-    local shiftwidth = vim.bo.shiftwidth
-    if shiftwidth == nil then
-      return ""
-    end
-
-    return hl_str(icons.ui.Tab .. " " .. shiftwidth, "SLIndent")
+    return vim.bo.shiftwidth
   end,
+  icon = icons.ui.Tab,
   cond = function()
-    local ft = vim.bo.ft
-    return not f.is_ui_filetype(ft)
+    return not f.is_ui_filetype(vim.bo.ft) and not f.is_empty(vim.bo.shiftwidth)
   end,
+  color = { fg = "#a6d189" },
 }
 
 M.location = {
   "location",
   color = function()
-    return { fg = get_mode_color(), bg = dark }
+    return { fg = get_mode_color() }
   end,
 }
 
 M.progress = {
   "progress",
   color = function()
-    return { fg = dark, bg = get_mode_color(), gui = "bold" }
+    return { fg = "#232634", bg = get_mode_color(), gui = "bold" }
   end,
 }
 
@@ -154,24 +134,23 @@ M.filesize = {
     end
 
     local format = i == 1 and "%d%s" or "%.1f%s"
-    return hl_str(string.format(format, size, suffixes[i]), "SLFilesize")
+    return string.format(format, size, suffixes[i])
   end,
   cond = function()
-    local ft = vim.bo.ft
-    return not f.is_ui_filetype(ft)
+    return not f.is_ui_filetype(vim.bo.ft)
   end,
+  color = { fg = "#b5bfe2" },
 }
 
 M.tabs = {
-  function()
-    local num_tabs = #vim.api.nvim_list_tabpages()
-
-    if num_tabs > 1 then
-      local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
-      return hl_str(" " .. tabpage_number .. "/" .. tostring(num_tabs), "SLTabs")
-    end
-
-    return ""
+  "tabs",
+  icon = "",
+  tabs_color = {
+    active = { fg = "#a6d189", bg = "#292c3d", gui = "bold" },
+    inactive = { fg = "#292c3d", bg = "#000000" },
+  },
+  cond = function()
+    return #vim.api.nvim_list_tabpages() > 1
   end,
 }
 
@@ -189,7 +168,7 @@ M.search_result = {
 M.command = {
   require("noice").api.status.command.get,
   cond = require("noice").api.status.command.has,
-  color = { fg = "#eba0ac" },
+  color = { fg = "#ea999c" },
 }
 
 M.autoformat = {
@@ -219,17 +198,16 @@ M.current_signature = {
     local sig = require("lsp_signature").status_line(30)
     local hint = sig.hint
 
-    if not f.is_empty(hint) then
-      return "%#SLSeparator# " .. hint .. "%*"
+    if f.is_empty(hint) then
+      return ""
     end
 
-    return ""
+    return hint
   end,
-  padding = 0,
   cond = function()
-    local ft = vim.bo.ft
-    return not f.is_ui_filetype(ft)
+    return not f.is_ui_filetype(vim.bo.ft)
   end,
+  color = { fg = "#626880" },
 }
 
 return M
