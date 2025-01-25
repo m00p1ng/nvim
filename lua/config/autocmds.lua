@@ -89,10 +89,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("set_tab_instead_space", { clear = true }),
-  pattern = {
-    "go",
-    "groovy",
-  },
+  pattern = "go",
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4

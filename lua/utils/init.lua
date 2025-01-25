@@ -4,7 +4,7 @@ M.ui_filetypes = {
   "help",
   "qf",
   "",
-  "notfile",
+  "nofile",
   "quickfix",
   "checkhealth",
   "lazy",
