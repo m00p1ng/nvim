@@ -41,7 +41,7 @@ return {
       -- See the full "keymap" documentation for information on defining your own keymap.
       keymap = {
         preset = "none",
-        ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-y>"] = { "show_and_insert", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
 
