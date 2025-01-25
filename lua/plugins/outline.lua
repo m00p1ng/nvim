@@ -1,3 +1,5 @@
+require("utils").add_ui_ft "Outline"
+
 local icons = require "utils.icons"
 
 return {

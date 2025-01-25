@@ -1,13 +1,6 @@
 local M = {}
 
 M.ui_filetypes = {
-  "snacks_dashboard",
-  "snacks_input",
-  "snacks_notif",
-  "snacks_notif_history",
-  "snacks_picker_input",
-  "snacks_picker_preview",
-  "snacks_picker_list",
   "help",
   "qf",
   "",
@@ -15,32 +8,19 @@ M.ui_filetypes = {
   "quickfix",
   "checkhealth",
   "lazy",
-  "NvimTree",
-  "neo-tree",
-  "neo-tree-popup",
-  "NeogitStatus",
-  "NeogitPopup",
-  "NeogitCommitPopup",
-  "NeogitCommitMessage",
-  "NeogitConsole",
-  "NeogitNotification",
-  "NeogitGitCommandHistory",
-  "DiffviewFiles",
-  "DiffviewFileHistory",
-  "Outline",
-  "lspinfo",
-  "mason",
-  "dapui_watches",
-  "dapui_stacks",
-  "dapui_breakpoints",
-  "dapui_scopes",
-  "dapui_hover",
-  "dapui_console",
-  "dap-repl",
-  "noice",
-  "oil",
-  "oil_preview",
 }
+
+M.add_ui_ft = function(...)
+  for _, v in ipairs { ... } do
+    if type(v) == "table" then
+      for j = 1, #v do
+        M.ui_filetypes[#M.ui_filetypes + 1] = v[j]
+      end
+    else
+      M.ui_filetypes[#M.ui_filetypes + 1] = v
+    end
+  end
+end
 
 M.cmd = function(args, cwd)
   local result = { stdout = {}, stderr = {} }

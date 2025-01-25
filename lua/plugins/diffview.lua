@@ -1,3 +1,5 @@
+require("utils").add_ui_ft("DiffviewFiles", "DiffviewFileHistory")
+
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },

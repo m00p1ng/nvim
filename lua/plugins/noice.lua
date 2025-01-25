@@ -1,3 +1,5 @@
+require("utils").add_ui_ft "noice"
+
 return {
   "folke/noice.nvim",
   event = "VeryLazy",

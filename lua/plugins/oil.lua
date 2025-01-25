@@ -1,3 +1,5 @@
+require("utils").add_ui_ft("oil", "oil_preview")
+
 local function get_current_path()
   local oil = require "oil"
   local dir = oil.get_current_dir()

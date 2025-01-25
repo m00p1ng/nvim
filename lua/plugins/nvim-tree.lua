@@ -1,3 +1,5 @@
+require("utils").add_ui_ft "NvimTree"
+
 local icons = require "utils.icons"
 
 return {

@@ -1,3 +1,8 @@
+require("utils").add_ui_ft(
+  "neo-tree",
+  "neo-tree-popup"
+)
+
 local icons = require "utils.icons"
 
 return {
