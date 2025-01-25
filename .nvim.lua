@@ -4,6 +4,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     "*/lua/config/options.lua",
     "*/lua/plugins/nvim-neo-tree.lua",
     "*/lua/plugins/vscode.lua",
+    "*/lua/plugins/diffview.lua",
   },
   callback = function()
     vim.b.autoformat = false

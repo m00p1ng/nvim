@@ -294,7 +294,7 @@ return {
     {
       "-",
       function()
-        if require("utils").is_ui_filetype(vim.bo.ft) then
+        if require("utils").is_ui_filetype(vim.bo.ft, { exclude = { "snacks_dashboard" } }) then
           return
         end
         vim.cmd "Oil"
