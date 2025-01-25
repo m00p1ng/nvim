@@ -21,6 +21,7 @@ local include_ft = {
 }
 
 local plugin_ft = {
+  "dap-repl",
   "oil",
 }
 

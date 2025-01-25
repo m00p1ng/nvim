@@ -7,10 +7,6 @@ vim.api.nvim_create_autocmd("FileType", {
     "help",
     "man",
     "lspinfo",
-    "snacks_notif",
-    "query",
-    "dap-repl",
-    "tsplayground",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

@@ -44,7 +44,7 @@ return {
             input = {
               keys = {
                 ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
-                ["<c-x>"] = false,
+                ["<c-x>"] = { "edit_split", mode = { "n", "i" } },
               },
             },
             list = {
@@ -63,7 +63,7 @@ return {
             input = {
               keys = {
                 ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
-                ["<c-x>"] = false,
+                ["<c-x>"] = { "edit_split", mode = { "n", "i" } },
               },
             },
             list = {
@@ -439,7 +439,7 @@ return {
     { "<leader>fH", "<cmd>lua Snacks.picker.highlights()<cr>", desc = "Highlight" },
     { "<leader>fl", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Last Search" },
     { "<leader>fm", "<cmd>lua Snacks.picker.marks()<cr>", desc = "Marks" },
-    { "<leader>fM", "<cmd>lua Snacks.picker.man_pages()<cr>", desc = "Man Pages" },
+    { "<leader>fM", "<cmd>lua Snacks.picker.man()<cr>", desc = "Man Pages" },
     { "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent File" },
     { "<leader>fR", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Registers" },
     { "<leader>fk", "<cmd>lua Snacks.picker.keymaps()<cr>", desc = "Keymaps" },

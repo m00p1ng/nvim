@@ -1,30 +1,3 @@
-local icons = require "utils.icons"
-
-function _G.get_oil_winbar()
-  local dir = require("oil").get_current_dir()
-  local name = ""
-  if dir then
-    local cwd = vim.fn.getcwd()
-    if vim.startswith(dir, cwd) then
-      local p = vim.split(cwd, "/")
-      local project = p[#p]
-      name = "@" .. project .. string.sub(dir, #cwd + 1, #dir - 1)
-    else
-      name = vim.fn.fnamemodify(dir, ":~")
-    end
-  else
-    -- If there is no current directory (e.g. over ssh), just show the buffer name
-    name = vim.api.nvim_buf_get_name(0)
-  end
-
-  local title = "%#WinbarText#" .. " " .. icons.ui.FindFile .. " " .. "File Explorer"
-  if name ~= "" then
-    title = title .. " (" .. name .. ")"
-  end
-
-  return title
-end
-
 local function get_current_path()
   local oil = require "oil"
   local dir = oil.get_current_dir()
@@ -282,6 +255,32 @@ return {
       border = "rounded",
     },
   },
+  init = function()
+    function _G.get_oil_winbar()
+      local dir = require("oil").get_current_dir()
+      local name = ""
+      if dir then
+        local cwd = vim.fn.getcwd()
+        if vim.startswith(dir, cwd) then
+          local p = vim.split(cwd, "/")
+          local project = p[#p]
+          name = "@" .. project .. string.sub(dir, #cwd + 1, #dir - 1)
+        else
+          name = vim.fn.fnamemodify(dir, ":~")
+        end
+      else
+        -- If there is no current directory (e.g. over ssh), just show the buffer name
+        name = vim.api.nvim_buf_get_name(0)
+      end
+
+      local title = "%#WinbarText#" .. " " .. require("utils.icons").ui.FindFile .. " " .. "File Explorer"
+      if name ~= "" then
+        title = title .. " (" .. name .. ")"
+      end
+
+      return title
+    end
+  end,
   keys = {
     { "-", "<cmd>Oil<cr>", { desc = "Open parent directory" } },
   },
