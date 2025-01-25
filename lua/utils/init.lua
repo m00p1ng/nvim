@@ -8,6 +8,7 @@ M.ui_filetypes = {
   "quickfix",
   "checkhealth",
   "lazy",
+  "man",
 }
 
 M.add_ui_ft = function(...)
