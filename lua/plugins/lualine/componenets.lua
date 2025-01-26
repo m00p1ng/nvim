@@ -98,9 +98,14 @@ M.branch = {
 
 M.spaces = {
   function()
-    return vim.bo.shiftwidth
+    local prefix = ""
+    if vim.bo.expandtab then
+      prefix = icons.ui.Space
+    else
+      prefix = icons.ui.Tab
+    end
+    return ("%s %s"):format(prefix, vim.bo.shiftwidth)
   end,
-  icon = icons.ui.Tab,
   cond = function()
     return not f.is_ui_filetype(vim.bo.ft) and not f.is_empty(vim.bo.shiftwidth)
   end,

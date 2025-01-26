@@ -121,6 +121,7 @@ return {
     Plus = " ",
     Project = " ",
     Search = " ",
+    Space = "󱁐",
     Tab = "󰌒",
     Table = " ",
     Target = "󰀘 ",
