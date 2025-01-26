@@ -5,7 +5,8 @@ require("utils").add_ui_ft(
   "NeogitCommitMessage",
   "NeogitConsole",
   "NeogitNotification",
-  "NeogitGitCommandHistory"
+  "NeogitGitCommandHistory",
+  "NeogitLogView"
 )
 
 local icons = require "utils.icons"
