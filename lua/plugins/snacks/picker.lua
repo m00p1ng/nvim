@@ -208,6 +208,8 @@ return {
         },
         file = {
           filename_first = true, -- display filename before the file path
+          truncate = 60, -- truncate the file path to (roughly) this length
+          filename_only = false, -- only show the filename
         },
         selected = {
           show_always = false, -- only show the selected column when there are multiple selections
