@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 require("utils").add_ui_ft "noice"
 
 return {
@@ -120,9 +121,9 @@ return {
       },
       override = {
         -- override the default lsp markdown formatter with Noice
-        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
         -- override the lsp markdown formatter with Noice
-        ["vim.lsp.util.stylize_markdown"] = true,
+        ["vim.lsp.util.stylize_markdown"] = false,
         -- override cmp documentation with Noice (needs the other options to work)
         ["cmp.entry.get_documentation"] = false,
       },
@@ -134,7 +135,7 @@ return {
         opts = {}, -- merged with defaults from documentation
       },
       signature = {
-        enabled = true,
+        enabled = false,
         auto_open = {
           enabled = false,
           trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
