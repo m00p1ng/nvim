@@ -270,9 +270,6 @@ return {
         else
           name = vim.fn.fnamemodify(dir, ":~")
         end
-      else
-        -- If there is no current directory (e.g. over ssh), just show the buffer name
-        name = vim.api.nvim_buf_get_name(0)
       end
 
       local title = "%#WinbarText#" .. " " .. require("utils.icons").ui.FindFile .. " " .. "File Explorer"

@@ -15,14 +15,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("ui_option_setup", { clear = true }),
-  pattern = f.ui_filetypes,
-  callback = function()
-    vim.opt_local.colorcolumn = {}
-  end,
-})
-
 vim.api.nvim_create_autocmd("CmdWinEnter", {
   group = vim.api.nvim_create_augroup("cmdline_mapping", { clear = true }),
   callback = function(event)
@@ -68,14 +60,6 @@ vim.api.nvim_create_autocmd("FocusGained", {
   end,
 })
 
-vim.api.nvim_create_autocmd("User", {
-  group = vim.api.nvim_create_augroup("winbar", { clear = true }),
-  pattern = "VeryLazy",
-  callback = function()
-    require("utils.winbar").create_winbar()
-  end,
-})
-
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = vim.api.nvim_create_augroup("last_loc", { clear = true }),
   callback = function()
@@ -95,5 +79,21 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 4
     vim.opt_local.softtabstop = 4
     vim.opt_local.expandtab = false
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  group = vim.api.nvim_create_augroup("very_lazy_init", { clear = true }),
+  pattern = "VeryLazy",
+  callback = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("ui_option_setup", { clear = true }),
+      pattern = f.ui_filetypes,
+      callback = function()
+        vim.opt_local.colorcolumn = {}
+      end,
+    })
+
+    require("utils.winbar").create_winbar()
   end,
 })
