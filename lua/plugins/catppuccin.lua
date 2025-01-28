@@ -70,10 +70,10 @@ return {
         SnacksPickerSpinner = { fg = C.peach },
         SnacksPickerRow = { link = "LineNr" },
         SnacksPickerDelim = { link = "LineNr" },
+        SnacksPickerFlag = { fg = C.red, bg = C.mantle, style = { "italic" } },
         SnacksInputNormal = { fg = C.subtext1, bg = C.mantle },
         SnacksInputBorder = { fg = C.blue, bg = C.mantle },
-        SnacksPickerFlag = { fg = C.red, bg = C.mantle, style = { "italic" } },
-        SnacksInputTitle = { fg = C.text, bg = C.mantle, style = { "bold" } },
+        SnacksInputTitle = { fg = C.mantle, bg = C.blue, style = { "bold" } },
 
         MatchWord = { bg = C.surface1 },
         MatchWordCur = { bg = C.surface1 },

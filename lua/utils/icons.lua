@@ -138,6 +138,7 @@ return {
     Version = "",
     Save = "",
     Hidden = "󰘓",
+    Square = "",
   },
   debug = {
     Start = "",

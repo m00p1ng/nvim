@@ -45,7 +45,7 @@ return {
       -- Highlighting mode.  'background'|'foreground'|'virtualtext'
       mode = "background", -- Set the display mode
       -- Virtualtext character to use
-      virtualtext = "■",
+      virtualtext = require("utils.icons").ui.Square,
       -- Display virtualtext inline with color.  boolean|'before'|'after'.  True sets to 'after'
       virtualtext_inline = false,
       -- Virtualtext highlight mode: 'background'|'foreground'

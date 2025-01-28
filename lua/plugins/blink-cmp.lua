@@ -97,6 +97,9 @@ return {
             components = {
               kind_icon = {
                 text = function(ctx)
+                  if ctx.kind:lower() == "color" and ctx.kind_icon == "██" then
+                    return icons.ui.Square
+                  end
                   return ctx.kind_icon
                 end,
               },
