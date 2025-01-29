@@ -1,3 +1,6 @@
+vim.g.autoformat = true
+vim.g.autoformat_ignore_filetypes = {}
+
 vim.opt.autoindent = true
 vim.opt.backspace = { 2 }
 vim.opt.backup = false                           -- creates a backup file
