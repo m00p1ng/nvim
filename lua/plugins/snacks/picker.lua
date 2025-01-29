@@ -95,9 +95,7 @@ return {
         help = {
           win = {
             preview = {
-              wo = {
-                number = false,
-              },
+              minimal = true,
             },
           },
         },
@@ -106,6 +104,11 @@ return {
         },
         pickers = {
           layout = "dropdown_fixed",
+        },
+        select = {
+          layout = {
+            preset = "dropdown_fixed",
+          },
         },
       },
       layout = {
@@ -168,22 +171,6 @@ return {
             },
           },
         },
-        select = {
-          preview = false,
-          layout = {
-            backdrop = false,
-            width = 80,
-            height = 14,
-            max_height = 14,
-            box = "vertical",
-            border = bpad.all,
-            title = " Select ",
-            title_pos = "center",
-            { win = "input", height = 1, border = "bottom" },
-            { win = "list", border = "none" },
-            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
-          },
-        },
       },
       matcher = {
         fuzzy = true, -- use fuzzy matching
@@ -214,6 +201,10 @@ return {
         selected = {
           show_always = false, -- only show the selected column when there are multiple selections
           unselected = true, -- use the unselected icon for unselected items
+        },
+        severity = {
+          icons = true, -- show severity icons
+          level = false, -- show severity level
         },
       },
       previewers = {
@@ -255,6 +246,7 @@ return {
             ["<C-a>"] = { "<Home>", mode = { "i" }, expr = true, desc = "start line" },
             ["<C-e>"] = { "<End>", mode = { "i" }, expr = true, desc = "end line" },
             ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
+            ["<S-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
             ["<C-Up>"] = { "history_back", mode = { "i", "n" } },
             ["<C-Down>"] = { "history_forward", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },

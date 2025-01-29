@@ -102,6 +102,7 @@ unshift
 upgrader
 upsert
 uuid
+vite
 websocket
 whitelist
 whitespace
