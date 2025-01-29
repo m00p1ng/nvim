@@ -127,29 +127,15 @@ M.progress = {
 }
 
 M.filesize = {
-  function()
-    local size = vim.fn.wordcount().bytes
-
-    local suffixes = { "B", "KB", "MB", "GB" }
-
-    local i = 1
-    while size > 1024 and i < #suffixes do
-      size = size / 1024
-      i = i + 1
-    end
-
-    local format = i == 1 and "%d%s" or "%.1f%s"
-    return string.format(format, size, suffixes[i])
-  end,
+  "filesize",
   cond = function()
     return not f.is_ui_filetype(vim.bo.ft)
   end,
-  color = { fg = "#b5bfe2" },
+  color = { fg = "#949cbb" },
 }
 
 M.tabs = {
   "tabs",
-  icon = "",
   tabs_color = {
     active = { fg = "#a6d189", bg = "#292c3d", gui = "bold" },
     inactive = { fg = "#292c3d", bg = "#000000" },
