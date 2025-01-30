@@ -20,6 +20,13 @@ return {
               hybridMode = false,
             },
           },
+          settings = {
+            html = {
+              format = {
+                enable = false,
+              },
+            },
+          },
         },
       },
     },
