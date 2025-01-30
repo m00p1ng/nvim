@@ -3,20 +3,11 @@ return {
   event = "BufReadPost",
   opts = {
     -- Map of filetype to formatters
-    formatters_by_ft = {
-      -- lua = { "stylua" },
-      -- Conform will run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      -- Use a sub-list to run only the first available formatter
-      -- javascript = { { "prettierd", "prettier" } },
-      -- Use the "*" filetype to run formatters on all filetypes.
-      -- Note that if you use this, you may want to set lsp_fallback = "always"
-      -- (see :help conform.format)
-      -- ["*"] = { "codespell" },
-      -- Use the "_" filetype to run formatters on all filetypes
-      -- that don't have other formatters configured. Again, you may want to
-      -- set lsp_fallback = "always" when using this value.
-      -- ["_"] = { "trim_whitespace" },
+    formatters_by_ft = {},
+    -- Set this to change the default values when calling conform.format()
+    -- This will also affect the default values for format_on_save/format_after_save
+    default_format_opts = {
+      lsp_format = "fallback",
     },
     -- If this is set, Conform will run the formatter on save.
     -- It will pass the table to conform.format().
@@ -35,13 +26,15 @@ return {
       end
 
       -- ...additional logic...
-      return { lsp_fallback = true }
+      return { lsp_format = "fallback" }
     end,
     -- Set the log level. Use `:ConformInfo` to see the location of the log file.
     log_level = vim.log.levels.ERROR,
     -- Conform will notify you when a formatter errors
     notify_on_error = true,
-    -- Define custom formatters here
+    -- Conform will notify you when no formatters are available for the buffer
+    notify_no_formatters = true,
+    -- Custom formatters and overrides for built-in formatters
     formatters = {
       black = {
         prepend_args = { "--fast", "--line-length", "120" },
