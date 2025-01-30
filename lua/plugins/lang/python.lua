@@ -23,6 +23,9 @@ return {
       formatters_by_ft = {
         python = { "black" },
       },
+      black = {
+        prepend_args = { "--fast", "--line-length", "120" },
+      },
     },
   },
   {
@@ -31,7 +34,7 @@ return {
     config = function()
       -- ref: https://github.com/mfussenegger/nvim-dap-python#debugpy
       local dap_python = require "dap-python"
-      dap_python.setup "~/.virtualenvs/debugpy/bin/python"
+      dap_python.setup "uv"
       dap_python.test_runner = "unittest"
     end,
     keys = {

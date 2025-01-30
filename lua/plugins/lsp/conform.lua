@@ -35,11 +35,7 @@ return {
     -- Conform will notify you when no formatters are available for the buffer
     notify_no_formatters = true,
     -- Custom formatters and overrides for built-in formatters
-    formatters = {
-      black = {
-        prepend_args = { "--fast", "--line-length", "120" },
-      },
-    },
+    formatters = {},
   },
   init = function()
     local function snack_toggle(buf)
