@@ -111,6 +111,7 @@ return {
           },
         },
       },
+      focus = "input",
       layout = {
         cycle = true,
         --- Use the default layout or vertical if the window is too narrow
@@ -223,6 +224,13 @@ return {
         tagstack = false, -- save the current position in the tagstack
         reuse_win = false, -- reuse an existing window if the buffer is already open
       },
+      toggles = {
+        follow = icons.ui.Tab,
+        hidden = icons.ui.Hidden,
+        ignored = icons.git.FileIgnored,
+        modified = "m",
+        regex = { icon = "R", value = false },
+      },
       win = {
         -- input window
         input = {
@@ -301,11 +309,11 @@ return {
             ["/"] = "toggle_focus",
             ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
             ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
-            ["<c-a>"] = "select_all",
+            ["<a-a>"] = "select_all",
+            ["<a-m>"] = { "toggle_maximize" },
+            ["<a-p>"] = { "toggle_preview" },
             ["<c-f>"] = "preview_scroll_down",
             ["<c-b>"] = "preview_scroll_up",
-            ["<c-l>"] = "preview_scroll_right",
-            ["<c-h>"] = "preview_scroll_left",
             ["<c-v>"] = "edit_vsplit",
             ["<c-s>"] = false,
             ["<c-x>"] = "edit_split",
@@ -315,6 +323,9 @@ return {
             ["<c-p>"] = "list_up",
             ["<a-w>"] = "cycle_win",
             ["<Esc>"] = "close",
+            ["<a-i>"] = "toggle_ignored",
+            ["<a-h>"] = "toggle_hidden",
+            ["<a-f>"] = "toggle_follow",
           },
           wo = {
             conceallevel = 2,
@@ -343,7 +354,7 @@ return {
         keymaps = {
           nowait = "󰓅 ",
         },
-        indent = {
+        tree = {
           vertical = "│ ",
           middle = "├╴",
           last = "└╴",
@@ -353,9 +364,9 @@ return {
         },
         ui = {
           live = "󰐰 ",
-          hidden = icons.ui.Hidden,
-          ignored = icons.git.FileIgnored,
-          follow = icons.ui.Tab,
+          hidden = "h",
+          ignored = "i",
+          follow = "f",
           selected = icons.ui.Circle .. " ",
           unselected = icons.ui.UnfilledCircle .. " ",
           -- selected = " ",
