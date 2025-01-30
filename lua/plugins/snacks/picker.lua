@@ -195,7 +195,7 @@ return {
         },
         file = {
           filename_first = true, -- display filename before the file path
-          truncate = 60, -- truncate the file path to (roughly) this length
+          truncate = 75, -- truncate the file path to (roughly) this length
           filename_only = false, -- only show the filename
         },
         selected = {
