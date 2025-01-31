@@ -10,11 +10,7 @@ local bpad = {
 
 local function get_ivy_preset()
   return function()
-    if vim.o.columns >= 120 then
-      return "ivy_fixed"
-    else
-      return "vertical_fixed"
-    end
+    return vim.o.columns >= 120 and "ivy_fixed" or "vertical_fixed"
   end
 end
 
@@ -223,6 +219,8 @@ return {
         jumplist = true, -- save the current position in the jumplist
         tagstack = false, -- save the current position in the tagstack
         reuse_win = false, -- reuse an existing window if the buffer is already open
+        close = true, -- close the picker when jumping/editing to a location (defaults to true)
+        match = false, -- jump to the first match position. (useful for `lines`)
       },
       toggles = {
         follow = icons.ui.Tab,
