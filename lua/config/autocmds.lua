@@ -100,7 +100,7 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("git_keymap", { clear = true }),
-  pattern = "gitcommit",
+  pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.keymap.set("i", "<C-s>", function()
       local result = vim.system({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, { text = true }):wait()
