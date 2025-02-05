@@ -354,7 +354,7 @@ return {
         },
         tree = {
           vertical = "│ ",
-          middle = "├╴",
+          middle = "│ ",
           last = "└╴",
         },
         undo = {
