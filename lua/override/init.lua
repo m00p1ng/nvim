@@ -14,6 +14,7 @@ return {
   -- { import = "plugins.lang.nix" },
   -- { import = "plugins.lang.python" },
   -- { import = "plugins.lang.tailwind" },
+  -- { import = "plugins.lang.toml" },
   -- { import = "plugins.lang.typescript" },
   -- { import = "plugins.lang.vue" },
   -- { import = "plugins.lang.yaml" },

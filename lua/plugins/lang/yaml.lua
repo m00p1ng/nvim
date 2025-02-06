@@ -5,6 +5,7 @@ return {
       servers = {
         yamlls = {
           settings = {
+            redhat = { telemetry = { enabled = false } },
             yaml = {
               hover = true,
               completion = true,
