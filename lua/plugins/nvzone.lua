@@ -3,7 +3,6 @@ require("utils").add_ui_ft "typr"
 return {
   {
     "nvzone/typr",
-    enabled = false,
     dependencies = "nvzone/volt",
     opts = {
       insert_on_start = true,
@@ -11,6 +10,18 @@ return {
       wpm_goal = 60,
     },
     cmd = { "Typr", "TyprStats" },
+  },
+  {
+    "nvzone/typr",
+    opts = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("setup_typr", { clear = true }),
+        pattern = "typr",
+        callback = function()
+          vim.b.completion = false
+        end,
+      })
+    end,
   },
 
   {
