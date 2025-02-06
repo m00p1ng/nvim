@@ -3,7 +3,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        pyright = {},
+        basedpyright = {},
+        ruff = {},
       },
     },
   },
@@ -11,22 +12,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "python" } },
-  },
-  {
-    "williamboman/mason.nvim",
-    opts_extend = { "ensure_installed" },
-    opts = { ensure_installed = { "black" } },
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        python = { "black" },
-      },
-      black = {
-        prepend_args = { "--fast", "--line-length", "120" },
-      },
-    },
   },
   {
     "mfussenegger/nvim-dap-python",
