@@ -88,4 +88,15 @@ return {
       }
     end,
   },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        kulala_ls = {
+          mason = false,
+        },
+      },
+    },
+  },
 }
