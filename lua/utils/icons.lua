@@ -55,6 +55,7 @@ return {
     Repo = "",
     Octoface = " ",
     Branch = "",
+    Commit = "󰜘",
   },
   ui = {
     Archive = "",

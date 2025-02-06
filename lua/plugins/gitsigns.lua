@@ -79,5 +79,6 @@ return {
       desc = "Stage Hunk",
       mode = "v",
     },
+    { "ih", "<cmd>Gitsigns select_hunk<CR>", "Select hunk", mode = { "o", "x" } },
   },
 }

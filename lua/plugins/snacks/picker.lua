@@ -101,11 +101,6 @@ return {
         pickers = {
           layout = "dropdown_fixed",
         },
-        select = {
-          layout = {
-            preset = "dropdown_fixed",
-          },
-        },
       },
       focus = "input",
       layout = {
@@ -168,6 +163,24 @@ return {
             },
           },
         },
+        select = {
+          layout = {
+            backdrop = false,
+            width = 80,
+            height = 14,
+            min_height = 14,
+            border = "none",
+            box = "vertical",
+            {
+              box = "vertical",
+              border = bpad.all,
+              title = " {title} {live} {flags}",
+              title_pos = "center",
+              { win = "input", height = 1, border = "bottom" },
+              { win = "list", border = "none" },
+            },
+          },
+        },
       },
       matcher = {
         fuzzy = true, -- use fuzzy matching
@@ -180,6 +193,7 @@ return {
         -- so this can have a performance impact for large lists and increase memory usage
         cwd_bonus = false, -- give bonus for matching files in the cwd
         frecency = false, -- frecency bonus
+        history_bonus = false, -- give more weight to chronological order
       },
       sort = {
         -- default sort is by score, text length and index
@@ -243,8 +257,6 @@ return {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<S-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
             ["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
-            ["<ScrollWheelDown>"] = { "list_scroll_wheel_down", mode = { "i", "n" } },
-            ["<ScrollWheelUp>"] = { "list_scroll_wheel_up", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
             ["<Up>"] = { "list_up", mode = { "i", "n" } },
             ["<a-a>"] = { "select_all", mode = { "n", "i" } },
@@ -270,6 +282,15 @@ return {
             ["<c-x>"] = { "edit_split", mode = { "i", "n" } },
             ["<c-u>"] = { "list_scroll_up", mode = { "i", "n" } },
             ["<c-v>"] = { "edit_vsplit", mode = { "i", "n" } },
+            ["<c-_>"] = { "toggle_help_list", mode = { "i", "n" } },
+            ["<c-z>h"] = { "layout_left", mode = { "i", "n" } },
+            ["<c-z><c-h>"] = { "layout_left", mode = { "i", "n" } },
+            ["<c-z>j"] = { "layout_bottom", mode = { "i", "n" } },
+            ["<c-z><c-j>"] = { "layout_bottom", mode = { "i", "n" } },
+            ["<c-z>k"] = { "layout_top", mode = { "i", "n" } },
+            ["<c-z><c-k>"] = { "layout_top", mode = { "i", "n" } },
+            ["<c-z>l"] = { "layout_right", mode = { "i", "n" } },
+            ["<c-z><c-l>"] = { "layout_right", mode = { "i", "n" } },
             ["?"] = false,
             ["G"] = false,
             ["gg"] = false,
@@ -291,8 +312,6 @@ return {
             ["<Esc>"] = "close",
             ["<S-CR>"] = { { "pick_win", "jump" } },
             ["<S-Tab>"] = { "select_and_prev", mode = { "n", "x" } },
-            ["<ScrollWheelDown>"] = "list_scroll_wheel_down",
-            ["<ScrollWheelUp>"] = "list_scroll_wheel_up",
             ["<Tab>"] = { "select_and_next", mode = { "n", "x" } },
             ["<Up>"] = "list_up",
             ["<a-d>"] = "inspect",
@@ -314,6 +333,14 @@ return {
             ["<c-x>"] = "edit_split",
             ["<c-u>"] = "list_scroll_up",
             ["<c-v>"] = "edit_vsplit",
+            ["<c-z>h"] = { "layout_left", mode = { "i", "n" } },
+            ["<c-z><c-h>"] = { "layout_left", mode = { "i", "n" } },
+            ["<c-z>j"] = { "layout_bottom", mode = { "i", "n" } },
+            ["<c-z><c-j>"] = { "layout_bottom", mode = { "i", "n" } },
+            ["<c-z>k"] = { "layout_top", mode = { "i", "n" } },
+            ["<c-z><c-k>"] = { "layout_top", mode = { "i", "n" } },
+            ["<c-z>l"] = { "layout_right", mode = { "i", "n" } },
+            ["<c-z><c-l>"] = { "layout_right", mode = { "i", "n" } },
             ["?"] = "toggle_help_list",
             ["G"] = "list_bottom",
             ["gg"] = "list_top",
@@ -371,7 +398,7 @@ return {
         },
         git = {
           enabled = true, -- show git icons
-          commit = "󰜘 ", -- used by git log
+          commit = icons.git.Commit, -- used by git log
           staged = icons.git.FileStaged, -- staged changes. always overrides the type icons
           added = icons.git.FileUntracked,
           deleted = icons.git.FileDeleted,
@@ -431,6 +458,8 @@ return {
       debug = {
         scores = false, -- show scores in the list
         leaks = false, -- show when pickers don't get garbage collected
+        explorer = false, -- show explorer debug info
+        files = false, -- show file debug info
       },
     },
   },
