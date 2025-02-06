@@ -11,9 +11,9 @@ return {
     ui = {
       border = "rounded",
       icons = {
-        package_installed = icons.ui.FilledCircle,
-        package_pending = icons.ui.FilledCircle,
-        package_uninstalled = icons.ui.FilledCircle,
+        package_installed = icons.ui.Circle,
+        -- package_pending = "➜",
+        package_uninstalled = icons.ui.UnfilledCircle,
       },
     },
     log_level = vim.log.levels.INFO,
