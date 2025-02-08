@@ -100,14 +100,6 @@ return {
         NvimTreeGitDirty = { fg = C.yellow },
         NvimTreeEndOfBuffer = { fg = C.mantle },
 
-        NeoTreeFileName = { fg = C.subtext1 },
-        NeoTreeDirectoryName = { fg = C.subtext1, style = { "bold" } },
-        NeoTreeNormal = { fg = C.subtext1 },
-        NeoTreeIndentMarker = { fg = C.surface0 },
-        NeoTreeGitAdded = { fg = C.green },
-        NeoTreeGitUntracked = { fg = C.green },
-        NeoTreeGitUnstaged = { fg = C.yellow },
-
         OilDir = { link = "Directory", style = { "bold" } },
         OilDirIcon = { link = "Directory" },
         OilFile = { fg = C.subtext1 },
