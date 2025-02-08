@@ -22,12 +22,17 @@ return {
     end,
   },
 
-  { "tzachar/cmp-tabnine", event = "InsertEnter", build = "./install.sh" },
-
   {
     "saghen/blink.cmp",
-    dependencies = { "tzachar/cmp-tabnine" },
+    dependencies = { "tzachar/cmp-tabnine", build = "./install.sh" },
     opts = {
+      keymap = {
+        ["<a-y>"] = {
+          function(cmp)
+            cmp.show { providers = { "tabnine" } }
+          end,
+        },
+      },
       sources = {
         default = { "tabnine" },
         providers = {

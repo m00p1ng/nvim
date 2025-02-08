@@ -49,12 +49,15 @@ return {
     },
   },
 
-  { "giuxtaposition/blink-cmp-copilot", event = "InsertEnter" },
-
   {
     "saghen/blink.cmp",
     dependencies = { "giuxtaposition/blink-cmp-copilot" },
     opts = {
+      ["<a-y>"] = {
+        function(cmp)
+          cmp.show { providers = { "copilot" } }
+        end,
+      },
       sources = {
         default = { "copilot" },
         providers = {
