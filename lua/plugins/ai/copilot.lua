@@ -53,10 +53,12 @@ return {
     "saghen/blink.cmp",
     dependencies = { "giuxtaposition/blink-cmp-copilot" },
     opts = {
-      ["<a-y>"] = {
-        function(cmp)
-          cmp.show { providers = { "copilot" } }
-        end,
+      keymap = {
+        ["<a-y>"] = {
+          function(cmp)
+            cmp.show { providers = { "copilot" } }
+          end,
+        },
       },
       sources = {
         default = { "copilot" },
