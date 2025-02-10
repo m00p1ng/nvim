@@ -86,10 +86,22 @@ vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("very_lazy_init", { clear = true }),
   pattern = "VeryLazy",
   callback = function()
-    vim.api.nvim_create_autocmd("FileType", {
-      group = vim.api.nvim_create_augroup("ui_option_setup", { clear = true }),
-      pattern = f.ui_filetypes,
+    vim.api.nvim_create_autocmd("InsertEnter", {
+      group = vim.api.nvim_create_augroup("set_color_column", { clear = true }),
       callback = function()
+        if f.is_ui_filetype(vim.bo.ft) then
+          return
+        end
+        vim.opt_local.colorcolumn = { "80", "100", "120" }
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("InsertLeave", {
+      group = vim.api.nvim_create_augroup("unset_color_column", { clear = true }),
+      callback = function()
+        if f.is_ui_filetype(vim.bo.ft) then
+          return
+        end
         vim.opt_local.colorcolumn = {}
       end,
     })
