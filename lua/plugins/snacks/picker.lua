@@ -208,6 +208,7 @@ return {
           filename_first = true, -- display filename before the file path
           truncate = 75, -- truncate the file path to (roughly) this length
           filename_only = false, -- only show the filename
+          icon_width = 2, -- width of the icon (in characters)
         },
         selected = {
           show_always = false, -- only show the selected column when there are multiple selections
@@ -216,6 +217,8 @@ return {
         severity = {
           icons = true, -- show severity icons
           level = false, -- show severity level
+          ---@type "left"|"right"
+          pos = "left", -- position of the diagnostics
         },
       },
       previewers = {
@@ -455,11 +458,19 @@ return {
           Variable = icons.kind.Variable .. " ",
         },
       },
+      db = {
+        -- path to the sqlite3 library
+        -- If not set, it will try to load the library by name.
+        -- On Windows it will download the library from the internet.
+        sqlite3_path = nil, ---@type string?
+      },
       debug = {
         scores = false, -- show scores in the list
         leaks = false, -- show when pickers don't get garbage collected
         explorer = false, -- show explorer debug info
         files = false, -- show file debug info
+        grep = false, -- show file debug info
+        extmarks = false, -- show extmarks errors
       },
     },
   },
