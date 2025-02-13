@@ -350,6 +350,7 @@ return {
           wo = {
             conceallevel = 2,
             concealcursor = "nvc",
+            scrolloff = 1,
           },
         },
         -- preview window
