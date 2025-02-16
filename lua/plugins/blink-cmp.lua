@@ -65,20 +65,11 @@ return {
 
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-        cmdline = {
+      },
+      cmdline = {
+        keymap = {
           preset = "none",
-          ["<CR>"] = {
-            function(cmp)
-              vim.schedule(function()
-                cmp.accept {
-                  callback = function()
-                    vim.api.nvim_feedkeys("\n", "n", true)
-                  end,
-                }
-              end)
-            end,
-            "fallback",
-          },
+          ["<CR>"] = { "accept_and_enter", "fallback" },
           ["<Tab>"] = { "select_next", "fallback" },
           ["<S-Tab>"] = { "select_prev", "fallback" },
 
