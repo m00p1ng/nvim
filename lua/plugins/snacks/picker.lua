@@ -201,6 +201,7 @@ return {
           truncate = 75, -- truncate the file path to (roughly) this length
           filename_only = false, -- only show the filename
           icon_width = 2, -- width of the icon (in characters)
+          git_status_hl = true, -- use the git status highlight group for the filename
         },
         selected = {
           show_always = false, -- only show the selected column when there are multiple selections
@@ -216,6 +217,7 @@ return {
       previewers = {
         git = {
           native = false, -- use native (terminal) or Neovim for previewing git diffs and commits
+          args = {}, -- additional arguments passed to the git command. Useful to set pager options usin `-c ...`
         },
         file = {
           max_size = 1024 * 1024, -- 1MB
@@ -324,18 +326,16 @@ return {
             ["<c-k>"] = "list_up",
             ["<c-n>"] = "list_down",
             ["<c-p>"] = "list_up",
+            ["<c-q>"] = "qflist",
             ["<c-s>"] = false,
             ["<c-x>"] = "edit_split",
+            ["<c-t>"] = "tab",
             ["<c-u>"] = "list_scroll_up",
             ["<c-v>"] = "edit_vsplit",
-            ["<c-z>h"] = { "layout_left", mode = { "i", "n" } },
-            ["<c-z><c-h>"] = { "layout_left", mode = { "i", "n" } },
-            ["<c-z>j"] = { "layout_bottom", mode = { "i", "n" } },
-            ["<c-z><c-j>"] = { "layout_bottom", mode = { "i", "n" } },
-            ["<c-z>k"] = { "layout_top", mode = { "i", "n" } },
-            ["<c-z><c-k>"] = { "layout_top", mode = { "i", "n" } },
-            ["<c-z>l"] = { "layout_right", mode = { "i", "n" } },
-            ["<c-z><c-l>"] = { "layout_right", mode = { "i", "n" } },
+            ["<c-w>H"] = "layout_left",
+            ["<c-w>J"] = "layout_bottom",
+            ["<c-w>K"] = "layout_top",
+            ["<c-w>L"] = "layout_right",
             ["?"] = "toggle_help_list",
             ["G"] = "list_bottom",
             ["gg"] = "list_top",
@@ -371,6 +371,9 @@ return {
       icons = {
         files = {
           enabled = true, -- show file icons
+          dir = "󰉋 ",
+          dir_open = "󰝰 ",
+          file = "󰈔 ",
         },
         keymaps = {
           nowait = "󰓅 ",
@@ -409,6 +412,12 @@ return {
           Warn = icons.diagnostics.BoldWarning .. " ",
           Hint = icons.diagnostics.BoldHint .. " ",
           Info = icons.diagnostics.BoldHint .. " ",
+        },
+        lsp = {
+          unavailable = "",
+          enabled = " ",
+          disabled = " ",
+          attached = "󰖩 ",
         },
         kinds = {
           Array = icons.kind.Array .. " ",
@@ -463,6 +472,7 @@ return {
         explorer = false, -- show explorer debug info
         files = false, -- show file debug info
         grep = false, -- show file debug info
+        proc = false, -- show proc debug info
         extmarks = false, -- show extmarks errors
       },
     },
