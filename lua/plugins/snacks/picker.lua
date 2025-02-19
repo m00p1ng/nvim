@@ -215,6 +215,10 @@ return {
         },
       },
       previewers = {
+        diff = {
+          native = false, -- use native (terminal) or Neovim for previewing git diffs and commits
+          cmd = { "delta" }, -- example to show a diff with delta
+        },
         git = {
           native = false, -- use native (terminal) or Neovim for previewing git diffs and commits
           args = {}, -- additional arguments passed to the git command. Useful to set pager options usin `-c ...`
@@ -277,17 +281,14 @@ return {
             ["<c-q>"] = { "qflist", mode = { "i", "n" } },
             ["<c-s>"] = false,
             ["<c-x>"] = { "edit_split", mode = { "i", "n" } },
+            ["<c-t>"] = { "tab", mode = { "n", "i" } },
             ["<c-u>"] = { "list_scroll_up", mode = { "i", "n" } },
             ["<c-v>"] = { "edit_vsplit", mode = { "i", "n" } },
             ["<c-_>"] = { "toggle_help_list", mode = { "i", "n" } },
-            ["<c-z>h"] = { "layout_left", mode = { "i", "n" } },
-            ["<c-z><c-h>"] = { "layout_left", mode = { "i", "n" } },
-            ["<c-z>j"] = { "layout_bottom", mode = { "i", "n" } },
-            ["<c-z><c-j>"] = { "layout_bottom", mode = { "i", "n" } },
-            ["<c-z>k"] = { "layout_top", mode = { "i", "n" } },
-            ["<c-z><c-k>"] = { "layout_top", mode = { "i", "n" } },
-            ["<c-z>l"] = { "layout_right", mode = { "i", "n" } },
-            ["<c-z><c-l>"] = { "layout_right", mode = { "i", "n" } },
+            ["<c-w>H"] = "layout_left",
+            ["<c-w>J"] = "layout_bottom",
+            ["<c-w>K"] = "layout_top",
+            ["<c-w>L"] = "layout_right",
             ["?"] = false,
             ["G"] = false,
             ["gg"] = false,
