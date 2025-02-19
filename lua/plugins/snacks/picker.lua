@@ -101,6 +101,9 @@ return {
         pickers = {
           layout = "dropdown_fixed",
         },
+        lsp_config = {
+          attached = 0,
+        },
       },
       focus = "input",
       layout = {
@@ -520,6 +523,7 @@ return {
     { "<leader>lw", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Workspace Diagnostics" },
     { "<leader>ls", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Document Symbols" },
     { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
+    { "<leader>li", "<cmd>lua Snacks.picker.lsp_config()<cr>", desc = "LSP Config (Buffer)" },
   },
 }
 
