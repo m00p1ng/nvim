@@ -88,9 +88,6 @@ return {
             components = {
               kind_icon = {
                 text = function(ctx)
-                  if ctx.kind:lower() == "color" and ctx.kind_icon == "██" then
-                    return icons.ui.Square
-                  end
                   return ctx.kind_icon
                 end,
               },
@@ -173,6 +170,9 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         providers = {
+          lsp = {
+            opts = { tailwind_color_icon = icons.ui.Square },
+          },
           snippets = {
             opts = {
               search_paths = {
