@@ -519,7 +519,7 @@ return {
     -- Git --
     { "<leader>go", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Open changed file" },
     { "<leader>gb", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout branch" },
-    -- { "<leader>gB", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout branch" },
+    { "<leader>gB", "<cmd>lua Snacks.picker.git_branches({ all = true })<cr>", desc = "Checkout branch (all)" },
     { "<leader>gl", "<cmd>lua Snacks.picker.git_log_file()<cr>", desc = "Log (Buffer)" },
     { "<leader>gL", "<cmd>lua Snacks.picker.git_log()<cr>", desc = "Log" },
 
