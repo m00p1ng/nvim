@@ -80,6 +80,7 @@ return {
           ["<C-j>"] = { "select_prev", "fallback" },
           ["<C-k>"] = { "select_next", "fallback" },
         },
+        completion = { menu = { auto_show = true } },
       },
       completion = {
         menu = {
