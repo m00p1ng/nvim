@@ -37,14 +37,13 @@ function M.get()
   M._keys = {
     { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
     { "gd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Goto Definition", has = "definition" },
-    { "gi", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
-    { "gr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "References",nowait = true },
+    { "gri", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
+    { "grr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "References",nowait = true },
+    { "gra", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+    { "grn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
     { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
     { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
     { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-    { "<leader>a", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
-    { "<leader>ll", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "v" }, has = "codeLens"  },
-    { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
     { "<leader>lq", vim.diagnostic.setloclist, desc = "Quickfix" },
   }
 

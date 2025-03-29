@@ -30,8 +30,65 @@ return {
           prev = "[c",
         },
       },
+      -- Integration with https://github.com/nvim-neotest/neotest
       neotest = {
         enabled = false,
+        keymaps = {
+          test = {
+            next = "]t",
+            prev = "[t",
+          },
+          failed_test = {
+            next = "]T",
+            prev = "[T",
+          },
+        },
+      },
+      -- Integration with https://github.com/lervag/vimtex
+      vimtex = {
+        enabled = false,
+        keymaps = {
+          section_start = {
+            next = "]]",
+            prev = "[[",
+          },
+          section_end = {
+            next = "][",
+            prev = "[]",
+          },
+          frame_start = {
+            next = "]r",
+            prev = "[r",
+          },
+          frame_end = {
+            next = "]R",
+            prev = "[R",
+          },
+          math_start = {
+            next = "]n",
+            prev = "[n",
+          },
+          math_end = {
+            next = "]N",
+            prev = "[N",
+          },
+          comment_start = {
+            next = "]/",
+            prev = "[/",
+          },
+          comment_end = {
+            next = "]*",
+            prev = "[*",
+          },
+          environment_start = {
+            next = "]m",
+            prev = "[m",
+          },
+          environment_end = {
+            next = "]M",
+            prev = "[M",
+          },
+        },
       },
     },
   },

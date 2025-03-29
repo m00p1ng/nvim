@@ -66,8 +66,6 @@ vim.keymap.set("n", "L", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 -- Navigate Tabs
 vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Comment --
 vim.keymap.set("n", "<localleader>e", "<cmd>normal gcc<cr>", { desc = "Toggle Comment" })
