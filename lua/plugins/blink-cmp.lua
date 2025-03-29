@@ -80,7 +80,19 @@ return {
           ["<C-j>"] = { "select_prev", "fallback" },
           ["<C-k>"] = { "select_next", "fallback" },
         },
-        completion = { menu = { auto_show = true } },
+        completion = {
+          menu = {
+            auto_show = true,
+          },
+          list = {
+            selection = {
+              preselect = false,
+            },
+          },
+          ghost_text = {
+            enabled = false,
+          },
+        },
       },
       completion = {
         menu = {
@@ -103,9 +115,7 @@ return {
         },
         list = {
           selection = {
-            preselect = function(ctx)
-              return ctx.mode ~= "cmdline"
-            end,
+            preselect = true,
           },
         },
         ghost_text = {
