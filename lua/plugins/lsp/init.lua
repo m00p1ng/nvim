@@ -27,6 +27,14 @@ return {
           header = "",
           -- prefix = "",
         },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+          },
+        },
       },
       -- LSP Server Settings
       ---@type lspconfig.options
@@ -47,17 +55,6 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(plugin, opts)
-      local signs = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-      }
-
-      for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-      end
-
       -- setup keymaps
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
@@ -68,10 +65,6 @@ return {
       })
 
       -- diagnostics
-      -- for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do
-      --   name = "DiagnosticSign" .. name
-      --   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-      -- end
       vim.diagnostic.config(opts.diagnostics)
 
       -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
