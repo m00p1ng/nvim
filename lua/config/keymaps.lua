@@ -59,17 +59,9 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Se
 -- vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "Decrease Window Width" })
 -- vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "Increase Window Width" })
 
--- Navigate buffers
-vim.keymap.set("n", "H", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "L", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-
 -- Navigate Tabs
 vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-
--- Comment --
-vim.keymap.set("n", "<localleader>e", "<cmd>normal gcc<cr>", { desc = "Toggle Comment" })
-vim.keymap.set("v", "<localleader>e", "<cmd>normal gc<cr>", { desc = "Toggle Comment" })
 
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })

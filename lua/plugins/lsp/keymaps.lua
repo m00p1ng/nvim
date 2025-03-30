@@ -39,10 +39,10 @@ function M.get()
     { "gd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Goto Definition", has = "definition" },
     { "gri", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
     { "grr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "References",nowait = true },
-    { "gra", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
-    { "grn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
+    -- { "gra", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
+    -- { "grn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
     { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-    { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+    -- { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
     { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
     { "<leader>lq", vim.diagnostic.setloclist, desc = "Quickfix" },
   }

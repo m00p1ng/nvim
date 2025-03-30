@@ -6,7 +6,7 @@ return {
     animation = {
       enabled = true,
       duration = 300,
-      animtion_type = "zoom",
+      animation_type = "zoom",
       window_scoped = true,
     },
     highlights = {
@@ -69,58 +69,6 @@ return {
       end,
       mode = "n",
       desc = "Paste above with highlight",
-      noremap = true,
-    },
-    {
-      "n",
-      function()
-        require("undo-glow").search_next {
-          animation = {
-            animation_type = "strobe",
-          },
-        }
-      end,
-      mode = "n",
-      desc = "Search next with highlight",
-      noremap = true,
-    },
-    {
-      "N",
-      function()
-        require("undo-glow").search_prev {
-          animation = {
-            animation_type = "strobe",
-          },
-        }
-      end,
-      mode = "n",
-      desc = "Search prev with highlight",
-      noremap = true,
-    },
-    {
-      "*",
-      function()
-        require("undo-glow").search_star {
-          animation = {
-            animation_type = "strobe",
-          },
-        }
-      end,
-      mode = "n",
-      desc = "Search star with highlight",
-      noremap = true,
-    },
-    {
-      "#",
-      function()
-        require("undo-glow").search_hash {
-          animation = {
-            animation_type = "strobe",
-          },
-        }
-      end,
-      mode = "n",
-      desc = "Search hash with highlight",
       noremap = true,
     },
     {
