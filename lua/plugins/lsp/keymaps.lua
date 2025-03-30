@@ -11,7 +11,6 @@ M.capabilities = vim.tbl_deep_extend(
   has_lsp_file and lsp_file.default_capabilities() or {},
   {
     textDocument = {
-      completion = { completionItem = { snippetSupport = true } },
       -- for ufo plugin
       foldingRange = {
         dynamicRegistration = false,
@@ -43,6 +42,9 @@ function M.get()
     -- { "grn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
     { "gs", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
     -- { "<c-s>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+
+    -- replacing `open_float` with `virtual_lines`
+    -- ref: https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual/
     { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
     { "<leader>lq", vim.diagnostic.setloclist, desc = "Quickfix" },
   }

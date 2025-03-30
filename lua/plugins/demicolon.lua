@@ -11,7 +11,7 @@ return {
       -- Create t/T/f/F key mappings
       horizontal_motions = true,
       -- Create ]d/[d, etc. key mappings to jump to diagnostics. See demicolon.keymaps.create_default_diagnostic_keymaps
-      diagnostic_motions = true,
+      diagnostic_motions = false,
       -- Create ; and , key mappings
       repeat_motions = true,
       -- Create ]q/[q/]<C-q>/[<C-q> and ]l/[l/]<C-l>/[<C-l> quickfix and location list mappings
