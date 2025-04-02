@@ -3,6 +3,7 @@ require("utils").add_ui_ft "typr"
 return {
   {
     "nvzone/typr",
+    enabled = false,
     dependencies = "nvzone/volt",
     opts = {
       insert_on_start = true,
@@ -26,6 +27,7 @@ return {
 
   {
     "nvzone/showkeys",
+    enabled = false,
     cmd = "ShowkeysToggle",
   },
 
