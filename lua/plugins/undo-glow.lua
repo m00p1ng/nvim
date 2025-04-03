@@ -45,7 +45,7 @@ return {
       noremap = true,
     },
     {
-      "U",
+      "<c-r>",
       function()
         require("undo-glow").redo()
       end,
