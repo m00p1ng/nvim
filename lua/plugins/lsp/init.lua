@@ -17,9 +17,10 @@ return {
       diagnostics = {
         underline = true,
         update_in_insert = true,
-        virtual_text = {
-          current_line = true,
-        },
+        -- virtual_text = {
+        --   current_line = true,
+        -- },
+        virtual_text = true,
         severity_sort = true,
         float = {
           border = "rounded",
