@@ -122,6 +122,6 @@ vim.api.nvim_create_autocmd("FileType", {
       end
       local branch = vim.trim(result.stdout)
       vim.api.nvim_feedkeys(branch, "i", false)
-    end, { expr = true })
+    end, { expr = true, buffer = true })
   end,
 })
