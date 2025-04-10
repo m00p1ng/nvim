@@ -19,6 +19,7 @@ return {
         "mkv",
         "webm",
         "pdf",
+        "svg",
       },
       force = false, -- try displaying the image, even if the terminal does not support it
       doc = {
@@ -35,7 +36,13 @@ return {
         max_width = 80,
         max_height = 40,
         -- Set to `true`, to conceal the image text when rendering inline.
-        conceal = false, -- (experimental)
+        -- (experimental)
+        ---@param lang string tree-sitter language
+        ---@param type snacks.image.Type image type
+        conceal = function(lang, type)
+          -- only conceal math expressions
+          return type == "math"
+        end,
       },
       img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments" },
       -- window options applied to windows displaying image buffers
@@ -58,12 +65,22 @@ return {
         placement = false,
       },
       env = {},
+      -- icons used to show where an inline image is located that is
+      -- rendered below the text.
+      icons = {
+        math = "󰪚 ",
+        chart = "󰄧 ",
+        image = " ",
+      },
+      ---@class snacks.image.convert.Config
       convert = {
         notify = true, -- show a notification on error
+        ---@type snacks.image.args
         mermaid = function()
           local theme = vim.o.background == "light" and "neutral" or "dark"
           return { "-i", "{src}", "-o", "{file}", "-b", "transparent", "-t", theme, "-s", "{scale}" }
         end,
+        ---@type table<string,snacks.image.args>
         magick = {
           default = { "{src}[0]", "-scale", "1920x1080>" }, -- default for raster images
           vector = { "-density", 192, "{src}[0]" }, -- used by vector images like svg
@@ -91,7 +108,7 @@ return {
           -- but you can add more packages here. Useful for markdown documents.
           packages = { "amsmath", "amssymb", "amsfonts", "amscd", "mathtools" },
           tpl = [[
-        \documentclass[preview,border=2pt,varwidth,12pt]{standalone}
+        \documentclass[preview,border=0pt,varwidth,12pt]{standalone}
         \usepackage{${packages}}
         \begin{document}
         ${header}
