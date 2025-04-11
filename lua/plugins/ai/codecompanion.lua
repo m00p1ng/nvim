@@ -8,6 +8,7 @@ return {
 
   {
     "OXY2DEV/markview.nvim",
+    optional = true,
     opts_extend = { "preview.filetypes" },
     opts = {
       preview = {
@@ -18,6 +19,7 @@ return {
 
   {
     "saghen/blink.cmp",
+    optional = true,
     opts = {
       sources = {
         per_filetype = {

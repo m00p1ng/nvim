@@ -24,6 +24,7 @@ return {
 
   {
     "saghen/blink.cmp",
+    optional = true,
     dependencies = { "tzachar/cmp-tabnine", build = "./install.sh" },
     opts = {
       keymap = {
@@ -57,6 +58,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    optional = true,
     opts = function(_, opts)
       local text_func = opts.completion.menu.draw.components.kind_icon.text
 
