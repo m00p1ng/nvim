@@ -1,3 +1,6 @@
+require("utils").add_ui_ft("Avante", "AvanteInput", "AvanteSelectedFiles")
+require("utils.winbar").add_plugin_winbar("Avante", "AvanteInput", "AvanteSelectedFiles")
+
 return {
   {
     "yetone/avante.nvim",
@@ -15,7 +18,9 @@ return {
     opts = {
       preview = {
         filetypes = { "Avante" },
+        ignore_buftypes = {},
       },
+      max_length = 99999,
     },
   },
 }
