@@ -23,4 +23,5 @@ return {
   -- { import = "plugins.ai.llm" },
   -- { import = "plugins.ai.copilot" },
   -- { import = "plugins.ai.tabnine" },
+  -- { import = "plugins.ai.codecompanion" },
 }

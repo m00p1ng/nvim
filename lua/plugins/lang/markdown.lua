@@ -14,11 +14,13 @@ return {
   },
   {
     "OXY2DEV/markview.nvim",
-    ft = "markdown",
+    lazy = false,
+    opts_extend = { "preview.filetypes" },
     opts = {
       preview = {
         enable = true,
         -- hybrid_modes = { "n" },
+        filetypes = { "markdown" },
       },
       markdown = {
         headings = {
@@ -27,14 +29,14 @@ return {
       },
     },
   },
-  {
-    "OXY2DEV/markview.nvim",
-    opts = function()
-      require("which-key").add {
-        { "<leader>m", group = "Markdown" },
-        { "<leader>mt", "<cmd>Markview<cr>", desc = "Toggle preview", buffer = true },
-        { "<leader>ms", "<cmd>Markview splitToggle<cr>", desc = "Toggle split", buffer = true },
-      }
-    end,
-  },
+  -- {
+  --   "OXY2DEV/markview.nvim",
+  --   opts = function()
+  --     require("which-key").add {
+  --       { "<leader>m", group = "Markdown" },
+  --       { "<leader>mt", "<cmd>Markview<cr>", desc = "Toggle preview", buffer = true },
+  --       { "<leader>ms", "<cmd>Markview splitToggle<cr>", desc = "Toggle split", buffer = true },
+  --     }
+  --   end,
+  -- },
 }

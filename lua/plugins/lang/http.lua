@@ -9,7 +9,7 @@ return {
 
   {
     "mistweaverco/kulala.nvim",
-    ft = "http",
+    ft = {"http", "rest"},
     opts = {
       -- cURL path
       -- if you have curl installed in a non-standard path,
