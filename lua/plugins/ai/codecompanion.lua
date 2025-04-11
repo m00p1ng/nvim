@@ -13,6 +13,7 @@ return {
     opts = {
       preview = {
         filetypes = { "codecompanion" },
+        ignore_buftypes = {},
       },
     },
   },

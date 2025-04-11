@@ -1,11 +1,11 @@
 {
   "Navigator.nvim": { "branch": "master", "commit": "91d86506ac2a039504d5205d32a1d4bc7aa57072" },
   "SchemaStore.nvim": { "branch": "main", "commit": "992285058ce208825eb1b9ac82fa6be7d76ffcc1" },
-  "avante.nvim": { "branch": "main", "commit": "e295fe82f0714188615a524604bdaccd266ced35" },
   "blink-cmp-copilot": { "branch": "main", "commit": "439cff78780c033aa23cf061d7315314b347e3c1" },
   "blink.cmp": { "branch": "main", "commit": "cb5e346d9e0efa7a3eee7fd4da0b690c48d2a98e" },
   "blink.compat": { "branch": "main", "commit": "2ed6d9a28b07fa6f3bface818470605f8896408c" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
+  "codecompanion.nvim": { "branch": "main", "commit": "35b11dc4b292519a5c09fb2c0c0e8a8832e9e821" },
   "conform.nvim": { "branch": "master", "commit": "eebc724d12c5579d733d1f801386e0ceb909d001" },
   "copilot.lua": { "branch": "master", "commit": "2378a40e9cecbf3720b6f4f3d5d6b6d8994bd321" },
   "demicolon.nvim": { "branch": "main", "commit": "eed33fc75e7af0aacd283c613d4500b188d62169" },
