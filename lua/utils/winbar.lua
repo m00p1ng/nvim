@@ -20,13 +20,19 @@ local include_ft = {
   "help",
 }
 
-local plugin_ft = {
-  "dap-repl",
-  "oil",
-  "json.kulala_ui",
-  "text.kulala_ui",
-  "kulala_verbose_result.kulala_ui",
-}
+M.plugin_ft = {}
+
+M.add_plugin_winbar = function(...)
+  for _, v in ipairs { ... } do
+    if type(v) == "table" then
+      for j = 1, #v do
+        M.plugin_ft[#M.plugin_ft + 1] = v[j]
+      end
+    else
+      M.plugin_ft[#M.plugin_ft + 1] = v
+    end
+  end
+end
 
 local diffview_ft = {
   "DiffviewFiles",
@@ -98,7 +104,7 @@ local use_local_winbar = function()
     return true
   end
 
-  if vim.tbl_contains(plugin_ft, ft) then
+  if vim.tbl_contains(M.plugin_ft, ft) then
     return false
   end
 

@@ -1,4 +1,5 @@
 require("utils").add_ui_ft("oil", "oil_preview")
+require("utils.winbar").add_plugin_winbar "oil"
 
 local function get_current_path()
   local oil = require "oil"

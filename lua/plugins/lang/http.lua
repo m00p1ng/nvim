@@ -1,4 +1,13 @@
-require("utils").add_ui_ft("json.kulala_ui", "text.kulala_ui", "kulala_verbose_result.kulala_ui")
+require("utils").add_ui_ft(
+  "json.kulala_ui",
+  "text.kulala_ui",
+  "kulala_verbose_result.kulala_ui"
+)
+require("utils.winbar").add_plugin_winbar(
+  "json.kulala_ui",
+  "text.kulala_ui",
+  "kulala_verbose_result.kulala_ui"
+)
 
 return {
   {
