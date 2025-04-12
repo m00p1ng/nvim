@@ -230,7 +230,7 @@ return {
     })
 
     require("which-key").add {
-      { "<leader>r", group = "Overserr" },
+      { "<leader>r", group = "Overseer" },
     }
   end,
   keys = {
