@@ -41,3 +41,6 @@ luac.out
 
 .DS_Store
 .repro
+
+override/
+!override/example.lua
