@@ -1,4 +1,6 @@
 return {
+  -- { import = "plugins.lang.english" },
+
   -- Lang
   -- { import = "plugins.lang.bash" },
   -- { import = "plugins.lang.css" },
