@@ -41,12 +41,16 @@ return {
       { "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", desc = "Breakpoint" },
       {
         "<leader>dB",
-        "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+        function()
+          require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
+        end,
         desc = "Conditional breakpoint",
       },
       {
         "<leader>dL",
-        "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+        function()
+          require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+        end,
         desc = "Log breakpoint",
       },
       { "<leader>dc", "<cmd>lua require('dap').continue()<cr>", desc = "Continue" },
