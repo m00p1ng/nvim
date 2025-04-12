@@ -69,6 +69,9 @@ return {
       cmdline = {
         keymap = {
           preset = "none",
+          ["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
+          ["<C-e>"] = { "hide", "fallback" },
+
           ["<CR>"] = { "accept_and_enter", "fallback" },
           ["<Tab>"] = { "select_next", "fallback" },
           ["<S-Tab>"] = { "select_prev", "fallback" },

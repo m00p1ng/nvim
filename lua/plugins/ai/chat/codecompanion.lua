@@ -9,6 +9,7 @@ return {
   {
     "OXY2DEV/markview.nvim",
     optional = true,
+    ft = { "codecompanion" },
     opts_extend = { "preview.filetypes" },
     opts = {
       preview = {

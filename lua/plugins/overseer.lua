@@ -228,6 +228,10 @@ return {
         vim.b[event.buf].completion = false
       end,
     })
+
+    require("which-key").add {
+      { "<leader>r", group = "Overserr" },
+    }
   end,
   keys = {
     { "<leader>rr", "<cmd>OverseerRun<cr>", desc = "Overseer: Run" },
