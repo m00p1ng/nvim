@@ -3,7 +3,19 @@ require("utils").add_ui_ft "codecompanion"
 return {
   {
     "olimorris/codecompanion.nvim",
-    opts = {},
+    opts = {
+      display = {
+        chat = {
+          window = {
+            width = 0.3,
+            opts = {
+              number = false,
+            },
+          },
+          start_in_insert_mode = true,
+        },
+      },
+    },
   },
 
   {
