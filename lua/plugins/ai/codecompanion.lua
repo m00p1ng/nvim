@@ -19,7 +19,7 @@ return {
     init = function()
       vim.api.nvim_create_autocmd("User", {
         pattern = "VeryLazy",
-        command = "ab Chat CodeCompanion",
+        command = "cab cc CodeCompanion",
         group = vim.api.nvim_create_augroup("CodeCompanion_ab", { clear = true }),
       })
     end,

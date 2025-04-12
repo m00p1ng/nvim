@@ -209,7 +209,7 @@ return {
   init = function()
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
-      command = "ab Dopen DiffviewOpen",
+      command = "cab dopen DiffviewOpen",
       group = vim.api.nvim_create_augroup("Diffview_ab", { clear = true }),
     })
   end,
