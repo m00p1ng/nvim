@@ -14,7 +14,6 @@ return {
   {
     "OXY2DEV/markview.nvim",
     optional = true,
-    ft = { "Avante" },
     opts_extend = { "preview.filetypes" },
     opts = {
       preview = {

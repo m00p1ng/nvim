@@ -14,12 +14,11 @@ return {
   },
   {
     "OXY2DEV/markview.nvim",
-    ft = { "markdown" },
+    lazy = false,
     opts_extend = { "preview.filetypes" },
     opts = {
       preview = {
         enable = true,
-        hybrid_modes = { "n", "i" },
         filetypes = { "markdown" },
       },
       markdown = {
