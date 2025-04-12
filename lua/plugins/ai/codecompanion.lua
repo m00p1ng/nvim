@@ -3,6 +3,7 @@ require("utils").add_ui_ft "codecompanion"
 return {
   {
     "olimorris/codecompanion.nvim",
+    event = "VeryLazy",
     opts = {
       display = {
         chat = {
@@ -15,6 +16,13 @@ return {
         },
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        command = "ab Chat CodeCompanion",
+        group = vim.api.nvim_create_augroup("CodeCompanion_ab", { clear = true }),
+      })
+    end,
     keys = {
       { "<leader>ao", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion: Chat" },
       { "<leader>aa", "<cmd>CodeCompanionChat Add<cr>", desc = "CodeCompanion: Add", mode = { "n", "v" } },
