@@ -25,8 +25,6 @@ return {
   -- { import = "plugins.ai.llm" },
   -- { import = "plugins.ai.copilot" },
   -- { import = "plugins.ai.tabnine" },
-
-  -- AI Chat
-  -- { import = "plugins.ai.chat.avante" },
-  -- { import = "plugins.ai.chat.codecompanion" },
+  --
+  -- { import = "plugins.ai.codecompanion" },
 }
