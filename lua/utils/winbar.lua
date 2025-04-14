@@ -22,7 +22,7 @@ local include_ft = {
 
 local plugin_ft = {}
 
-M.add_plugin_winbar = function(...)
+M.add_plugin = function(...)
   f.append_table(plugin_ft, ...)
 end
 

@@ -7,7 +7,7 @@ require("utils").add_ui_ft {
   "dapui_console",
   "dap-repl",
 }
-require("utils.winbar").add_plugin_winbar "dap-repl"
+require("utils.winbar").add_plugin "dap-repl"
 
 local icons = require "utils.icons"
 
