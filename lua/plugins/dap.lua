@@ -1,14 +1,3 @@
-require("utils").add_ui_ft {
-  "dapui_watches",
-  "dapui_stacks",
-  "dapui_breakpoints",
-  "dapui_scopes",
-  "dapui_hover",
-  "dapui_console",
-  "dap-repl",
-}
-require("utils.winbar").add_plugin "dap-repl"
-
 local icons = require "utils.icons"
 
 return {
@@ -130,6 +119,10 @@ return {
       },
       windows = { indent = 1 },
     },
+    init = function()
+      require("utils").add_ui_ft "dap-repl"
+      require("utils.winbar").add_plugin "dap-repl"
+    end,
     keys = {
       { "<leader>de", "<cmd>lua require('dapui').eval()<cr>", desc = "Eval" },
       { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "UI" },
@@ -151,6 +144,24 @@ return {
           vim.keymap.set("i", "<C-l>", "<esc><C-w>l", opts)
         end,
       })
+    end,
+    init = function()
+      require("utils").add_ui_ft {
+        "dapui_watches",
+        "dapui_stacks",
+        "dapui_breakpoints",
+        "dapui_scopes",
+        "dapui_hover",
+        "dapui_console",
+      }
+      local winbar = require "utils.winbar"
+      winbar.add_include_ft {
+        "dapui_breakpoints",
+        "dapui_scopes",
+        "dapui_stacks",
+        "dapui_watches",
+        "dapui_console",
+      }
     end,
   },
 

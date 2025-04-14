@@ -12,13 +12,12 @@ local dap_icons = {
 }
 
 local include_ft = {
-  "dapui_breakpoints",
-  "dapui_scopes",
-  "dapui_stacks",
-  "dapui_watches",
-  "dapui_console",
   "help",
 }
+
+M.add_include_ft = function(...)
+  f.append_table(include_ft, ...)
+end
 
 local plugin_ft = {}
 
