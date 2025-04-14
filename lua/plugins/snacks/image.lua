@@ -20,6 +20,7 @@ return {
         "webm",
         "pdf",
         "svg",
+        "mmd",
       },
       force = false, -- try displaying the image, even if the terminal does not support it
       doc = {
