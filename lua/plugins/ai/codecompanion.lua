@@ -1,3 +1,17 @@
+local handle_codecompaion = function(buf, wins)
+  local markview = require "markview"
+
+  local ft = vim.bo[buf].ft
+  if ft == "codecompanion" then
+    vim.opt_local.fillchars = { eob = " " }
+    markview.actions.hybridDisable(buf)
+
+    for _, win in ipairs(wins) do
+      vim.api.nvim_set_option_value("winhl", "Normal:NvimTreeNormal", { win = win })
+    end
+  end
+end
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -61,15 +75,22 @@ return {
         modes = { "i" },
         hybrid_modes = { "i" },
         callbacks = {
+          on_enable = function(buf, wins)
+            for _, win in ipairs(wins) do
+              vim.wo[win].conceallevel = 3
+            end
+
+            handle_codecompaion(buf, wins)
+          end,
           on_mode_change = function(buf, wins, current_mode)
             local markview = require "markview"
 
             local ft = vim.bo[buf].ft
             if ft == "markdown" then
               markview.actions.disable(buf)
-            elseif ft == "codecompanion" then
-              markview.actions.hybridDisable(buf)
             end
+
+            handle_codecompaion(buf, wins)
           end,
         },
       },
