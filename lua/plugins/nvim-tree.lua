@@ -1,6 +1,17 @@
 require("utils").add_ui_ft "NvimTree"
 
 local icons = require "utils.icons"
+local open_prog = function()
+  local editor = { "codium", "code" }
+
+  for _, v in ipairs(editor) do
+    if vim.fn.executable(v) == 1 then
+      return v
+    end
+  end
+
+  return "open"
+end
 
 return {
   "nvim-tree/nvim-tree.lua",
@@ -136,7 +147,7 @@ return {
       },
     },
     system_open = {
-      cmd = "codium",
+      cmd = open_prog(),
       args = { "." },
     },
     git = {
