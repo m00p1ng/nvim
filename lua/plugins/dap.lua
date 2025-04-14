@@ -1,12 +1,12 @@
-require("utils").add_ui_ft(
+require("utils").add_ui_ft {
   "dapui_watches",
   "dapui_stacks",
   "dapui_breakpoints",
   "dapui_scopes",
   "dapui_hover",
   "dapui_console",
-  "dap-repl"
-)
+  "dap-repl",
+}
 require("utils.winbar").add_plugin_winbar "dap-repl"
 
 local icons = require "utils.icons"

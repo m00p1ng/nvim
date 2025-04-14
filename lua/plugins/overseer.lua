@@ -1,4 +1,7 @@
-require("utils").add_ui_ft("OverseerForm", "OverseerList")
+require("utils").add_ui_ft {
+  "OverseerForm",
+  "OverseerList",
+}
 
 return {
   "stevearc/overseer.nvim",

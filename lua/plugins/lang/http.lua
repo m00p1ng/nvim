@@ -1,15 +1,15 @@
-require("utils").add_ui_ft(
+require("utils").add_ui_ft {
   "json.kulala_ui",
   "text.kulala_ui",
   "markdown.kulala_ui",
-  "kulala_verbose_result.kulala_ui"
-)
-require("utils.winbar").add_plugin_winbar(
+  "kulala_verbose_result.kulala_ui",
+}
+require("utils.winbar").add_plugin_winbar {
   "json.kulala_ui",
   "text.kulala_ui",
   "markdown.kulala_ui",
-  "kulala_verbose_result.kulala_ui"
-)
+  "kulala_verbose_result.kulala_ui",
+}
 
 return {
   {
@@ -20,7 +20,7 @@ return {
 
   {
     "mistweaverco/kulala.nvim",
-    ft = {"http", "rest"},
+    ft = { "http", "rest" },
     opts = {
       -- cURL path
       -- if you have curl installed in a non-standard path,
@@ -142,56 +142,236 @@ return {
       -- or override default keymaps as shown in the example below.
       ---@type boolean|table
       global_keymaps = {
-        ["Open scratchpad"] = { "<leader>Rb", function() require("kulala").scratchpad() end, },
-        ["Open kulala"] = { "<leader>Ro", function() require("kulala").open() end, },
+        ["Open scratchpad"] = {
+          "<leader>Rb",
+          function()
+            require("kulala").scratchpad()
+          end,
+        },
+        ["Open kulala"] = {
+          "<leader>Ro",
+          function()
+            require("kulala").open()
+          end,
+        },
 
-        ["Toggle headers/body"] = { "<leader>mt", function() require("kulala").toggle_view() end, ft = { "http", "rest" }, },
-        ["Show stats"] = { "<leader>mS", function() require("kulala").show_stats() end, ft = { "http", "rest" }, },
+        ["Toggle headers/body"] = {
+          "<leader>mt",
+          function()
+            require("kulala").toggle_view()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Show stats"] = {
+          "<leader>mS",
+          function()
+            require("kulala").show_stats()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Close window"] = { "<leader>mq", function() require("kulala").close() end, ft = { "http", "rest" }, },
+        ["Close window"] = {
+          "<leader>mq",
+          function()
+            require("kulala").close()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Copy as cURL"] = { "<leader>mc", function() require("kulala").copy() end, ft = { "http", "rest" }, },
-        ["Paste from curl"] = { "<leader>mf", function() require("kulala").from_curl() end, ft = { "http", "rest" }, },
+        ["Copy as cURL"] = {
+          "<leader>mc",
+          function()
+            require("kulala").copy()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Paste from curl"] = {
+          "<leader>mf",
+          function()
+            require("kulala").from_curl()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Send request"] = { "<leader>mr", function() require("kulala").run() end, mode = { "n", "v" }, ft = { "http", "rest" }, },
-        ["Send request <cr>"] = { "<CR>", function() require("kulala").run() end, mode = { "n", "v" }, ft = { "http", "rest" }, },
-        ["Send all requests"] = { "<leader>ma", function() require("kulala").run_all() end, mode = { "n", "v" }, ft = { "http", "rest" }, },
+        ["Send request"] = {
+          "<leader>mr",
+          function()
+            require("kulala").run()
+          end,
+          mode = { "n", "v" },
+          ft = { "http", "rest" },
+        },
+        ["Send request <cr>"] = {
+          "<CR>",
+          function()
+            require("kulala").run()
+          end,
+          mode = { "n", "v" },
+          ft = { "http", "rest" },
+        },
+        ["Send all requests"] = {
+          "<leader>ma",
+          function()
+            require("kulala").run_all()
+          end,
+          mode = { "n", "v" },
+          ft = { "http", "rest" },
+        },
 
-        ["Inspect current request"] = { "<leader>mi", function() require("kulala").inspect() end, ft = { "http", "rest" }, },
-        ["Replay the last request"] = { "<leader>ml", function() require("kulala").replay() end, ft = { "http", "rest" },},
+        ["Inspect current request"] = {
+          "<leader>mi",
+          function()
+            require("kulala").inspect()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Replay the last request"] = {
+          "<leader>ml",
+          function()
+            require("kulala").replay()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Find request"] = { "<leader>mm", function() require("kulala").search() end, ft = { "http", "rest" }, },
-        ["Jump to next request"] = { "[r", function() require("kulala").jump_next() end, ft = { "http", "rest" }, },
-        ["Jump to previous request"] = { "]r", function() require("kulala").jump_prev() end, ft = { "http", "rest" }, },
+        ["Find request"] = {
+          "<leader>mm",
+          function()
+            require("kulala").search()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Jump to next request"] = {
+          "[r",
+          function()
+            require("kulala").jump_next()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Jump to previous request"] = {
+          "]r",
+          function()
+            require("kulala").jump_prev()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Select environment"] = { "<leader>me", function() require("kulala").set_selected_env() end, ft = { "http", "rest" }, },
-        ["Download GraphQL schema"] = { "<leader>mg", function() require("kulala").download_graphql_schema() end, ft = { "http", "rest" }, },
+        ["Select environment"] = {
+          "<leader>me",
+          function()
+            require("kulala").set_selected_env()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Download GraphQL schema"] = {
+          "<leader>mg",
+          function()
+            require("kulala").download_graphql_schema()
+          end,
+          ft = { "http", "rest" },
+        },
 
-        ["Clear globals"] = { "<leader>mx", function() require("kulala").scripts_clear_global() end, ft = { "http", "rest" } },
-        ["Clear cached files"] = { "<leader>mX", function() require("kulala").clear_cached_files() end, ft = { "http", "rest" }, },
+        ["Clear globals"] = {
+          "<leader>mx",
+          function()
+            require("kulala").scripts_clear_global()
+          end,
+          ft = { "http", "rest" },
+        },
+        ["Clear cached files"] = {
+          "<leader>mX",
+          function()
+            require("kulala").clear_cached_files()
+          end,
+          ft = { "http", "rest" },
+        },
       },
 
       -- Kulala UI keymaps, override with custom keymaps as required (check docs or {plugins_path}/kulala.nvim/lua/kulala/config/keymaps.lua for details)
       ---@type boolean|table
       kulala_keymaps = {
-        ["Show headers"] = { "H", function() require("kulala.ui").show_headers() end, },
-        ["Show body"] = { "B", function() require("kulala.ui").show_body() end, },
-        ["Show headers and body"] = { "A", function() require("kulala.ui").show_headers_body() end, },
-        ["Show verbose"] = { "X", function() require("kulala.ui").show_verbose() end, },
+        ["Show headers"] = {
+          "H",
+          function()
+            require("kulala.ui").show_headers()
+          end,
+        },
+        ["Show body"] = {
+          "B",
+          function()
+            require("kulala.ui").show_body()
+          end,
+        },
+        ["Show headers and body"] = {
+          "A",
+          function()
+            require("kulala.ui").show_headers_body()
+          end,
+        },
+        ["Show verbose"] = {
+          "X",
+          function()
+            require("kulala.ui").show_verbose()
+          end,
+        },
 
-        ["Show script output"] = { "O", function() require("kulala.ui").show_script_output() end, },
-        ["Show stats"] = { "S", function() require("kulala.ui").show_stats() end, },
-        ["Show report"] = { "R", function() require("kulala.ui").show_report() end, },
+        ["Show script output"] = {
+          "O",
+          function()
+            require("kulala.ui").show_script_output()
+          end,
+        },
+        ["Show stats"] = {
+          "S",
+          function()
+            require("kulala.ui").show_stats()
+          end,
+        },
+        ["Show report"] = {
+          "R",
+          function()
+            require("kulala.ui").show_report()
+          end,
+        },
 
-        ["Next response"] = { "]", function() require("kulala.ui").show_next() end, },
-        ["Previous response"] = { "[", function() require("kulala.ui").show_previous() end, },
-        ["Jump to response"] = { "<CR>", function() require("kulala.ui").jump_to_response() end, },
+        ["Next response"] = {
+          "]",
+          function()
+            require("kulala.ui").show_next()
+          end,
+        },
+        ["Previous response"] = {
+          "[",
+          function()
+            require("kulala.ui").show_previous()
+          end,
+        },
+        ["Jump to response"] = {
+          "<CR>",
+          function()
+            require("kulala.ui").jump_to_response()
+          end,
+        },
 
-        ["Clear responses history"] = { "K", function() require("kulala.ui").clear_responses_history() end, },
+        ["Clear responses history"] = {
+          "K",
+          function()
+            require("kulala.ui").clear_responses_history()
+          end,
+        },
 
-        ["Show help"] = { "?", function() require("kulala.ui").show_help() end, },
-        ["Close"] = { "q", function() require("kulala.ui").close_kulala_buffer() end, },
-      }
+        ["Show help"] = {
+          "?",
+          function()
+            require("kulala.ui").show_help()
+          end,
+        },
+        ["Close"] = {
+          "q",
+          function()
+            require("kulala.ui").close_kulala_buffer()
+          end,
+        },
+      },
     },
   },
   {

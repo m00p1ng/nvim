@@ -1,4 +1,7 @@
-require("utils").add_ui_ft("DiffviewFiles", "DiffviewFileHistory")
+require("utils").add_ui_ft{
+  "DiffviewFiles",
+  "DiffviewFileHistory",
+}
 
 return {
   "sindrets/diffview.nvim",
