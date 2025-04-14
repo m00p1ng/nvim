@@ -12,13 +12,17 @@ M.ui_filetypes = {
 }
 
 M.add_ui_ft = function(...)
+  M.append_table(M.ui_filetypes, ...)
+end
+
+M.append_table = function(t, ...)
   for _, v in ipairs { ... } do
     if type(v) == "table" then
       for j = 1, #v do
-        M.ui_filetypes[#M.ui_filetypes + 1] = v[j]
+        t[#t + 1] = v[j]
       end
     else
-      M.ui_filetypes[#M.ui_filetypes + 1] = v
+      t[#t + 1] = v
     end
   end
 end

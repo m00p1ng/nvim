@@ -20,18 +20,10 @@ local include_ft = {
   "help",
 }
 
-M.plugin_ft = {}
+local plugin_ft = {}
 
 M.add_plugin_winbar = function(...)
-  for _, v in ipairs { ... } do
-    if type(v) == "table" then
-      for j = 1, #v do
-        M.plugin_ft[#M.plugin_ft + 1] = v[j]
-      end
-    else
-      M.plugin_ft[#M.plugin_ft + 1] = v
-    end
-  end
+  f.append_table(plugin_ft, ...)
 end
 
 local diffview_ft = {
@@ -104,7 +96,7 @@ local use_local_winbar = function()
     return true
   end
 
-  if vim.tbl_contains(M.plugin_ft, ft) then
+  if vim.tbl_contains(plugin_ft, ft) then
     return false
   end
 
