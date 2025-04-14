@@ -20,6 +20,18 @@ return {
       preview = {
         enable = true,
         filetypes = { "markdown" },
+        modes = { "n", "no", "c" },
+        hybrid_modes = { "n" },
+        callbacks = {
+          on_mode_change = function(buf, wins, current_mode)
+            local markview = require "markview"
+
+            local ft = vim.bo[buf].ft
+            if ft == "markdown" then
+              markview.actions.disable(buf)
+            end
+          end,
+        },
       },
       markdown = {
         headings = {

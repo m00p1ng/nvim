@@ -37,11 +37,29 @@ return {
   {
     "OXY2DEV/markview.nvim",
     optional = true,
-    opts_extend = { "preview.filetypes" },
+    opts_extend = {
+      "preview.filetypes",
+      "preview.modes",
+      "preview.hybrid_modes",
+    },
     opts = {
       preview = {
         filetypes = { "codecompanion" },
         ignore_buftypes = {},
+        modes = { "i" },
+        hybrid_modes = { "i" },
+        callbacks = {
+          on_mode_change = function(buf, wins, current_mode)
+            local markview = require "markview"
+
+            local ft = vim.bo[buf].ft
+            if ft == "markdown" then
+              markview.actions.disable(buf)
+            elseif ft == "codecompanion" then
+              markview.actions.hybridDisable(buf)
+            end
+          end,
+        },
       },
     },
   },

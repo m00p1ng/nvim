@@ -119,6 +119,10 @@ local use_local_winbar = function()
     return true
   end
 
+  if vim.startswith(full_filename, "[CodeCompanion]") then
+    return true
+  end
+
   if not f.is_empty(vim.bo.buftype) then
     vim.opt_local.winbar = nil
     return false
