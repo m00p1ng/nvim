@@ -220,7 +220,9 @@ return {
       "DiffviewFiles",
       "DiffviewFileHistory",
     }
-    require("utils.winbar").add_show_cond(function(opts)
+
+    local winbar = require "utils.winbar"
+    winbar.add_show_cond(function(opts)
       for _, dw in ipairs(diffview_winbar) do
         if vim.startswith(vim.wo.winbar, dw) then
           return false
@@ -232,6 +234,21 @@ return {
         return true
       end
     end)
+    winbar.add_rename_cond(
+      function(opts)
+        if vim.startswith(opts.full_filename, "diffview") then
+          local paths = vim.split(opts.full_filename, ".git", { plain = true })
+          if #paths >= 2 then
+            return {
+              filename = paths[2],
+              output_filename = "diffview:/" .. opts.filename
+            }
+          end
+
+          return nil
+        end
+      end
+    )
 
     vim.cmd.cab {"dopen", "DiffviewOpen"}
   end,

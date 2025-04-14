@@ -146,6 +146,14 @@ return {
       })
     end,
     init = function()
+      local dap_icons = {
+        dapui_breakpoints = icons.ui.Bug,
+        dapui_stacks = icons.ui.Stacks,
+        dapui_scopes = icons.ui.Scopes,
+        dapui_watches = icons.ui.Watches,
+        dapui_console = icons.ui.Terminal,
+      }
+
       require("utils").add_ui_ft {
         "dapui_watches",
         "dapui_stacks",
@@ -162,6 +170,14 @@ return {
         "dapui_watches",
         "dapui_console",
       }
+      winbar.add_rename_cond(function(opts)
+        if vim.startswith(opts.filename, "DAP") then
+          return {
+            file_icon = vim.tbl_get(dap_icons, opts.ft) or "",
+            output_filename = vim.split(opts.filename, " ")[2],
+          }
+        end
+      end)
     end,
   },
 

@@ -3,26 +3,25 @@ local icons = require "utils.icons"
 
 local M = {}
 
-local dap_icons = {
-  dapui_breakpoints = icons.ui.Bug,
-  dapui_stacks = icons.ui.Stacks,
-  dapui_scopes = icons.ui.Scopes,
-  dapui_watches = icons.ui.Watches,
-  dapui_console = icons.ui.Terminal,
-}
-
-local include_ft = {
-  "help",
-}
+local include_ft = { "help" }
+local plugin_ft = {}
+local show_winbar_conds = {}
+local rename_conds = {}
 
 M.add_include_ft = function(...)
   f.append_table(include_ft, ...)
 end
 
-local plugin_ft = {}
-
 M.add_plugin = function(...)
   f.append_table(plugin_ft, ...)
+end
+
+M.add_show_cond = function(cond)
+  table.insert(show_winbar_conds, cond)
+end
+
+M.add_rename_cond = function(cond)
+  table.insert(rename_conds, cond)
 end
 
 local function hl(hl_name, str)
@@ -33,7 +32,7 @@ local function hl(hl_name, str)
   return "%#" .. hl_name .. "#" .. str .. "%*"
 end
 
-local get_filename = function()
+local _get_filename = function()
   local filename = vim.fn.expand "%:t"
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
@@ -47,38 +46,61 @@ local get_filename = function()
     output_filename = "[No Name]"
   end
 
-  if vim.startswith(full_filename, "diffview") then
-    local paths = vim.split(full_filename, ".git", { plain = true })
-    if #paths >= 2 then
-      filename = paths[2]
-      output_filename = "diffview:/" .. filename
+  for _, cond in ipairs(rename_conds) do
+    local c = cond {
+      ft = ft,
+      filename = filename,
+      full_filename = full_filename,
+    }
+
+    if c ~= nil then
+      return {
+        file_icon = c.file_icon or file_icon,
+        hl_icon = c.hl_icon or hl_icon,
+        output_filename = c.output_filename or output_filename,
+        hl_filename = c.hl_filename or hl_filename,
+      }
     end
   end
 
-  if vim.startswith(filename, "DAP") then
-    file_icon = vim.tbl_get(dap_icons, ft) or ""
-    output_filename = vim.split(filename, " ")[2]
-  elseif ft == "help" then
-    hl_icon = "WinbarModified"
-    file_icon = icons.git.Repo
-    output_filename = "Help: " .. filename
-  elseif vim.bo.modified then
-    hl_filename = "WinbarModified"
-    hl_icon = "WinbarModified"
-    file_icon = icons.ui.Circle
-  elseif vim.bo.readonly then
-    hl_filename = "LspDiagnosticsError"
-    hl_icon = "WinbarModified"
-    file_icon = icons.ui.Lock
+  if ft == "help" then
+    return {
+      file_icon = icons.git.Repo,
+      hl_icon = "WinbarModified",
+      output_filename = "Help: " .. filename,
+      hl_filename = hl_filename,
+    }
   end
 
-  return " " .. hl(hl_icon, file_icon) .. " " .. hl(hl_filename, output_filename)
+  if vim.bo.modified then
+    return {
+      file_icon = icons.ui.Circle,
+      hl_icon = "WinbarModified",
+      output_filename = output_filename,
+      hl_filename = "WinbarModified",
+    }
+  end
+
+  if vim.bo.readonly then
+    return {
+      file_icon = icons.ui.Lock,
+      hl_icon = "WinbarModified",
+      output_filename = output_filename,
+      hl_filename = "LspDiagnosticsError",
+    }
+  end
+
+  return {
+    file_icon = file_icon,
+    hl_icon = hl_icon,
+    output_filename = output_filename,
+    hl_filename = hl_filename,
+  }
 end
 
-local show_winbar_conds = {}
-
-M.add_show_cond = function(cond)
-  table.insert(show_winbar_conds, cond)
+local get_filename = function()
+  local opts = _get_filename()
+  return " " .. hl(opts.hl_icon, opts.file_icon) .. " " .. hl(opts.hl_filename, opts.output_filename)
 end
 
 local use_local_winbar = function()
