@@ -26,18 +26,6 @@ M.add_plugin_winbar = function(...)
   f.append_table(plugin_ft, ...)
 end
 
-local diffview_ft = {
-  "DiffviewFiles",
-  "DiffviewFileHistory",
-}
-
-local diffview_winbar = {
-  " OURS (Current changes)",
-  " THEIRS (Incoming changes)",
-  " BASE (Common ancestor)",
-  " LOCAL (Working tree)",
-}
-
 local function hl(hl_name, str)
   if f.is_empty(hl_name) then
     return str
@@ -88,6 +76,12 @@ local get_filename = function()
   return " " .. hl(hl_icon, file_icon) .. " " .. hl(hl_filename, output_filename)
 end
 
+local show_winbar_conds = {}
+
+M.add_show_cond = function(cond)
+  table.insert(show_winbar_conds, cond)
+end
+
 local use_local_winbar = function()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
@@ -100,19 +94,14 @@ local use_local_winbar = function()
     return false
   end
 
-  for _, dw in ipairs(diffview_winbar) do
-    if vim.startswith(vim.wo.winbar, dw) then
-      return false
+  for _, cond in ipairs(show_winbar_conds) do
+    local c = cond {
+      ft = ft,
+      full_filename = full_filename,
+    }
+    if c ~= nil then
+      return c
     end
-  end
-
-  -- diffview://null case
-  if vim.startswith(full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, ft) then
-    return true
-  end
-
-  if vim.startswith(full_filename, "[CodeCompanion]") then
-    return true
   end
 
   if not f.is_empty(vim.bo.buftype) then

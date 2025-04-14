@@ -1,8 +1,3 @@
-require("utils").add_ui_ft{
-  "DiffviewFiles",
-  "DiffviewFileHistory",
-}
-
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
@@ -210,11 +205,35 @@ return {
     }
   end,
   init = function()
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "VeryLazy",
-      command = "cab dopen DiffviewOpen",
-      group = vim.api.nvim_create_augroup("Diffview_ab", { clear = true }),
-    })
+    local diffview_winbar = {
+      " OURS (Current changes)",
+      " THEIRS (Incoming changes)",
+      " BASE (Common ancestor)",
+      " LOCAL (Working tree)",
+    }
+    local diffview_ft = {
+      "DiffviewFiles",
+      "DiffviewFileHistory",
+    }
+
+    require("utils").add_ui_ft{
+      "DiffviewFiles",
+      "DiffviewFileHistory",
+    }
+    require("utils.winbar").add_show_cond(function(opts)
+      for _, dw in ipairs(diffview_winbar) do
+        if vim.startswith(vim.wo.winbar, dw) then
+          return false
+        end
+      end
+
+      -- diffview://null case
+      if vim.startswith(opts.full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, opts.ft) then
+        return true
+      end
+    end)
+
+    vim.cmd.cab {"dopen", "DiffviewOpen"}
   end,
   keys = {
     { "<leader>gt", "<cmd>DiffviewOpen<cr>", desc = "Diff view" },

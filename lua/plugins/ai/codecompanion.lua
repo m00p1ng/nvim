@@ -1,5 +1,3 @@
-require("utils").add_ui_ft "codecompanion"
-
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -17,11 +15,13 @@ return {
       },
     },
     init = function()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "VeryLazy",
-        command = "cab cc CodeCompanion",
-        group = vim.api.nvim_create_augroup("CodeCompanion_ab", { clear = true }),
-      })
+      require("utils").add_ui_ft "codecompanion"
+      require("utils.winbar").add_show_cond(function(opts)
+        if vim.startswith(opts.full_filename, "[CodeCompanion]") then
+          return true
+        end
+      end)
+      vim.cmd.cab { "cc", "CodeCompanion" }
     end,
     keys = {
       { "<leader>ao", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion: Chat" },
