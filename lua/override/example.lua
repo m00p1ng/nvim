@@ -16,6 +16,7 @@ return {
   -- { import = "plugins.lang.markdown" },
   -- { import = "plugins.lang.nix" },
   -- { import = "plugins.lang.python" },
+  -- { import = "plugins.lang.sql" },
   -- { import = "plugins.lang.tailwind" },
   -- { import = "plugins.lang.toml" },
   -- { import = "plugins.lang.typescript" },
