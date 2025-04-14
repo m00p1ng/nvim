@@ -115,6 +115,8 @@ return {
         BlinkCmpLabel = { fg = C.subtext1 },
         BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
         BlinkCmpLabelDescription = { fg = C.overlay0 },
+
+        CodeCompanionChatNormal = { link = "NormalFloat" },
       }
     end,
     default_integrations = false,
