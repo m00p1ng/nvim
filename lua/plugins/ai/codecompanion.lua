@@ -7,7 +7,11 @@ local handle_codecompaion = function(buf, wins)
     markview.actions.hybridDisable(buf)
 
     for _, win in ipairs(wins) do
-      vim.api.nvim_set_option_value("winhl", "Normal:CodeCompanionChatNormal", { win = win })
+      vim.api.nvim_set_option_value(
+        "winhl",
+        "Normal:CodeCompanionChatNormal,Winbar:CodeCompanionChatNormal",
+        { win = win }
+      )
     end
   end
 end
