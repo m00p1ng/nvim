@@ -15,12 +15,24 @@ return {
       },
     },
     init = function()
+      local icons = require "utils.icons"
       require("utils").add_ui_ft "codecompanion"
-      require("utils.winbar").add_show_cond(function(opts)
+
+      local winbar = require "utils.winbar"
+      winbar.add_show_cond(function(opts)
         if vim.startswith(opts.full_filename, "[CodeCompanion]") then
           return true
         end
       end)
+      winbar.add_rename_cond(function(opts)
+        if opts.ft == "codecompanion" then
+          return {
+            file_icon = icons.misc.Copilot .. " ",
+            output_filename = "Code Companion: Chat",
+          }
+        end
+      end)
+
       vim.cmd.cab { "cc", "CodeCompanion" }
     end,
     keys = {
