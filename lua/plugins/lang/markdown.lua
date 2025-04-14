@@ -26,6 +26,7 @@ return {
           shift_width = 1,
         },
       },
+      latex = false,
     },
     init = function()
       require("which-key").add {
