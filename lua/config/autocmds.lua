@@ -71,17 +71,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("set_tab_instead_space", { clear = true }),
-  pattern = "go",
-  callback = function()
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4
-    vim.opt_local.expandtab = false
-  end,
-})
-
 vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("very_lazy_init", { clear = true }),
   pattern = "VeryLazy",
@@ -107,21 +96,5 @@ vim.api.nvim_create_autocmd("User", {
     })
 
     require("utils.winbar").create_winbar()
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("git_keymap", { clear = true }),
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.keymap.set("i", "<C-s>", function()
-      local result = vim.system({ "git", "rev-parse", "--abbrev-ref", "HEAD" }, { text = true }):wait()
-      if result.code ~= 0 then
-        vim.notify("Git repository not found", vim.log.levels.WARN)
-        return
-      end
-      local branch = vim.trim(result.stdout)
-      vim.api.nvim_feedkeys(branch, "i", false)
-    end, { expr = true, buffer = true })
   end,
 })

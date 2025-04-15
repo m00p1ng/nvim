@@ -1,7 +1,12 @@
 return {
   "kamykn/spelunker.vim",
   event = { "BufReadPost", "BufNewFile" },
-  config = function()
+  init = function()
+    vim.g.spelunker_highlight_type = 0
+    vim.g.spelunker_check_type = 2
+    vim.g.spelunker_disable_auto_group = 1
+    vim.g.spelunker_disable_uri_checking = 1
+
     vim.api.nvim_set_hl(0, "SpelunkerSpellBad", { sp = "#89b4fa", fg = nil, undercurl = true })
     vim.api.nvim_set_hl(0, "SpelunkerComplexOrCompoundWord", { sp = "#89b4fa", fg = nil, undercurl = true })
 
@@ -25,11 +30,5 @@ return {
       end,
       group = vim.api.nvim_create_augroup("_spelunker", { clear = true }),
     })
-  end,
-  init = function()
-    vim.g.spelunker_highlight_type = 0
-    vim.g.spelunker_check_type = 2
-    vim.g.spelunker_disable_auto_group = 1
-    vim.g.spelunker_disable_uri_checking = 1
   end,
 }
