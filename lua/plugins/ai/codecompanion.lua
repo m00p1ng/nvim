@@ -1,4 +1,4 @@
-local handle_codecompaion = function(buf, wins)
+local handle_codecompanion = function(buf, wins)
   local markview = require "markview"
 
   local ft = vim.bo[buf].ft
@@ -61,6 +61,7 @@ return {
       { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "CodeCompanion: Unit test", mode = { "n", "v" } },
       { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix", mode = { "n", "v" } },
       { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "CodeCompanion: LSP", mode = { "n", "v" } },
+      { "i", "Gi", remap = false, ft = "codecompanion" },
     },
   },
 
@@ -84,7 +85,7 @@ return {
               vim.wo[win].conceallevel = 3
             end
 
-            handle_codecompaion(buf, wins)
+            handle_codecompanion(buf, wins)
           end,
           on_mode_change = function(buf, wins, current_mode)
             local markview = require "markview"
@@ -94,7 +95,7 @@ return {
               markview.actions.disable(buf)
             end
 
-            handle_codecompaion(buf, wins)
+            handle_codecompanion(buf, wins)
           end,
         },
       },
