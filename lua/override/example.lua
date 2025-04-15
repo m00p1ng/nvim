@@ -5,6 +5,7 @@ return {
   -- { import = "plugins.lang.bash" },
   -- { import = "plugins.lang.css" },
   -- { import = "plugins.lang.docker" },
+  -- { import = "plugins.lang.env" },
   -- { import = "plugins.lang.flutter" },
   -- { import = "plugins.lang.git" },
   -- { import = "plugins.lang.go" },
