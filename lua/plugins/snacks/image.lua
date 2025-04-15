@@ -53,6 +53,7 @@ return {
         number = false,
         relativenumber = false,
         cursorcolumn = false,
+        cursorline = false,
         signcolumn = "no",
         foldcolumn = "0",
         list = false,

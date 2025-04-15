@@ -1,18 +1,15 @@
 local handle_codecompanion = function(buf, wins)
   local markview = require "markview"
 
-  local ft = vim.bo[buf].ft
-  if ft == "codecompanion" then
-    vim.opt_local.fillchars = { eob = " " }
-    markview.actions.hybridDisable(buf)
+  vim.opt_local.fillchars = { eob = " " }
+  markview.actions.hybridDisable(buf)
 
-    for _, win in ipairs(wins) do
-      vim.api.nvim_set_option_value(
-        "winhl",
-        "Normal:CodeCompanionChatNormal,Winbar:CodeCompanionChatNormal",
-        { win = win }
-      )
-    end
+  for _, win in ipairs(wins) do
+    vim.api.nvim_set_option_value(
+      "winhl",
+      "Normal:CodeCompanionChatNormal,Winbar:CodeCompanionChatNormal",
+      { win = win }
+    )
   end
 end
 
@@ -85,7 +82,10 @@ return {
               vim.wo[win].conceallevel = 3
             end
 
-            handle_codecompanion(buf, wins)
+            local ft = vim.bo[buf].ft
+            if ft == "codecompanion" then
+              handle_codecompanion(buf, wins)
+            end
           end,
           on_mode_change = function(buf, wins, current_mode)
             local markview = require "markview"
@@ -95,7 +95,9 @@ return {
               markview.actions.disable(buf)
             end
 
-            handle_codecompanion(buf, wins)
+            if ft == "codecompanion" then
+              handle_codecompanion(buf, wins)
+            end
           end,
         },
       },
