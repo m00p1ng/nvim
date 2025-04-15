@@ -39,7 +39,14 @@ local _get_filename = function()
   local extension = vim.fn.expand "%:e"
   local ft = vim.bo.ft
 
-  local file_icon, hl_icon = require("nvim-web-devicons").get_icon(filename, extension, { default = true })
+  local file_icon = ""
+  local hl_icon = "WinbarText"
+
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if ok then
+    file_icon, hl_icon = devicons.get_icon(filename, extension, { default = true })
+  end
+
   local hl_filename = "WinbarText"
 
   if f.is_empty(filename) then
