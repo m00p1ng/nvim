@@ -3,7 +3,7 @@ local icons = require "utils.icons"
 return {
   {
     "mfussenegger/nvim-dap",
-    config = function()
+    init = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
 
@@ -130,21 +130,6 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    opts = function()
-      vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-        group = vim.api.nvim_create_augroup("dap_option_setup", { clear = true }),
-        pattern = { "dap-repl", "dap*" },
-        callback = function()
-          vim.opt_local.cursorline = false
-
-          local opts = { noremap = true, silent = true, buffer = true }
-          vim.keymap.set("i", "<C-h>", "<esc><C-w>h", opts)
-          vim.keymap.set("i", "<C-j>", "<esc><C-w>j", opts)
-          vim.keymap.set("i", "<C-k>", "<esc><C-w>k", opts)
-          vim.keymap.set("i", "<C-l>", "<esc><C-w>l", opts)
-        end,
-      })
-    end,
     init = function()
       local dap_icons = {
         dapui_breakpoints = icons.ui.Bug,
@@ -178,6 +163,20 @@ return {
           }
         end
       end)
+
+      vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+        group = vim.api.nvim_create_augroup("dap_option_setup", { clear = true }),
+        pattern = { "dap-repl", "dap*" },
+        callback = function()
+          vim.opt_local.cursorline = false
+
+          local opts = { noremap = true, silent = true, buffer = true }
+          vim.keymap.set("i", "<C-h>", "<esc><C-w>h", opts)
+          vim.keymap.set("i", "<C-j>", "<esc><C-w>j", opts)
+          vim.keymap.set("i", "<C-k>", "<esc><C-w>k", opts)
+          vim.keymap.set("i", "<C-l>", "<esc><C-w>l", opts)
+        end,
+      })
     end,
   },
 
