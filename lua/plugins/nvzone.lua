@@ -1,5 +1,3 @@
-require("utils").add_ui_ft "typr"
-
 return {
   {
     "nvzone/typr",
@@ -22,6 +20,9 @@ return {
           vim.b.completion = false
         end,
       })
+    end,
+    init = function()
+      require("utils").add_ui_ft "typr"
     end,
   },
 

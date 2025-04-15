@@ -1,5 +1,3 @@
-require("utils").add_ui_ft "NvimTree"
-
 local icons = require "utils.icons"
 local open_prog = function()
   local editor = { "codium", "code" }
@@ -311,6 +309,9 @@ return {
     end
 
     require("nvim-tree").setup(config_opts)
+  end,
+  init = function()
+    require("utils").add_ui_ft "NvimTree"
   end,
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },

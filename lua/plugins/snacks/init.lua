@@ -1,13 +1,3 @@
-require("utils").add_ui_ft {
-  "snacks_dashboard",
-  "snacks_input",
-  "snacks_notif",
-  "snacks_notif_history",
-  "snacks_picker_input",
-  "snacks_picker_preview",
-  "snacks_picker_list",
-}
-
 return {
   {
     "folke/snacks.nvim",
@@ -23,6 +13,17 @@ return {
       words = { enabled = true },
       profiler = { enabled = true },
     },
+    init = function()
+      require("utils").add_ui_ft {
+        "snacks_dashboard",
+        "snacks_input",
+        "snacks_notif",
+        "snacks_notif_history",
+        "snacks_picker_input",
+        "snacks_picker_preview",
+        "snacks_picker_list",
+      }
+    end,
   },
 
   { import = "plugins.snacks.dashboard" },

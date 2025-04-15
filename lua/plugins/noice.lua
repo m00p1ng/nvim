@@ -1,6 +1,4 @@
 ---@diagnostic disable: missing-fields
-require("utils").add_ui_ft "noice"
-
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
@@ -208,6 +206,9 @@ return {
     ---@type NoiceFormatOptions
     format = {}, --- @see section on formatting
   },
+  init = function()
+    require("utils").add_ui_ft "noice"
+  end,
   keys = {
     { "<leader>n", "<cmd>Noice<cr>", desc = "Noice" },
     { "<leader>N", "<cmd>NoiceLast<cr>", desc = "Noice Last" },

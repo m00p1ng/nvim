@@ -1,8 +1,3 @@
-require("utils").add_ui_ft {
-  "OverseerForm",
-  "OverseerList",
-}
-
 return {
   "stevearc/overseer.nvim",
   opts = {
@@ -211,6 +206,11 @@ return {
     },
   },
   init = function()
+    require("utils").add_ui_ft {
+      "OverseerForm",
+      "OverseerList",
+    }
+
     vim.api.nvim_create_user_command("OverseerRestartLast", function()
       local overseer = require "overseer"
       local tasks = overseer.list_tasks { recent_first = true }

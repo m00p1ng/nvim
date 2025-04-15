@@ -1,16 +1,3 @@
-require("utils").add_ui_ft {
-  "json.kulala_ui",
-  "text.kulala_ui",
-  "markdown.kulala_ui",
-  "kulala_verbose_result.kulala_ui",
-}
-require("utils.winbar").add_plugin {
-  "json.kulala_ui",
-  "text.kulala_ui",
-  "markdown.kulala_ui",
-  "kulala_verbose_result.kulala_ui",
-}
-
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -373,6 +360,20 @@ return {
         },
       },
     },
+    init = function()
+      require("utils").add_ui_ft {
+        "json.kulala_ui",
+        "text.kulala_ui",
+        "markdown.kulala_ui",
+        "kulala_verbose_result.kulala_ui",
+      }
+      require("utils.winbar").add_plugin {
+        "json.kulala_ui",
+        "text.kulala_ui",
+        "markdown.kulala_ui",
+        "kulala_verbose_result.kulala_ui",
+      }
+    end,
   },
   {
     "mistweaverco/kulala.nvim",

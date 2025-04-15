@@ -1,14 +1,3 @@
-require("utils").add_ui_ft {
-  "NeogitStatus",
-  "NeogitPopup",
-  "NeogitCommitPopup",
-  "NeogitCommitMessage",
-  "NeogitConsole",
-  "NeogitNotification",
-  "NeogitGitCommandHistory",
-  "NeogitLogView",
-}
-
 local icons = require "utils.icons"
 
 return {
@@ -355,6 +344,18 @@ return {
       },
     },
   },
+  init = function()
+    require("utils").add_ui_ft {
+      "NeogitStatus",
+      "NeogitPopup",
+      "NeogitCommitPopup",
+      "NeogitCommitMessage",
+      "NeogitConsole",
+      "NeogitNotification",
+      "NeogitGitCommandHistory",
+      "NeogitLogView",
+    }
+  end,
   keys = {
     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
     { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit: Commit changes" },

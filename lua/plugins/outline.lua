@@ -1,5 +1,3 @@
-require("utils").add_ui_ft "Outline"
-
 local icons = require "utils.icons"
 
 return {
@@ -279,6 +277,9 @@ return {
       },
     },
   },
+  init = function()
+    require("utils").add_ui_ft "Outline"
+  end,
   keys = {
     { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline" },
   },

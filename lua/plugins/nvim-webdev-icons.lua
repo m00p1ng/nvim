@@ -1,8 +1,8 @@
 return {
   "nvim-tree/nvim-web-devicons",
   lazy = true,
-  config = function()
-    require("nvim-web-devicons").set_icon {
+  opts = {
+    icons = {
       sh = {
         icon = "",
         color = "#1DC123",
@@ -113,6 +113,9 @@ return {
         color = "#5F43E9",
         name = "TFVars",
       },
-    }
+    },
+  },
+  config = function(_, opts)
+    require("nvim-web-devicons").set_icon(opts.icons)
   end,
 }

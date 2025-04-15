@@ -1,5 +1,3 @@
-require("utils").add_ui_ft "mason"
-
 local icons = require "utils.icons"
 
 return {
@@ -41,6 +39,9 @@ return {
         end
       end
     end)
+  end,
+  init = function()
+    require("utils").add_ui_ft "mason"
   end,
   keys = {
     { "<leader>lI", "<cmd>Mason<cr>", desc = "Installer Info" },

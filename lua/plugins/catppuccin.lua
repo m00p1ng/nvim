@@ -122,20 +122,11 @@ return {
     default_integrations = false,
     integrations = {
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-      alpha = false,
       blink_cmp = true,
-      cmp = false,
       dap = true,
       dap_ui = true,
       diffview = true,
       gitsigns = true,
-      indent_blankline = {
-        enabled = false,
-      },
-      illuminate = {
-        enabled = false,
-        lsp = false,
-      },
       mason = true,
       native_lsp = {
         enabled = true,
@@ -157,22 +148,16 @@ return {
       },
       neogit = true,
       neotree = true,
-      notify = false,
       nvimtree = true,
       rainbow_delimiters = true,
       semantic_tokens = true,
       snacks = true,
       symbols_outline = true,
-      telescope = {
-        enabled = true,
-        style = "nvchad",
-      },
       treesitter = true,
       ufo = true,
     },
   },
-  config = function(_, opts)
-    require("catppuccin").setup(opts)
+  init = function()
     vim.cmd.colorscheme "catppuccin"
   end,
 }

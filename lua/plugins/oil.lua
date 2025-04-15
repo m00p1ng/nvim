@@ -1,6 +1,3 @@
-require("utils").add_ui_ft("oil", "oil_preview")
-require("utils.winbar").add_plugin "oil"
-
 local function get_current_path()
   local oil = require "oil"
   local dir = oil.get_current_dir()
@@ -259,6 +256,9 @@ return {
     },
   },
   init = function()
+    require("utils").add_ui_ft("oil", "oil_preview")
+    require("utils.winbar").add_plugin "oil"
+
     function _G.get_oil_winbar()
       local dir = require("oil").get_current_dir()
       local name = ""
