@@ -228,14 +228,14 @@ return {
           ft = { "http", "rest" },
         },
         ["Jump to next request"] = {
-          "[r",
+          "]r",
           function()
             require("kulala").jump_next()
           end,
           ft = { "http", "rest" },
         },
         ["Jump to previous request"] = {
-          "]r",
+          "[r",
           function()
             require("kulala").jump_prev()
           end,
