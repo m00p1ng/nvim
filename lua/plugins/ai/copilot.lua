@@ -89,4 +89,6 @@ return {
       end
     end,
   },
+
+  { import = "plugins.ai.codecompanion" },
 }

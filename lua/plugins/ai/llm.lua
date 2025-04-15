@@ -1,3 +1,17 @@
+local ollama_config = {
+  model = "qwen2.5-coder:7b",
+  host = "http://localhost:11434",
+  completion_host = "http://localhost:11434/v1/completions",
+  api_key = "TERM",
+}
+
+local config = {
+  model = ollama_config.model,
+  host = ollama_config.host,
+  completion_host = ollama_config.completion_host,
+  api_key = ollama_config.api_key,
+}
+
 return {
   {
     "milanglacier/minuet-ai.nvim",
@@ -13,10 +27,10 @@ return {
       context_window = 512,
       provider_options = {
         openai_fim_compatible = {
-          api_key = "TERM",
+          api_key = config.api_key,
           name = "Ollama",
-          end_point = "http://localhost:11434/v1/completions",
-          model = "qwen2.5-coder:7b",
+          end_point = config.completion_host,
+          model = config.model,
           optional = {
             max_tokens = 256,
             top_p = 0.9,
@@ -66,5 +80,37 @@ return {
         return text_func and text_func(ctx) or ctx.kind_icon
       end
     end,
+  },
+
+  { import = "plugins.ai.codecompanion" },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      strategies = {
+        chat = { adapter = "ollama" },
+        inline = { adapter = "ollama" },
+      },
+      adapters = {
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            schema = {
+              model = {
+                default = config.model,
+              },
+            },
+            env = {
+              url = config.host,
+              api_key = config.api_key,
+            },
+            headers = {
+              ["Content-Type"] = "application/json",
+            },
+            parameters = {
+              sync = true,
+            },
+          })
+        end,
+      },
+    },
   },
 }
