@@ -26,6 +26,7 @@ return {
     "saghen/blink.cmp",
     optional = true,
     dependencies = { "tzachar/cmp-tabnine", build = "./install.sh" },
+    opts_extend = { "sources.default" },
     opts = {
       keymap = {
         ["<a-y>"] = {
@@ -54,7 +55,6 @@ return {
         },
       },
     },
-    opts_extend = { "sources.default" },
   },
   {
     "saghen/blink.cmp",

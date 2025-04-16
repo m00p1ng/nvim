@@ -53,6 +53,7 @@ return {
     "saghen/blink.cmp",
     optional = true,
     dependencies = { "giuxtaposition/blink-cmp-copilot" },
+    opts_extend = { "sources.default" },
     opts = {
       keymap = {
         ["<a-y>"] = {
@@ -73,7 +74,6 @@ return {
         },
       },
     },
-    opts_extend = { "sources.default" },
   },
   {
     "saghen/blink.cmp",

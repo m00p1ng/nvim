@@ -43,6 +43,7 @@ return {
   {
     "saghen/blink.cmp",
     optional = true,
+    opts_extend = { "sources.default" },
     opts = {
       keymap = {
         -- Manually invoke minuet completion.
@@ -65,7 +66,6 @@ return {
         },
       },
     },
-    opts_extend = { "sources.default" },
   },
   {
     "saghen/blink.cmp",
