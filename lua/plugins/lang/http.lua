@@ -41,8 +41,12 @@ return {
       -- additional cURL options
       -- see: https://curl.se/docs/manpage.html
       additional_curl_options = {},
-      -- gRPCurl path, get from https://github.com/fullstorydev/grpcurl
+      -- gRPCurl path, get from https://github.com/fullstorydev/grpcurl.git
       grpcurl_path = "grpcurl",
+      -- websocat path, get from https://github.com/vi/websocat.git
+      websocat_path = "websocat",
+      -- openssl path
+      openssl_path = "openssl",
 
       -- set scope for environment and request variables
       -- possible values: b = buffer, g = global
@@ -51,7 +55,7 @@ return {
       -- see: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?view=aspnetcore-8.0#environment-files
       default_env = "dev",
       -- enable reading vscode rest client environment variables
-      vscode_rest_client_environmentvars = true,
+      vscode_rest_client_environmentvars = false,
 
       -- default timeout for the request, set to nil to disable
       request_timeout = nil,
@@ -85,14 +89,13 @@ return {
         },
       },
 
-      -- enable/disable debug mode
-      debug = false,
-
       ui = {
         -- display mode: possible values: "split", "float"
         display_mode = "split",
         -- split direction: possible values: "vertical", "horizontal"
         split_direction = "horizontal",
+        -- window options to override defaults: width/height/split/vertical
+        win_opts = {},
         -- default view: "body" or "headers" or "headers_body" or "verbose" or fun(response: Response)
         default_view = "body",
         -- enable winbar
@@ -127,7 +130,7 @@ return {
           show_script_output = true,
           -- possible values: true | false | "on_error" | "failed_only"
           show_asserts_output = true,
-          -- possible values: true | false
+          -- possible values: true | false | "on_error"
           show_summary = true,
 
           headersHighlight = "Special",
@@ -148,7 +151,18 @@ return {
           '  "foo": "bar"',
           "}",
         },
+
+        disable_news_popup = false,
+
+        -- enable/disable built-in autocompletion
+        autocomplete = true,
+
+        -- enable/disable lua syntax highlighting in HTTP scripts
+        lua_syntax_hl = true,
       },
+
+      -- enable/disable debug mode
+      debug = 3,
 
       -- set to true to enable default keymaps (check docs or {plugins_path}/kulala.nvim/lua/kulala/config/keymaps.lua for details)
       -- or override default keymaps as shown in the example below.
