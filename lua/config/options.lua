@@ -1,13 +1,10 @@
 vim.g.autoformat = true
 vim.g.autoformat_ignore_filetypes = {}
 
-vim.opt.autoindent = true
 vim.opt.backspace = { 2 }
-vim.opt.backup = false                           -- creates a backup file
 vim.opt.cmdheight = 1                            -- more space in the neovim command line for displaying messages
 -- vim.opt.colorcolumn = {"80", "100", "120"}
 vim.opt.completeopt = { "menuone", "noselect" }  -- mostly just for cmp
-vim.opt.conceallevel = 0                         -- so that `` is visible in markdown files
 vim.opt.confirm = true
 vim.opt.cursorline = true                        -- highlight the current line
 vim.opt.expandtab = true                         -- convert tabs to spaces
@@ -26,16 +23,12 @@ vim.opt.listchars:append { tab = "->", space = "·", eol = "$" }
 vim.opt.mouse = "a"                              -- allow the mouse to be used in neovim
 vim.opt.mousemodel = "extend"
 vim.opt.number = true                            -- set numbered lines
-vim.opt.numberwidth = 4                          -- set number column width to 2 {default 4}
 vim.opt.pumblend = 5                             -- Popup blend
 vim.opt.pumheight = 10                           -- pop up menu height
-vim.opt.relativenumber = false                   -- set relative numbered lines
 vim.opt.scrolloff = 6                            -- is one of my fav
-vim.opt.secure = true
 vim.opt.shiftwidth = 2                           -- the number of spaces inserted for each indentation
 vim.opt.shortmess:append { W = true, I = true, c = true }
 vim.opt.showmode = false                         -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 0                          -- always show tabs
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"                       -- always show the sign column otherwise it would shift the text each time
 vim.opt.smartindent = true                       -- make indenting smarter again
@@ -50,6 +43,5 @@ vim.opt.title = true
 vim.opt.undofile = true                          -- enable persistent undo
 vim.opt.updatetime = 100                         -- faster completion (4000ms default)
 vim.opt.wildmode = "longest:full,full"           -- Command-line completion mode
-vim.opt.winblend = 5
 vim.opt.wrap = false                             -- display lines as one long line
 vim.opt.writebackup = false                      -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
