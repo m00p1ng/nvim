@@ -36,7 +36,6 @@ end
 return {
   {
     "ellisonleao/dotenv.nvim",
-    opts = {},
     init = function()
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         pattern = { ".env.*", "*.env" },
@@ -45,6 +44,7 @@ return {
         end,
       })
     end,
+    opts = {},
     keys = {
       { "<leader>V", M.select_env, desc = "Dotenv: Load" },
       { "<leader>v", M.reload_env, desc = "Dotenv: Reload" },

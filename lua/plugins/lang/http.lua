@@ -8,6 +8,20 @@ return {
   {
     "mistweaverco/kulala.nvim",
     ft = { "http", "rest" },
+    init = function()
+      require("utils").add_ui_ft {
+        "json.kulala_ui",
+        "text.kulala_ui",
+        "markdown.kulala_ui",
+        "kulala_verbose_result.kulala_ui",
+      }
+      require("utils.winbar").add_plugin {
+        "json.kulala_ui",
+        "text.kulala_ui",
+        "markdown.kulala_ui",
+        "kulala_verbose_result.kulala_ui",
+      }
+    end,
     opts = {
       -- cURL path
       -- if you have curl installed in a non-standard path,
@@ -360,20 +374,6 @@ return {
         },
       },
     },
-    init = function()
-      require("utils").add_ui_ft {
-        "json.kulala_ui",
-        "text.kulala_ui",
-        "markdown.kulala_ui",
-        "kulala_verbose_result.kulala_ui",
-      }
-      require("utils.winbar").add_plugin {
-        "json.kulala_ui",
-        "text.kulala_ui",
-        "markdown.kulala_ui",
-        "kulala_verbose_result.kulala_ui",
-      }
-    end,
   },
   {
     "mistweaverco/kulala.nvim",

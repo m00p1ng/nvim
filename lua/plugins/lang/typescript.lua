@@ -1,6 +1,22 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      vim.api.nvim_create_autocmd("BufRead", {
+        group = vim.api.nvim_create_augroup("package_json_cmd", { clear = true }),
+        pattern = "*/package.json",
+        callback = function()
+          require("which-key").add {
+            { "<leader>m", group = "Package.json" },
+            { "<leader>mt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle", buffer = true },
+            { "<leader>mu", "<cmd>lua require('package-info').update()<cr>", desc = "Update", buffer = true },
+            { "<leader>md", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete", buffer = true },
+            { "<leader>mi", "<cmd>lua require('package-info').install()<cr>", desc = "Install", buffer = true },
+            { "<leader>mc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change", buffer = true },
+          }
+        end,
+      })
+    end,
     opts = {
       servers = {
         vtsls = {
@@ -129,21 +145,5 @@ return {
       -- provided one, if nothing is provided it will use `yarn`
       package_manager = "pnpm",
     },
-    init = function()
-      vim.api.nvim_create_autocmd("BufRead", {
-        group = vim.api.nvim_create_augroup("package_json_cmd", { clear = true }),
-        pattern = "*/package.json",
-        callback = function()
-          require("which-key").add {
-            { "<leader>m", group = "Package.json" },
-            { "<leader>mt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle", buffer = true },
-            { "<leader>mu", "<cmd>lua require('package-info').update()<cr>", desc = "Update", buffer = true },
-            { "<leader>md", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete", buffer = true },
-            { "<leader>mi", "<cmd>lua require('package-info').install()<cr>", desc = "Install", buffer = true },
-            { "<leader>mc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change", buffer = true },
-          }
-        end,
-      })
-    end,
   },
 }

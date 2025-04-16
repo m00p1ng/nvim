@@ -1,6 +1,54 @@
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  init = function()
+    local diffview_winbar = {
+      " OURS (Current changes)",
+      " THEIRS (Incoming changes)",
+      " BASE (Common ancestor)",
+      " LOCAL (Working tree)",
+    }
+    local diffview_ft = {
+      "DiffviewFiles",
+      "DiffviewFileHistory",
+    }
+
+    require("utils").add_ui_ft{
+      "DiffviewFiles",
+      "DiffviewFileHistory",
+    }
+
+    local winbar = require "utils.winbar"
+    winbar.add_show_cond(function(opts)
+      for _, dw in ipairs(diffview_winbar) do
+        if vim.startswith(vim.wo.winbar, dw) then
+          return false
+        end
+      end
+
+      -- diffview://null case
+      if vim.startswith(opts.full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, opts.ft) then
+        return true
+      end
+    end)
+    winbar.add_rename_cond(
+      function(opts)
+        if vim.startswith(opts.full_filename, "diffview") then
+          local paths = vim.split(opts.full_filename, ".git", { plain = true })
+          if #paths >= 2 then
+            return {
+              filename = paths[2],
+              output_filename = "diffview:/" .. opts.filename
+            }
+          end
+
+          return nil
+        end
+      end
+    )
+
+    vim.cmd.cab {"dopen", "DiffviewOpen"}
+  end,
   opts = function()
     local actions = require "diffview.actions"
     local icons = require "utils.icons"
@@ -203,54 +251,6 @@ return {
         },
       },
     }
-  end,
-  init = function()
-    local diffview_winbar = {
-      " OURS (Current changes)",
-      " THEIRS (Incoming changes)",
-      " BASE (Common ancestor)",
-      " LOCAL (Working tree)",
-    }
-    local diffview_ft = {
-      "DiffviewFiles",
-      "DiffviewFileHistory",
-    }
-
-    require("utils").add_ui_ft{
-      "DiffviewFiles",
-      "DiffviewFileHistory",
-    }
-
-    local winbar = require "utils.winbar"
-    winbar.add_show_cond(function(opts)
-      for _, dw in ipairs(diffview_winbar) do
-        if vim.startswith(vim.wo.winbar, dw) then
-          return false
-        end
-      end
-
-      -- diffview://null case
-      if vim.startswith(opts.full_filename, "diffview://") and not vim.tbl_contains(diffview_ft, opts.ft) then
-        return true
-      end
-    end)
-    winbar.add_rename_cond(
-      function(opts)
-        if vim.startswith(opts.full_filename, "diffview") then
-          local paths = vim.split(opts.full_filename, ".git", { plain = true })
-          if #paths >= 2 then
-            return {
-              filename = paths[2],
-              output_filename = "diffview:/" .. opts.filename
-            }
-          end
-
-          return nil
-        end
-      end
-    )
-
-    vim.cmd.cab {"dopen", "DiffviewOpen"}
   end,
   keys = {
     { "<leader>gt", "<cmd>DiffviewOpen<cr>", desc = "Diff view" },

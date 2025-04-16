@@ -12,6 +12,9 @@ return {
   },
   {
     "nvzone/typr",
+    init = function()
+      require("utils").add_ui_ft "typr"
+    end,
     opts = function()
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("setup_typr", { clear = true }),
@@ -20,9 +23,6 @@ return {
           vim.b.completion = false
         end,
       })
-    end,
-    init = function()
-      require("utils").add_ui_ft "typr"
     end,
   },
 

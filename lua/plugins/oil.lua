@@ -10,6 +10,39 @@ end
 
 return {
   "stevearc/oil.nvim",
+  init = function()
+    require("utils").add_ui_ft("oil", "oil_preview")
+    require("utils.winbar").add_plugin "oil"
+
+    function _G.get_oil_winbar()
+      local dir = require("oil").get_current_dir()
+      local name = ""
+      if dir then
+        local cwd = vim.fn.getcwd()
+        if vim.startswith(dir, cwd) then
+          local p = vim.split(cwd, "/")
+          local project = p[#p]
+          name = "@" .. project .. string.sub(dir, #cwd + 1, #dir - 1)
+        else
+          name = vim.fn.fnamemodify(dir, ":~")
+        end
+      end
+
+      local title = "%#WinbarText#" .. " " .. require("utils.icons").ui.FindFile .. " " .. "File Explorer"
+      if name ~= "" then
+        title = title .. " (" .. name .. ")"
+      end
+
+      return title
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "oil",
+      callback = function(event)
+        vim.b[event.buf].completion = false
+      end,
+    })
+  end,
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
@@ -255,39 +288,6 @@ return {
       border = "rounded",
     },
   },
-  init = function()
-    require("utils").add_ui_ft("oil", "oil_preview")
-    require("utils.winbar").add_plugin "oil"
-
-    function _G.get_oil_winbar()
-      local dir = require("oil").get_current_dir()
-      local name = ""
-      if dir then
-        local cwd = vim.fn.getcwd()
-        if vim.startswith(dir, cwd) then
-          local p = vim.split(cwd, "/")
-          local project = p[#p]
-          name = "@" .. project .. string.sub(dir, #cwd + 1, #dir - 1)
-        else
-          name = vim.fn.fnamemodify(dir, ":~")
-        end
-      end
-
-      local title = "%#WinbarText#" .. " " .. require("utils.icons").ui.FindFile .. " " .. "File Explorer"
-      if name ~= "" then
-        title = title .. " (" .. name .. ")"
-      end
-
-      return title
-    end
-
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "oil",
-      callback = function(event)
-        vim.b[event.buf].completion = false
-      end,
-    })
-  end,
   keys = {
     {
       "-",

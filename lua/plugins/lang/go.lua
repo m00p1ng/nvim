@@ -65,17 +65,6 @@ return {
     "olexsmir/gopher.nvim",
     build = ":GoInstallDeps",
     ft = "go",
-    opts = function()
-      require("which-key").add {
-        { "<leader>m", group = "Golang" },
-        { "<leader>mj", "<cmd>GoTagAdd json -transform camelcase<cr>", desc = "Tag Add (JSON)", buffer = true },
-        { "<leader>mJ", "<cmd>GoTagRm json<cr>", desc = "Tag Remove (JSON)", buffer = true },
-        { "<leader>mb", "<cmd>GoTagAdd bson -transform camelcase<cr>", desc = "Tag Add (BSON)", buffer = true },
-        { "<leader>mB", "<cmd>GoTagRm bson<cr>", desc = "Tag Remove (BSON)", buffer = true },
-        { "<leader>mm", "<cmd>GoMod tidy<cr>", desc = "Mod Tidy", buffer = true },
-        { "<leader>mc", "<cmd>GoCmt<cr>", desc = "Comment", buffer = true },
-      }
-    end,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("set_tab_instead_space", { clear = true }),
@@ -87,6 +76,17 @@ return {
           vim.opt_local.expandtab = false
         end,
       })
+    end,
+    opts = function()
+      require("which-key").add {
+        { "<leader>m", group = "Golang" },
+        { "<leader>mj", "<cmd>GoTagAdd json -transform camelcase<cr>", desc = "Tag Add (JSON)", buffer = true },
+        { "<leader>mJ", "<cmd>GoTagRm json<cr>", desc = "Tag Remove (JSON)", buffer = true },
+        { "<leader>mb", "<cmd>GoTagAdd bson -transform camelcase<cr>", desc = "Tag Add (BSON)", buffer = true },
+        { "<leader>mB", "<cmd>GoTagRm bson<cr>", desc = "Tag Remove (BSON)", buffer = true },
+        { "<leader>mm", "<cmd>GoMod tidy<cr>", desc = "Mod Tidy", buffer = true },
+        { "<leader>mc", "<cmd>GoCmt<cr>", desc = "Comment", buffer = true },
+      }
     end,
   },
 }

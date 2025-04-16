@@ -3,6 +3,9 @@ local icons = require "utils.icons"
 return {
   "hedyhli/outline.nvim",
   cmd = { "Outline", "OutlineOpen" },
+  init = function()
+    require("utils").add_ui_ft "Outline"
+  end,
   opts = {
     outline_window = {
       -- Where to open the split window: right/left
@@ -277,9 +280,6 @@ return {
       },
     },
   },
-  init = function()
-    require("utils").add_ui_ft "Outline"
-  end,
   keys = {
     { "<leader>lo", "<cmd>Outline<cr>", desc = "Outline" },
   },

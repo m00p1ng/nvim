@@ -2,6 +2,9 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
+  init = function()
+    require("utils").add_ui_ft "noice"
+  end,
   opts = {
     cmdline = {
       enabled = true, -- enables the Noice cmdline UI
@@ -206,9 +209,6 @@ return {
     ---@type NoiceFormatOptions
     format = {}, --- @see section on formatting
   },
-  init = function()
-    require("utils").add_ui_ft "noice"
-  end,
   keys = {
     { "<leader>n", "<cmd>Noice<cr>", desc = "Noice" },
     { "<leader>N", "<cmd>NoiceLast<cr>", desc = "Noice Last" },

@@ -1,6 +1,26 @@
 return {
   "y3owk1n/undo-glow.nvim",
   event = { "VeryLazy" },
+  init = function()
+    vim.api.nvim_create_autocmd("TextYankPost", {
+      desc = "Highlight when yanking (copying) text",
+      callback = function()
+        require("undo-glow").yank()
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("CmdLineLeave", {
+      pattern = { "/", "?" },
+      desc = "Highlight when search cmdline leave",
+      callback = function()
+        require("undo-glow").search_cmd {
+          animation = {
+            animation_type = "fade",
+          },
+        }
+      end,
+    })
+  end,
   ---@type UndoGlow.Config
   opts = {
     animation = {
@@ -106,24 +126,4 @@ return {
       noremap = true,
     },
   },
-  init = function()
-    vim.api.nvim_create_autocmd("TextYankPost", {
-      desc = "Highlight when yanking (copying) text",
-      callback = function()
-        require("undo-glow").yank()
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("CmdLineLeave", {
-      pattern = { "/", "?" },
-      desc = "Highlight when search cmdline leave",
-      callback = function()
-        require("undo-glow").search_cmd {
-          animation = {
-            animation_type = "fade",
-          },
-        }
-      end,
-    })
-  end,
 }

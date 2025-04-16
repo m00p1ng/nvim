@@ -13,6 +13,9 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
+  init = function()
+    require("utils").add_ui_ft "NvimTree"
+  end,
   opts = {
     on_attach = "default",
     hijack_cursor = false,
@@ -309,9 +312,6 @@ return {
     end
 
     require("nvim-tree").setup(config_opts)
-  end,
-  init = function()
-    require("utils").add_ui_ft "NvimTree"
   end,
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },

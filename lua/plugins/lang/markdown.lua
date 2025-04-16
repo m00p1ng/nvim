@@ -15,6 +15,11 @@ return {
   {
     "OXY2DEV/markview.nvim",
     lazy = false,
+    init = function()
+      require("which-key").add {
+        { "<leader>m", group = "Markdown" },
+      }
+    end,
     opts_extend = { "preview.filetypes" },
     opts = {
       preview = {
@@ -40,11 +45,6 @@ return {
       },
       latex = false,
     },
-    init = function()
-      require("which-key").add {
-        { "<leader>m", group = "Markdown" },
-      }
-    end,
     keys = {
       { "<leader>mt", "<cmd>Markview<cr>", desc = "Toggle preview", buffer = true, ft = { "markdown" } },
       { "<leader>ms", "<cmd>Markview splitToggle<cr>", desc = "Toggle split", buffer = true, ft = { "markdown" } },

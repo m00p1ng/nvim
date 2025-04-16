@@ -3,6 +3,18 @@ local icons = require "utils.icons"
 return {
   "NeogitOrg/neogit",
   cmd = "Neogit",
+  init = function()
+    require("utils").add_ui_ft {
+      "NeogitStatus",
+      "NeogitPopup",
+      "NeogitCommitPopup",
+      "NeogitCommitMessage",
+      "NeogitConsole",
+      "NeogitNotification",
+      "NeogitGitCommandHistory",
+      "NeogitLogView",
+    }
+  end,
   opts = {
     -- Hides the hints at the top of the status buffer
     disable_hint = false,
@@ -344,18 +356,6 @@ return {
       },
     },
   },
-  init = function()
-    require("utils").add_ui_ft {
-      "NeogitStatus",
-      "NeogitPopup",
-      "NeogitCommitPopup",
-      "NeogitCommitMessage",
-      "NeogitConsole",
-      "NeogitNotification",
-      "NeogitGitCommandHistory",
-      "NeogitLogView",
-    }
-  end,
   keys = {
     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
     { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit: Commit changes" },

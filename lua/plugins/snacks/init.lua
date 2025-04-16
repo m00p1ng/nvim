@@ -3,16 +3,6 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
-    opts = {
-      dashboard = { enabled = true },
-      indent = { enabled = true },
-      input = { enabled = true },
-      notifier = { enabled = true },
-      quickfile = { enabled = true },
-      words = { enabled = true },
-      profiler = { enabled = true },
-    },
     init = function()
       require("utils").add_ui_ft {
         "snacks_dashboard",
@@ -24,6 +14,16 @@ return {
         "snacks_picker_list",
       }
     end,
+    ---@type snacks.Config
+    opts = {
+      dashboard = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      words = { enabled = true },
+      profiler = { enabled = true },
+    },
   },
 
   { import = "plugins.snacks.dashboard" },

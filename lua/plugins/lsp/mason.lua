@@ -3,6 +3,9 @@ local icons = require "utils.icons"
 return {
   "williamboman/mason.nvim",
   cmd = "Mason",
+  init = function()
+    require("utils").add_ui_ft "mason"
+  end,
   opts_extend = { "ensure_installed" },
   opts = {
     ensure_installed = {},
@@ -39,9 +42,6 @@ return {
         end
       end
     end)
-  end,
-  init = function()
-    require("utils").add_ui_ft "mason"
   end,
   keys = {
     { "<leader>lI", "<cmd>Mason<cr>", desc = "Installer Info" },

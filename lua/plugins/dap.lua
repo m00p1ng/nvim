@@ -3,7 +3,8 @@ local icons = require "utils.icons"
 return {
   {
     "mfussenegger/nvim-dap",
-    init = function()
+    -- use `config` instead of `opts` or `init` to avoid bugs
+    config = function()
       vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
 
@@ -57,6 +58,10 @@ return {
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
+    init = function()
+      require("utils").add_ui_ft "dap-repl"
+      require("utils.winbar").add_plugin "dap-repl"
+    end,
     opts = {
       icons = {
         expanded = icons.ui.ChevronShortRight,
@@ -119,10 +124,6 @@ return {
       },
       windows = { indent = 1 },
     },
-    init = function()
-      require("utils").add_ui_ft "dap-repl"
-      require("utils.winbar").add_plugin "dap-repl"
-    end,
     keys = {
       { "<leader>de", "<cmd>lua require('dapui').eval()<cr>", desc = "Eval" },
       { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "UI" },

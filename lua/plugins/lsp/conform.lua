@@ -1,6 +1,46 @@
 return {
   "stevearc/conform.nvim",
   event = "BufReadPost",
+  init = function()
+    local function snack_toggle(buf)
+      return require("snacks").toggle {
+        name = "Auto Format (" .. (buf and "Buffer" or "Global") .. ")",
+        get = function()
+          if vim.b.autoformat == nil then
+            vim.b.autoformat = vim.g.autoformat
+          end
+
+          if buf then
+            return vim.b.autoformat
+          else
+            return vim.g.autoformat
+          end
+        end,
+        set = function(state)
+          if buf then
+            vim.b.autoformat = state
+          else
+            vim.g.autoformat = state
+          end
+        end,
+      }
+    end
+
+    snack_toggle(true):map "<leader>of"
+    snack_toggle(false):map "<leader>oF"
+
+    -- vim.api.nvim_create_user_command("FormatToggle", function(args)
+    --   if args.bang then
+    --     if vim.b.autoformat == nil then
+    --       vim.b.autoformat = true
+    --     end
+    --
+    --     vim.b.autoformat = not vim.b.autoformat
+    --   else
+    --     vim.g.autoformat = not vim.g.autoformat
+    --   end
+    -- end, { desc = "Toggle autoformat", bang = true })
+  end,
   opts = {
     -- Map of filetype to formatters
     formatters_by_ft = {},
@@ -43,46 +83,6 @@ return {
     -- Custom formatters and overrides for built-in formatters
     formatters = {},
   },
-  init = function()
-    local function snack_toggle(buf)
-      return require("snacks").toggle {
-        name = "Auto Format (" .. (buf and "Buffer" or "Global") .. ")",
-        get = function()
-          if vim.b.autoformat == nil then
-            vim.b.autoformat = vim.g.autoformat
-          end
-
-          if buf then
-            return vim.b.autoformat
-          else
-            return vim.g.autoformat
-          end
-        end,
-        set = function(state)
-          if buf then
-            vim.b.autoformat = state
-          else
-            vim.g.autoformat = state
-          end
-        end,
-      }
-    end
-
-    snack_toggle(true):map "<leader>of"
-    snack_toggle(false):map "<leader>oF"
-
-    -- vim.api.nvim_create_user_command("FormatToggle", function(args)
-    --   if args.bang then
-    --     if vim.b.autoformat == nil then
-    --       vim.b.autoformat = true
-    --     end
-    --
-    --     vim.b.autoformat = not vim.b.autoformat
-    --   else
-    --     vim.g.autoformat = not vim.g.autoformat
-    --   end
-    -- end, { desc = "Toggle autoformat", bang = true })
-  end,
   keys = {
     {
       "<leader>lf",

@@ -17,18 +17,6 @@ return {
   {
     "olimorris/codecompanion.nvim",
     event = "VeryLazy",
-    opts = {
-      display = {
-        chat = {
-          window = {
-            width = 0.3,
-            opts = {
-              number = false,
-            },
-          },
-        },
-      },
-    },
     init = function()
       local icons = require "utils.icons"
       require("utils").add_ui_ft "codecompanion"
@@ -50,6 +38,18 @@ return {
 
       vim.cmd.cab { "cc", "CodeCompanion" }
     end,
+    opts = {
+      display = {
+        chat = {
+          window = {
+            width = 0.3,
+            opts = {
+              number = false,
+            },
+          },
+        },
+      },
+    },
     keys = {
       { "<leader>ao", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion: Chat" },
       { "<leader>aa", "<cmd>CodeCompanionChat Add<cr>", desc = "CodeCompanion: Add", mode = { "n", "v" } },

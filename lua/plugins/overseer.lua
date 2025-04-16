@@ -1,5 +1,36 @@
 return {
   "stevearc/overseer.nvim",
+  init = function()
+    require("utils").add_ui_ft {
+      "OverseerForm",
+      "OverseerList",
+    }
+
+    vim.api.nvim_create_user_command("OverseerRestartLast", function()
+      local overseer = require "overseer"
+      local tasks = overseer.list_tasks { recent_first = true }
+      if vim.tbl_isempty(tasks) then
+        vim.notify("No tasks found", vim.log.levels.WARN)
+      else
+        overseer.run_action(tasks[1], "restart")
+      end
+    end, {})
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("overseer_autocmd", { clear = true }),
+      pattern = {
+        "OverseerForm",
+        "OverseerList",
+      },
+      callback = function(event)
+        vim.b[event.buf].completion = false
+      end,
+    })
+
+    require("which-key").add {
+      { "<leader>r", group = "Overseer" },
+    }
+  end,
   opts = {
     -- Default task strategy
     strategy = "terminal",
@@ -205,37 +236,6 @@ return {
       },
     },
   },
-  init = function()
-    require("utils").add_ui_ft {
-      "OverseerForm",
-      "OverseerList",
-    }
-
-    vim.api.nvim_create_user_command("OverseerRestartLast", function()
-      local overseer = require "overseer"
-      local tasks = overseer.list_tasks { recent_first = true }
-      if vim.tbl_isempty(tasks) then
-        vim.notify("No tasks found", vim.log.levels.WARN)
-      else
-        overseer.run_action(tasks[1], "restart")
-      end
-    end, {})
-
-    vim.api.nvim_create_autocmd("FileType", {
-      group = vim.api.nvim_create_augroup("overseer_autocmd", { clear = true }),
-      pattern = {
-        "OverseerForm",
-        "OverseerList",
-      },
-      callback = function(event)
-        vim.b[event.buf].completion = false
-      end,
-    })
-
-    require("which-key").add {
-      { "<leader>r", group = "Overseer" },
-    }
-  end,
   keys = {
     { "<leader>rr", "<cmd>OverseerRun<cr>", desc = "Overseer: Run" },
     { "<leader>ra", "<cmd>OverseerQuickAction<cr>", desc = "Overseer: Quick Action" },
