@@ -41,6 +41,7 @@ return {
         ColorColumn = { bg = C.mantle },
         WinbarText = { fg = C.subtext0 },
         WinbarModified = { fg = C.yellow },
+        ["@string.special.url"] = { fg = C.flamingo, style = {} },
 
         Hlargs = { fg = C.maroon },
         NvimDapVirtualText = { link = "LspInlayHint" },
