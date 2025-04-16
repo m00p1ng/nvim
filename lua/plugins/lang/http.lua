@@ -5,6 +5,17 @@ return {
     opts = { ensure_installed = { "http" } },
   },
 
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       kulala_ls = {
+  --         mason = false,
+  --       },
+  --     },
+  --   },
+  -- },
+
   {
     "mistweaverco/kulala.nvim",
     ft = { "http", "rest" },
@@ -383,16 +394,5 @@ return {
         { "<leader>R", group = "Kulala" },
       }
     end,
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        kulala_ls = {
-          mason = false,
-        },
-      },
-    },
   },
 }
