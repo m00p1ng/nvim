@@ -267,14 +267,14 @@ return {
           ft = { "http", "rest" },
         },
         ["Jump to next request"] = {
-          "]r",
+          "]]",
           function()
             require("kulala").jump_next()
           end,
           ft = { "http", "rest" },
         },
         ["Jump to previous request"] = {
-          "[r",
+          "[[",
           function()
             require("kulala").jump_prev()
           end,
@@ -360,13 +360,13 @@ return {
         },
 
         ["Next response"] = {
-          "]",
+          "]]",
           function()
             require("kulala.ui").show_next()
           end,
         },
         ["Previous response"] = {
-          "[",
+          "[[",
           function()
             require("kulala.ui").show_previous()
           end,
@@ -375,6 +375,7 @@ return {
           "<CR>",
           function()
             require("kulala.ui").jump_to_response()
+            vim.cmd "noh"
           end,
         },
 
