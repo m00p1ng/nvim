@@ -3,7 +3,12 @@ return {
   event = "BufReadPost",
   init = function()
     local function snack_toggle(buf)
-      return require("snacks").toggle {
+      local has_snacks, snacks = pcall(require, "snacks")
+      if not has_snacks then
+        return
+      end
+
+      return snacks.toggle {
         name = "Auto Format (" .. (buf and "Buffer" or "Global") .. ")",
         get = function()
           if vim.b.autoformat == nil then
