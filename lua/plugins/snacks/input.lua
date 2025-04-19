@@ -40,6 +40,8 @@ return {
           i_ctrl_w = { "<c-w>", "<c-s-w>", mode = "i", expr = true },
           i_ctrl_a = { "<c-a>", "<Home>", mode = "i", expr = true },
           i_ctrl_e = { "<c-e>", "<End>", mode = "i", expr = true },
+          i_ctrl_f = { "<c-f>", "<Right>", mode = "i", expr = true },
+          i_ctrl_b = { "<c-b>", "<Left>", mode = "i", expr = true },
           i_up = { "<up>", { "hist_up" }, mode = { "i", "n" } },
           i_down = { "<down>", { "hist_down" }, mode = { "i", "n" } },
           q = "cancel",

@@ -1,10 +1,4 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts_extend = { "ensure_installed" },
-    opts = { ensure_installed = { "http" } },
-  },
-
   -- {
   --   "neovim/nvim-lspconfig",
   --   opts = {
@@ -12,6 +6,32 @@ return {
   --       kulala_ls = {
   --         mason = false,
   --       },
+  --     },
+  --   },
+  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts_extend = { "ensure_installed" },
+    opts = { ensure_installed = { "http" } },
+  },
+
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts_extend = { "ensure_installed" },
+  --   opts = { ensure_installed = { "kulala-fmt" } },
+  -- },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   opts = {
+  --     formatters = {
+  --       kulala = {
+  --         command = "kulala-fmt",
+  --         args = { "format", "$FILENAME" },
+  --         stdin = false,
+  --       },
+  --     },
+  --     formatters_by_ft = {
+  --       http = { "kulala" },
   --     },
   --   },
   -- },
