@@ -20,7 +20,6 @@ return {
         "webm",
         "pdf",
         "svg",
-        "mmd",
       },
       force = false, -- try displaying the image, even if the terminal does not support it
       doc = {
@@ -59,6 +58,8 @@ return {
         list = false,
         spell = false,
         statuscolumn = "",
+        -- ref: https://github.com/folke/snacks.nvim/pull/1615
+        -- winblend = 0,
       },
       cache = vim.fn.stdpath "cache" .. "/snacks/image",
       debug = {
@@ -125,7 +126,7 @@ return {
       snacks_image = {
         relative = "cursor",
         border = "rounded",
-        focusable = true,
+        focusable = false,
         backdrop = false,
         row = 1,
         col = 1,
