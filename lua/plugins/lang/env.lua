@@ -1,17 +1,21 @@
-M = {}
+local last_env = nil
 
-M.last_env = nil
-
-M.select_env = function()
+local function select_env()
   local result = vim
     .system({ "fd", "-t", "f", "--no-ignore-vcs", "--hidden", "^\\.env\\..*|.*\\.env$" }, { text = true })
     :wait()
   if result.code ~= 0 then
+    vim.notify("Cannot find .env, please try again later", vim.log.levels.WARN)
+    return
+  end
+
+  local ret = vim.trim(result.stdout)
+  if ret == "" then
     vim.notify(".env was not found", vim.log.levels.WARN)
     return
   end
 
-  local envs = vim.split(vim.trim(result.stdout), "\n")
+  local envs = vim.split(ret, "\n")
   vim.ui.select(envs, {
     prompt = "Select environment:",
   }, function(choice)
@@ -20,16 +24,16 @@ M.select_env = function()
     end
     vim.cmd.Dotenv(choice)
     vim.notify("Loaded " .. choice, vim.log.levels.INFO)
-    M.last_env = choice
+    last_env = choice
   end)
 end
 
-M.reload_env = function()
-  if M.last_env then
-    vim.cmd.Dotenv(M.last_env)
-    vim.notify("Reloaded " .. M.last_env, vim.log.levels.INFO)
+local function reload_env()
+  if last_env then
+    vim.cmd.Dotenv(last_env)
+    vim.notify("Reloaded " .. last_env, vim.log.levels.INFO)
   else
-    M.select_env()
+    select_env()
   end
 end
 
@@ -46,8 +50,8 @@ return {
     end,
     opts = {},
     keys = {
-      { "<leader>V", M.select_env, desc = "Dotenv: Load" },
-      { "<leader>v", M.reload_env, desc = "Dotenv: Reload" },
+      { "<leader>V", select_env, desc = "Dotenv: Load" },
+      { "<leader>v", reload_env, desc = "Dotenv: Reload" },
     },
   },
 }
