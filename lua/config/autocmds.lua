@@ -5,7 +5,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "qf",
     "help",
-    "man",
     "lspinfo",
   },
   callback = function(event)
