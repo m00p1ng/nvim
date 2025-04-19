@@ -58,6 +58,17 @@ return {
       { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "CodeCompanion: Unit test", mode = { "n", "v" } },
       { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix", mode = { "n", "v" } },
       { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "CodeCompanion: LSP", mode = { "n", "v" } },
+      {
+        "<leader>ap",
+        function()
+          local prompt = vim.fn.input "Prompt: "
+          if prompt ~= "" then
+            vim.cmd.CodeCompanion(prompt)
+          end
+        end,
+        "CodeCompanion: Prompt",
+        mode = { "n", "v" },
+      },
       { "i", "Gi", remap = false, ft = "codecompanion" },
     },
   },
