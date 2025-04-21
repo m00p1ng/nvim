@@ -7,6 +7,10 @@ return {
       " THEIRS (Incoming changes)",
       " BASE (Common ancestor)",
       " LOCAL (Working tree)",
+      " INDEX (Common ancestor)",
+      " INDEX (Current changes)",
+      " INDEX (Incoming changes)",
+      " WORKING TREE"
     }
     local diffview_ft = {
       "DiffviewFiles",
