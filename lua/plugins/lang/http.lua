@@ -334,7 +334,7 @@ return {
                 )
 
                 vim.api.nvim_set_option_value("filetype", "http", { buf = bufnr })
-                vim.api.nvim_set_option_value("modifiable", false, { buf = bufnr })
+                vim.api.nvim_set_option_value("modifiable", true, { buf = bufnr })
 
                 vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
                 return true
