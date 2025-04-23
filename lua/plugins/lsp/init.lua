@@ -33,7 +33,7 @@ return {
             [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
             [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
             [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
           },
         },
       },
