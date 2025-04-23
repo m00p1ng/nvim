@@ -9,7 +9,6 @@ return {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "hinell/lsp-timeout.nvim", enabled = false },
       "williamboman/mason-lspconfig.nvim",
-      { "antosha417/nvim-lsp-file-operations", event = "LspAttach", opts = {} },
     },
     ---@class PluginLspOpts
     opts = {

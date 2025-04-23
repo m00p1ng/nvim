@@ -42,6 +42,20 @@ return {
         vim.b[event.buf].completion = false
       end,
     })
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "OilActionsPost",
+      callback = function(event)
+        for _, action in pairs(event.data.actions) do
+          if action.type == "move" then
+            local src_url = action.src_url:gsub("^oil://", "")
+            local dest_url = action.dest_url:gsub("^oil://", "")
+
+            Snacks.rename.on_rename_file(src_url, dest_url)
+          end
+        end
+      end,
+    })
   end,
   ---@module 'oil'
   ---@type oil.SetupOpts
@@ -88,7 +102,7 @@ return {
     cleanup_delay_ms = 2000,
     lsp_file_methods = {
       -- Enable or disable LSP file operations
-      enabled = true,
+      enabled = false,
       -- Time to wait for LSP file operations to complete before skipping
       timeout_ms = 1000,
       -- Set to true to autosave buffers that are updated with LSP willRenameFiles
