@@ -179,6 +179,13 @@ return {
 
         -- enable/disable lua syntax highlighting in HTTP scripts
         lua_syntax_hl = true,
+
+        -- Settings for pickers used for Enironment, Authentication and Requests Managers
+        pickers = {
+          snacks = {
+            layout = "ivy_fixed",
+          },
+        },
       },
 
       -- enable/disable debug mode
@@ -250,6 +257,7 @@ return {
         ["Send request <cr>"] = {
           "<CR>",
           function()
+            vim.cmd "noh"
             require("kulala").run()
           end,
           mode = { "n", "v" },
@@ -281,88 +289,8 @@ return {
 
         ["Find request"] = {
           "<leader>mm",
-          -- function()
-          --   require("kulala").search()
-          -- end,
           function()
-            local has_snacks, snacks_picker = pcall(require, "snacks.picker")
-            if not has_snacks then
-              require("kulala").search()
-              return
-            end
-
-            local Logger = require "kulala.logger"
-            local Parser = require "kulala.parser.document"
-            local DB = require "kulala.db"
-
-            local _, _requests = Parser.get_document()
-            if not _requests then
-              return Logger.warn "No requests found in the document"
-            end
-
-            local requests, names = {}, {}
-
-            table.sort(_requests, function(a, b)
-              return a.start_line < b.start_line
-            end)
-
-            for _, request in ipairs(_requests) do
-              table.insert(names, request.name)
-              requests[request.name] = request
-            end
-
-            snacks_picker {
-              title = "Document Requests",
-              items = vim.iter(names):fold({}, function(acc, name)
-                table.insert(acc, { text = name, label = name })
-                return acc
-              end),
-              matcher = { sort_empty = false },
-              layout = "ivy_fixed",
-              preview = function(ctx)
-                local bufnr = ctx.picker.layout.wins.preview.buf
-                local request = requests[ctx.item.label]
-                if not request then
-                  return
-                end
-
-                local lines = vim.api.nvim_buf_get_lines(
-                  DB.get_current_buffer(),
-                  request.start_line - 1,
-                  request.end_line - 1,
-                  false
-                )
-
-                vim.api.nvim_set_option_value("filetype", "http", { buf = bufnr })
-                vim.api.nvim_set_option_value("modifiable", true, { buf = bufnr })
-
-                vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
-                return true
-              end,
-              win = {
-                preview = {
-                  title = "Reqeuest Preview",
-                  wo = {
-                    number = false,
-                    relativenumber = false,
-                    signcolumn = "no",
-                    sidescrolloff = 1,
-                  },
-                },
-                list = { title = "Requests" },
-              },
-              confirm = function(ctx, item)
-                ctx:close()
-
-                local request = requests[item.label]
-                if not request then
-                  return
-                end
-                local start_line = request.start_line
-
-                vim.cmd("normal! " .. start_line .. "Gzz")
-              end,
-            }
+            require("kulala").search()
           end,
           ft = { "http", "rest" },
         },
