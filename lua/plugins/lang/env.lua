@@ -40,6 +40,7 @@ end
 return {
   {
     "ellisonleao/dotenv.nvim",
+    cmd = "Dotenv",
     init = function()
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         pattern = { ".env.*", "*.env" },
