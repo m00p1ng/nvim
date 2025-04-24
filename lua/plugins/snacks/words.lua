@@ -11,29 +11,20 @@ return {
       modes = { "n", "i", "c" }, -- modes to show references
     },
   },
-  keys = function(_, keys)
-    local function jump_reference(options)
-      return function()
-        require("demicolon.jump").repeatably_do(function(opts)
-          local direction = (opts.forward == nil or opts.forward)
-          if direction then
-            Snacks.words.jump(vim.v.count1, true)
-          else
-            Snacks.words.jump(-vim.v.count1, true)
-          end
-        end, options)
-      end
-    end
-
-    local k = {
-      { "]]", jump_reference { forward = true }, desc = "Next Reference" },
-      { "[[", jump_reference { forward = false }, desc = "Prev Reference" },
-    }
-
-    for _, val in ipairs(k) do
-      keys[#keys + 1] = val
-    end
-
-    return keys
-  end,
+  keys = {
+    {
+      "]]",
+      function()
+        Snacks.words.jump(vim.v.count1, true)
+      end,
+      desc = "Next Reference",
+    },
+    {
+      "[[",
+      function()
+        Snacks.words.jump(-vim.v.count1, true)
+      end,
+      desc = "Prev Reference",
+    },
+  },
 }

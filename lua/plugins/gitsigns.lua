@@ -61,12 +61,37 @@ return {
     { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage Buffer" },
     { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
     { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff" },
+    {
+      "]c",
+      function()
+        if vim.wo.diff then
+          vim.cmd.normal { "]c", bang = true }
+        else
+          require("gitsigns").nav_hunk "next"
+        end
+      end,
+      desc = "Next Hunk",
+    },
+    {
+      "[c",
+      function()
+        if vim.wo.diff then
+          vim.cmd.normal { "[c", bang = true }
+        else
+          require("gitsigns").nav_hunk "prev"
+        end
+      end,
+      desc = "Prev Hunk",
+    },
 
     -- Visual --
     {
       "<leader>gr",
       function()
-        require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+        require("gitsigns").reset_hunk {
+          vim.fn.line ".",
+          vim.fn.line "v",
+        }
       end,
       desc = "Reset Hunk",
       mode = "v",
@@ -74,7 +99,10 @@ return {
     {
       "<leader>gs",
       function()
-        require("gitsigns").stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+        require("gitsigns").stage_hunk {
+          vim.fn.line ".",
+          vim.fn.line "v",
+        }
       end,
       desc = "Stage Hunk",
       mode = "v",
