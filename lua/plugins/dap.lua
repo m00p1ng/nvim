@@ -58,10 +58,6 @@ return {
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
-    init = function()
-      require("utils").add_ui_ft "dap-repl"
-      require("utils.winbar").add_plugin "dap-repl"
-    end,
     opts = {
       icons = {
         expanded = icons.ui.ChevronShortRight,
@@ -140,6 +136,9 @@ return {
         dapui_console = icons.ui.Terminal,
       }
 
+      require("utils").add_ui_ft "dap-repl"
+      require("utils.winbar").add_plugin "dap-repl"
+
       require("utils").add_ui_ft {
         "dapui_watches",
         "dapui_stacks",
@@ -147,6 +146,7 @@ return {
         "dapui_scopes",
         "dapui_hover",
         "dapui_console",
+        "",
       }
       local winbar = require "utils.winbar"
       winbar.add_include_ft {
