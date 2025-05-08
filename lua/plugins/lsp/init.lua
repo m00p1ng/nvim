@@ -67,9 +67,6 @@ return {
       -- diagnostics
       vim.diagnostic.config(opts.diagnostics)
 
-      require("lspconfig.ui.windows").default_options.border = "rounded"
-      require("lspconfig.ui.windows").default_options.percentage = 0.8
-
       local servers = opts.servers
       local capabilities = require("plugins.lsp.keymaps").capabilities
       local function setup(server)
@@ -105,11 +102,10 @@ return {
         end
       end
 
-      require("mason-lspconfig").setup {
+      mlsp.setup {
         ensure_installed = ensure_installed,
-        automatic_installation = true,
+        automatic_enable = true,
       }
-      require("mason-lspconfig").setup_handlers { setup }
     end,
     keys = {
       { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
