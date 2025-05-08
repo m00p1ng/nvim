@@ -1,20 +1,9 @@
 return {
   {
-    "nvim-lspconfig",
+    "mason-lspconfig.nvim",
+    opts_extend = { "ensure_installed" },
     opts = {
-      servers = {
-        harper_ls = {
-          settings = {
-            ["harper-ls"] = {
-              linters = {
-                LongSentences = false,
-                SentenceCapitalization = false,
-                SpellCheck = false,
-              },
-            },
-          },
-        },
-      },
+      ensure_installed = { "harper_ls" },
     },
   },
 }

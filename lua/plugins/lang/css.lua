@@ -1,10 +1,9 @@
 return {
   {
-    "nvim-lspconfig",
+    "mason-lspconfig.nvim",
+    opts_extend = { "ensure_installed" },
     opts = {
-      servers = {
-        cssls = {},
-      },
+      ensure_installed = { "cssls" },
     },
   },
   {

@@ -1,11 +1,9 @@
 return {
   {
-    "nvim-lspconfig",
+    "mason-lspconfig.nvim",
+    opts_extend = { "ensure_installed" },
     opts = {
-      servers = {
-        basedpyright = {},
-        ruff = {},
-      },
+      ensure_installed = { "basedpyright", "ruff" },
     },
   },
   {
