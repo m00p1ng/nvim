@@ -8,7 +8,6 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "hinell/lsp-timeout.nvim", enabled = false },
-      "mason-org/mason-lspconfig.nvim",
     },
     ---@class PluginLspOpts
     opts = {
