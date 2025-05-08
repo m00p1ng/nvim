@@ -1,11 +1,9 @@
 return {
   {
-    "nvim-lspconfig",
+    "mason-lspconfig.nvim",
+    opts_extend = { "ensure_installed" },
     opts = {
-      servers = {
-        dockerls = {},
-        docker_compose_language_service = {},
-      },
+      ensure_installed = { "dockerls", "docker_compose_language_service" },
     },
   },
   {

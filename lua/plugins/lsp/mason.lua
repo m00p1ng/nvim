@@ -3,7 +3,6 @@ local icons = require "utils.icons"
 return {
   {
     "mason-org/mason.nvim",
-    version = "^1.11.0",
     cmd = "Mason",
     init = function()
       require("utils").add_ui_ft "mason"
@@ -52,6 +51,6 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    version = "^1.32.0",
+    opts = {},
   },
 }
