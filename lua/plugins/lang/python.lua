@@ -1,6 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = {
       servers = {
         basedpyright = {},
@@ -9,10 +9,12 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "python" } },
   },
+
+  -- Other extensions
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",

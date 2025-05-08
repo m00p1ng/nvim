@@ -1,6 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = {
       servers = {
         gopls = {
@@ -43,23 +43,25 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "go", "gomod", "gowork", "gosum" } },
   },
   {
-    "williamboman/mason.nvim",
+    "mason.nvim",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "delve" } },
   },
   {
-    "stevearc/conform.nvim",
+    "conform.nvim",
     opts = {
       formatters_by_ft = {
         go = { "goimports", "gofmt" },
       },
     },
   },
+
+  -- Other extensions
   { "leoluz/nvim-dap-go", ft = "go" },
   {
     "olexsmir/gopher.nvim",

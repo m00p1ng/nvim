@@ -1,13 +1,21 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "dart" } },
   },
 
+  -- Other extensions
   {
     "nvim-flutter/flutter-tools.nvim",
     ft = "dart",
+    init = function()
+      require("which-key").add {
+        { "<leader>m", group = "flutter" },
+        { "<leader>mt", "<cmd>telescope flutter commands<cr>", desc = "menu", buffer = true },
+        { "<leader>mf", "<cmd>telescope flutter fvm<cr>", desc = "fvm", buffer = true },
+      }
+    end,
     opts = {
       ui = {
         -- the border type to use for all floating windows, the same options/formats
@@ -91,15 +99,5 @@ return {
         },
       },
     },
-  },
-  {
-    "nvim-flutter/flutter-tools.nvim",
-    opts = function()
-      require("which-key").add {
-        { "<leader>m", group = "flutter" },
-        { "<leader>mt", "<cmd>telescope flutter commands<cr>", desc = "menu", buffer = true },
-        { "<leader>mf", "<cmd>telescope flutter fvm<cr>", desc = "fvm", buffer = true },
-      }
-    end,
   },
 }

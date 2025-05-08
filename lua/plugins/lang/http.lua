@@ -1,27 +1,17 @@
 return {
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       kulala_ls = {
-  --         mason = false,
-  --       },
-  --     },
-  --   },
-  -- },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "http" } },
   },
 
   -- {
-  --   "williamboman/mason.nvim",
+  --   "mason.nvim",
   --   opts_extend = { "ensure_installed" },
   --   opts = { ensure_installed = { "kulala-fmt" } },
   -- },
   -- {
-  --   "stevearc/conform.nvim",
+  --   "conform.nvim",
   --   opts = {
   --     formatters = {
   --       kulala = {
@@ -36,6 +26,7 @@ return {
   --   },
   -- },
 
+  -- Other extensions
   {
     "mistweaverco/kulala.nvim",
     ft = { "http", "rest" },
@@ -51,6 +42,10 @@ return {
         "text.kulala_ui",
         "markdown.kulala_ui",
         "kulala_verbose_result.kulala_ui",
+      }
+      require("which-key").add {
+        { "<leader>m", group = "HTTP" },
+        { "<leader>R", group = "Kulala" },
       }
     end,
     opts = {
@@ -428,14 +423,5 @@ return {
         },
       },
     },
-  },
-  {
-    "mistweaverco/kulala.nvim",
-    opts = function()
-      require("which-key").add {
-        { "<leader>m", group = "HTTP" },
-        { "<leader>R", group = "Kulala" },
-      }
-    end,
   },
 }

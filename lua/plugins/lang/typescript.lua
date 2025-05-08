@@ -1,22 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    init = function()
-      vim.api.nvim_create_autocmd("BufRead", {
-        group = vim.api.nvim_create_augroup("package_json_cmd", { clear = true }),
-        pattern = "*/package.json",
-        callback = function()
-          require("which-key").add {
-            { "<leader>m", group = "Package.json" },
-            { "<leader>mt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle", buffer = true },
-            { "<leader>mu", "<cmd>lua require('package-info').update()<cr>", desc = "Update", buffer = true },
-            { "<leader>md", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete", buffer = true },
-            { "<leader>mi", "<cmd>lua require('package-info').install()<cr>", desc = "Install", buffer = true },
-            { "<leader>mc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change", buffer = true },
-          }
-        end,
-      })
-    end,
+    "nvim-lspconfig",
     opts = {
       servers = {
         vtsls = {
@@ -58,7 +42,7 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
@@ -70,16 +54,12 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason.nvim",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "js-debug-adapter" } },
   },
   {
-    "dmmulroy/ts-error-translator.nvim",
-    ft = { "typescript", "typescriptreact" },
-  },
-  {
-    "mfussenegger/nvim-dap",
+    "nvim-dap",
     opts = function()
       local dap = require "dap"
       local installation_path = vim.fn.stdpath "data" .. "/mason/packages"
@@ -118,10 +98,30 @@ return {
     end,
   },
 
+  -- Other extensions
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    ft = { "typescript", "typescriptreact" },
+  },
   {
     "vuki656/package-info.nvim",
     lazy = true,
-    enabled = false,
+    init = function()
+      vim.api.nvim_create_autocmd("BufRead", {
+        group = vim.api.nvim_create_augroup("package_json_cmd", { clear = true }),
+        pattern = "*/package.json",
+        callback = function()
+          require("which-key").add {
+            { "<leader>m", group = "Package.json" },
+            { "<leader>mt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle", buffer = true },
+            { "<leader>mu", "<cmd>lua require('package-info').update()<cr>", desc = "Update", buffer = true },
+            { "<leader>md", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete", buffer = true },
+            { "<leader>mi", "<cmd>lua require('package-info').install()<cr>", desc = "Install", buffer = true },
+            { "<leader>mc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change", buffer = true },
+          }
+        end,
+      })
+    end,
     opts = {
       colors = {
         up_to_date = "#3C4048", -- Text color for up to date dependency virtual text

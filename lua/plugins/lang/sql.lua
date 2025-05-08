@@ -1,6 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = {
       servers = {
         sqlls = {},
@@ -8,13 +8,13 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "sql" } },
   },
 
   -- {
-  --   "williamboman/mason.nvim",
+  --   "mason.nvim",
   --   opts_extend = { "ensure_installed" },
   --   opts = { ensure_installed = { "sqlfluff" } },
   -- },
@@ -27,7 +27,7 @@ return {
   --   },
   -- },
   -- {
-  --   "stevearc/conform.nvim",
+  --   "conform.nvim",
   --   opts = {
   --     formatters = {
   --       sqlfluff = { args = { "format", "--dialect=ansi", "-" } },

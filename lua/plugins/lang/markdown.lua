@@ -1,6 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = {
       servers = {
         marksman = {},
@@ -8,10 +8,12 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "markdown", "markdown_inline" } },
   },
+
+  -- Other extensions
   {
     "OXY2DEV/markview.nvim",
     lazy = false,

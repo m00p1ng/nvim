@@ -31,11 +31,11 @@ vim.api.nvim_create_autocmd("UIEnter", {
 })
 
 return {
-  -- depends on the typescript extra
+  -- depends on the TypeScript extra
   { import = "plugins.lang.typescript" },
 
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = {
       servers = {
         volar = {
@@ -65,7 +65,7 @@ return {
   },
   -- Configure tsserver plugin
   {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     opts = function(_, opts)
       local vue_version = vim.g.vue_version
       opts.servers.volar.enabled = vue_version == 3
@@ -87,7 +87,7 @@ return {
   },
 
   {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter",
     opts = { ensure_installed = { "vue", "css", "scss" } },
   },
 }

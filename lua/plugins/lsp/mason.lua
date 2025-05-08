@@ -1,7 +1,7 @@
 local icons = require "utils.icons"
 
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   cmd = "Mason",
   init = function()
     require("utils").add_ui_ft "mason"
