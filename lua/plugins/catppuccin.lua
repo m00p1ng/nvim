@@ -128,6 +128,7 @@ return {
       dap_ui = true,
       diffview = true,
       gitsigns = true,
+      markview = true,
       mason = true,
       native_lsp = {
         enabled = true,
