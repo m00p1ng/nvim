@@ -19,6 +19,7 @@ return {
           end
 
           if vim.fn.filereadable "package.json" == 0 then
+            vim.lsp.enable "vtsls"
             return
           end
 
@@ -27,7 +28,8 @@ return {
             { text = true },
             function(out)
               if out.code ~= 0 then
-                return vim.lsp.enable "vtsls"
+                vim.lsp.enable "vtsls"
+                return
               end
 
               local version = vim.trim(out.stdout)
