@@ -41,8 +41,7 @@ return {
           local paths = vim.split(opts.full_filename, ".git", { plain = true })
           if #paths >= 2 then
             return {
-              filename = paths[2],
-              output_filename = "diffview:/" .. opts.filename
+              output_filename = "diffview:/" .. paths[2]
             }
           end
 
