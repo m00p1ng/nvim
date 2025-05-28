@@ -30,4 +30,17 @@ return {
       },
     },
   },
+  before_init = function(params, config)
+    -- Configure tsserver plugin
+    if vim.g.vue_version == 2 then
+      table.insert(config.filetypes, "vue")
+      table.insert(config.settings.vtsls.tsserver.globalPlugins, {
+        name = "@vue/typescript-plugin",
+        location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+        languages = { "vue" },
+        configNamespace = "typescript",
+        enableForWorkspaceTypeScriptVersions = true,
+      })
+    end
+  end,
 }

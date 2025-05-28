@@ -8,7 +8,13 @@ return {
       vim.api.nvim_create_autocmd("UIEnter", {
         group = vim.api.nvim_create_augroup("set_vue_version", { clear = true }),
         callback = function()
-          if vim.g.vscode or vim.g.vue_version then
+          if vim.g.vscode then
+            return
+          end
+
+          if vim.g.vue_version then
+            vim.lsp.enable("vue_ls", vim.g.vue_version == 3)
+            vim.lsp.enable("vtsls", vim.g.vue_version == 2)
             return
           end
 
@@ -21,7 +27,7 @@ return {
             { text = true },
             function(out)
               if out.code ~= 0 then
-                return
+                return vim.lsp.enable "vtsls"
               end
 
               local version = vim.trim(out.stdout)
@@ -33,12 +39,8 @@ return {
                 vim.g.vue_version = 2
               end
 
-              vim.lsp.config("volar", {
-                enabled = vim.g.vue_version == 3,
-              })
-              vim.lsp.config("vtsls", {
-                enabled = vim.g.vue_version == nil or vim.g.vue_version == 2,
-              })
+              vim.lsp.enable("vue_ls", vim.g.vue_version == 3)
+              vim.lsp.enable("vtsls", vim.g.vue_version == 2)
             end
           )
         end,
@@ -46,7 +48,13 @@ return {
     end,
     opts_extend = { "ensure_installed" },
     opts = {
-      ensure_installed = { "volar" },
+      ensure_installed = { "vue_ls" },
+      automatic_enable = {
+        exclude = {
+          "vue_ls",
+          "vtsls",
+        },
+      },
     },
   },
 
