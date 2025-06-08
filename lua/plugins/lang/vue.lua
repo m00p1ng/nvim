@@ -28,7 +28,9 @@ return {
             { text = true },
             function(out)
               if out.code ~= 0 then
-                vim.lsp.enable "vtsls"
+                vim.schedule(function()
+                  vim.lsp.enable "vtsls"
+                end)
                 return
               end
 
@@ -41,8 +43,10 @@ return {
                 vim.g.vue_version = 2
               end
 
-              vim.lsp.enable("vue_ls", vim.g.vue_version == 3)
-              vim.lsp.enable("vtsls", vim.g.vue_version == 2)
+              vim.schedule(function()
+                vim.lsp.enable("vue_ls", vim.g.vue_version == 3)
+                vim.lsp.enable("vtsls", vim.g.vue_version == 2)
+              end)
             end
           )
         end,
