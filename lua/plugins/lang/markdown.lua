@@ -45,6 +45,9 @@ return {
         },
       },
       latex = false,
+      experimental = {
+        check_rtp = false,
+      },
     },
     keys = {
       { "<leader>mt", "<cmd>Markview<cr>", desc = "Toggle preview", buffer = true, ft = { "markdown" } },

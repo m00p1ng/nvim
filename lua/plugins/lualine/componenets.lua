@@ -42,7 +42,7 @@ M.diagnostics = {
     error = icons.diagnostics.Error .. " ",
     warn = icons.diagnostics.Warning .. " ",
   },
-  update_in_insert = false,
+  update_in_insert = true,
   always_visible = true,
 }
 
