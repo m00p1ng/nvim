@@ -1,15 +1,30 @@
+local vue_plugin = {
+  name = "@vue/typescript-plugin",
+  location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+  languages = { "vue" },
+  configNamespace = "typescript",
+  enableForWorkspaceTypeScriptVersions = true,
+}
+
+local typescriptSdk = vim.fn.isdirectory ".yarn/sdks/typescript" and "./.yarn/sdks/typescript/lib" or ""
+
 return {
   filetypes = {
     "javascript",
     "javascriptreact",
-    "javascript.jsx",
     "typescript",
     "typescriptreact",
-    "typescript.tsx",
+    "vue",
   },
+  workspace_required = true,
   settings = {
     complete_function_calls = true,
     vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
+        },
+      },
       enableMoveToFileCodeAction = true,
       autoUseWorkspaceTsdk = true,
       experimental = {
@@ -20,6 +35,7 @@ return {
       },
     },
     typescript = {
+      tsdk = typescriptSdk,
       inlayHints = {
         parameterNames = { enabled = "literals" },
         parameterTypes = { enabled = true },
@@ -30,17 +46,4 @@ return {
       },
     },
   },
-  before_init = function(params, config)
-    -- Configure tsserver plugin
-    if vim.g.vue_version == 2 then
-      table.insert(config.filetypes, "vue")
-      table.insert(config.settings.vtsls.tsserver.globalPlugins, {
-        name = "@vue/typescript-plugin",
-        location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-        languages = { "vue" },
-        configNamespace = "typescript",
-        enableForWorkspaceTypeScriptVersions = true,
-      })
-    end
-  end,
 }
