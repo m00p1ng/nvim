@@ -4,8 +4,9 @@ return {
   settings = {
     html = {
       format = {
+        enable = false,
         -- https://github.com/vuejs/language-tools/discussions/988#discussioncomment-10196446
-        wrapAttributes = "preserve-aligned",
+        -- wrapAttributes = "preserve-aligned",
       },
     },
   },
