@@ -54,4 +54,13 @@ return {
       { "<leader>ms", "<cmd>Markview splitToggle<cr>", desc = "Toggle split", buffer = true, ft = { "markdown" } },
     },
   },
+
+  {
+    "timantipov/md-table-tidy.nvim",
+    -- default config
+    opts = {
+      padding = 1, -- number of spaces for cell padding
+      key = "<leader>tt", -- key for command :TableTidy<CR>
+    },
+  },
 }
