@@ -22,6 +22,8 @@ return {
     disable_context_highlighting = false,
     -- Disables signs for sections/items/hunks
     disable_signs = false,
+    -- Offer to force push when branches diverge
+    prompt_force_push = true,
     -- Changes what mode the Commit Editor starts in. `true` will leave nvim in normal mode, `false` will change nvim to
     -- insert mode, and `"auto"` will change nvim to insert mode IF the commit message is empty, otherwise leaving it in
     -- normal mode.
@@ -39,12 +41,30 @@ return {
     -- Show relative date by default. When set, use `strftime` to display dates
     commit_date_format = nil,
     log_date_format = nil,
+    -- Show message with spinning animation when a git command is running.
+    process_spinner = true,
     -- Used to generate URL's for branch popup action "pull request".
     git_services = {
-      ["github.com"] = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
-      ["bitbucket.org"] = "https://bitbucket.org/${owner}/${repository}/pull-requests/new?source=${branch_name}&t=1",
-      ["gitlab.com"] = "https://gitlab.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
-      ["azure.com"] = "https://dev.azure.com/${owner}/_git/${repository}/pullrequestcreate?sourceRef=${branch_name}&targetRef=${target}",
+      ["github.com"] = {
+        pull_request = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
+        commit = "https://github.com/${owner}/${repository}/commit/${oid}",
+        tree = "https://${host}/${owner}/${repository}/tree/${branch_name}",
+      },
+      ["bitbucket.org"] = {
+        pull_request = "https://bitbucket.org/${owner}/${repository}/pull-requests/new?source=${branch_name}&t=1",
+        commit = "https://bitbucket.org/${owner}/${repository}/commits/${oid}",
+        tree = "https://bitbucket.org/${owner}/${repository}/branch/${branch_name}",
+      },
+      ["gitlab.com"] = {
+        pull_request = "https://gitlab.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
+        commit = "https://gitlab.com/${owner}/${repository}/-/commit/${oid}",
+        tree = "https://gitlab.com/${owner}/${repository}/-/tree/${branch_name}?ref_type=heads",
+      },
+      ["azure.com"] = {
+        pull_request = "https://dev.azure.com/${owner}/_git/${repository}/pullrequestcreate?sourceRef=${branch_name}&targetRef=${target}",
+        commit = "",
+        tree = "",
+      },
     },
     -- Allows a different telescope sorter. Defaults to 'fuzzy_with_index_bias'. The example below will use the native fzf
     -- sorter instead. By default, this function returns `nil`.
@@ -56,13 +76,7 @@ return {
     -- Scope persisted settings on a per-project basis
     use_per_project_settings = true,
     -- Table of settings to never persist. Uses format "Filetype--cli-value"
-    ignored_settings = {
-      "NeogitPushPopup--force-with-lease",
-      "NeogitPushPopup--force",
-      "NeogitPullPopup--rebase",
-      "NeogitCommitPopup--allow-empty",
-      "NeogitRevertPopup--no-edit",
-    },
+    ignored_settings = {},
     -- Configure highlight group features
     highlight = {
       italic = true,
@@ -79,10 +93,25 @@ return {
     -- Flag description: https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortltkeygt
     -- Sorting keys: https://git-scm.com/docs/git-for-each-ref#_options
     sort_branches = "-committerdate",
+    -- Value passed to the `--<commit_order>-order` flag of the `git log` command
+    -- Determines how commits are traversed and displayed in the log / graph:
+    --   "topo"         topological order (parents always before children, good for graphs, slower on large repos)
+    --   "date"         chronological order by commit date
+    --   "author-date"  chronological order by author date
+    --   ""             disable explicit ordering (fastest, recommended for very large repos)
+    commit_order = "topo",
     -- Default for new branch name prompts
     initial_branch_name = "",
     -- Change the default way of opening neogit
     kind = "tab",
+    -- Floating window style
+    floating = {
+      relative = "editor",
+      width = 0.8,
+      height = 0.7,
+      style = "minimal",
+      border = "rounded",
+    },
     -- Disable line numbers
     disable_line_numbers = true,
     -- Disable relative line numbers
@@ -149,12 +178,6 @@ return {
     merge_editor = {
       kind = "auto",
     },
-    description_editor = {
-      kind = "auto",
-    },
-    tag_editor = {
-      kind = "auto",
-    },
     preview_buffer = {
       kind = "floating_console",
     },
@@ -193,6 +216,11 @@ return {
       -- is also selected then telescope is used instead
       -- Requires you to have `echasnovski/mini.pick` installed.
       mini_pick = nil,
+
+      -- If enabled, uses snacks.picker for menu selection. If the telescope integration
+      -- is also selected then telescope is used instead
+      -- Requires you to have `folke/snacks.nvim` installed.
+      snacks = true,
     },
     sections = {
       -- Reverting/Cherry Picking
@@ -285,6 +313,7 @@ return {
         ["<down>"] = "Next",
         ["<up>"] = "Previous",
         ["<tab>"] = "InsertCompletion",
+        ["<c-y>"] = "CopySelection",
         ["<space>"] = "MultiselectToggleNext",
         ["<s-space>"] = "MultiselectTogglePrevious",
         ["<c-j>"] = "NOP",
@@ -329,6 +358,8 @@ return {
         ["4"] = "Depth4",
         ["Q"] = "Command",
         ["<tab>"] = "Toggle",
+        ["za"] = "Toggle",
+        ["zo"] = "OpenFold",
         ["x"] = "Discard",
         ["s"] = "Stage",
         ["S"] = "StageUnstaged",
