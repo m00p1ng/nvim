@@ -10,6 +10,10 @@ return {
       dark = "mocha",
     },
     transparent_background = false, -- disables setting the background color.
+    float = {
+      transparent = false, -- enable transparent floating windows
+      solid = false, -- use solid styling for floating windows, see |winborder|
+    },
     show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
     term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
@@ -34,6 +38,25 @@ return {
       types = {},
       operators = {},
       -- miscs = {}, -- Uncomment to turn off hard-coded styles
+    },
+    lsp_styles = {
+      virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+        ok = { "italic" },
+      },
+      underlines = {
+        errors = { "undercurl" },
+        hints = { "undercurl" },
+        warnings = { "undercurl" },
+        information = { "undercurl" },
+        ok = { "undercurl" },
+      },
+      inlay_hints = {
+        background = true,
+      },
     },
     color_overrides = {},
     custom_highlights = function(C)
@@ -121,41 +144,27 @@ return {
       }
     end,
     default_integrations = false,
+    auto_integrations = false,
     integrations = {
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-      blink_cmp = true,
+      blink_cmp = {
+        enabled = true,
+        style = "bordered",
+      },
       dap = true,
       dap_ui = true,
       diffview = true,
       gitsigns = true,
       markview = true,
       mason = true,
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
-        },
-        underlines = {
-          errors = { "undercurl" },
-          hints = { "undercurl" },
-          warnings = { "undercurl" },
-          information = { "undercurl" },
-        },
-        inlay_hints = {
-          background = true,
-        },
-      },
       neogit = true,
       neotree = true,
       nvimtree = true,
       rainbow_delimiters = true,
-      semantic_tokens = true,
-      snacks = true,
+      snacks = {
+        enabled = true,
+      },
       symbols_outline = true,
-      treesitter = true,
       ufo = true,
     },
   },
