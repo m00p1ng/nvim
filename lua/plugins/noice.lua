@@ -136,7 +136,7 @@ return {
         opts = {}, -- merged with defaults from documentation
       },
       signature = {
-        enabled = false,
+        enabled = true,
         auto_open = {
           enabled = false,
           trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
