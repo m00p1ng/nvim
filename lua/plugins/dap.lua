@@ -10,13 +10,13 @@ return {
 
       vim.fn.sign_define("DapBreakpoint", {
         text = icons.ui.Circle,
-        texthl = "DiagnosticSignError",
+        texthl = "DapBreakpoint",
         linehl = "",
         numhl = "",
       })
       vim.fn.sign_define("DapBreakpointCondition", {
         text = icons.ui.Circle,
-        texthl = "DiagnosticSignWarning",
+        texthl = "DapBreakpointCondition",
         linehl = "",
         numhl = "",
       })
