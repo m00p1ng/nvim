@@ -65,7 +65,7 @@ M.filetype = {
 
     return str
   end,
-  icons_enabled = false,
+  icons_enabled = true,
   cond = function()
     return not f.is_ui_filetype(vim.bo.ft)
   end,
