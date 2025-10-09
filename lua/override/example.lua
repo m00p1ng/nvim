@@ -28,5 +28,4 @@ return {
   -- AI
   -- { import = "plugins.ai.llm" },
   -- { import = "plugins.ai.copilot" },
-  -- { import = "plugins.ai.tabnine" },
 }
