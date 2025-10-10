@@ -144,10 +144,17 @@ return {
       })
     end,
     opts = {
-      colors = {
-        up_to_date = "#3C4048", -- Text color for up to date dependency virtual text
-        outdated = "#d19a66", -- Text color for outdated dependency virtual text
-        invalid = "#ee4b2b", -- Text color for invalid dependency virtual text
+      -- Check `:help nvim_set_hl()` for more attributes.
+      highlights = {
+        up_to_date = { -- highlight for up to date dependency virtual text
+          fg = "#3C4048",
+        },
+        outdated = { -- highlight for outdated dependency virtual text
+          fg = "#d19a66",
+        },
+        invalid = { -- highlight for invalid dependency virtual text
+          fg = "#ee4b2b",
+        },
       },
       icons = {
         enable = true, -- Whether to display icons
@@ -157,6 +164,7 @@ return {
           invalid = "|  ", -- Icon for invalid dependencies
         },
       },
+      notifications = true, -- Whether to display notifications when running commands
       autostart = false, -- Whether to autostart when `package.json` is opened
       hide_up_to_date = false, -- It hides up to date versions when displaying virtual text
       hide_unstable_versions = false, -- It hides unstable versions from version list e.g next-11.1.3-canary3
