@@ -5,7 +5,6 @@ return {
     "mfussenegger/nvim-dap",
     -- use `config` instead of `opts` or `init` to avoid bugs
     config = function()
-      vim.api.nvim_set_hl(0, "DapStopped", { bg = "#4B4B18" })
       vim.api.nvim_set_hl(0, "DapStoppedText", { fg = "yellow" })
 
       vim.fn.sign_define("DapBreakpoint", {
