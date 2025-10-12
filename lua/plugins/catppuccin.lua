@@ -68,6 +68,12 @@ return {
 
         Hlargs = { fg = C.maroon },
         NvimDapVirtualText = { link = "LspInlayHint" },
+        DapUIVariable = { fg = C.red },
+        DapUIBreakpointsPath = { fg = C.text, style = { "bold" } },
+        DapUIScope = { fg = C.text, style = { "bold" } },
+        DapUIStoppedThread = { fg = C.text, style = { "bold" } },
+        DapUIValue = { fg = C.overlay0 },
+        DapUISource = { fg = C.overlay0 },
 
         OutlineGuides = { fg = C.surface0 },
         OutlineNormal = { bg = C.mantle },
