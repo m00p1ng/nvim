@@ -3,6 +3,7 @@ return {
 
   -- Lang
   -- { import = "plugins.lang.bash" },
+  -- { import = "plugins.lang.cpp" },
   -- { import = "plugins.lang.css" },
   -- { import = "plugins.lang.docker" },
   -- { import = "plugins.lang.env" },
