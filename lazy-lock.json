@@ -12,6 +12,7 @@
   "dial.nvim": { "branch": "master", "commit": "f0404ec1f83a03f2c3457e60087c6331d1cbb83f" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dotenv.nvim": { "branch": "main", "commit": "7d516e9293c6e3ac21830fb10a4e8674c02747c6" },
+  "flutter-tools.nvim": { "branch": "main", "commit": "65b7399804315a1160933b64292d3c5330aa4e9f" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
   "gitlinker.nvim": { "branch": "master", "commit": "7c1fae10e39fba627a433a0d7126683c79af289f" },
