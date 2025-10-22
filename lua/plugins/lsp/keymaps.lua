@@ -1,6 +1,5 @@
 local M = {}
 
-local has_lsp_file, lsp_file = pcall(require, "lsp-file-operations")
 local has_blink, blink_cmp = pcall(require, "blink.cmp")
 
 M.capabilities = vim.tbl_deep_extend(
@@ -8,7 +7,6 @@ M.capabilities = vim.tbl_deep_extend(
   {},
   vim.lsp.protocol.make_client_capabilities(),
   has_blink and blink_cmp.get_lsp_capabilities() or {},
-  has_lsp_file and lsp_file.default_capabilities() or {},
   {
     textDocument = {
       -- for ufo plugin
