@@ -23,6 +23,15 @@ return {
     opts_extend = { "ensure_installed" },
     opts = { ensure_installed = { "js-debug-adapter" } },
   },
+  -- {
+  --   "conform.nvim",
+  --   opts = {
+  --     formatters_by_ft = {
+  --       typescript = { "prettier", lsp_format = "last" },
+  --       typescriptreact = { "prettier", lsp_format = "last" },
+  --     },
+  --   },
+  -- },
   {
     "nvim-dap",
     opts = function()

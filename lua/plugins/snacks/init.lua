@@ -12,6 +12,7 @@ return {
         "snacks_picker_input",
         "snacks_picker_preview",
         "snacks_picker_list",
+        "image",
       }
     end,
     ---@type snacks.Config
