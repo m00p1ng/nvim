@@ -106,6 +106,8 @@ return {
         },
       },
       focus = "input",
+      show_delay = 5000,
+      limit_live = 10000,
       layout = {
         cycle = true,
         --- Use the default layout or vertical if the window is too narrow
@@ -201,7 +203,12 @@ return {
         },
         file = {
           filename_first = true, -- display filename before the file path
-          truncate = 75, -- truncate the file path to (roughly) this length
+          --- * left: truncate the beginning of the path
+          --- * center: truncate the middle of the path
+          --- * right: truncate the end of the path
+          ---@type "left"|"center"|"right"
+          truncate = "center",
+          min_width = 40, -- minimum length of the truncated path
           filename_only = false, -- only show the filename
           icon_width = 2, -- width of the icon (in characters)
           git_status_hl = true, -- use the git status highlight group for the filename
@@ -219,11 +226,20 @@ return {
       },
       previewers = {
         diff = {
-          builtin = true, -- use Neovim for previewing diffs (true) or use an external tool (false)
-          cmd = { "delta" }, -- example to show a diff with delta
+          -- fancy: Snacks fancy diff (borders, multi-column line numbers, syntax highlighting)
+          -- syntax: Neovim's built-in diff syntax highlighting
+          -- terminal: external command (git's pager for git commands, `cmd` for other diffs)
+          style = "fancy", ---@type "fancy"|"syntax"|"terminal"
+          cmd = { "delta" }, -- example for using `delta` as the external diff command
+          ---@type vim.wo?|{} window options for the fancy diff preview window
+          wo = {
+            breakindent = true,
+            wrap = true,
+            linebreak = true,
+            showbreak = "",
+          },
         },
         git = {
-          builtin = true, -- use Neovim for previewing git output (true) or use git (false)
           args = {}, -- additional arguments passed to the git command. Useful to set pager options usin `-c ...`
         },
         file = {
@@ -268,6 +284,7 @@ return {
             ["<a-f>"] = { "toggle_follow", mode = { "i", "n" } },
             ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
             ["<a-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<a-r>"] = { "toggle_regex", mode = { "i", "n" } },
             ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } },
             ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
             ["<a-w>"] = { "cycle_win", mode = { "i", "n" } },
@@ -338,6 +355,7 @@ return {
             ["<c-n>"] = "list_down",
             ["<c-p>"] = "list_up",
             ["<c-q>"] = "qflist",
+            ["<c-g>"] = "print_path",
             ["<c-s>"] = false,
             ["<c-x>"] = "edit_split",
             ["<c-t>"] = "tab",
@@ -389,7 +407,7 @@ return {
         },
         tree = {
           vertical = "│ ",
-          middle = "│ ",
+          middle = "├╴",
           last = "└╴",
         },
         undo = {
