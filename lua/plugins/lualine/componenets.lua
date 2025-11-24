@@ -201,4 +201,23 @@ M.current_signature = {
   color = { fg = "#626880" },
 }
 
+M.copilot = {
+  function()
+    local c = require "copilot.client"
+    local s = require "copilot.status"
+    if c.is_disabled() then
+      return icons.misc.CopilotDisabled
+    elseif s.data.status == "Warning" then
+      return icons.misc.CopilotWarning
+    end
+
+    return ""
+  end,
+  cond = function()
+    local has_copilot, _ = pcall(require, "copilot.client")
+    return has_copilot
+  end,
+  color = { fg = "#f38ba8" },
+}
+
 return M

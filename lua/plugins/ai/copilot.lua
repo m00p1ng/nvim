@@ -3,6 +3,30 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
+    init = function()
+      local has_snacks, snacks = pcall(require, "snacks")
+      if not has_snacks then
+        return
+      end
+      local c = require "copilot.client"
+      local cmd = require "copilot.command"
+
+      snacks
+        .toggle({
+          name = "GitHub Copilot",
+          get = function()
+            return not c.is_disabled()
+          end,
+          set = function(state)
+            if state then
+              cmd.enable()
+            else
+              cmd.disable()
+            end
+          end,
+        })
+        :map "<leader>oa"
+    end,
     opts = {
       panel = {
         enabled = false,

@@ -27,7 +27,7 @@ return {
         lualine_a = { c.branch },
         lualine_b = { c.diagnostics, c.tabs },
         lualine_c = { c.status_mode, c.search_result, c.current_signature },
-        lualine_x = { "codecompanion", c.autoformat, c.command, c.filesize },
+        lualine_x = { c.copilot, "codecompanion", c.autoformat, c.command, c.filesize },
         lualine_y = { c.spaces, c.filetype, c.updated_plugin },
         lualine_z = { c.location, c.progress },
       },

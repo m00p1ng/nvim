@@ -171,5 +171,7 @@ return {
     Lazy = "󰒲",
     Stars = "󰙴",
     Copilot = "",
+    CopilotDisabled = "",
+    CopilotWarning = "",
   },
 }
