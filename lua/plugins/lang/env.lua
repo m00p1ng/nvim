@@ -12,7 +12,7 @@ return {
     end,
     opts = {},
     keys = function()
-      local last_env = nil
+      vim.g.last_env = nil
 
       local function select_env()
         local result = vim
@@ -38,14 +38,14 @@ return {
           end
           vim.cmd.Dotenv(choice)
           vim.notify("Loaded " .. choice, vim.log.levels.INFO)
-          last_env = choice
+          vim.g.last_env = choice
         end)
       end
 
       local function reload_env()
-        if last_env then
-          vim.cmd.Dotenv(last_env)
-          vim.notify("Reloaded " .. last_env, vim.log.levels.INFO)
+        if vim.g.last_env then
+          vim.cmd.Dotenv(vim.g.last_env)
+          vim.notify("Reloaded " .. vim.g.last_env, vim.log.levels.INFO)
         else
           select_env()
         end

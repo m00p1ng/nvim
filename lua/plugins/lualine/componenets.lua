@@ -220,4 +220,13 @@ M.copilot = {
   color = { fg = "#f38ba8" },
 }
 
+M.env = {
+  function()
+    return "env: " .. (vim.g.last_env or "default")
+  end,
+  cond = function()
+    return vim.bo.ft == "http"
+  end,
+}
+
 return M
