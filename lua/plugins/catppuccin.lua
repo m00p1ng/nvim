@@ -78,6 +78,8 @@ return {
         OutlineGuides = { fg = C.surface0 },
         OutlineNormal = { bg = C.mantle },
 
+        DiffviewDiffDeleteDim = { fg = C.surface0, bg = C.base },
+
         SnacksIndent = { fg = C.surface0 },
         SnacksIndentScope = { fg = C.overlay2 },
         SnacksNotifierInfo = { link = "Normal" },
