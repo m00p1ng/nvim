@@ -1,5 +1,3 @@
-local ts_utils = require "nvim-treesitter.ts_utils"
-
 local M = {}
 
 local get_line_for_node = function(node)
@@ -19,6 +17,7 @@ local get_line_for_node = function(node)
 end
 
 function M.get_ref()
+  local ts_utils = require "nvim-treesitter.ts_utils"
   local current_node = ts_utils.get_node_at_cursor()
   if not current_node then
     return ""

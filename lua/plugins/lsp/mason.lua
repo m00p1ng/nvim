@@ -5,7 +5,10 @@ return {
     "mason-org/mason.nvim",
     cmd = "Mason",
     init = function()
-      require("utils").add_ui_ft "mason"
+      require("utils").add_ui_ft {
+        "mason",
+        "mason_backdrop",
+      }
     end,
     opts_extend = { "ensure_installed" },
     opts = {

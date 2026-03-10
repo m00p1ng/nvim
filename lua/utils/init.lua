@@ -8,6 +8,7 @@ M.ui_filetypes = {
   "quickfix",
   "checkhealth",
   "lazy",
+  "lazy_backdrop",
   "man",
 }
 
