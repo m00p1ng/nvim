@@ -46,8 +46,22 @@ return {
             return
           end
 
-          if not vim.tbl_contains(installed, ft) then
-            TS.install({ ft }, { summary = true }):wait()
+          local parser_name = vim.treesitter.language.get_lang(ft)
+          if not parser_name then
+            vim.notify(vim.inspect("No treesitter parser found for filetype: " .. ft), vim.log.levels.WARN)
+            return
+          end
+
+          -- Try to get existing parser
+          local parser_configs = require "nvim-treesitter.parsers"
+          if not parser_configs[parser_name] then
+            return -- Parser not available, skip silently
+          end
+
+          local parser_exists = pcall(vim.treesitter.get_parser, bufnr, parser_name)
+
+          if parser_exists and not vim.tbl_contains(installed, ft) then
+            TS.install({ parser_name }, { summary = true }):wait()
           end
 
           -- highlighting

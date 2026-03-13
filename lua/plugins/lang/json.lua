@@ -9,7 +9,7 @@ return {
   {
     "nvim-treesitter",
     opts_extend = { "ensure_installed" },
-    opts = { ensure_installed = { "json", "json5", "jsonc" } },
+    opts = { ensure_installed = { "json", "json5" } },
   },
   { "b0o/SchemaStore.nvim", lazy = true },
 }
