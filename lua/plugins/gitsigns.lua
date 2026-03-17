@@ -3,20 +3,20 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
+      add = { text = "┃" },
+      change = { text = "┃" },
       delete = { text = "" },
       topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+      changedelete = { text = "┃" },
+      untracked = { text = "┃" },
     },
     signs_staged = {
-      add = { text = "▎" },
-      change = { text = "▎" },
+      add = { text = "┃" },
+      change = { text = "┃" },
       delete = { text = "" },
       topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+      changedelete = { text = "┃" },
+      untracked = { text = "┃" },
     },
     signs_staged_enable = true,
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
@@ -34,7 +34,7 @@ return {
       virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
       delay = 500,
       ignore_whitespace = false,
-      virt_text_priority = 10000,
+      virt_text_priority = 100,
       use_focus = true,
     },
     current_line_blame_formatter = "   <author>, <author_time:%R> • <summary>",
@@ -44,7 +44,6 @@ return {
     max_file_length = 40000, -- Disable if file is longer than this (in lines)
     preview_config = {
       -- Options passed to nvim_open_win
-      border = "rounded",
       style = "minimal",
       relative = "cursor",
       row = 0,
