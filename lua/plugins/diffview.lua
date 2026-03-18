@@ -294,6 +294,12 @@ return {
   keys = {
     { "<leader>gt", "<cmd>DiffviewOpen<cr>", desc = "Diff view" },
     { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
-    { "<leader>gp", "<cmd>lua require('utils.git').previous_change()<cr>", desc = "Diff Previous" },
+    {
+      "<leader>gp",
+      function()
+        vim.cmd.DiffviewOpen { require('utils.git').get_commit_hash() .. "^!" }
+      end,
+      desc = "Diff Previous",
+    },
   },
 }

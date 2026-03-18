@@ -4,8 +4,7 @@ return {
     {
       "<leader>gw",
       function()
-        local sha = require("utils.git").get_commit_sha()
-        Snacks.gitbrowse.open { commit = sha }
+        Snacks.gitbrowse.open { commit = require("utils.git").get_commit_hash() }
       end,
       desc = "Open Commit on Web",
     },
