@@ -14,7 +14,6 @@ return {
       transparent = false, -- enable transparent floating windows
       solid = false, -- use solid styling for floating windows, see |winborder|
     },
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
     term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
       enabled = false, -- dims the background color of inactive window
@@ -39,7 +38,7 @@ return {
       operators = {},
       -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
-    lsp_styles = {
+    lsp_styles = { -- Handles the style of specific lsp hl groups (see `:h lsp-highlight`).
       virtual_text = {
         errors = { "italic" },
         hints = { "italic" },
@@ -152,28 +151,12 @@ return {
       }
     end,
     default_integrations = false,
-    auto_integrations = false,
+    auto_integrations = true,
     integrations = {
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       blink_cmp = {
-        enabled = true,
         style = "bordered",
       },
-      dap = true,
-      dap_ui = true,
-      diffview = true,
-      gitsigns = true,
-      markview = true,
-      mason = true,
-      neogit = true,
-      neotree = true,
-      nvimtree = true,
-      rainbow_delimiters = true,
-      snacks = {
-        enabled = true,
-      },
-      symbols_outline = true,
-      ufo = true,
     },
   },
   init = function()
