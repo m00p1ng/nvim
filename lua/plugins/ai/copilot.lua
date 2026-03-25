@@ -107,7 +107,7 @@ return {
   },
 
   {
-    "saghen/blink.cmp",
+    "blink.cmp",
     optional = true,
     dependencies = { "giuxtaposition/blink-cmp-copilot" },
     opts_extend = { "sources.default" },
@@ -133,7 +133,7 @@ return {
     },
   },
   {
-    "saghen/blink.cmp",
+    "blink.cmp",
     optional = true,
     opts = function(_, opts)
       local text_func = opts.completion.menu.draw.components.kind_icon.text

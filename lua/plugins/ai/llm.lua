@@ -68,7 +68,7 @@ return {
     },
   },
   {
-    "saghen/blink.cmp",
+    "blink.cmp",
     optional = true,
     opts = function(_, opts)
       local text_func = opts.completion.menu.draw.components.kind_icon.text
@@ -84,7 +84,7 @@ return {
 
   { import = "plugins.ai.codecompanion" },
   {
-    "olimorris/codecompanion.nvim",
+    "codecompanion.nvim",
     opts = {
       strategies = {
         chat = { adapter = "ollama" },

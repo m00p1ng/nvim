@@ -13,6 +13,7 @@ return {
         "snacks_picker_preview",
         "snacks_picker_list",
         "snacks_layout_box",
+        "markdown.snacks_picker_preview",
         "image",
       }
     end,
