@@ -1,15 +1,13 @@
 local icons = require "utils.icons"
+require("utils").add_ui_ft {
+  "mason",
+  "mason_backdrop",
+}
 
 return {
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
-    init = function()
-      require("utils").add_ui_ft {
-        "mason",
-        "mason_backdrop",
-      }
-    end,
     opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {},
