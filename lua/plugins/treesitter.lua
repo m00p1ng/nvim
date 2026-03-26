@@ -53,7 +53,7 @@ return {
           end
 
           local parser_exists = pcall(vim.treesitter.get_parser, ev.buf, parser_name)
-          if parser_exists and not vim.tbl_contains(installed, parser_name) then
+          if not parser_exists and not vim.tbl_contains(installed, parser_name) then
             TS.install({ parser_name }, { summary = true }):wait()
           end
 
