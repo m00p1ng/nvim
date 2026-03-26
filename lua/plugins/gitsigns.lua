@@ -59,7 +59,7 @@ return {
     { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
     { "<leader>gS", "<cmd>Gitsigns stage_buffer<cr>", desc = "Stage Buffer" },
     { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
-    { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff" },
+    -- { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff" },
     {
       "]c",
       function()

@@ -1,5 +1,6 @@
 return {
-  "sindrets/diffview.nvim",
+  -- "sindrets/diffview.nvim",
+  "dlyongemallo/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   init = function()
     local diffview_winbar = {
@@ -35,22 +36,20 @@ return {
         return true
       end
     end)
-    winbar.add_rename_cond(
-      function(opts)
-        if vim.startswith(opts.full_filename, "diffview") then
-          local paths = vim.split(opts.full_filename, ".git", { plain = true })
-          if #paths >= 2 then
-            return {
-              output_filename = "diffview:/" .. paths[2]
-            }
-          end
-
-          return nil
+    winbar.add_rename_cond(function(opts)
+      if vim.startswith(opts.full_filename, "diffview") then
+        local paths = vim.split(opts.full_filename, ".git", { plain = true })
+        if #paths >= 2 then
+          return {
+            output_filename = "diffview:/" .. paths[2],
+          }
         end
-      end
-    )
 
-    vim.cmd.cab {"dopen", "DiffviewOpen"}
+        return nil
+      end
+    end)
+
+    vim.cmd.cab { "dopen", "DiffviewOpen" }
   end,
   opts = function()
     local actions = require "diffview.actions"
@@ -61,17 +60,46 @@ return {
       enhanced_diff_hl = true,  -- See |diffview-config-enhanced_diff_hl|
       git_cmd = { "git" },      -- The git executable followed by default args.
       hg_cmd = { "hg" },        -- The hg executable followed by default args.
-      use_icons = true,         -- Requires nvim-web-devicons
+      jj_cmd = { "jj" },        -- The jj executable followed by default args.
+      p4_cmd = { "p4" },        -- The p4 executable followed by default args.
+      rename_threshold = nil,   -- Integer 0-100 for rename detection similarity. Nil uses git default (50%). Invalid values are ignored.
+      use_icons = true,         -- Requires nvim-web-devicons or mini.icons
       show_help_hints = false,  -- Show hints for how to open the help panel
       watch_index = true,       -- Update views and index buffers when the git index changes.
+      hide_merge_artifacts = false, -- Hide merge artifact files (*.orig, *.BACKUP.*, *.BASE.*, *.LOCAL.*, *.REMOTE.*)
+      auto_close_on_empty = false, -- Close diffview when the last file is staged/resolved
+      diffopt = { algorithm = "histogram" }, -- Override diffopt settings while diffview is open. Restored on close.
+      clean_up_buffers = false, -- Delete file buffers created by diffview on close.
+      persist_selections = {
+        enabled = false,        -- Persist file selections to disk across Neovim restarts.
+        path = nil,             -- Storage path. Nil uses stdpath("data") .. "/diffview_selections.json".
+      },
       icons = {                 -- Only applies when use_icons is true.
         folder_closed = icons.ui.Folder,
         folder_open = icons.ui.FolderOpen,
+      },
+      status_icons = {          -- Configure icons for git status letters.
+        ["A"] = "A",            -- Added
+        ["?"] = "?",            -- Untracked
+        ["M"] = "M",            -- Modified
+        ["R"] = "R",            -- Renamed
+        ["C"] = "C",            -- Copied
+        ["T"] = "T",            -- Type changed
+        ["U"] = "U",            -- Unmerged
+        ["X"] = "X",            -- Unknown
+        ["D"] = "D",            -- Deleted
+        ["B"] = "B",            -- Broken
+        ["!"] = "!",            -- Ignored
       },
       signs = {
         fold_closed = icons.ui.ChevronShortRight,
         fold_open = icons.ui.ChevronShortDown,
         done = "✓",
+        selected_file = "■",
+        unselected_file = "□",
+        selected_dir = "■",
+        partially_selected_dir = "▣",
+        unselected_dir = "□",
       },
       view = {
         -- Configure the layout and behavior of different types of views.
@@ -87,8 +115,8 @@ return {
         default = {
           -- Config for changed files, and staged files in diff views.
           layout = "diff2_horizontal",
-          disable_diagnostics = false, -- Temporarily disable diagnostics for diff buffers while in the view.
-          winbar_info = false,         -- See |diffview-config-view.x.winbar_info|
+          disable_diagnostics = false,  -- Temporarily disable diagnostics for diff buffers while in the view.
+          winbar_info = false,          -- See |diffview-config-view.x.winbar_info|
         },
         merge_tool = {
           -- Config for conflicted files in diff views during a merge or rebase.
@@ -102,24 +130,39 @@ return {
           disable_diagnostics = false,  -- Temporarily disable diagnostics for diff buffers while in the view.
           winbar_info = false,          -- See |diffview-config-view.x.winbar_info|
         },
+        -- Layouts to cycle through with `cycle_layout` action.
+        cycle_layouts = {
+          default = { "diff2_horizontal", "diff2_vertical" },
+          merge_tool = { "diff3_horizontal", "diff3_vertical", "diff3_mixed", "diff4_mixed", "diff1_plain" },
+        },
       },
       file_panel = {
         listing_style = "list",             -- One of 'list' or 'tree'
+        sort_file = nil,                    -- Custom file comparator: function(a_name, b_name, a_data, b_data) -> boolean
         tree_options = {                    -- Only applies when listing_style is 'tree'
           flatten_dirs = true,              -- Flatten dirs that only contain one single dir
           folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
         },
         win_config = {                      -- See |diffview-config-win_config|
           position = "left",
-          width = 35,
+          width = 35,                       -- Set to "auto" to fit content.
           win_opts = {},
         },
+        show = true,                        -- Show the file panel when opening Diffview.
+        always_show_sections = false,       -- Always show Changes and Staged changes sections even when empty.
+        always_show_marks = false,          -- Show selection marks even when no files are selected.
+        show_branch_name = false,           -- Show branch name in the file panel header.
       },
       file_history_panel = {
+        stat_style = "number",              -- "number" (e.g. "5, 3"), "bar" (e.g. "| 8 +++++---"), or "both".
+        -- Ordered list of components to show for each commit entry.
+        -- Available: "status", "files", "stats", "hash", "reflog", "ref", "subject", "author", "date"
+        commit_format = { "status", "files", "stats", "hash", "reflog", "ref", "subject", "author", "date" },
         log_options = {   -- See |diffview-config-log_options|
           git = {
             single_file = {
-              diff_merges = "combined",
+              diff_merges = "first-parent",
+              follow = true,
             },
             multi_file = {
               diff_merges = "first-parent",
@@ -129,18 +172,24 @@ return {
             single_file = {},
             multi_file = {},
           },
+          p4 = {
+            single_file = {},
+            multi_file = {},
+          },
         },
         win_config = {    -- See |diffview-config-win_config|
           position = "bottom",
           height = 16,
           win_opts = {},
         },
+        commit_subject_max_length = 72,     -- Max length for commit subject display.
+        date_format = "auto",               -- Date format: "auto" | "relative" | "iso"
       },
       commit_log_panel = {
         win_config = {},  -- See |diffview-config-win_config|
       },
       default_args = {    -- Default args prepended to the arg-list for the listed commands
-        DiffviewOpen = {},
+        DiffviewOpen = { "--imply-local" },
         DiffviewFileHistory = {},
       },
       hooks = {},         -- See |diffview-config-hooks|
@@ -156,6 +205,8 @@ return {
           { "n", "gf",          actions.goto_file_edit,                 { desc = "Open the file in the previous tabpage" } },
           { "n", "<C-w><C-f>",  actions.goto_file_split,                { desc = "Open the file in a new split" } },
           { "n", "<C-w>gf",     actions.goto_file_tab,                  { desc = "Open the file in a new tabpage" } },
+          { "n", "gx",          actions.open_file_external,             { desc = "Open the file with default system application" } },
+          { "n", "<C-w>T",      actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
           { "n", "<leader>e",   actions.focus_files,                    { desc = "Bring focus to the file panel" } },
           { "n", "<leader>b",   actions.toggle_files,                   { desc = "Toggle the file panel." } },
           { "n", "g<C-x>",      actions.cycle_layout,                   { desc = "Cycle through available layouts." } },
@@ -204,6 +255,8 @@ return {
           { "n", "o",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "l",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "<2-LeftMouse>",  actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
+          { { "n", "x" }, "<space>", actions.toggle_select_entry,          { desc = "Toggle file selection for multi-file operations" } },
+          { "n", "C",              actions.clear_select_entries,           { desc = "Clear all file selections" } },
           { "n", "-",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
           { "n", "s",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
           { "n", "S",              actions.stage_all,                      { desc = "Stage all entries" } },
@@ -225,6 +278,8 @@ return {
           { "n", "gf",             actions.goto_file_edit,                 { desc = "Open the file in the previous tabpage" } },
           { "n", "<C-w><C-f>",     actions.goto_file_split,                { desc = "Open the file in a new split" } },
           { "n", "<C-w>gf",        actions.goto_file_tab,                  { desc = "Open the file in a new tabpage" } },
+          { "n", "gx",             actions.open_file_external,             { desc = "Open the file with default system application" } },
+          { "n", "<C-w>T",        actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
           { "n", "i",              actions.listing_style,                  { desc = "Toggle between 'list' and 'tree' views" } },
           { "n", "f",              actions.toggle_flatten_dirs,            { desc = "Flatten empty subdirectories in tree listing style" } },
           { "n", "R",              actions.refresh_files,                  { desc = "Update stats and entries in the file list" } },
@@ -245,6 +300,7 @@ return {
         file_history_panel = {
           { "n", "g!",            actions.options,                     { desc = "Open the option panel" } },
           { "n", "<C-A-d>",       actions.open_in_diffview,            { desc = "Open the entry under the cursor in a diffview" } },
+          { "n", "H",             actions.diff_against_head,           { desc = "Open a diffview comparing HEAD with the commit under the cursor" } },
           { "n", "y",             actions.copy_hash,                   { desc = "Copy the commit hash of the entry under the cursor" } },
           { "n", "L",             actions.open_commit_log,             { desc = "Show commit details" } },
           { "n", "X",             actions.restore_entry,               { desc = "Restore file to the state from the selected entry" } },
@@ -271,6 +327,7 @@ return {
           { "n", "gf",            actions.goto_file_edit,              { desc = "Open the file in the previous tabpage" } },
           { "n", "<C-w><C-f>",    actions.goto_file_split,             { desc = "Open the file in a new split" } },
           { "n", "<C-w>gf",       actions.goto_file_tab,               { desc = "Open the file in a new tabpage" } },
+          { "n", "gx",            actions.open_file_external,          { desc = "Open the file with default system application" } },
           { "n", "<leader>e",     actions.focus_files,                 { desc = "Bring focus to the file panel" } },
           { "n", "<leader>b",     actions.toggle_files,                { desc = "Toggle the file panel" } },
           { "n", "g<C-x>",        actions.cycle_layout,                { desc = "Cycle available layouts" } },
@@ -289,7 +346,7 @@ return {
           { "n", "<esc>", actions.close,  { desc = "Close help menu" } },
         },
       },
-  }
+    }
   end,
   keys = {
     { "<leader>gt", "<cmd>DiffviewOpen<cr>", desc = "Diff view" },
@@ -301,5 +358,13 @@ return {
       end,
       desc = "Diff Previous",
     },
+    { "<leader>gd", "<cmd>DiffviewOpen origin/develop<cr>", desc = "Diff against develop" },
+    { "<leader>gm", function()
+      -- Try main first, fall back to master
+      local result = vim.fn.systemlist { "git", "rev-parse", "--verify", "main" }
+      local ok = vim.v.shell_error == 0 and result[1] ~= nil and result[1] ~= ""
+      local branch = ok and "main" or "master"
+      vim.cmd.DiffviewOpen { "origin/" .. branch }
+    end, desc = "Diff against main/master" },
   },
 }
