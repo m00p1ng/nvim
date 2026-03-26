@@ -9,7 +9,7 @@ vim.filetype.add {
     ["terraform.tfstate.backup"] = "json",
   },
   pattern = {
-    ["*Jenkinsfile*"] = "groovy",
+    ["Jenkinsfile*"] = "groovy",
     ["*.tpl"] = "yaml",
     [".env.*"] = "sh",
     ["*.env"] = "sh",
