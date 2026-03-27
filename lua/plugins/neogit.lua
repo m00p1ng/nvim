@@ -9,6 +9,8 @@ return {
       "NeogitPopup",
       "NeogitCommitPopup",
       "NeogitCommitMessage",
+      "NeogitCommitView",
+      "NeogitCommitSelectView",
       "NeogitConsole",
       "NeogitNotification",
       "NeogitGitCommandHistory",

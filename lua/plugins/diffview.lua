@@ -192,7 +192,13 @@ return {
         DiffviewOpen = { "--imply-local" },
         DiffviewFileHistory = {},
       },
-      hooks = {},         -- See |diffview-config-hooks|
+      hooks = {
+       diff_buf_win_enter = function(bufnr, winid, ctx)
+          if ctx.layout_name == 'diff2_horizontal' then
+            vim.wo[winid].foldlevel = 0
+          end
+        end,
+      },         -- See |diffview-config-hooks|
       keymaps = {
         disable_defaults = false, -- Disable the default keymaps
         view = {

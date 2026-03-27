@@ -25,7 +25,7 @@ return {
   {
     "mason.nvim",
     opts_extend = { "ensure_installed" },
-    opts = { ensure_installed = { "delve" } },
+    opts = { ensure_installed = { "delve", "golangci-lint" } },
   },
   {
     "conform.nvim",
