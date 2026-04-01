@@ -44,3 +44,4 @@ luac.out
 
 override/
 !override/example.lua
+lazy-lock_*.json

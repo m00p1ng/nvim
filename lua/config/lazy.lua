@@ -13,6 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local icons = require "utils.icons"
 
+local lockfile = vim.env.USER == "m00p1ng" and "lazy-lock" or ("lazy-lock_" .. vim.env.USER)
+
 require("lazy").setup {
   root = vim.fn.stdpath "data" .. "/lazy", -- directory where plugins will be installed
   defaults = {
@@ -28,12 +30,13 @@ require("lazy").setup {
     cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
   },
   -- leave nil when passing the spec as the first argument to setup()
+  ---@type LazySpec
   spec = {
     { import = "plugins" },
     { import = "override" },
-  }, ---@type LazySpec
+  },
   local_spec = true, -- load project specific .lazy.lua spec files. They will be added at the end of the spec.
-  lockfile = vim.fn.stdpath "config" .. "/lazy-lock.json", -- lockfile generated after running update.
+  lockfile = vim.fn.stdpath "config" .. "/" .. lockfile .. ".json", -- lockfile generated after running update.
   ---@type number? limit the maximum amount of concurrent tasks
   concurrency = jit.os:find "Windows" and (vim.uv.available_parallelism() * 2) or nil,
   git = {
@@ -71,7 +74,7 @@ require("lazy").setup {
   rocks = {
     enabled = false,
     root = vim.fn.stdpath "data" .. "/lazy-rocks",
-    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+    server = "https://lumen-oss.github.io/rocks-binaries/",
     -- use hererocks to install luarocks?
     -- set to `nil` to use hererocks when luarocks is not found
     -- set to `true` to always use hererocks
@@ -91,7 +94,7 @@ require("lazy").setup {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = true,
     -- try to load one of these colorschemes when starting an installation during startup
-    colorscheme = { "catppuccin", "habamax" },
+    colorscheme = { "catppuccin" },
   },
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
@@ -109,6 +112,7 @@ require("lazy").setup {
       cmd = icons.ui.Terminal .. " ",
       config = icons.ui.Gear .. " ",
       debug = "● ",
+      event = " ",
       favorite = " ",
       ft = icons.kind.File .. " ",
       init = icons.ui.Gear .. " ",
@@ -169,7 +173,7 @@ require("lazy").setup {
     enabled = true,
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
     notify = false, -- get a notification when new updates are found
-    frequency = 86400, -- check for updates every hour
+    frequency = 3600, -- check for updates every hour
     check_pinned = false, -- check for pinned packages that can't be updated
   },
   change_detection = {
