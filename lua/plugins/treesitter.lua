@@ -123,70 +123,69 @@ return {
       local TS = require "nvim-treesitter-textobjects"
       TS.setup(opts)
 
-      -- local function description(key, query, direction)
-      --   local queries = type(query) == "table" and query or { query }
-      --   local parts = {}
-      --   for _, q in ipairs(queries) do
-      --     local part = q:gsub("@", ""):gsub("%..*", "")
-      --     part = part:sub(1, 1):upper() .. part:sub(2)
-      --     table.insert(parts, part)
-      --   end
-      --   local desc = table.concat(parts, " or ")
-      --   if direction then
-      --     desc = (key:sub(1, 1) == "[" and "Prev " or "Next ") .. desc
-      --     desc = desc .. (key:sub(2, 2) == key:sub(2, 2):upper() and " End" or " Start")
-      --   end
-      --   return desc
-      -- end
-      --
-      -- local function attach(buf)
-      --   if vim.tbl_get(opts, "move", "enable") then
-      --     ---@type table<string, table<string, string>>
-      --     local moves = vim.tbl_get(opts, "move", "keys") or {}
-      --
-      --     for method, keymaps in pairs(moves) do
-      --       for key, query in pairs(keymaps) do
-      --         vim.keymap.set({ "n", "x", "o" }, key, function()
-      --           if vim.wo.diff and key:find "[cC]" then
-      --             return vim.cmd("normal! " .. key)
-      --           end
-      --           require("nvim-treesitter-textobjects.move")[method](query, "textobjects")
-      --         end, {
-      --           -- buffer = buf,
-      --           desc = description(key, query, true),
-      --           silent = true,
-      --         })
-      --       end
-      --     end
-      --   end
-      --
-      --   if vim.tbl_get(opts, "select", "enable") then
-      --     ---@type table<string, string>
-      --     local selects = vim.tbl_get(opts, "select", "keymaps") or {}
-      --
-      --     for key, query in pairs(selects) do
-      --       vim.keymap.set({ "n", "x", "o" }, key, function()
-      --         if vim.wo.diff and key:find "[cC]" then
-      --           return vim.cmd("normal! " .. key)
-      --         end
-      --         require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
-      --       end, {
-      --         -- buffer = buf,
-      --         desc = description(key, query, false),
-      --         silent = true,
-      --       })
-      --     end
-      --   end
-      -- end
-      --
-      -- -- vim.api.nvim_create_autocmd("FileType", {
-      -- --   group = vim.api.nvim_create_augroup("lazyvim_treesitter_textobjects", { clear = true }),
-      -- --   callback = function(ev)
-      -- --     attach(ev.buf)
-      -- --   end,
-      -- -- })
-      -- attach(0) -- attach to current buffer immediately
-      -- vim.tbl_map(attach, vim.api.nvim_list_bufs())
+      local function description(key, query, direction)
+        local queries = type(query) == "table" and query or { query }
+        local parts = {}
+        for _, q in ipairs(queries) do
+          local part = q:gsub("@", ""):gsub("%..*", "")
+          part = part:sub(1, 1):upper() .. part:sub(2)
+          table.insert(parts, part)
+        end
+        local desc = table.concat(parts, " or ")
+        if direction then
+          desc = (key:sub(1, 1) == "[" and "Prev " or "Next ") .. desc
+          desc = desc .. (key:sub(2, 2) == key:sub(2, 2):upper() and " End" or " Start")
+        end
+        return desc
+      end
+
+      local function attach(buf)
+        if vim.tbl_get(opts, "move", "enable") then
+          ---@type table<string, table<string, string>>
+          local moves = vim.tbl_get(opts, "move", "keys") or {}
+
+          for method, keymaps in pairs(moves) do
+            for key, query in pairs(keymaps) do
+              vim.keymap.set({ "n", "x", "o" }, key, function()
+                if vim.wo.diff and key:find "[cC]" then
+                  return vim.cmd("normal! " .. key)
+                end
+                require("nvim-treesitter-textobjects.move")[method](query, "textobjects")
+              end, {
+                -- buffer = buf,
+                desc = description(key, query, true),
+                silent = true,
+              })
+            end
+          end
+        end
+
+        if vim.tbl_get(opts, "select", "enable") then
+          ---@type table<string, string>
+          local selects = vim.tbl_get(opts, "select", "keymaps") or {}
+
+          for key, query in pairs(selects) do
+            vim.keymap.set({ "x", "o" }, key, function()
+              if vim.wo.diff and key:find "[cC]" then
+                return vim.cmd("normal! " .. key)
+              end
+              require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
+            end, {
+              -- buffer = buf,
+              desc = description(key, query, false),
+              silent = true,
+            })
+          end
+        end
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("lazyvim_treesitter_textobjects", { clear = true }),
+        callback = function(ev)
+          attach(ev.buf)
+        end,
+      })
+      vim.tbl_map(attach, vim.api.nvim_list_bufs())
     end,
   },
 }
