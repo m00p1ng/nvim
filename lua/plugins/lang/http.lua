@@ -5,27 +5,6 @@ return {
     opts = { ensure_installed = { "http" } },
   },
 
-  -- {
-  --   "mason.nvim",
-  --   opts_extend = { "ensure_installed" },
-  --   opts = { ensure_installed = { "kulala-fmt" } },
-  -- },
-  -- {
-  --   "conform.nvim",
-  --   opts = {
-  --     formatters = {
-  --       kulala = {
-  --         command = "kulala-fmt",
-  --         args = { "format", "$FILENAME" },
-  --         stdin = false,
-  --       },
-  --     },
-  --     formatters_by_ft = {
-  --       http = { "kulala" },
-  --     },
-  --   },
-  -- },
-
   -- Other extensions
   {
     "mistweaverco/kulala.nvim",
