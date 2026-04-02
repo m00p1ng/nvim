@@ -66,7 +66,7 @@ return {
             vim.cmd.CodeCompanion(prompt)
           end
         end,
-        "CodeCompanion: Prompt",
+        desc = "CodeCompanion: Prompt",
         mode = { "n", "v" },
       },
       { "i", "Gi", remap = false, ft = "codecompanion" },

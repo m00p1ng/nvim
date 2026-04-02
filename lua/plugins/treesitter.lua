@@ -6,8 +6,6 @@ return {
     lazy = false,
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    -- NOTE: remove this whenk update to neovim v0.12
-    commit = "90cd6580e720caedacb91fdd587b747a6e77d61f",
     opts_extend = { "ensure_installed" },
     opts = {
       -- A list of parser names, or "all" (the listed parsers MUST always be installed)
