@@ -56,6 +56,7 @@ return {
           next = "<M-]>",
           prev = "<M-[>",
           dismiss = "<C-]>",
+          toggle_auto_trigger = false,
         },
       },
       filetypes = {
@@ -68,31 +69,47 @@ return {
         svn = false,
         cvs = false,
         ["."] = false,
+        sh = function()
+          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
+            -- disable for .env files
+            return false
+          end
+          return true
+        end,
+      },
+      nes = {
+        enabled = false, -- requires copilot-lsp as a dependency
+        auto_trigger = false,
+        keymap = {
+          accept_and_goto = false,
+          accept = false,
+          dismiss = false,
+        },
       },
       auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
       logger = {
         file = vim.fn.stdpath "log" .. "/copilot-lua.log",
         file_log_level = vim.log.levels.OFF,
         print_log_level = vim.log.levels.WARN,
-        trace_lsp = "off", -- "off" | "messages" | "verbose"
+        trace_lsp = "off", -- "off" | "debug" | "verbose"
         trace_lsp_progress = false,
         log_lsp_messages = false,
       },
-      copilot_node_command = "node", -- Node.js version must be > 20
+      copilot_node_command = "node", -- Node.js version must be > 22
       workspace_folders = {},
       copilot_model = "",
       disable_limit_reached_message = false, -- Set to `true` to suppress completion limit reached popup
       root_dir = function()
         return vim.fs.dirname(vim.fs.find(".git", { upward = true })[1])
       end,
-      -- should_attach = function(_, _)
-      --   if not vim.bo.buflisted then
-      --     logger.debug "not attaching, buffer is not 'buflisted'"
+      -- should_attach = function(buf_id, _)
+      --   if not vim.bo[buf_id].buflisted then
+      --     -- logger.debug "not attaching, buffer is not 'buflisted'"
       --     return false
       --   end
       --
-      --   if vim.bo.buftype ~= "" then
-      --     logger.debug("not attaching, buffer 'buftype' is " .. vim.bo.buftype)
+      --   if vim.bo[buf_id].buftype ~= "" then
+      --     -- logger.debug("not attaching, buffer 'buftype' is " .. vim.bo[buf_id].buftype)
       --     return false
       --   end
       --
