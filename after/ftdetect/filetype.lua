@@ -11,8 +11,6 @@ vim.filetype.add {
   pattern = {
     ["Jenkinsfile*"] = "groovy",
     ["*.tpl"] = "yaml",
-    [".env.*"] = "sh",
-    ["*.env"] = "sh",
     ["Dockerfile.*"] = "dockerfile",
   },
 }

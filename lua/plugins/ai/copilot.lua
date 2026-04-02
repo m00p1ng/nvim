@@ -69,13 +69,7 @@ return {
         svn = false,
         cvs = false,
         ["."] = false,
-        sh = function()
-          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
-            -- disable for .env files
-            return false
-          end
-          return true
-        end,
+        env = false,
       },
       nes = {
         enabled = false, -- requires copilot-lsp as a dependency
