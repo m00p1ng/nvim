@@ -70,6 +70,24 @@ vim.keymap.set("n", "<leader>u", function()
   }
 end, { desc = "Undotree toggle" })
 
+-- Incremental Selection
+-- Ref: https://www.reddit.com/r/neovim/comments/1s9q0pi/incremental_selection_in_neovim_012/
+vim.keymap.set({ "n", "x", "o" }, "<c-q>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Incremental selections" })
+
+vim.keymap.set({ "x", "o" }, "<bs>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = "Decremental selections" })
+
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })
 vim.keymap.set("n", "<cr>", "<cmd>noh<cr>", { desc = "Clear Search" })
@@ -78,9 +96,3 @@ vim.keymap.set("n", "<leader>Q", "<cmd>qall!<cr>", { desc = "Quit All" })
 vim.keymap.set("n", "<leader>c", "<cmd>bd<cr>", { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>O", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer Only" })
 vim.keymap.set("n", "<leader>M", "<cmd>messages<cr>", { desc = "Messages" })
-
--- if vim.lsp.inlay_hint then
---   vim.keymap.set("n", "<leader>lu", function()
---     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 })
---   end, { desc = "Toggle Inlay Hints" })
--- end
