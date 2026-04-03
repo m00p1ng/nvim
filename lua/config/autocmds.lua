@@ -32,6 +32,12 @@ vim.api.nvim_create_autocmd("CmdWinEnter", {
 --   end,
 -- })
 
+vim.api.nvim_create_autocmd("VimResized", {
+  group = vim.api.nvim_create_augroup("resize_splits", { clear = true }),
+  command = "tabdo wincmd =",
+  call,
+})
+
 vim.api.nvim_create_autocmd("BufEnter", {
   group = vim.api.nvim_create_augroup("changed_title", { clear = true }),
   callback = function()
@@ -73,7 +79,7 @@ vim.api.nvim_create_autocmd("User", {
     vim.api.nvim_create_autocmd("InsertEnter", {
       group = vim.api.nvim_create_augroup("set_color_column", { clear = true }),
       callback = function()
-        if f.is_ui_filetype(vim.bo.ft) then
+        if not f.is_ui_filetype(vim.bo.ft) then
           return
         end
         vim.opt_local.colorcolumn = { "80", "100", "120" }
@@ -87,6 +93,16 @@ vim.api.nvim_create_autocmd("User", {
           return
         end
         vim.opt_local.colorcolumn = {}
+      end,
+    })
+
+    vim.api.nvim_create_autocmd({ "BufEnter" }, {
+      group = vim.api.nvim_create_augroup("unset_color_column", { clear = true }),
+      callback = function()
+        if not f.is_ui_filetype(vim.bo.ft) then
+          return
+        end
+        vim.opt_local.statuscolumn = ""
       end,
     })
 
