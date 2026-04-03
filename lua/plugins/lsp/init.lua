@@ -41,7 +41,7 @@ return {
       }
     end,
     keys = {
-      { "<leader>lR", "<cmd>LspRestart<cr>", desc = "Restart" },
+      { "<leader>lR", "<cmd>lsp restart<cr>", desc = "Restart" },
     },
   },
 
