@@ -37,6 +37,7 @@ return {
   { import = "plugins.snacks.input" },
   { import = "plugins.snacks.notifier" },
   { import = "plugins.snacks.picker" },
+  { import = "plugins.snacks.statuscolumn" },
   { import = "plugins.snacks.toggle" },
   { import = "plugins.snacks.words" },
 }
