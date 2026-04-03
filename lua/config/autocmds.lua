@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "qf",
     "help",
     "lspinfo",
+    "nvim-undotree",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -30,11 +31,6 @@ vim.api.nvim_create_autocmd("CmdWinEnter", {
 --     vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
 --   end,
 -- })
-
-vim.api.nvim_create_autocmd("VimResized", {
-  group = vim.api.nvim_create_augroup("resize_splits", { clear = true }),
-  command = "tabdo wincmd =",
-})
 
 vim.api.nvim_create_autocmd("BufEnter", {
   group = vim.api.nvim_create_augroup("changed_title", { clear = true }),
@@ -95,5 +91,32 @@ vim.api.nvim_create_autocmd("User", {
     })
 
     require("utils.winbar").create_winbar()
+
+    -- add undotree to packpath
+    vim.cmd.packadd { "nvim.undotree" }
+    require("utils").add_ui_ft "nvim-undotree"
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("undotree_settings", { clear = true }),
+  pattern = "nvim-undotree",
+  callback = function()
+    vim.opt_local.number = false
+
+    local winbar = require "utils.winbar"
+    winbar.add_show_cond(function(opts)
+      if opts.ft == "nvim-undotree" then
+        return true
+      end
+    end)
+    winbar.add_rename_cond(function(opts)
+      if opts.ft == "nvim-undotree" then
+        return {
+          file_icon = "󰙅",
+          output_filename = "Undotree",
+        }
+      end
+    end)
   end,
 })

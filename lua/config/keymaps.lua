@@ -63,6 +63,13 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Se
 vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Prev Tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 
+-- Undotree toggle
+vim.keymap.set("n", "<leader>u", function()
+  require("undotree").open {
+    command = math.min(math.floor(vim.api.nvim_win_get_width(0) / 3), 40) .. "vnew",
+  }
+end, { desc = "Undotree toggle" })
+
 -- Other --
 vim.keymap.set("n", "<m-q>", "<cmd>copen<cr>", { desc = "Quickfix List" })
 vim.keymap.set("n", "<cr>", "<cmd>noh<cr>", { desc = "Clear Search" })
