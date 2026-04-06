@@ -72,7 +72,7 @@ end, { desc = "Undotree toggle" })
 
 -- Incremental Selection
 -- Ref: https://www.reddit.com/r/neovim/comments/1s9q0pi/incremental_selection_in_neovim_012/
-vim.keymap.set({ "n", "x", "o" }, "<c-q>", function()
+vim.keymap.set({ "n", "x", "o" }, "+", function()
   if vim.treesitter.get_parser(nil, nil, { error = false }) then
     require("vim.treesitter._select").select_parent(vim.v.count1)
   else
@@ -80,7 +80,7 @@ vim.keymap.set({ "n", "x", "o" }, "<c-q>", function()
   end
 end, { desc = "Incremental selections" })
 
-vim.keymap.set({ "x", "o" }, "<bs>", function()
+vim.keymap.set({ "x", "o" }, "_", function()
   if vim.treesitter.get_parser(nil, nil, { error = false }) then
     require("vim.treesitter._select").select_child(vim.v.count1)
   else
