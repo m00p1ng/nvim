@@ -28,6 +28,6 @@ return {
   -- { import = "plugins.lang.yaml" },
 
   -- AI
-  -- { import = "plugins.ai.llm" },
   -- { import = "plugins.ai.copilot" },
+  -- { import = "plugins.ai.local.qwen" },
 }
