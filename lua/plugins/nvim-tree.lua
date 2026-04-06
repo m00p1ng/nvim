@@ -1,15 +1,4 @@
 local icons = require "utils.icons"
-local open_prog = function()
-  local editor = { "codium", "code" }
-
-  for _, v in ipairs(editor) do
-    if vim.fn.executable(v) == 1 then
-      return v
-    end
-  end
-
-  return "open"
-end
 
 return {
   "nvim-tree/nvim-tree.lua",
@@ -162,7 +151,7 @@ return {
       },
     },
     system_open = {
-      cmd = open_prog(),
+      cmd = require("utils").external_editor(),
       args = { "." },
     },
     git = {
@@ -304,7 +293,7 @@ return {
       end
 
       -- default mappings
-      api.config.mappings.default_on_attach(bufnr)
+      api.map.on_attach.default(bufnr)
 
       -- custom mappings
       vim.keymap.set("n", "t", function()

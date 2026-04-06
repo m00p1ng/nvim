@@ -117,4 +117,15 @@ M.get_visual = function()
   return vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {})
 end
 
+local editor = { "zed", "codium", "code" }
+M.external_editor = function()
+  for _, v in ipairs(editor) do
+    if vim.fn.executable(v) == 1 then
+      return v
+    end
+  end
+
+  return "open"
+end
+
 return M

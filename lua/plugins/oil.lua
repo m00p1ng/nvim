@@ -151,15 +151,12 @@ return {
       ["gs"] = { "actions.change_sort", mode = "n" },
       ["gx"] = {
         function()
-          local editor = { "codium", "code" }
+          local editor = require("utils").external_editor()
 
           local path = get_current_path()
           local cmd = { "open ", path }
-          for _, v in ipairs(editor) do
-            if vim.fn.executable(v) == 1 then
-              cmd = { v, " . ", path }
-              break
-            end
+          if editor ~= "open" then
+            cmd = { editor, ".", path }
           end
 
           vim.system(cmd)
