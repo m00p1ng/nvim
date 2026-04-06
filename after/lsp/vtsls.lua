@@ -6,7 +6,7 @@ local vue_plugin = {
   enableForWorkspaceTypeScriptVersions = true,
 }
 
-local typescriptSdk = vim.fn.isdirectory ".yarn/sdks/typescript" and "./.yarn/sdks/typescript/lib" or ""
+local typescriptSdk = vim.fn.isdirectory ".yarn/sdks/typescript" == 1 and "./.yarn/sdks/typescript/lib" or ""
 
 return {
   filetypes = {

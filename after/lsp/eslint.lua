@@ -1,4 +1,4 @@
-local nodePath = vim.fn.isdirectory ".yarn/sdks/eslint" and "./.yarn/sdks" or ""
+local nodePath = vim.fn.isdirectory ".yarn/sdks/eslint" == 1 and "./.yarn/sdks" or ""
 
 return {
   settings = {
