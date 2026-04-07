@@ -35,7 +35,7 @@ return {
   },
 
   {
-    "saghen/blink.cmp",
+    "blink.cmp",
     optional = true,
     opts_extend = { "sources.default" },
     opts = {

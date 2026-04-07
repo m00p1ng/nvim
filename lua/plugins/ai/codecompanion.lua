@@ -2,6 +2,7 @@ local handle_codecompanion = function(buf, wins)
   local markview = require "markview"
 
   vim.opt_local.fillchars = { eob = " " }
+  vim.opt_local.signcolumn = "no"
   markview.actions.hybridDisable(buf)
 
   for _, win in ipairs(wins) do
