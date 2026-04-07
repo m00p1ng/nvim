@@ -42,9 +42,6 @@ return {
     "codecompanion.nvim",
     optional = true,
     opts = {
-      opts = {
-        log_level = "DEBUG",
-      },
       interactions = {
         chat = {
           adapter = "gemini_cli",
@@ -54,16 +51,16 @@ return {
           adapter = "gemini_cli",
           model = "gemini-flash-latest",
         },
-      },
-      adapters = {
-        acp = {
-          gemini_cli = function()
-            return require("codecompanion.adapters").extend("gemini_cli", {
-              defaults = {
-                auth_method = "oauth-personal", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
-              },
-            })
-          end,
+        cli = {
+          agent = "gemini",
+          agents = {
+            gemini = {
+              cmd = "gemini",
+              args = {},
+              description = "Gemini CLI",
+              provider = "terminal",
+            },
+          },
         },
       },
     },

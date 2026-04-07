@@ -13,6 +13,14 @@ local handle_codecompanion = function(buf, wins)
   end
 end
 
+local model_title = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local adapter = _G.codecompanion_chat_metadata[bufnr].adapter
+  local model = adapter.model or "default"
+  local name = adapter.name or "LLM"
+  return name .. " (" .. model .. ")"
+end
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -31,7 +39,7 @@ return {
         if opts.ft == "codecompanion" then
           return {
             file_icon = icons.misc.Copilot .. " ",
-            output_filename = "Code Companion: Chat",
+            output_filename = model_title() .. ": Chat",
           }
         end
       end)
@@ -49,15 +57,48 @@ return {
           },
         },
       },
+      interactions = {
+        chat = {
+          roles = {
+            ---The header name for the LLM's messages
+            ---@type string|fun(adapter: CodeCompanion.HTTPAdapter|CodeCompanion.ACPAdapter): string
+            llm = function()
+              return model_title()
+            end,
+
+            ---The header name for your messages
+            user = vim.env.USER or "Me",
+          },
+        },
+        inline = {
+          keymaps = {
+            accept_change = {
+              modes = { n = "ga" },
+              description = "Accept the suggested change",
+            },
+            reject_change = {
+              modes = { n = "gr" },
+              opts = { nowait = true },
+              description = "Reject the suggested change",
+            },
+            stop = {
+              modes = { n = "q" },
+              index = 4,
+              callback = "keymaps.stop",
+              description = "Stop request",
+            },
+          },
+        },
+      },
     },
     keys = {
       { "<leader>ao", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion: Chat" },
-      { "<leader>aa", "<cmd>CodeCompanionChat Add<cr>", desc = "CodeCompanion: Add", mode = { "n", "v" } },
+      { "<leader>aa", "<cmd>CodeCompanionChat Add<cr>", desc = "CodeCompanion: Add", mode = "v" },
       { "<leader>ac", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion: Action", mode = { "n", "v" } },
-      { "<leader>ae", "<cmd>CodeCompanion /explain<cr>", desc = "CodeCompanion: Explain", mode = { "n", "v" } },
-      { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "CodeCompanion: Unit test", mode = { "n", "v" } },
-      { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix", mode = { "n", "v" } },
-      { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "CodeCompanion: LSP", mode = { "n", "v" } },
+      { "<leader>ae", "<cmd>CodeCompanion /explain<cr>", desc = "CodeCompanion: Explain", mode = "v" },
+      { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "CodeCompanion: Unit test", mode = "v" },
+      { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix", mode = "v" },
+      { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "CodeCompanion: LSP", mode = "v" },
       {
         "<leader>ap",
         function()
