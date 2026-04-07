@@ -42,6 +42,11 @@ return {
       markdown = {
         headings = {
           shift_width = 1,
+          heading_1 = { sign = "" },
+          heading_2 = { sign = "" },
+        },
+        code_blocks = {
+          sign = false,
         },
       },
       latex = false,
