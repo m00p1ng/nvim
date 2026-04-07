@@ -34,9 +34,9 @@ return {
         keymap = {
           jump_prev = "[[",
           jump_next = "]]",
-          accept = "<CR>",
+          accept = "<cr>",
           refresh = "gr",
-          open = "<M-CR>",
+          open = "<a-cr>",
         },
         layout = {
           position = "bottom", -- | top | left | right | bottom |
@@ -53,9 +53,9 @@ return {
           accept = "<c-f>",
           accept_word = false,
           accept_line = false,
-          next = "<M-]>",
-          prev = "<M-[>",
-          dismiss = "<C-]>",
+          next = "<a-]>",
+          prev = "<a-[>",
+          dismiss = "<c-]>",
           toggle_auto_trigger = false,
         },
       },

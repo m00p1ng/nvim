@@ -129,7 +129,7 @@ vim.api.nvim_create_autocmd("FileType", {
     winbar.add_rename_cond(function(opts)
       if opts.ft == "nvim-undotree" then
         return {
-          file_icon = "󰙅",
+          file_icon = require("utils.icons").ui.Tree,
           output_filename = "Undotree",
         }
       end

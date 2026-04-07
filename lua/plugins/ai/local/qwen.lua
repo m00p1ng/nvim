@@ -5,9 +5,10 @@ local qwen = {
 }
 
 return {
+  { import = "plugins.ai.minuet" },
   {
-    "milanglacier/minuet-ai.nvim",
-    event = "InsertEnter",
+    "minuet-ai.nvim",
+    optional = true,
     opts = function()
       return {
         provider = "openai_compatible",
@@ -34,51 +35,10 @@ return {
     end,
   },
 
-  {
-    "blink.cmp",
-    optional = true,
-    opts_extend = { "sources.default" },
-    opts = {
-      keymap = {
-        -- Manually invoke minuet completion.
-        ["<a-y>"] = {
-          function(cmp)
-            cmp.show { providers = { "minuet" } }
-          end,
-        },
-      },
-      sources = {
-        -- Enable minuet for autocomplete
-        default = { "minuet" },
-        -- For manual completion only, remove 'minuet' from default
-        providers = {
-          minuet = {
-            name = "minuet",
-            module = "minuet.blink",
-            score_offset = 8, -- Gives minuet higher priority among suggestions
-          },
-        },
-      },
-    },
-  },
-  {
-    "blink.cmp",
-    optional = true,
-    opts = function(_, opts)
-      local text_func = opts.completion.menu.draw.components.kind_icon.text
-
-      opts.completion.menu.draw.components.kind_icon.text = function(ctx)
-        if ctx.source_id == "minuet" then
-          return require("utils.icons").misc.Stars
-        end
-        return text_func and text_func(ctx) or ctx.kind_icon
-      end
-    end,
-  },
-
   { import = "plugins.ai.codecompanion" },
   {
     "codecompanion.nvim",
+    optional = true,
     opts = {
       interactions = {
         chat = { adapter = "qwen3_local" },
