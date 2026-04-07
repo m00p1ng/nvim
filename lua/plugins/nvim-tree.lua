@@ -150,10 +150,6 @@ return {
         "~/.config",
       },
     },
-    system_open = {
-      cmd = require("utils").external_editor(),
-      args = { "." },
-    },
     git = {
       enable = true,
       show_on_dirs = true,
@@ -297,12 +293,7 @@ return {
 
       -- custom mappings
       vim.keymap.set("n", "t", function()
-        local explorer = require("nvim-tree.core").get_explorer()
-        if not explorer then
-          return
-        end
-
-        local node = explorer:get_node_at_cursor()
+        local node = api.tree.get_node_under_cursor()
         if not node then
           return
         end
@@ -312,6 +303,21 @@ return {
           dirs = { node.absolute_path },
         }
       end, opts "Search in folder")
+
+      vim.keymap.set("n", "s", function()
+        local cmd = require("utils").external_editor()
+
+        local node = api.tree.get_node_under_cursor()
+        if not node then
+          return
+        end
+
+        if cmd == "open" then
+          vim.ui.open(node.absolute_path)
+        else
+          vim.fn.jobstart({ cmd, ".", node.absolute_path }, { detach = true })
+        end
+      end, opts "Open in external editor")
     end
 
     require("nvim-tree").setup(config_opts)
