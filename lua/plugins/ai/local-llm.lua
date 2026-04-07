@@ -1,4 +1,5 @@
-local qwen = {
+local local_llm = {
+  name = "qwen3-coder",
   model = "qwen3-coder-30b-a3b-instruct-mlx",
   host = "http://localhost:11434",
   api_key = "TERM",
@@ -21,14 +22,14 @@ return {
         context_window = 512,
         provider_options = {
           openai_compatible = {
-            model = qwen.model,
+            model = local_llm.model,
             system = require("minuet.config").default_system,
             few_shots = require("minuet.config").default_few_shots,
             chat_input = require("minuet.config").default_chat_input,
             stream = true,
-            end_point = qwen.host .. "/v1/chat/completions",
-            api_key = qwen.api_key,
-            name = "Qwen3 Coder",
+            end_point = local_llm.host .. "/v1/chat/completions",
+            api_key = local_llm.api_key,
+            name = local_llm.name,
           },
         },
       }
@@ -41,21 +42,21 @@ return {
     optional = true,
     opts = {
       interactions = {
-        chat = { adapter = "qwen3_local" },
-        inline = { adapter = "qwen3_local" },
+        chat = { adapter = local_llm.name },
+        inline = { adapter = local_llm.name },
       },
       adapters = {
         http = {
-          qwen3_local = function()
+          [local_llm.name] = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               schema = {
                 model = {
-                  default = qwen.model,
+                  default = local_llm.model,
                 },
               },
               env = {
-                url = qwen.host,
-                api_key = qwen.api_key,
+                url = local_llm.host,
+                api_key = local_llm.api_key,
                 chat_url = "/v1/chat/completions",
               },
             })

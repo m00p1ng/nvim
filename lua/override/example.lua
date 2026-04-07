@@ -30,5 +30,5 @@ return {
   -- AI
   -- { import = "plugins.ai.copilot" },
   -- { import = "plugins.ai.gemini" },
-  -- { import = "plugins.ai.local.qwen" },
+  -- { import = "plugins.ai.local-llm" },
 }
