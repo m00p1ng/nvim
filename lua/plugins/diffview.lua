@@ -261,7 +261,7 @@ return {
           { "n", "o",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "l",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "<2-LeftMouse>",  actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
-          { { "n", "x" }, "<space>", actions.toggle_select_entry,          { desc = "Toggle file selection for multi-file operations" } },
+          { { "n", "x" }, "+",     actions.toggle_select_entry,            { desc = "Toggle file selection for multi-file operations" } },
           { "n", "C",              actions.clear_select_entries,           { desc = "Clear all file selections" } },
           { "n", "-",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
           { "n", "s",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
