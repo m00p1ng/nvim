@@ -28,7 +28,7 @@ return {
   -- { import = "plugins.lang.yaml" },
 
   -- AI
-  -- { import = "plugins.ai.copilot" },
-  -- { import = "plugins.ai.gemini" },
-  -- { import = "plugins.ai.local-llm" },
+  -- { import = "plugins.ai.provider.copilot" },
+  -- { import = "plugins.ai.provider.gemini" },
+  -- { import = "plugins.ai.provider.local-llm" },
 }
