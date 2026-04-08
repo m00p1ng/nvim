@@ -4,15 +4,8 @@ local icons = require "utils.icons"
 M.processing = false
 M.spinner_index = 1
 
-local spinner_symbols = {
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-}
-local spinner_symbols_len = 10
+local spinner_symbols = { "⊚", "◉", "◎", "◌", "○", "◍" }
+local spinner_symbols_len = 6
 
 -- Initializer
 function M:init(options)
@@ -37,7 +30,7 @@ end
 function M:update_status()
   if self.processing then
     self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
-    return icons.misc.Copilot .. "  " .. spinner_symbols[self.spinner_index]
+    return "%#CodeCompanionChatHeader#" .. spinner_symbols[self.spinner_index] .. "%*" .. " " .. icons.misc.Copilot
   else
     return nil
   end

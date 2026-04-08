@@ -181,7 +181,7 @@ return {
           model = "gpt-5-mini",
         },
         inline = {
-          adapter = "copilot_acp",
+          adapter = "copilot",
           model = "claude-sonnet-4.6",
         },
         cli = {
