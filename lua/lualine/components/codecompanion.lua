@@ -5,16 +5,12 @@ M.processing = false
 M.spinner_index = 1
 
 local spinner_symbols = {
-  "⠋",
-  "⠙",
-  "⠹",
-  "⠸",
-  "⠼",
-  "⠴",
-  "⠦",
-  "⠧",
-  "⠇",
-  "⠏",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 }
 local spinner_symbols_len = 10
 

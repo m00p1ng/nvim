@@ -15,6 +15,7 @@ end
 
 local model_title = function()
   local bufnr = vim.api.nvim_get_current_buf()
+  ---@diagnostic disable-next-line: undefined-field
   local adapter = _G.codecompanion_chat_metadata[bufnr].adapter
   local model = adapter.model or "default"
   local name = adapter.name or "LLM"
@@ -61,7 +62,6 @@ return {
         chat = {
           roles = {
             ---The header name for the LLM's messages
-            ---@type string|fun(adapter: CodeCompanion.HTTPAdapter|CodeCompanion.ACPAdapter): string
             llm = function()
               return model_title()
             end,
@@ -86,6 +86,35 @@ return {
               index = 4,
               callback = "keymaps.stop",
               description = "Stop request",
+            },
+          },
+        },
+        shared = {
+          keymaps = {
+            always_accept = {
+              callback = "keymaps.always_accept",
+              modes = { n = "gA" },
+            },
+            accept_change = {
+              callback = "keymaps.accept_change",
+              modes = { n = "ga" },
+            },
+            reject_change = {
+              callback = "keymaps.reject_change",
+              modes = { n = "gr" },
+            },
+            next_hunk = {
+              callback = "keymaps.next_hunk",
+              modes = { n = "}" },
+            },
+            cancel = {
+              description = "Cancel all pending tool calls",
+              modes = { n = "gR" },
+              opts = { nowait = true },
+            },
+            previous_hunk = {
+              callback = "keymaps.previous_hunk",
+              modes = { n = "{" },
             },
           },
         },
