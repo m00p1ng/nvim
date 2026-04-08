@@ -169,9 +169,12 @@ return {
     Package = "",
     Keyboard = "",
     Lazy = "󰒲",
+  },
+  ai = {
     Stars = "󰙴",
     Copilot = "",
     CopilotDisabled = "",
     CopilotWarning = "",
+    Chat = "",
   },
 }

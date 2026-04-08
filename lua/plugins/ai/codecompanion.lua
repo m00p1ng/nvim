@@ -13,13 +13,40 @@ local handle_codecompanion = function(buf, wins)
   end
 end
 
-local model_title = function()
+local chat_title = function()
   local bufnr = vim.api.nvim_get_current_buf()
   ---@diagnostic disable-next-line: undefined-field
-  local adapter = _G.codecompanion_chat_metadata[bufnr].adapter
+  local meta = _G.codecompanion_chat_metadata[bufnr]
+  local adapter = meta.adapter
+  local name = "Chat: " .. (adapter.name or "LLM")
   local model = adapter.model or "default"
+
+  local mode = meta.mode
+
+  if model ~= "default" then
+    name = name .. " %#Comment#(" .. model .. ")%*"
+  end
+
+  if mode ~= nil and mode.name ~= "Default" then
+    name = name .. " %#SnacksPickerPreviewTitle# " .. mode.name .. " %*"
+  end
+
+  return name
+end
+
+local llm_title = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  ---@diagnostic disable-next-line: undefined-field
+  local meta = _G.codecompanion_chat_metadata[bufnr]
+  local adapter = meta.adapter
   local name = adapter.name or "LLM"
-  return name .. " (" .. model .. ")"
+  local model = adapter.model or "default"
+
+  if model ~= "default" then
+    name = name .. " (" .. model .. ")"
+  end
+
+  return name
 end
 
 return {
@@ -28,7 +55,10 @@ return {
     event = "VeryLazy",
     init = function()
       local icons = require "utils.icons"
-      require("utils").add_ui_ft "codecompanion"
+      require("utils").add_ui_ft {
+        "codecompanion",
+        "codecompanion_cli",
+      }
 
       local winbar = require "utils.winbar"
       winbar.add_show_cond(function(opts)
@@ -39,8 +69,8 @@ return {
       winbar.add_rename_cond(function(opts)
         if opts.ft == "codecompanion" then
           return {
-            file_icon = icons.misc.Copilot .. " ",
-            output_filename = model_title() .. ": Chat",
+            file_icon = icons.ai.Chat .. " ",
+            output_filename = chat_title(),
           }
         end
       end)
@@ -63,7 +93,7 @@ return {
           roles = {
             ---The header name for the LLM's messages
             llm = function()
-              return model_title()
+              return llm_title()
             end,
 
             ---The header name for your messages
@@ -121,7 +151,7 @@ return {
       },
     },
     keys = {
-      { "<leader>ao", "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanion: Chat" },
+      { "<leader>ao", "<cmd>lua require('codecompanion').toggle()<cr>", desc = "CodeCompanion: Chat" },
       { "<leader>aa", "<cmd>CodeCompanionChat Add<cr>", desc = "CodeCompanion: Add", mode = "v" },
       { "<leader>ac", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion: Action", mode = { "n", "v" } },
       { "<leader>ae", "<cmd>CodeCompanion /explain<cr>", desc = "CodeCompanion: Explain", mode = "v" },

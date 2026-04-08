@@ -30,7 +30,9 @@ end
 function M:update_status()
   if self.processing then
     self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
-    return "%#CodeCompanionChatHeader#" .. spinner_symbols[self.spinner_index] .. "%*" .. " " .. icons.misc.Copilot
+
+    local spinner = "%#CodeCompanionChatHeader#" .. spinner_symbols[self.spinner_index] .. "%*"
+    return icons.ai.Copilot .. "  " .. spinner
   else
     return nil
   end

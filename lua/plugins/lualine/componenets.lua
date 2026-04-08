@@ -206,9 +206,9 @@ M.copilot = {
     local c = require "copilot.client"
     local s = require "copilot.status"
     if c.is_disabled() then
-      return icons.misc.CopilotDisabled
+      return icons.ai.CopilotDisabled
     elseif s.data.status == "Warning" then
-      return icons.misc.CopilotWarning
+      return icons.ai.CopilotWarning
     end
 
     return ""

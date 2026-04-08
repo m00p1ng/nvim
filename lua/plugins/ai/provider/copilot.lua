@@ -151,7 +151,7 @@ return {
 
       opts.completion.menu.draw.components.kind_icon.text = function(ctx)
         if ctx.source_id == "copilot" then
-          return require("utils.icons").misc.Stars
+          return require("utils.icons").ai.Stars
         end
         return text_func and text_func(ctx) or ctx.kind_icon
       end

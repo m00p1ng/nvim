@@ -455,7 +455,7 @@ return {
           Collapsed = icons.ui.ChevronShortRight,
           Constant = icons.kind.Constant .. " ",
           Constructor = icons.kind.Constructor .. " ",
-          Copilot = icons.misc.Copilot .. " ",
+          Copilot = icons.ai.Copilot .. " ",
           Enum = icons.kind.Enum .. " ",
           EnumMember = icons.kind.EnumMember .. " ",
           Event = icons.kind.Event .. " ",
