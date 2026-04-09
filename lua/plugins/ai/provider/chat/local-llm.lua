@@ -9,8 +9,7 @@ return {
     opts = {
       interactions = {
         chat = {
-          adapter = "opencode",
-          model = local_llm.model,
+          adapter = local_llm.name,
         },
         inline = {
           adapter = local_llm.name,
