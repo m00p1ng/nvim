@@ -28,9 +28,15 @@ return {
   -- { import = "plugins.lang.yaml" },
 
   -- AI
-  -- { import = "plugins.ai.provider.claude" },
-  -- { import = "plugins.ai.provider.copilot" },
-  -- { import = "plugins.ai.provider.gemini" },
-  -- { import = "plugins.ai.provider.local-llm" },
-  -- { import = "plugins.ai.provider.zai" },
+  ---- Chat
+  -- { import = "plugins.ai.provider.chat.claude" },
+  -- { import = "plugins.ai.provider.chat.copilot" },
+  -- { import = "plugins.ai.provider.chat.gemini" },
+  -- { import = "plugins.ai.provider.chat.local-llm" },
+
+  ---- Completion
+  -- { import = "plugins.ai.provider.completion.copilot" },
+  -- { import = "plugins.ai.provider.completion.gemini" },
+  -- { import = "plugins.ai.provider.completion.local-llm" },
+  -- { import = "plugins.ai.provider.completion.zai" },
 }
