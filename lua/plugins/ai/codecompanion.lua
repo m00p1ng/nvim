@@ -16,10 +16,10 @@ end
 local chat_title = function()
   local bufnr = vim.api.nvim_get_current_buf()
   ---@diagnostic disable-next-line: undefined-field
-  local meta = _G.codecompanion_chat_metadata[bufnr]
-  local adapter = meta.adapter
+  local meta = _G.codecompanion_chat_metadata[bufnr] or {}
+  local adapter = meta.adapter or {}
   local options = meta.config_options or {}
-  local name = "Chat: " .. (adapter.name or "LLM")
+  local name = adapter.name or "LLM"
 
   local model = options.model
   if model ~= nil and model.name ~= "Default" then
@@ -36,7 +36,7 @@ local chat_title = function()
 
   local mode = options.mode
   if mode ~= nil and mode.name ~= "Default" then
-    name = name .. " %#CodeCompanionChatWinbarMode# " .. mode.name .. " %*"
+    name = name .. "%= %#CodeCompanionChatWinbarMode# " .. mode.name .. " %*"
   end
 
   return name
@@ -71,7 +71,7 @@ return {
 
       local winbar = require "utils.winbar"
       winbar.add_show_cond(function(opts)
-        if vim.startswith(opts.full_filename, "[CodeCompanion]") then
+        if opts.ft == "codecompanion" then
           return true
         end
       end)

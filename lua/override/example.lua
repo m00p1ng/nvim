@@ -32,6 +32,7 @@ return {
   -- { import = "plugins.ai.provider.chat.claude" },
   -- { import = "plugins.ai.provider.chat.copilot" },
   -- { import = "plugins.ai.provider.chat.gemini" },
+  -- { import = "plugins.ai.provider.chat.opencode" },
   -- { import = "plugins.ai.provider.chat.local-llm" },
 
   ---- Completion
