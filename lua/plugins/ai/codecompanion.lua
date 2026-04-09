@@ -27,7 +27,7 @@ local chat_title = function()
 
     local thought_level = options.thought_level
     if thought_level ~= nil and thought_level.name ~= "Default" then
-      name = name .. "|" .. thought_level.name
+      name = name .. "%*%#CodeCompanionChatWinbarSeparator#|%*%#Comment#" .. thought_level.name
     end
 
     name = name .. ")%*"
@@ -35,7 +35,7 @@ local chat_title = function()
 
   local mode = options.mode
   if mode ~= nil and mode.name ~= "Default" then
-    name = name .. " %#SnacksPickerPreviewTitle# " .. mode.name .. " %*"
+    name = name .. " %#CodeCompanionChatWinbarMode# " .. mode.name .. " %*"
   end
 
   return name
@@ -44,8 +44,8 @@ end
 local llm_title = function()
   local bufnr = vim.api.nvim_get_current_buf()
   ---@diagnostic disable-next-line: undefined-field
-  local meta = _G.codecompanion_chat_metadata[bufnr]
-  local adapter = meta.adapter
+  local meta = _G.codecompanion_chat_metadata[bufnr] or {}
+  local adapter = meta.adapter or {}
   local options = meta.config_options or {}
   local name = adapter.name or "LLM"
   local model = options.model
@@ -87,6 +87,9 @@ return {
     end,
     opts = {
       display = {
+        action_palette = {
+          provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+        },
         chat = {
           window = {
             width = 0.3,

@@ -149,6 +149,8 @@ return {
         BlinkCmpLabelDescription = { fg = C.overlay0 },
 
         CodeCompanionChatNormal = { link = "NormalFloat" },
+        CodeCompanionChatWinbarMode = { fg = C.surface0, bg = C.peach, style = { "bold" } },
+        CodeCompanionChatWinbarSeparator = { fg = C.surface1, style = { "italic" } },
       }
     end,
     default_integrations = false,
