@@ -21,7 +21,7 @@ local ftMap = vim.tbl_extend("force", mapped_filetype(f.ui_filetypes), {
 return {
   "kevinhwang91/nvim-ufo",
   dependencies = { "kevinhwang91/promise-async" },
-  event = { "BufReadPost", "BufNewFile" },
+  event = "VeryLazy",
   config = function()
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99

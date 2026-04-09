@@ -1,4 +1,5 @@
-local local_llm = require("plugins.ai.provider.config")
+local config = require("plugins.ai.provider.config")
+local local_llm = config.local_llm
 
 return {
   { import = "plugins.ai.minuet" },

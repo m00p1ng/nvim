@@ -23,11 +23,12 @@ local chat_title = function()
 
   local model = options.model
   if model ~= nil and model.name ~= "Default" then
-    name = name .. " %#Comment#(" .. model.name
+    name = name .. " %#CodeCompanionChatWinbarModel#(" .. model.name
 
     local thought_level = options.thought_level
     if thought_level ~= nil and thought_level.name ~= "Default" then
-      name = name .. "%*%#CodeCompanionChatWinbarSeparator#|%*%#Comment#" .. thought_level.name
+      name = name .. "%*%#CodeCompanionChatWinbarSeparator#|%*"
+      name = name .. "%#CodeCompanionChatWinbarModel#" .. thought_level.name
     end
 
     name = name .. ")%*"
@@ -77,7 +78,8 @@ return {
       winbar.add_rename_cond(function(opts)
         if opts.ft == "codecompanion" then
           return {
-            file_icon = icons.ai.Chat .. " ",
+            file_icon = " " .. icons.ai.Chat .. " ",
+            hl_icon = "CodeCompanionChatWinbarIcon",
             output_filename = chat_title(),
           }
         end
