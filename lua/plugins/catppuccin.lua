@@ -64,6 +64,7 @@ return {
         WinbarText = { fg = C.subtext0 },
         WinbarModified = { fg = C.yellow },
         ["@string.special.url"] = { fg = C.flamingo, style = {} },
+        healthSectionDelim = { fg = C.peach, bg = C.surface0, style = { "bold" } },
 
         Hlargs = { fg = C.maroon },
         NvimDapVirtualText = { link = "LspInlayHint" },

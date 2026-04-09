@@ -18,15 +18,22 @@ local chat_title = function()
   ---@diagnostic disable-next-line: undefined-field
   local meta = _G.codecompanion_chat_metadata[bufnr]
   local adapter = meta.adapter
+  local options = meta.config_options or {}
   local name = "Chat: " .. (adapter.name or "LLM")
-  local model = adapter.model or "default"
 
-  local mode = meta.mode
+  local model = options.model
+  if model ~= nil and model.name ~= "Default" then
+    name = name .. " %#Comment#(" .. model.name
 
-  if model ~= "default" then
-    name = name .. " %#Comment#(" .. model .. ")%*"
+    local thought_level = options.thought_level
+    if thought_level ~= nil and thought_level.name ~= "Default" then
+      name = name .. "|" .. thought_level.name
+    end
+
+    name = name .. ")%*"
   end
 
+  local mode = options.mode
   if mode ~= nil and mode.name ~= "Default" then
     name = name .. " %#SnacksPickerPreviewTitle# " .. mode.name .. " %*"
   end
@@ -39,11 +46,12 @@ local llm_title = function()
   ---@diagnostic disable-next-line: undefined-field
   local meta = _G.codecompanion_chat_metadata[bufnr]
   local adapter = meta.adapter
+  local options = meta.config_options or {}
   local name = adapter.name or "LLM"
-  local model = adapter.model or "default"
+  local model = options.model
 
-  if model ~= "default" then
-    name = name .. " (" .. model .. ")"
+  if model ~= nil and model.name ~= "Default" then
+    name = name .. " (" .. model.name .. ")"
   end
 
   return name
