@@ -200,7 +200,7 @@ return {
         end,
       },         -- See |diffview-config-hooks|
       keymaps = {
-        disable_defaults = false, -- Disable the default keymaps
+        disable_defaults = true, -- Disable the default keymaps
         view = {
           -- The `view` bindings are active in the diff buffers, only when the current
           -- tabpage is a Diffview.
@@ -285,7 +285,7 @@ return {
           { "n", "<C-w><C-f>",     actions.goto_file_split,                { desc = "Open the file in a new split" } },
           { "n", "<C-w>gf",        actions.goto_file_tab,                  { desc = "Open the file in a new tabpage" } },
           { "n", "gx",             actions.open_file_external,             { desc = "Open the file with default system application" } },
-          { "n", "<C-w>T",        actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
+          { "n", "<C-w>T",         actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
           { "n", "i",              actions.listing_style,                  { desc = "Toggle between 'list' and 'tree' views" } },
           { "n", "f",              actions.toggle_flatten_dirs,            { desc = "Flatten empty subdirectories in tree listing style" } },
           { "n", "R",              actions.refresh_files,                  { desc = "Update stats and entries in the file list" } },
