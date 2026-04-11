@@ -10,7 +10,7 @@ return {
           model = "glm-4.5-air",
           stream = true,
           end_point = "https://api.z.ai/api/coding/paas/v4/chat/completions",
-          api_key = "OPENAI_API_KEY",
+          api_key = "ZAI_API_KEY",
           name = "Z.ai",
           optional = {
             stop = { "\n\n" },

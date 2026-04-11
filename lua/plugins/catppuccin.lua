@@ -144,6 +144,7 @@ return {
         BlinkCmpMenuBorder = { fg = C.surface1, bg = C.base },
         BlinkCmpDoc = { link = "NormalFloat" },
         BlinkCmpDocBorder = { link = "FloatBorder" },
+        BlinkCmpKindMinuet = { fg = C.yellow },
         BlinkCmpLabel = { fg = C.subtext1 },
         BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
         BlinkCmpLabelDescription = { fg = C.overlay0 },

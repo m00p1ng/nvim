@@ -70,12 +70,20 @@ return {
     optional = true,
     opts = function(_, opts)
       local text_func = opts.completion.menu.draw.components.kind_icon.text
+      local hl_func = opts.completion.menu.draw.components.kind_icon.highlight
 
       opts.completion.menu.draw.components.kind_icon.text = function(ctx)
         if ctx.source_id == "minuet" then
           return require("utils.icons").ai.Stars
         end
         return text_func and text_func(ctx) or ctx.kind_icon
+      end
+
+      opts.completion.menu.draw.components.kind_icon.highlight = function(ctx)
+        if ctx.source_id == "minuet" then
+          return "BlinkCmpKindMinuet"
+        end
+        return hl_func and hl_func(ctx) or ctx.kind_hl
       end
     end,
   },
