@@ -65,7 +65,10 @@ return {
     -- default config
     opts = {
       padding = 1, -- number of spaces for cell padding
-      key = "<leader>tt", -- key for command :TableTidy<CR>
+      keymap = {
+        table_tidy = "<leader>mb", -- key for command :TableTidy<CR>
+        table_tidy_all = "<leader>ma", -- key for command :TableTidyAll<CR>
+      },
     },
   },
 }

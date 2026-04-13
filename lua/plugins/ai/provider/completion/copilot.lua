@@ -47,7 +47,7 @@ return {
         enabled = true,
         auto_trigger = true,
         hide_during_completion = true,
-        debounce = 75,
+        debounce = 15,
         trigger_on_accept = true,
         keymap = {
           accept = "<c-f>",
@@ -94,21 +94,16 @@ return {
       copilot_model = "",
       disable_limit_reached_message = false, -- Set to `true` to suppress completion limit reached popup
       root_dir = function()
-        local found = vim.fs.find(".git", { upward = true })
-        if not found or #found == 0 then
-          -- Fallback to current working directory if no git repo is found
-          return vim.loop.cwd()
-        end
-        return vim.fs.dirname(found[1])
+        return vim.fs.dirname(vim.fs.find(".git", { upward = true })[1])
       end,
       -- should_attach = function(buf_id, _)
       --   if not vim.bo[buf_id].buflisted then
-      --     -- logger.debug "not attaching, buffer is not 'buflisted'"
+      --     logger.debug "not attaching, buffer is not 'buflisted'"
       --     return false
       --   end
       --
       --   if vim.bo[buf_id].buftype ~= "" then
-      --     -- logger.debug("not attaching, buffer 'buftype' is " .. vim.bo[buf_id].buftype)
+      --     logger.debug("not attaching, buffer 'buftype' is " .. vim.bo[buf_id].buftype)
       --     return false
       --   end
       --
