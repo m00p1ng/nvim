@@ -15,22 +15,31 @@ end
 
 local model_title = function(model, thought_level, mode)
   local output = ""
-  if model ~= nil and string.lower(model) ~= "default" then
-    output = output .. "%#CodeCompanionChatWinbarModel#(" .. model
+  if model ~= nil and model:lower() ~= "default" then
+    output = output .. "%#CodeCompanionChatWinbarModel#(" .. model .. ")%*%="
 
-    if thought_level ~= nil and string.lower(thought_level) ~= "default" then
-      output = output .. "%*%#CodeCompanionChatWinbarSeparator#|%*"
-      output = output .. "%#CodeCompanionChatWinbarModel#" .. thought_level
+    if thought_level ~= nil and thought_level:lower() ~= "default" then
+      output = output .. "%#CodeCompanionChatWinbarThoughtLevel# " .. thought_level .. " %* "
     end
-
-    output = output .. ")%*"
   end
 
-  if mode ~= nil and string.lower(mode) ~= "default" then
-    output = output .. "%= %#CodeCompanionChatWinbarMode# " .. mode .. " %*"
+  if mode ~= nil and mode:lower() ~= "default" then
+    output = output .. "%#CodeCompanionChatWinbarMode# " .. mode .. " %*"
   end
 
   return output
+end
+
+local parse_opencode_string = function(input)
+  local provider, model, thought_level = input:match "^([^/]+)/([^%(]+)%s*%(([^)]+)%)%s*$"
+  if not provider then
+    provider, model = input:match "^([^/]+)/(.+)$"
+  end
+  return {
+    provider = provider,
+    model = model and vim.trim(model),
+    thought_level = thought_level,
+  }
 end
 
 local chat_title = function()
@@ -46,6 +55,14 @@ local chat_title = function()
     options.thought_level and options.thought_level.name,
     options.mode and options.mode.name
   )
+
+  if adapter.name == "OpenCode" and options.model then
+    local parsed = parse_opencode_string(options.model.name)
+    if parsed then
+      title = "%#CodeCompanionChatWinbarSeparator#" .. parsed.provider .. "%* "
+      title = title .. model_title(parsed.model, parsed.thought_level, options.mode and options.mode.name)
+    end
+  end
 
   name = name .. " " .. title
 
