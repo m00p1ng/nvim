@@ -13,6 +13,26 @@ local handle_codecompanion = function(buf, wins)
   end
 end
 
+local model_title = function(model, thought_level, mode)
+  local output = ""
+  if model ~= nil and string.lower(model) ~= "default" then
+    output = output .. "%#CodeCompanionChatWinbarModel#(" .. model
+
+    if thought_level ~= nil and string.lower(thought_level) ~= "default" then
+      output = output .. "%*%#CodeCompanionChatWinbarSeparator#|%*"
+      output = output .. "%#CodeCompanionChatWinbarModel#" .. thought_level
+    end
+
+    output = output .. ")%*"
+  end
+
+  if mode ~= nil and string.lower(mode) ~= "default" then
+    output = output .. "%= %#CodeCompanionChatWinbarMode# " .. mode .. " %*"
+  end
+
+  return output
+end
+
 local chat_title = function()
   local bufnr = vim.api.nvim_get_current_buf()
   ---@diagnostic disable-next-line: undefined-field
@@ -21,23 +41,13 @@ local chat_title = function()
   local options = meta.config_options or {}
   local name = adapter.name or "LLM"
 
-  local model = options.model
-  if model ~= nil and model.name ~= "Default" then
-    name = name .. " %#CodeCompanionChatWinbarModel#(" .. model.name
+  local title = model_title(
+    options.model and options.model.name,
+    options.thought_level and options.thought_level.name,
+    options.mode and options.mode.name
+  )
 
-    local thought_level = options.thought_level
-    if thought_level ~= nil and thought_level.name ~= "Default" then
-      name = name .. "%*%#CodeCompanionChatWinbarSeparator#|%*"
-      name = name .. "%#CodeCompanionChatWinbarModel#" .. thought_level.name
-    end
-
-    name = name .. ")%*"
-  end
-
-  local mode = options.mode
-  if mode ~= nil and mode.name ~= "Default" then
-    name = name .. "%= %#CodeCompanionChatWinbarMode# " .. mode.name .. " %*"
-  end
+  name = name .. " " .. title
 
   return name
 end
