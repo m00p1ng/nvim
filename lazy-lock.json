@@ -9,7 +9,7 @@
   "copilot.lua": { "branch": "master", "commit": "ad7e729e9a6348f7da482be0271d452dbc4c8e2c" },
   "demicolon.nvim": { "branch": "main", "commit": "a9ca137474b3a02e1d6ac48bfdb1985172e2ec9a" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
-  "diffview.nvim": { "branch": "main", "commit": "9f1b88e834c1627e88be624035a4bf933557f521" },
+  "diffview.nvim": { "branch": "main", "commit": "f08b8a03f2387803ada5e9b2ab39e22211453c3b" },
   "dotenv.nvim": { "branch": "main", "commit": "7d516e9293c6e3ac21830fb10a4e8674c02747c6" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },

@@ -258,12 +258,29 @@ return {
   {
     "blink.cmp",
     optional = true,
-    opts = {
-      sources = {
-        per_filetype = {
-          codecompanion = { "codecompanion" },
+    opts = function(_, opts)
+      local preselect = opts.completion.list.selection.preselect
+
+      return vim.tbl_deep_extend("force", opts, {
+        sources = {
+          per_filetype = {
+            codecompanion = { "codecompanion" },
+          },
         },
-      },
-    },
+        completion = {
+          list = {
+            selection = {
+              preselect = function()
+                if vim.bo.filetype == "codecompanion" then
+                  return true
+                end
+
+                return preselect
+              end,
+            },
+          },
+        },
+      })
+    end,
   },
 }
