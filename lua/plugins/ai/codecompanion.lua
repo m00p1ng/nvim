@@ -139,6 +139,15 @@ return {
             ---The header name for your messages
             user = vim.env.USER or "Me",
           },
+          slash_commands = {
+            ["acp_session_options"] = {
+              keymaps = {
+                modes = {
+                  n = "<Tab>",
+                },
+              },
+            },
+          },
         },
         inline = {
           keymaps = {
@@ -198,6 +207,17 @@ return {
       { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "CodeCompanion: Unit test", mode = "v" },
       { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix", mode = "v" },
       { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "CodeCompanion: LSP", mode = "v" },
+      {
+        "<leader>am",
+        function()
+          local chat = require("codecompanion").buf_get_chat(0)
+          require("codecompanion.interactions.chat.keymaps.change_adapter").select_model(chat)
+        end,
+        noremap = true,
+        ft = "codecompanion",
+        desc = "CodeCompanion: Change model",
+        mode = "n",
+      },
       {
         "<leader>ap",
         function()
