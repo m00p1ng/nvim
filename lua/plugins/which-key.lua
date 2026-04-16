@@ -183,6 +183,12 @@ return {
       { "<leader>g", group = "git" },
       { "<leader>l", group = "code" },
       { "<leader>o", group = "option" },
+      {
+        "<leader>m",
+        group = function()
+          return "misc: " .. vim.bo.ft
+        end,
+      },
 
       { "<leader>p", group = "lazy" },
       { "<leader>pp", "<cmd>Lazy<cr>", desc = "Lazy" },

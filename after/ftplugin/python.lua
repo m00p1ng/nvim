@@ -14,7 +14,6 @@ local function get_cmd(ref)
 end
 
 require("which-key").add {
-  { "<leader>m", group = "Python" },
   {
     "<leader>mr",
     function()

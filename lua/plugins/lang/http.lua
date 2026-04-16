@@ -23,7 +23,6 @@ return {
         "kulala_verbose_result.kulala_ui",
       }
       require("which-key").add {
-        { "<leader>m", group = "HTTP" },
         { "<leader>R", group = "Kulala" },
       }
     end,
