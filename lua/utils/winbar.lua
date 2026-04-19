@@ -5,7 +5,7 @@ local M = {}
 
 local include_ft = { "help" }
 local plugin_ft = {}
-local show_winbar_conds = {}
+local show_conds = {}
 local rename_conds = {}
 
 M.add_include_ft = function(...)
@@ -17,55 +17,52 @@ M.add_plugin = function(...)
 end
 
 M.add_show_cond = function(cond)
-  table.insert(show_winbar_conds, cond)
+  table.insert(show_conds, cond)
 end
 
 M.add_rename_cond = function(cond)
   table.insert(rename_conds, cond)
 end
 
+---@param hl_name string
+---@param str string
+---@return string
 local function hl(hl_name, str)
   if f.is_empty(hl_name) then
     return str
   end
-
   return "%#" .. hl_name .. "#" .. str .. "%*"
 end
 
-local _get_filename = function()
+---@return { file_icon: string, hl_icon: string, output_filename: string, hl_filename: string }
+local function resolve_filename()
   local filename = vim.fn.expand "%:t"
   local full_filename = vim.fn.expand "%"
   local output_filename = vim.fn.expand "%:~:."
   local extension = vim.fn.expand "%:e"
   local ft = vim.bo.ft
 
-  local file_icon = ""
+  local file_icon = ""
   local hl_icon = "WinbarText"
+  local hl_filename = "WinbarText"
 
   local ok, devicons = pcall(require, "nvim-web-devicons")
   if ok then
     file_icon, hl_icon = devicons.get_icon(filename, extension, { default = true })
   end
 
-  local hl_filename = "WinbarText"
-
   if f.is_empty(filename) then
     output_filename = "[No Name]"
   end
 
   for _, cond in ipairs(rename_conds) do
-    local c = cond {
-      ft = ft,
-      filename = filename,
-      full_filename = full_filename,
-    }
-
-    if c ~= nil then
+    local result = cond { ft = ft, filename = filename, full_filename = full_filename }
+    if result then
       return {
-        file_icon = c.file_icon or file_icon,
-        hl_icon = c.hl_icon or hl_icon,
-        output_filename = c.output_filename or output_filename,
-        hl_filename = c.hl_filename or hl_filename,
+        file_icon = result.file_icon or file_icon,
+        hl_icon = result.hl_icon or hl_icon,
+        output_filename = result.output_filename or output_filename,
+        hl_filename = result.hl_filename or hl_filename,
       }
     end
   end
@@ -105,12 +102,8 @@ local _get_filename = function()
   }
 end
 
-local get_filename = function()
-  local opts = _get_filename()
-  return " " .. hl(opts.hl_icon, opts.file_icon) .. " " .. hl(opts.hl_filename, opts.output_filename)
-end
-
-local use_local_winbar = function()
+---@return boolean
+local function should_show_winbar()
   local ft = vim.bo.filetype
   local full_filename = vim.fn.expand "%"
 
@@ -122,13 +115,10 @@ local use_local_winbar = function()
     return false
   end
 
-  for _, cond in ipairs(show_winbar_conds) do
-    local c = cond {
-      ft = ft,
-      full_filename = full_filename,
-    }
-    if c ~= nil then
-      return c
+  for _, cond in ipairs(show_conds) do
+    local result = cond { ft = ft, full_filename = full_filename }
+    if result ~= nil then
+      return result
     end
   end
 
@@ -140,17 +130,18 @@ local use_local_winbar = function()
   return true
 end
 
-local get_winbar = function()
+local function update_winbar()
   if vim.b.winbar_enabled == false then
     vim.opt_local.winbar = nil
     return
   end
 
-  if not use_local_winbar() then
+  if not should_show_winbar() then
     return
   end
 
-  vim.opt_local.winbar = get_filename()
+  local opts = resolve_filename()
+  vim.opt_local.winbar = " " .. hl(opts.hl_icon, opts.file_icon) .. " " .. hl(opts.hl_filename, opts.output_filename)
 end
 
 M.create_winbar = function()
@@ -165,7 +156,7 @@ M.create_winbar = function()
     "TabClosed",
   }, {
     group = vim.api.nvim_create_augroup("_winbar", {}),
-    callback = get_winbar,
+    callback = update_winbar,
   })
 end
 

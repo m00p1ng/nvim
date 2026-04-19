@@ -11,6 +11,11 @@ return {
           local buffer = args.buf ---@type number
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           require("plugins.lsp.keymaps").on_attach(client, buffer)
+
+          -- if client and client.name == "harper_ls" then
+          --   local ns = vim.lsp.diagnostic.get_namespace(client.id)
+          --   vim.diagnostic.config({ virtual_text = false }, ns)
+          -- end
         end,
       })
 
