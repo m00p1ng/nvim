@@ -4,12 +4,33 @@ local icons = require "utils.icons"
 M.processing = false
 M.spinner_index = 1
 
-local spinner_symbols = { "○", "◎", "●", "◉", "●", "◎" }
 local spinner_symbols_len = 6
+
+-- Breathing color palette: dim → bright → dim (base: #e5c890)
+local breathing_colors = {
+  "#5c4a20",
+  "#a68840",
+  "#e5c890",
+  "#f2e0b8",
+  "#e5c890",
+  "#a68840",
+}
+
+local function setup_breathing_highlights()
+  for i, color in ipairs(breathing_colors) do
+    vim.api.nvim_set_hl(0, "CodeCompanionBreathing" .. i, { fg = color })
+  end
+end
 
 -- Initializer
 function M:init(options)
   M.super.init(self, options)
+
+  setup_breathing_highlights()
+
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = setup_breathing_highlights,
+  })
 
   local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
 
@@ -31,8 +52,8 @@ function M:update_status()
   if self.processing then
     self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
 
-    local spinner = "%#CodeCompanionChatHeader#" .. spinner_symbols[self.spinner_index] .. "%*"
-    return icons.ai.Copilot .. "  " .. spinner
+    local hl = "CodeCompanionBreathing" .. self.spinner_index
+    return "%#" .. hl .. "#" .. icons.ai.Robot .. "%*"
   else
     return nil
   end

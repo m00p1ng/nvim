@@ -176,5 +176,6 @@ return {
     CopilotDisabled = "",
     CopilotWarning = "",
     Chat = "",
+    Robot = "",
   },
 }
