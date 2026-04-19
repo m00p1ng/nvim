@@ -4,8 +4,6 @@ local icons = require "utils.icons"
 M.processing = false
 M.spinner_index = 1
 
-local spinner_symbols_len = 6
-
 -- Breathing color palette: dim → bright → dim (base: #e5c890)
 local breathing_colors = {
   "#5c4a20",
@@ -15,6 +13,7 @@ local breathing_colors = {
   "#e5c890",
   "#a68840",
 }
+local spinner_length = #breathing_colors
 
 local function setup_breathing_highlights()
   for i, color in ipairs(breathing_colors) do
@@ -50,7 +49,7 @@ end
 -- Function that runs every time statusline is updated
 function M:update_status()
   if self.processing then
-    self.spinner_index = (self.spinner_index % spinner_symbols_len) + 1
+    self.spinner_index = (self.spinner_index % spinner_length) + 1
 
     local hl = "CodeCompanionBreathing" .. self.spinner_index
     return "%#" .. hl .. "#" .. icons.ai.Robot .. "%*"
