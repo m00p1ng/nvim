@@ -43,6 +43,9 @@ return {
         code_blocks = {
           sign = false,
         },
+        list_items = {
+          shift_width = 2,
+        },
       },
       latex = false,
       experimental = {
