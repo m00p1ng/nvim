@@ -192,6 +192,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
+    enabled = false,
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "codecompanion" },
+        command = "TSContext disable",
+      })
+    end,
     opts = {
       enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
       multiwindow = false, -- Enable multiwindow support.
