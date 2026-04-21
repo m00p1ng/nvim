@@ -64,9 +64,13 @@ return {
     opts = {
       padding = 1, -- number of spaces for cell padding
       keymap = {
-        table_tidy = "<leader>mb", -- key for command :TableTidy<CR>
-        table_tidy_all = "<leader>ma", -- key for command :TableTidyAll<CR>
+        table_tidy = nil, -- key for command :TableTidy<CR>
+        table_tidy_all = nil, -- key for command :TableTidyAll<CR>
       },
+    },
+    keys = {
+      { "<leader>ma", "<cmd>TableTidyAll<cr>", desc = "Table: format all", buffer = true, ft = { "markdown" } },
+      { "<leader>mb", "<cmd>TableTidy<cr>", desc = "Table: format", buffer = true, ft = { "markdown" } },
     },
   },
 }
