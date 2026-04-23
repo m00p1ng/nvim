@@ -128,6 +128,18 @@ return {
           },
         },
       },
+      adapters = {
+        acp = {
+          opts = {
+            show_presets = false,
+          },
+        },
+        http = {
+          opts = {
+            show_presets = false,
+          },
+        },
+      },
       interactions = {
         chat = {
           roles = {

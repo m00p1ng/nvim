@@ -29,11 +29,28 @@ return {
 
   -- AI
   ---- Chat
+  -- { import = "plugins.ai.codecompanion" },
   -- { import = "plugins.ai.provider.chat.claude" },
   -- { import = "plugins.ai.provider.chat.copilot" },
   -- { import = "plugins.ai.provider.chat.gemini" },
   -- { import = "plugins.ai.provider.chat.opencode" },
   -- { import = "plugins.ai.provider.chat.local-llm" },
+  -- {
+  --   "codecompanion.nvim",
+  --   optional = true,
+  --   opts = {
+  --     interactions = {
+  --       chat = {
+  --         adapter = "opencode",
+  --         -- model = "gpt-5-mini",
+  --       },
+  --       inline = {
+  --         adapter = "opencode",
+  --         -- model = "gpt-5-mini",
+  --       },
+  --     },
+  --   },
+  -- },
 
   ---- Completion
   -- { import = "plugins.ai.provider.completion.copilot" },

@@ -1,22 +1,23 @@
 return {
-  { import = "plugins.ai.codecompanion" },
-  {
-    "codecompanion.nvim",
-    optional = true,
-    opts = {
-      interactions = {
-        chat = {
-          adapter = "opencode",
-        },
-        cli = {
-          agent = "opencode",
-          agents = {
-            opencode = {
-              cmd = "opencode",
-              args = {},
-              description = "OpenCode CLI",
-              provider = "terminal",
-            },
+  "codecompanion.nvim",
+  optional = true,
+  opts = {
+    adapters = {
+      acp = {
+        opencode = function()
+          return require("codecompanion.adapters").extend("opencode", {})
+        end,
+      },
+    },
+    interactions = {
+      cli = {
+        agent = "opencode",
+        agents = {
+          opencode = {
+            cmd = "opencode",
+            args = {},
+            description = "OpenCode CLI",
+            provider = "terminal",
           },
         },
       },
