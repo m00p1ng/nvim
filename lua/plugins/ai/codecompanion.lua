@@ -229,7 +229,7 @@ return {
         desc = "CodeCompanion: Prompt",
         mode = { "n", "v" },
       },
-      { "i", "Gi", remap = false, ft = "codecompanion" },
+      -- { "i", "Gi", remap = false, ft = "codecompanion" },
     },
   },
 
@@ -280,11 +280,24 @@ return {
     optional = true,
     opts = function(_, opts)
       local preselect = opts.completion.list.selection.preselect
+      vim.list_extend(opts.sources.default or {}, { "fuzzy-path" })
 
       return vim.tbl_deep_extend("force", opts, {
         sources = {
           per_filetype = {
-            codecompanion = { "codecompanion" },
+            codecompanion = { "fuzzy-path", "codecompanion" },
+          },
+          providers = {
+            ["fuzzy-path"] = {
+              name = "Fuzzy Path",
+              module = "blink-cmp-fuzzy-path",
+              score_offset = 0,
+              opts = {
+                filetypes = { "markdown", "codecompanion" },
+                trigger_char = "@",
+                max_results = 5,
+              },
+            },
           },
         },
         completion = {
@@ -302,5 +315,10 @@ return {
         },
       })
     end,
+  },
+  {
+    "newtoallofthis123/blink-cmp-fuzzy-path",
+    dependencies = { "saghen/blink.cmp" },
+    opts = {},
   },
 }
