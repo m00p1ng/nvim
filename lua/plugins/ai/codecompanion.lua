@@ -305,7 +305,7 @@ return {
               module = "blink-cmp-fuzzy-path",
               score_offset = 0,
               opts = {
-                filetypes = { "markdown", "codecompanion" },
+                filetypes = { "markdown", "codecompanion", "text" },
                 trigger_char = "@",
                 max_results = 5,
               },

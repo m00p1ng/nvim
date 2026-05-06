@@ -158,6 +158,8 @@ M.create_winbar = function()
     group = vim.api.nvim_create_augroup("_winbar", {}),
     callback = update_winbar,
   })
+
+  update_winbar()
 end
 
 return M

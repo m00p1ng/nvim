@@ -1,6 +1,9 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp",
+    },
     cmd = "Copilot",
     event = "InsertEnter",
     init = function()
@@ -72,12 +75,12 @@ return {
         env = false,
       },
       nes = {
-        enabled = false, -- requires copilot-lsp as a dependency
-        auto_trigger = false,
+        enabled = true, -- requires copilot-lsp as a dependency
+        auto_trigger = true,
         keymap = {
-          accept_and_goto = false,
-          accept = false,
-          dismiss = false,
+          accept_and_goto = "<tab>",
+          -- accept = false,
+          -- dismiss = false,
         },
       },
       auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
