@@ -288,6 +288,12 @@ return {
   },
 
   {
+    "m00p1ng/blink-cmp-fuzzy-path",
+    -- dir = "~/Developer/blink-cmp-fuzzy-path",
+    -- name = "blink-cmp-fuzzy-path",
+    opts = {},
+  },
+  {
     "blink.cmp",
     optional = true,
     opts = function(_, opts)
@@ -327,10 +333,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "newtoallofthis123/blink-cmp-fuzzy-path",
-    dependencies = { "saghen/blink.cmp" },
-    opts = {},
   },
 }
