@@ -155,6 +155,7 @@ return {
         CodeCompanionChatWinbarModel = { link = "Comment" },
         CodeCompanionChatWinbarSeparator = { fg = C.surface1, style = { "italic" } },
         CodeCompanionChatWinbarThoughtLevel = { fg = C.green, bg = C.surface0, style = { "bold" } },
+        CodeCompanionChatMention = { fg = C.red, style = { "bold" } },
       }
     end,
     default_integrations = false,
