@@ -69,8 +69,20 @@ return {
       },
     },
     keys = {
-      { "<leader>ma", "<cmd>TableTidyAll<cr>", desc = "Table: format all", buffer = true, ft = { "markdown" } },
-      { "<leader>mb", "<cmd>TableTidy<cr>", desc = "Table: format", buffer = true, ft = { "markdown" } },
+      {
+        "<leader>ma",
+        "<cmd>lua require('md-table-tidy').table_tidy_all()<cr>",
+        desc = "Table: format all",
+        buffer = true,
+        ft = { "markdown" },
+      },
+      {
+        "<leader>mb",
+        "<cmd>lua require('md-table-tidy').table_tidy()<cr>",
+        desc = "Table: format",
+        buffer = true,
+        ft = { "markdown" },
+      },
     },
   },
 }
