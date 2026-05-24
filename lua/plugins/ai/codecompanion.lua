@@ -288,33 +288,35 @@ return {
   },
 
   {
-    "m00p1ng/blink-cmp-fuzzy-path",
-    -- dir = "~/Developer/blink-cmp-fuzzy-path",
-    -- name = "blink-cmp-fuzzy-path",
-    opts = {},
+    "not-manu/filemention.nvim",
+    event = "InsertEnter",
+    opts = {
+      trigger = "@", -- the magic key
+      root = "git", -- "git" | "cwd" | function() return path end
+      respect_gitignore = true, -- don't surface your node_modules sins
+      include_hidden = false,
+      format = "bare", -- "bare" | "markdown" | function(path, name)
+      filetypes = { "markdown", "text", "gitcommit", "codecompanion" }, -- or "*" if you live dangerously
+      max_items = 500,
+      finder = "auto", -- "auto" | "fd" | "rg" | "vim" | "fff"
+    },
   },
   {
     "blink.cmp",
     optional = true,
     opts = function(_, opts)
       local preselect = opts.completion.list.selection.preselect
-      vim.list_extend(opts.sources.default or {}, { "fuzzy-path" })
+      vim.list_extend(opts.sources.default or {}, { "filemention" })
 
       return vim.tbl_deep_extend("force", opts, {
         sources = {
           per_filetype = {
-            codecompanion = { "fuzzy-path", "codecompanion" },
+            codecompanion = { "codecompanion" },
           },
           providers = {
-            ["fuzzy-path"] = {
-              name = "Fuzzy Path",
-              module = "blink-cmp-fuzzy-path",
-              score_offset = 0,
-              opts = {
-                filetypes = { "markdown", "codecompanion", "text" },
-                trigger_char = "@",
-                max_results = 5,
-              },
+            filemention = {
+              name = "filemention",
+              module = "filemention.sources.blink",
             },
           },
         },
