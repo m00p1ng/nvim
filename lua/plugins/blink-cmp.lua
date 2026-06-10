@@ -6,6 +6,19 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     { "rafamadriz/friendly-snippets", event = "InsertEnter" },
+    {
+      "not-manu/filemention.nvim",
+      opts = {
+        trigger = "@", -- the magic key
+        root = "git", -- "git" | "cwd" | function() return path end
+        respect_gitignore = true, -- don't surface your node_modules sins
+        include_hidden = false,
+        format = "bare", -- "bare" | "markdown" | function(path, name)
+        filetypes = { "markdown", "text", "gitcommit", "codecompanion" }, -- or "*" if you live dangerously
+        max_items = 500,
+        finder = "auto", -- "auto" | "fd" | "rg" | "vim" | "fff"
+      },
+    },
   },
 
   -- use a release tag to download pre-built binaries
@@ -173,7 +186,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "filemention" },
       providers = {
         lsp = {
           opts = { tailwind_color_icon = icons.ui.Square },
@@ -185,6 +198,10 @@ return {
               vim.fn.getcwd() .. "/snippets",
             },
           },
+        },
+        filemention = {
+          name = "filemention",
+          module = "filemention.sources.blink",
         },
       },
     },
