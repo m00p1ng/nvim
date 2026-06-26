@@ -9,7 +9,8 @@ vim.api.nvim_create_autocmd("FileType", {
         return
       end
       local branch = vim.trim(result.stdout)
-      vim.api.nvim_feedkeys(branch, "i", false)
+      local prefix = branch:match "([A-Za-z]+-[0-9]+)" or branch
+      vim.api.nvim_feedkeys(prefix, "i", false)
     end, { expr = true, buffer = true })
   end,
 })
