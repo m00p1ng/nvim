@@ -1,1 +1,1 @@
-vim.fn.matchadd("CodeCompanionChatMention", "\\%(^\\|\\s\\)\\zs@\\S\\+")
+vim.fn.matchadd("FileMention", "\\%(^\\|\\s\\)\\zs@\\S\\+")

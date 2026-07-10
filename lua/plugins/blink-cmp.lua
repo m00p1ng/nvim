@@ -14,7 +14,7 @@ return {
         respect_gitignore = true, -- don't surface your node_modules sins
         include_hidden = false,
         format = "bare", -- "bare" | "markdown" | function(path, name)
-        filetypes = { "markdown", "text", "gitcommit", "codecompanion" }, -- or "*" if you live dangerously
+        filetypes = { "markdown", "text", "gitcommit" }, -- or "*" if you live dangerously
         max_items = 500,
         finder = "auto", -- "auto" | "fd" | "rg" | "vim" | "fff"
       },

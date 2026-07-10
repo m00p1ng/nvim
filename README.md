@@ -49,7 +49,6 @@ Launch `nvim` -- plugins install automatically on first run.
 |----------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------|
 | Plugin Manager | [lazy.nvim](https://github.com/folke/lazy.nvim)                                                           | Lazy-loading, lockfile, auto-update checker |
 | Completion     | [blink.cmp](https://github.com/Saghen/blink.cmp)                                                          | LSP, snippets, path, buffer sources         |
-| AI Chat        | [CodeCompanion](https://github.com/olimorris/codecompanion.nvim)                                          | Multi-provider AI chat (`<leader>a`)        |
 | AI Completion  | [Minuet](https://github.com/milanglacier/minuet-ai.nvim)                                                  | AI-powered inline completion                |
 | LSP            | [mason.nvim](https://github.com/willamboman/mason.nvim)                                                   | Auto-installed language servers             |
 | Formatting     | [conform.nvim](https://github.com/stevearc/conform.nvim)                                                  | Formatter management                        |

@@ -149,13 +149,7 @@ return {
         BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
         BlinkCmpLabelDescription = { fg = C.overlay0 },
 
-        CodeCompanionChatNormal = { link = "NormalFloat" },
-        CodeCompanionChatWinbarIcon = { fg = "#9BDA5C" },
-        CodeCompanionChatWinbarMode = { fg = C.peach, bg = C.surface0, style = { "bold" } },
-        CodeCompanionChatWinbarModel = { link = "Comment" },
-        CodeCompanionChatWinbarSeparator = { fg = C.surface1, style = { "italic" } },
-        CodeCompanionChatWinbarThoughtLevel = { fg = C.green, bg = C.surface0, style = { "bold" } },
-        CodeCompanionChatMention = { fg = C.red, style = { "bold" } },
+        FileMention = { fg = C.red, style = { "bold" } },
       }
     end,
     default_integrations = false,

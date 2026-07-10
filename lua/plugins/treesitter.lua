@@ -195,7 +195,7 @@ return {
     enabled = false,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "markdown", "codecompanion" },
+        pattern = { "markdown" },
         command = "TSContext disable",
       })
     end,
