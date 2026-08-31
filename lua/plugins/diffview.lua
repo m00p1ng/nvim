@@ -55,6 +55,21 @@ return {
     local actions = require "diffview.actions"
     local icons = require "utils.icons"
 
+    local conflict_keymaps = {
+      { "n", "[x",          actions.prev_conflict,                  { desc = "Jump to the previous conflict marker" } },
+      { "n", "]x",          actions.next_conflict,                  { desc = "Jump to the next conflict marker" } },
+      { "n", "<leader>co",  actions.conflict_choose("ours"),        { desc = "Choose the OURS version of a conflict" } },
+      { "n", "<leader>ct",  actions.conflict_choose("theirs"),      { desc = "Choose the THEIRS version of a conflict" } },
+      { "n", "<leader>cb",  actions.conflict_choose("base"),        { desc = "Choose the BASE version of a conflict" } },
+      { "n", "<leader>ca",  actions.conflict_choose("all"),         { desc = "Choose all the versions of a conflict" } },
+      { "n", "dx",          actions.conflict_choose("none"),        { desc = "Delete the conflict region" } },
+      { "n", "<leader>cO",  actions.conflict_choose_all("ours"),    { desc = "Choose the OURS version of a conflict for the whole file" } },
+      { "n", "<leader>cT",  actions.conflict_choose_all("theirs"),  { desc = "Choose the THEIRS version of a conflict for the whole file" } },
+      { "n", "<leader>cB",  actions.conflict_choose_all("base"),    { desc = "Choose the BASE version of a conflict for the whole file" } },
+      { "n", "<leader>cA",  actions.conflict_choose_all("all"),     { desc = "Choose all the versions of a conflict for the whole file" } },
+      { "n", "dX",          actions.conflict_choose_all("none"),    { desc = "Delete the conflict region for the whole file" } },
+    }
+
     return {
       diff_binaries = false,    -- Show diffs for binaries
       enhanced_diff_hl = true,  -- See |diffview-config-enhanced_diff_hl|
@@ -62,16 +77,21 @@ return {
       hg_cmd = { "hg" },        -- The hg executable followed by default args.
       jj_cmd = { "jj" },        -- The jj executable followed by default args.
       p4_cmd = { "p4" },        -- The p4 executable followed by default args.
+      preferred_adapter = nil,  -- Preferred VCS adapter ('git'|'hg'|'jj'|'p4'). Tried first when detecting repos.
       rename_threshold = nil,   -- Integer 0-100 for rename detection similarity. Nil uses git default (50%). Invalid values are ignored.
       use_icons = true,         -- Requires nvim-web-devicons or mini.icons
       show_help_hints = false,  -- Show hints for how to open the help panel
+      show_root_path = true,    -- Show repository root path in panel headers.
       watch_index = true,       -- Update views and index buffers when the git index changes.
       hide_merge_artifacts = false, -- Hide merge artifact files (*.orig, *.BACKUP.*, *.BASE.*, *.LOCAL.*, *.REMOTE.*)
       auto_close_on_empty = false, -- Close diffview when the last file is staged/resolved
+      wrap_entries = true,      -- Wrap around when navigating past the first/last file entry.
+      large_file_threshold = 0, -- Line count above which treesitter is disabled on non-LOCAL diff buffers. 0 = disabled.
       diffopt = { algorithm = "histogram" }, -- Override diffopt settings while diffview is open. Restored on close.
       clean_up_buffers = false, -- Delete file buffers created by diffview on close.
+      restore_session = true,   -- Restore open Diffview/FileHistory views from a sourced Vim session.
       persist_selections = {
-        enabled = false,        -- Persist file selections to disk across Neovim restarts.
+        enabled = false,        -- Persist file selections and hide-reviewed state across Neovim restarts.
         path = nil,             -- Storage path. Nil uses stdpath("data") .. "/diffview_selections.json".
       },
       icons = {                 -- Only applies when use_icons is true.
@@ -105,6 +125,7 @@ return {
         -- Configure the layout and behavior of different types of views.
         -- Available layouts:
         --  'diff1_plain'
+        --    |'diff1_inline'
         --    |'diff2_horizontal'
         --    |'diff2_vertical'
         --    |'diff3_horizontal'
@@ -117,23 +138,51 @@ return {
           layout = "diff2_horizontal",
           disable_diagnostics = false,  -- Temporarily disable diagnostics for diff buffers while in the view.
           winbar_info = false,          -- See |diffview-config-view.x.winbar_info|
+          focus_diff = false,           -- Focus the main diff window on open instead of the file panel.
         },
         merge_tool = {
           -- Config for conflicted files in diff views during a merge or rebase.
           layout = "diff3_horizontal",
           disable_diagnostics = true,   -- Temporarily disable diagnostics for diff buffers while in the view.
           winbar_info = true,           -- See |diffview-config-view.x.winbar_info|
+          focus_diff = false,           -- Focus the main diff window on open instead of the file panel.
         },
         file_history = {
           -- Config for changed files in file history views.
           layout = "diff2_horizontal",
           disable_diagnostics = false,  -- Temporarily disable diagnostics for diff buffers while in the view.
           winbar_info = false,          -- See |diffview-config-view.x.winbar_info|
+          focus_diff = false,           -- Focus the main diff window on open instead of the file panel.
+          pin_local = false,            -- See |diffview-config-view.file_history.pin_local|
         },
-        -- Layouts to cycle through with `cycle_layout` action.
+        foldlevel = 0,                  -- See |diffview-config-view.foldlevel|
+        -- See |diffview-config-view.one_sided_layout|. When set to "raw",
+        -- one-sided diffs (status A/?/D) open in a single non-diff window
+        -- (diff1_raw) instead of the configured Diff2 or diff1_plain layout.
+        one_sided_layout = "raw",
+        -- Layouts to cycle through with `cycle_layout` action. Each view's
+        -- configured layout (e.g. view.default.layout) is automatically
+        -- appended to its cycle if missing, so cycling always returns to it.
+        -- The sentinel `-1` ("infer from diffopt") is not appended, since
+        -- the concrete layout is not known at setup time.
         cycle_layouts = {
           default = { "diff2_horizontal", "diff2_vertical" },
           merge_tool = { "diff3_horizontal", "diff3_vertical", "diff3_mixed", "diff4_mixed", "diff1_plain" },
+        },
+        -- Options that apply to the `diff1_inline` layout.
+        inline = {
+          -- Rendering style. "unified" shows a proper unified diff with old
+          -- lines as virt_lines above; "overleaf" renders deleted chars on
+          -- modified lines as inline strikethrough virt_text.
+          style = "unified",
+          -- Extent of the `DiffDelete` background on deleted virt_lines:
+          -- "text" covers only the deleted chars, "full_width" pads to the
+          -- row, "hanging" covers everything except the leading indent.
+          deletion_highlight = "text",
+          -- Layer tree-sitter syntax highlights over the deleted virt_lines
+          -- so they read like the rest of the buffer. No-op when no parser
+          -- is attached for the buffer's filetype.
+          deletion_treesitter = true,
         },
       },
       file_panel = {
@@ -142,19 +191,26 @@ return {
         tree_options = {                    -- Only applies when listing_style is 'tree'
           flatten_dirs = true,              -- Flatten dirs that only contain one single dir
           folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
+          folder_count_style = "grouped",   -- "grouped" (e.g. "2M 1D"), "simple" (e.g. "3"), or "none".
+          folder_trailing_slash = true,     -- Append "/" to folder names in the file tree.
+        },
+        list_options = {                    -- Only applies when listing_style is 'list'
+          path_style = "basename",          -- "basename" (name + dimmed path) or "full" (full path, uniform highlight).
         },
         win_config = {                      -- See |diffview-config-win_config|
           position = "left",
-          width = 35,                       -- Set to "auto" to fit content.
+          width = 35,                       -- Set to "auto" to fit content (capped at half editor width).
           win_opts = {},
         },
         show = true,                        -- Show the file panel when opening Diffview.
         always_show_sections = false,       -- Always show Changes and Staged changes sections even when empty.
         always_show_marks = false,          -- Show selection marks even when no files are selected.
+        mark_placement = "inline",          -- Where to show selection marks: "inline" or "sign_column".
         show_branch_name = false,           -- Show branch name in the file panel header.
       },
       file_history_panel = {
         stat_style = "number",              -- "number" (e.g. "5, 3"), "bar" (e.g. "| 8 +++++---"), or "both".
+        subject_highlight = "ref_aware",    -- "ref_aware" (pushed vs unpushed), "merge_aware" (adds merged-to-main/master), or "plain".
         -- Ordered list of components to show for each commit entry.
         -- Available: "status", "files", "stats", "hash", "reflog", "ref", "subject", "author", "date"
         commit_format = { "status", "files", "stats", "hash", "reflog", "ref", "subject", "author", "date" },
@@ -172,6 +228,10 @@ return {
             single_file = {},
             multi_file = {},
           },
+          jj = {
+            single_file = {},
+            multi_file = {},
+          },
           p4 = {
             single_file = {},
             multi_file = {},
@@ -182,6 +242,7 @@ return {
           height = 16,
           win_opts = {},
         },
+        show = true,                        -- Show the file history panel when opening DiffviewFileHistory.
         commit_subject_max_length = 72,     -- Max length for commit subject display.
         date_format = "auto",               -- Date format: "auto" | "relative" | "iso"
       },
@@ -192,13 +253,7 @@ return {
         DiffviewOpen = { "--imply-local" },
         DiffviewFileHistory = {},
       },
-      hooks = {
-       diff_buf_win_enter = function(bufnr, winid, ctx)
-          if ctx.layout_name == 'diff2_horizontal' then
-            vim.wo[winid].foldlevel = 0
-          end
-        end,
-      },         -- See |diffview-config-hooks|
+      hooks = {},         -- See |diffview-config-hooks|
       keymaps = {
         disable_defaults = true, -- Disable the default keymaps
         view = {
@@ -216,42 +271,42 @@ return {
           { "n", "<leader>e",   actions.focus_files,                    { desc = "Bring focus to the file panel" } },
           { "n", "<leader>b",   actions.toggle_files,                   { desc = "Toggle the file panel." } },
           { "n", "g<C-x>",      actions.cycle_layout,                   { desc = "Cycle through available layouts." } },
-          { "n", "[x",          actions.prev_conflict,                  { desc = "In the merge-tool: jump to the previous conflict" } },
-          { "n", "]x",          actions.next_conflict,                  { desc = "In the merge-tool: jump to the next conflict" } },
-          { "n", "<leader>co",  actions.conflict_choose("ours"),        { desc = "Choose the OURS version of a conflict" } },
-          { "n", "<leader>ct",  actions.conflict_choose("theirs"),      { desc = "Choose the THEIRS version of a conflict" } },
-          { "n", "<leader>cb",  actions.conflict_choose("base"),        { desc = "Choose the BASE version of a conflict" } },
-          { "n", "<leader>ca",  actions.conflict_choose("all"),         { desc = "Choose all the versions of a conflict" } },
-          { "n", "dx",          actions.conflict_choose("none"),        { desc = "Delete the conflict region" } },
-          { "n", "<leader>cO",  actions.conflict_choose_all("ours"),    { desc = "Choose the OURS version of a conflict for the whole file" } },
-          { "n", "<leader>cT",  actions.conflict_choose_all("theirs"),  { desc = "Choose the THEIRS version of a conflict for the whole file" } },
-          { "n", "<leader>cB",  actions.conflict_choose_all("base"),    { desc = "Choose the BASE version of a conflict for the whole file" } },
-          { "n", "<leader>cA",  actions.conflict_choose_all("all"),     { desc = "Choose all the versions of a conflict for the whole file" } },
-          { "n", "dX",          actions.conflict_choose_all("none"),    { desc = "Delete the conflict region for the whole file" } },
           { "n", "q",           actions.close,                          { desc = "Close" } },
           { "n", "N",           "<cmd>Neogit<cr>",                      { desc = "Neogit" } },
         },
-        diff1 = {
-          -- Mappings in single window diff layouts
+        diff1 = vim.list_extend({
+          -- Mappings in single window diff layouts. `diff1_plain` is part of
+          -- the default merge-tool cycle, so it also inherits the shared
+          -- `conflict_keymaps` (see top of snippet).
           { "n", "g?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
+        }, vim.deepcopy(conflict_keymaps)),
+        diff1_inline = {
+          -- Mappings in the `diff1_inline` unified diff layout. Native `]c`/`[c`
+          -- don't work here because the window has `diff=false`, so we provide
+          -- equivalents that walk the renderer's cached hunks.
+          { "n", "]c",  actions.next_inline_hunk,                            { desc = "Jump to the next inline-diff hunk" } },
+          { "n", "[c",  actions.prev_inline_hunk,                            { desc = "Jump to the previous inline-diff hunk" } },
+          { "n", "g?",  actions.help({ "view", "diff1", "diff1_inline" }),   { desc = "Open the help panel" } },
         },
         diff2 = {
           -- Mappings in 2-way diff layouts
           { "n", "g?", actions.help({ "view", "diff2" }), { desc = "Open the help panel" } },
         },
-        diff3 = {
-          -- Mappings in 3-way diff layouts
+        diff3 = vim.list_extend({
+          -- Mappings in 3-way diff layouts. Inherits the shared
+          -- `conflict_keymaps` (see top of snippet).
           { { "n", "x" }, "2do",  actions.diffget("ours"),            { desc = "Obtain the diff hunk from the OURS version of the file" } },
           { { "n", "x" }, "3do",  actions.diffget("theirs"),          { desc = "Obtain the diff hunk from the THEIRS version of the file" } },
           { "n",          "g?",   actions.help({ "view", "diff3" }),  { desc = "Open the help panel" } },
-        },
-        diff4 = {
-          -- Mappings in 4-way diff layouts
+        }, vim.deepcopy(conflict_keymaps)),
+        diff4 = vim.list_extend({
+          -- Mappings in 4-way diff layouts. Inherits the shared
+          -- `conflict_keymaps` (see top of snippet).
           { { "n", "x" }, "1do",  actions.diffget("base"),            { desc = "Obtain the diff hunk from the BASE version of the file" } },
           { { "n", "x" }, "2do",  actions.diffget("ours"),            { desc = "Obtain the diff hunk from the OURS version of the file" } },
           { { "n", "x" }, "3do",  actions.diffget("theirs"),          { desc = "Obtain the diff hunk from the THEIRS version of the file" } },
           { "n",          "g?",   actions.help({ "view", "diff4" }),  { desc = "Open the help panel" } },
-        },
+        }, vim.deepcopy(conflict_keymaps)),
         file_panel = {
           { "n", "j",              actions.next_entry,                     { desc = "Bring the cursor to the next file entry" } },
           { "n", "<down>",         actions.next_entry,                     { desc = "Bring the cursor to the next file entry" } },
@@ -261,14 +316,16 @@ return {
           { "n", "o",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "l",              actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
           { "n", "<2-LeftMouse>",  actions.select_entry,                   { desc = "Open the diff for the selected entry" } },
-          { { "n", "x" }, "+",     actions.toggle_select_entry,            { desc = "Toggle file selection for multi-file operations" } },
+          { { "n", "x" }, "=",     actions.toggle_select_entry,            { desc = "Toggle file selection for multi-file operations" } },
           { "n", "C",              actions.clear_select_entries,           { desc = "Clear all file selections" } },
-          { "n", "-",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
-          { "n", "s",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry" } },
+          { "n", "H",              actions.toggle_hide_selected,           { desc = "Toggle hiding reviewed (selected) files" } },
+          { "n", "-",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry (jj: save & advance)" } },
+          { "n", "s",              actions.toggle_stage_entry,             { desc = "Stage / unstage the selected entry (jj: save & advance)" } },
           { "n", "S",              actions.stage_all,                      { desc = "Stage all entries" } },
           { "n", "U",              actions.unstage_all,                    { desc = "Unstage all entries" } },
           { "n", "X",              actions.restore_entry,                  { desc = "Restore entry to the state on the left side" } },
           { "n", "L",              actions.open_commit_log,                { desc = "Open the commit log panel" } },
+          { "n", "gL",             actions.open_commit_log_file,           { desc = "Open the commit log panel filtered to the file under the cursor" } },
           { "n", "zo",             actions.open_fold,                      { desc = "Expand fold" } },
           { "n", "h",              actions.close_fold,                     { desc = "Collapse fold" } },
           { "n", "zc",             actions.close_fold,                     { desc = "Collapse fold" } },
@@ -285,7 +342,7 @@ return {
           { "n", "<C-w><C-f>",     actions.goto_file_split,                { desc = "Open the file in a new split" } },
           { "n", "<C-w>gf",        actions.goto_file_tab,                  { desc = "Open the file in a new tabpage" } },
           { "n", "gx",             actions.open_file_external,             { desc = "Open the file with default system application" } },
-          { "n", "<C-w>T",         actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
+          { "n", "<C-w>T",        actions.open_in_new_tab,                { desc = "Open diffview in a new tab" } },
           { "n", "i",              actions.listing_style,                  { desc = "Toggle between 'list' and 'tree' views" } },
           { "n", "f",              actions.toggle_flatten_dirs,            { desc = "Flatten empty subdirectories in tree listing style" } },
           { "n", "R",              actions.refresh_files,                  { desc = "Update stats and entries in the file list" } },
@@ -344,12 +401,17 @@ return {
         option_panel = {
           { "n", "<tab>", actions.select_entry,          { desc = "Change the current option" } },
           { "n", "q",     actions.close,                 { desc = "Close the panel" } },
+          { "n", "<esc>", actions.close,                 { desc = "Close the panel" } },
           { "n", "g?",    actions.help("option_panel"),  { desc = "Open the help panel" } },
           { "n", "N",     "<cmd>Neogit<cr>",             { desc = "Neogit" } },
         },
         help_panel = {
           { "n", "q",     actions.close,  { desc = "Close help menu" } },
           { "n", "<esc>", actions.close,  { desc = "Close help menu" } },
+        },
+        commit_log_panel = {
+          { "n", "q",     actions.close,  { desc = "Close commit log" } },
+          { "n", "<esc>", actions.close,  { desc = "Close commit log" } },
         },
       },
     }
