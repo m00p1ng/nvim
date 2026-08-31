@@ -3,7 +3,12 @@ return {
     "mason-lspconfig.nvim",
     opts_extend = { "ensure_installed" },
     opts = {
-      ensure_installed = { "vtsls", "eslint", "cssmodules_ls" },
+      ensure_installed = {
+        -- "vtsls",
+        "ts_ls",
+        "eslint",
+        "cssmodules_ls",
+      },
     },
   },
   {

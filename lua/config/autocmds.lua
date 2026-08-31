@@ -52,12 +52,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FocusGained", {
+vim.api.nvim_create_autocmd({
+  "FocusGained",
+  "BufEnter",
+  "CursorHold",
+  "CursorHoldI",
+  "TermClose",
+  "TermLeave",
+}, {
   group = vim.api.nvim_create_augroup("check_file_changed", { clear = true }),
   callback = function()
-    if vim.o.buftype ~= "nofile" then
-      vim.cmd "checktime"
+    -- cmdwin forbids :checktime (E11), and it is pointless in cmdline mode
+    if vim.fn.getcmdwintype() ~= "" or vim.fn.mode() == "c" then
+      return
     end
+    pcall(vim.cmd.checktime)
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  group = vim.api.nvim_create_augroup("file_changed_notify", { clear = true }),
+  callback = function()
+    vim.notify("File reloaded from disk", vim.log.levels.INFO)
   end,
 })
 
