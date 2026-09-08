@@ -33,4 +33,5 @@ return {
   -- { import = "plugins.ai.provider.completion.gemini" },
   -- { import = "plugins.ai.provider.completion.local-llm" },
   -- { import = "plugins.ai.provider.completion.zai" },
+  -- { import = "plugins.ai.sidekick" },
 }

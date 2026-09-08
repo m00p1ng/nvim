@@ -183,6 +183,7 @@ return {
       { "<leader>g", group = "git" },
       { "<leader>l", group = "code" },
       { "<leader>o", group = "option" },
+      { "<leader>a", group = "Sidekick" },
       {
         "<leader>m",
         group = function()
