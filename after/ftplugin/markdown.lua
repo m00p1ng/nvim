@@ -1,40 +1,50 @@
--- matchadd() is window-local, so the highlight leaks into other buffers shown
--- in the same window. Add it on enter, drop it on leave.
-local PATTERN = "\\%(^\\|\\s\\)\\zs@\\S\\+"
+-- matchadd() always overrules syntax/treesitter highlighting, so use extmarks
+-- with a priority below treesitter's (100): mentions only show where markdown
+-- highlighting left the text unstyled. Extmarks are buffer-local, so nothing
+-- leaks into other buffers sharing the window.
+local ns = vim.api.nvim_create_namespace("FileMention")
 local bufnr = vim.api.nvim_get_current_buf()
 local group = vim.api.nvim_create_augroup("FileMentionMarkdown" .. bufnr, { clear = true })
 
-local function clear()
-  for _, m in ipairs(vim.fn.getmatches()) do
-    if m.group == "FileMention" then
-      vim.fn.matchdelete(m.id)
+local function highlight()
+  if not vim.api.nvim_buf_is_valid(bufnr) then
+    return
+  end
+  vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+  if vim.bo[bufnr].filetype ~= "markdown" then
+    return
+  end
+  for lnum, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
+    local init = 1
+    while true do
+      local s, e = line:find("@%S+", init)
+      if not s then
+        break
+      end
+      -- mention must start a line or follow whitespace
+      if s == 1 or line:sub(s - 1, s - 1):match("%s") then
+        vim.api.nvim_buf_set_extmark(bufnr, ns, lnum - 1, s - 1, {
+          end_col = e,
+          hl_group = "FileMention",
+          priority = 99,
+        })
+      end
+      init = e + 1
     end
   end
 end
 
-local function add()
-  clear()
-  if vim.bo[bufnr].filetype == "markdown" then
-    vim.fn.matchadd("FileMention", PATTERN)
-  end
-end
+highlight()
 
-add()
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
   group = group,
   buffer = bufnr,
-  callback = add,
+  callback = highlight,
 })
 
-vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
-  group = group,
-  buffer = bufnr,
-  callback = clear,
-})
-
-local undo = ("lua vim.api.nvim_del_augroup_by_id(%d) for _, m in ipairs(vim.fn.getmatches()) do if m.group == 'FileMention' then vim.fn.matchdelete(m.id) end end"):format(
-  group
+local undo = ("lua vim.api.nvim_del_augroup_by_id(%d) vim.api.nvim_buf_clear_namespace(%d, vim.api.nvim_create_namespace('FileMention'), 0, -1)"):format(
+  group,
+  bufnr
 )
 local prev = vim.b[bufnr].undo_ftplugin
 vim.b[bufnr].undo_ftplugin = (prev and prev ~= "") and (prev .. " | " .. undo) or undo
