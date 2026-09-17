@@ -16,12 +16,13 @@ return {
       tools = {
         claude = {
           cmd = { "claude", "--dangerously-skip-permissions" },
+          native_scroll = true,
         },
       },
       win = {
         keys = {
-          buffers = { "<m-b>", "buffers", mode = "nt", desc = "open buffer picker" },
-          files = { "<m-f>", "files", mode = "nt", desc = "open file picker" },
+          buffers = { "<c-b>", "buffers", mode = "nt", desc = "open buffer picker" },
+          files = { "<c-f>", "files", mode = "nt", desc = "open file picker" },
           hide_n = { "q", "hide", mode = "n", desc = "hide the terminal window" },
           hide_ctrl_q = { "<c-q>", "hide", mode = "n", desc = "hide the terminal window" },
           hide_ctrl_dot = { "<c-.>", "hide", mode = "nt", desc = "hide the terminal window" },
@@ -31,7 +32,7 @@ return {
             mode = "nt",
             desc = "go back to the previous window without hiding the terminal",
           },
-          prompt = { "<m-p>", "prompt", mode = "t", desc = "insert prompt or context" },
+          prompt = { "<c-o>", "prompt", mode = "t", desc = "insert prompt or context" },
           stopinsert = { "<c-q>", "stopinsert", mode = "t", desc = "enter normal mode" },
           normal_cr = { "<cr>", "insert_cr", mode = "n", desc = "send <cr> to the terminal and enter normal mode" },
           -- Navigate windows in terminal mode. Only active when:
@@ -71,11 +72,11 @@ return {
       function()
         require("sidekick.cli").send { msg = "{line}" }
       end,
-      mode = { "n" },
+      mode = { "n", "x" },
       desc = "Sidekick: Send Line",
     },
     {
-      "<leader>aa",
+      "<leader>av",
       function()
         require("sidekick.cli").send { msg = "{selection}" }
       end,
