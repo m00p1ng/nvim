@@ -149,6 +149,8 @@ return {
         BlinkCmpLabelMatch = { fg = C.red, style = { "bold" } },
         BlinkCmpLabelDescription = { fg = C.overlay0 },
 
+        BqfPreviewFloat = { link = "FloatBorder" },
+
         FileMention = { fg = C.red, style = { "bold" } },
       }
     end,
