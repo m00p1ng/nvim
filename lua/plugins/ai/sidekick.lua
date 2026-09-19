@@ -39,10 +39,10 @@ return {
           -- * layout is not "float"
           -- * there is another window in the direction
           -- With the default layout of "right", only `<c-h>` will be mapped
-          nav_left = { "<c-h>", "nav_left", expr = true, desc = "navigate to the left window" },
-          nav_down = { "<c-j>", "nav_down", expr = true, desc = "navigate to the below window" },
-          nav_up = { "<c-k>", "nav_up", expr = true, desc = "navigate to the above window" },
-          nav_right = { "<c-l>", "nav_right", expr = true, desc = "navigate to the right window" },
+          nav_left = { "<nop>", "nav_left", expr = true, desc = "navigate to the left window" },
+          nav_down = { "<nop>", "nav_down", expr = true, desc = "navigate to the below window" },
+          nav_up = { "<nop>", "nav_up", expr = true, desc = "navigate to the above window" },
+          nav_right = { "<nop>", "nav_right", expr = true, desc = "navigate to the right window" },
         },
       },
     },

@@ -121,14 +121,14 @@ return {
     -- Set to `false` to remove a keymap
     -- See :help oil-actions for a list of all available actions
     keymaps = {
-      ["?"] = { "actions.show_help", mode = "n" },
-      ["<cr>"] = function()
+      ["g?"] = { "actions.show_help", mode = "n" },
+      ["<CR>"] = function()
         require("oil").select({}, function()
           vim.cmd "noh"
         end)
       end,
-      -- ["<C-v>"] = { "actions.select", opts = { vertical = true } },
-      -- ["<C-x>"] = { "actions.select", opts = { horizontal = true } },
+      -- ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+      -- ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
       -- ["<C-t>"] = { "actions.select", opts = { tab = true } },
       ["<C-p>"] = "actions.preview",
       ["q"] = { "actions.close", mode = "n" },
@@ -147,7 +147,7 @@ return {
       ["-"] = { "actions.parent", mode = "n" },
       ["_"] = { "actions.open_cwd", mode = "n" },
       ["`"] = { "actions.cd", mode = "n" },
-      ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+      ["g~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
       ["gs"] = { "actions.change_sort", mode = "n" },
       ["gx"] = {
         function()
@@ -207,6 +207,8 @@ return {
     },
     -- Extra arguments to pass to SCP when moving/copying files over SSH
     extra_scp_args = {},
+    -- Extra arguments to pass to aws s3 when creating/deleting/moving/copying files using aws s3
+    extra_s3_args = {},
     -- EXPERIMENTAL support for performing file operations with git
     git = {
       -- Return true to automatically git add/mv/rm files
@@ -224,9 +226,10 @@ return {
     float = {
       -- Padding around the floating window
       padding = 2,
+      -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
       max_width = 0,
       max_height = 0,
-      border = "rounded",
+      border = "",
       win_options = {
         winblend = 0,
       },
@@ -271,7 +274,7 @@ return {
       min_height = { 5, 0.1 },
       -- optionally define an integer/float for the exact height of the preview window
       height = nil,
-      border = "rounded",
+      border = nil,
       win_options = {
         winblend = 0,
       },
@@ -284,7 +287,7 @@ return {
       max_height = { 10, 0.9 },
       min_height = { 5, 0.1 },
       height = nil,
-      border = "rounded",
+      border = nil,
       minimized_border = "none",
       win_options = {
         winblend = 0,
@@ -292,11 +295,11 @@ return {
     },
     -- Configuration for the floating SSH window
     ssh = {
-      border = "rounded",
+      border = nil,
     },
     -- Configuration for the floating keymaps help window
     keymaps_help = {
-      border = "rounded",
+      border = nil,
     },
   },
   keys = {
